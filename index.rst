@@ -18,6 +18,17 @@
    :hidden:
 
    nutanix101/nutanix101
+   prism_pro_efficiency_anomaly/prism_pro_efficiency_anomaly
+   prism_pro_resource_planning/prism_pro_resource_planning
+   prism_pro_xplay/prism_pro_xplay
+   files_smb_share/files_smb_share
+   files_nfs_export/files_nfs_export
+   file_analytics_deploy/file_analytics_deploy
+   file_analytics_scan/file_analytics_scan
+   flow_secure_app/flow_secure_app
+   flow_isolate_environments/flow_isolate_environments
+   flow_quarantine_vm/flow_quarantine_vm
+
 
 .. toctree::
    :maxdepth: 2
@@ -34,7 +45,7 @@
    :name: _db_track
    :hidden:
 
-
+   nutanix101/nutanix101
 
 .. toctree::
    :maxdepth: 2
