@@ -10,52 +10,31 @@
    info/clusteraccess
    info/clusterinfo
    info/validation
-   
+
 .. toctree::
    :maxdepth: 2
-   :caption: Nutanix Core Labs
-   :name: _core_labs
+   :caption: Private Cloud Track
+   :name: _private_cloud_track
    :hidden:
 
    nutanix101/nutanix101
 
 .. toctree::
    :maxdepth: 2
-   :caption: Nutanix Essentials Labs
-   :name: _essentials_labs
+   :caption: EUC Track
+   :name: _euc_track
    :hidden:
 
-   calm_linux/calm_linux
-   files/files
-   flow/flow
-   xplay/xplay
-   dr_runbooks/dr_runbooks
+   nutanix101/nutanix101
+   citrix/citrix
 
 .. toctree::
    :maxdepth: 2
-   :caption: Nutanix Enterprise Labs
-   :name: _enterprise_labs
+   :caption: DB Track
+   :name: _db_track
    :hidden:
 
-   buckets/buckets
-   era/era
-   karbon/karbon
-   xtract_aws/xtract_aws
-   epoch/epoch
-   frame/frame
-   xiiot/xiiot
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Advanced Labs
-   :name: _advanced_labs
-   :hidden:
-
-   apis/apis
-   calm_day2/calm_day2
-   calm_escript/calm_escript
-   calm_win/calm_win
-   cloud_native_lab/cloud_native_lab
 
 .. toctree::
    :maxdepth: 2
@@ -84,7 +63,7 @@
 Nutanix Global Tech Summit
 --------------------------
 
-Welcome to Nutanix Global Tech Summit 2019!
+Welcome to Nutanix Global Tech Summit 2020!
 
 Following the General Session on Tuesday morning, you will be able to access the **Hands on Learning** lab content.
 
