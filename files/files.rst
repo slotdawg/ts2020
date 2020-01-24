@@ -310,7 +310,7 @@ You will first provision a CentOS VM to use as a client for your Files export.
       - **Image** - CentOS
       - Select **Add**
    - Select **Add New NIC**
-      - **VLAN Name** - Primary
+      - **VLAN Name** - Secondary
       - Select **Add**
 
 #. Click **Save**.
