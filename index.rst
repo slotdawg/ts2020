@@ -1,4 +1,4 @@
-.. title:: Tech Summit 2019
+.. title:: Tech Summit 2020
 
 .. toctree::
    :maxdepth: 2
@@ -6,65 +6,48 @@
    :name: _info
    :hidden:
 
-   info/emeaagenda
    info/clusteraccess
    info/clusterinfo
    info/validation
-   
-.. toctree::
-   :maxdepth: 2
-   :caption: Nutanix Core Labs
-   :name: _core_labs
-   :hidden:
-
-   nutanix101/nutanix101
 
 .. toctree::
    :maxdepth: 2
-   :caption: Nutanix Essentials Labs
-   :name: _essentials_labs
+   :caption: Private Cloud
+   :name: _privatecloud
    :hidden:
 
-   calm_linux/calm_linux
-   files/files
-   flow/flow
-   xplay/xplay
-   dr_runbooks/dr_runbooks
+..   pc/lab1/rstfile
 
 .. toctree::
    :maxdepth: 2
-   :caption: Nutanix Enterprise Labs
-   :name: _enterprise_labs
+   :caption: End User Computing
+   :name: _euc
    :hidden:
 
-   buckets/buckets
-   era/era
-   karbon/karbon
-   xtract_aws/xtract_aws
-   epoch/epoch
-   frame/frame
-   xiiot/xiiot
+..   euc/lab1/rstfile
 
 .. toctree::
    :maxdepth: 2
-   :caption: Advanced Labs
-   :name: _advanced_labs
+   :caption: Databases
+   :name: _dbs
    :hidden:
 
-   apis/apis
-   calm_day2/calm_day2
-   calm_escript/calm_escript
-   calm_win/calm_win
-   cloud_native_lab/cloud_native_lab
+   db/gettingstarted
+   db/mssqldeploy/mssqldeploy
+   db/regmssql/regmssql
+   db/provmssql/provmssql
+   db/cloning/cloning
+   db/aag/aag
+   db/oraclepatch/oraclepatch
+   db/flow_secure_fiesta/flow_secure_fiesta
 
 .. toctree::
    :maxdepth: 2
-   :caption: Sponsor Labs
-   :name: _sponsor_labs
+   :caption: Standalone Labs
+   :name: _standalone
    :hidden:
 
-   hycu/hycu
-   peer/peer
+..   db/lab1/rstfile
 
 .. toctree::
    :maxdepth: 2
@@ -72,25 +55,19 @@
    :name: _appendix
    :hidden:
 
-   tools_vms/windows_tools_vm
-   tools_vms/linux_tools_vm
-   taskman/taskman
-   wordpress/wordpress
-
-
 .. _welcome:
 
 --------------------------
 Nutanix Global Tech Summit
 --------------------------
 
-Welcome to Nutanix Global Tech Summit 2019!
+Welcome to Nutanix Global Tech Summit 2020!
 
-Following the General Session on Tuesday morning, you will be able to access the **Hands on Learning** lab content.
+<Need new copy on selecting a lab track and standalone labs>
 
-Labs are designed to be completed by each individual, not in groups. Each Nutanix employee registered for the **Hands on Learning** track must complete a **minimum** of 5 labs.
+Labs are designed to be completed by each individual, not in groups. Each Nutanix employee must complete a minimum of 1 solution track.
 
-For each lab you complete & validate, you'll be entered into a raffle to win a complete Raspberry Pi 3 kit!
+For each lab you complete & validate, you'll be entered into a raffle to win <prize selection>!
 
 **Proctors will be regularly checking in with each table to validate completed labs. You do NOT need to wait for lab validation before proceeding to your next lab, but please take the time to clean up unneeded VMs after each lab validation.**
 
