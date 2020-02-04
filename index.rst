@@ -20,11 +20,12 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: End User Computing
+   :caption: End User Computing - Citrix
    :name: _euc
    :hidden:
 
-..   euc/lab1/rstfile
+   euccitrix/move/move
+   euccitrix/goldimage/goldimage
 
 .. toctree::
    :maxdepth: 2
