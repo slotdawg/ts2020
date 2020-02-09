@@ -1,4 +1,4 @@
-.. title:: Tech Summit 2019
+.. title:: Tech Summit 2020
 
 .. toctree::
    :maxdepth: 2
@@ -13,11 +13,10 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: Private Cloud Track
-   :name: _private_cloud_track
+   :caption: Private Cloud
+   :name: _private_cloud
    :hidden:
 
-   nutanix101/nutanix101
    prism_pro_efficiency_anomaly/prism_pro_efficiency_anomaly
    prism_pro_resource_planning/prism_pro_resource_planning
    prism_pro_xplay/prism_pro_xplay
@@ -29,20 +28,28 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: EUC Track
-   :name: _euc_track
+   :caption: EUC
+   :name: _eu
    :hidden:
 
-   nutanix101/nutanix101
+
    citrix/citrix
 
 .. toctree::
    :maxdepth: 2
-   :caption: DB Track
-   :name: _db_track
+   :caption: DB
+   :name: _db
    :hidden:
 
-   nutanix101/nutanix101
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Ad-Hoc
+   :name: _adhoc
+   :hidden:
+
+
 
 .. toctree::
    :maxdepth: 2
@@ -51,6 +58,10 @@
    :hidden:
 
    hycu/hycu
+   protecting-applications/protectingapps
+   protecting-physical/protectingphysical
+   reporting/reporting
+   self-service/selfservice
    peer/peer
 
 .. toctree::
