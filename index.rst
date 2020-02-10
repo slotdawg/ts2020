@@ -14,6 +14,38 @@
 .. toctree::
    :maxdepth: 2
    :caption: Private Cloud
+   :name: _privatecloud
+   :hidden:
+
+   pc/dayinlife/dayinlife
+
+.. toctree::
+   :maxdepth: 2
+   :caption: End User Computing - Citrix
+   :name: _euc
+   :hidden:
+
+   euccitrix/move/move
+   euccitrix/goldimage/goldimage
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Databases
+   :name: _dbs
+   :hidden:
+
+   db/gettingstarted
+   db/mssqldeploy/mssqldeploy
+   db/regmssql/regmssql
+   db/provmssql/provmssql
+   db/cloning/cloning
+   db/aag/aag
+   db/oraclepatch/oraclepatch
+   db/flow_secure_fiesta/flow_secure_fiesta
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Private Cloud
    :name: _private_cloud
    :hidden:
 
