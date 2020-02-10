@@ -1,8 +1,8 @@
 .. _reporting:
 
----------
-REPORTING
----------
+---------------
+HYCU: reporting
+---------------
 
 *The estimated time to complete this lab is 60 minutes.*
 
@@ -10,7 +10,7 @@ Overview
 ++++++++
 HYCU’s unique and powerful reporting runs on HYCU controller Virtual machine and does not require any additional infrastructure. This is a standard offering which is included as a part of HYCU’s base license. HYCU provides you all the basic options you would expect in a reporting tool, such as scheduling, delivery in various formats and ad-hoc exports. However, on top of this, HYCU reporting provides you with amazing flexibility of creating customer reports using practically every field from HYCUs internal database, combined with data filtering, time selection and various report types. Let’s now walk through each of these options
 
-#. Login to HYCU as the admin user. In HYCU select > left panel > *Reports* 
+#. Login to HYCU as the admin user. In HYCU select > left panel > *Reports*
 
 .. figure:: images/1.png
 
@@ -46,7 +46,7 @@ Here, let’s drag and drop the following fields from the Report Tag Pool (on th
    - “Avg Change Rate” -> Right in between “Job duration” and “Size of backed up data” fields
       - This provides the data change rate between backups
    - “Compliancy Status” -> Right in between “Status” and “Backup Type” fields
-      - This provides info on whether the backup job completed on time. You can have compliance status failed (status to RED) even if the backup job completes successfully. 
+      - This provides info on whether the backup job completed on time. You can have compliance status failed (status to RED) even if the backup job completes successfully.
    - “Owner” -> Right below “VM name” field
       - This provides you HYCU-user group who has explicit rights to backups on the given VM. This is direct reference to the Self-service section
    - “Target name” -> At the very end
@@ -60,7 +60,7 @@ From the dropdown in the upper row select the 1 week time instead of 24 hours an
 
 .. figure:: images/8.png
 
-Click on “*Save As*” on the top right-hand side of the screen to save the newly created report 
+Click on “*Save As*” on the top right-hand side of the screen to save the newly created report
 
 You should be able to view the saved report under the *Reports* section. Click *Generate* to generate the report at that exact time, using current HYCU data which is residing in HYCU’s reporting database. HYCU’s reporting database is getting synchronized with the main database every 12 hours.
 
@@ -104,17 +104,17 @@ In this report, our goal is to create a high-level information on how our backup
 - Navigate to *Reports*
 - Click on *New*
   - This will show case the entire reporting schema
-- Simply clear the X-AXIS TAGS and Y-AXIS TAGS. 
+- Simply clear the X-AXIS TAGS and Y-AXIS TAGS.
   - Click on the clear button as shown below
 
   .. figure:: images/13.png
 
   .. figure:: images/14.png
-  
+
   .. figure:: images/15.png
 
 - Under the report type, choose “Stacked bar chart”
-- On the X-AXIS TAGS, choose “Target Name” and on Y-AXIS TAGS, choose “source Name” 
+- On the X-AXIS TAGS, choose “Target Name” and on Y-AXIS TAGS, choose “source Name”
 - This is how the end-report would look like:
 
 .. figure:: images/16.png
@@ -129,13 +129,13 @@ The goal of this report is to provide a VM backup target utilization in a graphi
 - Navigate to Reports
   - Click on *New*
   - This will show case the entire reporting schema
-- Simply clear the X-AXIS TAGS and Y-AXIS TAGS. 
+- Simply clear the X-AXIS TAGS and Y-AXIS TAGS.
   - Click on the clear button as shown below
 
   .. figure:: images/13.png
 
   .. figure:: images/14.png
-  
+
   .. figure:: images/15.png
 
 - Under the report type, choose “Horizontal Stacked bar chart”
