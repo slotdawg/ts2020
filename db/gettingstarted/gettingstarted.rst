@@ -13,7 +13,7 @@ Typically, Hosted POC clusters provide 2x /25 VLANs. In order to provide adequat
 
    .. note:: A /27 VLAN provides 32 IP addresses, 5 of which are reserved. You will therefore need to be conscious of cleaning up unneeded VMs to avoid running out of IP space.
 
-#. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Subnets**.\
+#. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Subnets**.
 
 #. Click **Network Config**, select *Your Assigned Cluster*, and click **OK**.
 
