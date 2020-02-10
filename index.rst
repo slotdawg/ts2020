@@ -50,7 +50,6 @@
 
 ..   db/lab1/rstfile
 
-
 .. toctree::
    :maxdepth: 2
    :caption: Appendix
