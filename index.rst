@@ -16,7 +16,7 @@
    :name: _privatecloud
    :hidden:
 
-..   pc/lab1/rstfile
+   pc/dayinlife/dayinlife
 
 .. toctree::
    :maxdepth: 2

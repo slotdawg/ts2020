@@ -4,9 +4,13 @@
 Building & Optimizing the Gold Image
 ------------------------------------
 
-Introduction
+When we install a vanilla client operating system, we need to keep in mind that this OS was built for physical devices (i.e. laptops and desktops), with direct attached devices and limited noisy neighbor effects. If we install that same OS in a VM we might see different results, hence the need for optimization. The Nutanix Performance/Solutions Engineering team for EUC has tested various optimizations and the lab, and validated the following results:
 
-**In this lab you will...**
+.. figure:: images/19.png
+
+As you can see there’s a 48% improvement of desktop density per node when applying baseline Citrix optimizations, and increases to 57% with a second pass using VMware OS optimization recommendations. Note that both sets of optimizations are independent of underlying hypervisor, and rather tune services within the OS guest.
+
+**In this lab you will install the Citrix Virtual Desktop Agent within the VM migrated from your vSphere environment, and optimize the VM using both the Citrix Optimizer and VMware OS Optimization Tool.**
 
 Deploying a VM
 ++++++++++++++
@@ -45,6 +49,8 @@ If you completed the :ref:`move` lab, skip to `Installing the VDA`_. Otherwise, 
 
 Installing the VDA
 ++++++++++++++++++
+
+<What is the VDA?>
 
 #. Open the VM console or connect via RDP.
 
@@ -161,6 +167,6 @@ Running VMware OS Optimization Tool
 
 #. Click **Optimize** to apply the remaining optimizations.
 
-   .. figure:: 18.png
+   .. figure:: images/18.png
 
 #. Review the results and then restart your Gold Image VM.
