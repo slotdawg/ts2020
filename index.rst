@@ -17,6 +17,10 @@
    :hidden:
 
    pc/dayinlife/dayinlife
+   pc/prismops/prism_pro_efficiency_anomaly/prism_pro_efficiency_anomaly
+   pc/prismops/prism_pro_resource_planning/prism_pro_resource_planning
+   pc/prismops/prism_pro_xplay/prism_pro_xplay
+   pc/files/files
 
 .. toctree::
    :maxdepth: 2
@@ -48,6 +52,12 @@
    :name: _standalone
    :hidden:
 
+   /mine/hycu/hycu/hycu
+   /mine/hycu/protecting-applications/protectingapps
+   /mine/hycu/protecting-physical/protectingphysical
+   /mine/hycu/reporting/reporting
+   /mine/hycu/self-service/selfservice
+   peer/peer
 ..   db/lab1/rstfile
 
 .. toctree::
