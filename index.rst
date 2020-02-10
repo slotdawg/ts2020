@@ -21,6 +21,8 @@
    pc/prismops/prism_pro_resource_planning/prism_pro_resource_planning
    pc/prismops/prism_pro_xplay/prism_pro_xplay
    pc/files/files
+   pc/flow/flow_isolate_environments/flow_isolate_environments
+   pc/flow/flow_quarantine_vm/flow_quarantine_vm
 
 .. toctree::
    :maxdepth: 2
