@@ -48,7 +48,7 @@
    :name: _standalone
    :hidden:
 
-   db/lab1/rstfile
+..   db/lab1/rstfile
 
 
 .. toctree::
