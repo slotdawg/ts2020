@@ -6,7 +6,6 @@
    :name: _info
    :hidden:
 
-   info/emeaagenda
    info/clusteraccess
    info/clusterinfo
    info/validation
@@ -18,6 +17,13 @@
    :hidden:
 
    pc/dayinlife/dayinlife
+   prism_pro_efficiency_anomaly/prism_pro_efficiency_anomaly
+   prism_pro_resource_planning/prism_pro_resource_planning
+   prism_pro_xplay/prism_pro_xplay
+   files/files
+   flow_secure_app/flow_secure_app
+   flow_isolate_environments/flow_isolate_environments
+   flow_quarantine_vm/flow_quarantine_vm
 
 .. toctree::
    :maxdepth: 2
@@ -45,50 +51,11 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: Private Cloud
-   :name: _private_cloud
+   :caption: Standalone Labs
+   :name: _standalone
    :hidden:
 
-   prism_pro_efficiency_anomaly/prism_pro_efficiency_anomaly
-   prism_pro_resource_planning/prism_pro_resource_planning
-   prism_pro_xplay/prism_pro_xplay
-   files/files
-   flow_secure_app/flow_secure_app
-   flow_isolate_environments/flow_isolate_environments
-   flow_quarantine_vm/flow_quarantine_vm
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: EUC
-   :name: _eu
-   :hidden:
-
-
-   citrix/citrix
-
-.. toctree::
-   :maxdepth: 2
-   :caption: DB
-   :name: _db
-   :hidden:
-
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Ad-Hoc
-   :name: _adhoc
-   :hidden:
-
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Sponsor Labs
-   :name: _sponsor_labs
-   :hidden:
-
+   db/lab1/rstfile
    hycu/hycu
    protecting-applications/protectingapps
    protecting-physical/protectingphysical
