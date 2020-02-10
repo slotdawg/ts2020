@@ -56,12 +56,6 @@
    :name: _appendix
    :hidden:
 
-   tools_vms/windows_tools_vm
-   tools_vms/linux_tools_vm
-   taskman/taskman
-   wordpress/wordpress
-
-
 .. _welcome:
 
 --------------------------
@@ -70,11 +64,11 @@ Nutanix Global Tech Summit
 
 Welcome to Nutanix Global Tech Summit 2020!
 
-Following the General Session on Tuesday morning, you will be able to access the **Hands on Learning** lab content.
+<Need new copy on selecting a lab track and standalone labs>
 
-Labs are designed to be completed by each individual, not in groups. Each Nutanix employee registered for the **Hands on Learning** track must complete a **minimum** of 5 labs.
+Labs are designed to be completed by each individual, not in groups. Each Nutanix employee must complete a minimum of 1 solution track.
 
-For each lab you complete & validate, you'll be entered into a raffle to win a complete Raspberry Pi 3 kit!
+For each lab you complete & validate, you'll be entered into a raffle to win <prize selection>!
 
 **Proctors will be regularly checking in with each table to validate completed labs. You do NOT need to wait for lab validation before proceeding to your next lab, but please take the time to clean up unneeded VMs after each lab validation.**
 
