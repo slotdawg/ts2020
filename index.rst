@@ -70,6 +70,7 @@
    :name: _standalone
    :hidden:
 
+   calm_karbon_cicd/calm_karbon_cicd
    mine/hycu/hycu/hycu
    mine/hycu/protecting-applications/protectingapps
    peer/peer
