@@ -26,15 +26,6 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: End User Computing - Citrix
-   :name: _euc
-   :hidden:
-
-   euccitrix/move/move
-   euccitrix/goldimage/goldimage
-
-.. toctree::
-   :maxdepth: 2
    :caption: Databases
    :name: _dbs
    :hidden:
@@ -50,16 +41,41 @@
 
 .. toctree::
    :maxdepth: 2
+   :caption: End User Computing - Xi Frame
+   :name: _eucframe
+   :hidden:
+
+   move/move
+   eucframe/goldimage/goldimage
+   eucframe/deploycca/deploycca
+   eucframe/manage/manage
+   eucframe/framefiles/framefiles
+
+.. toctree::
+   :maxdepth: 2
+   :caption: End User Computing - Citrix
+   :name: _euccitrix
+   :hidden:
+
+   move/move
+   euccitrix/goldimage/goldimage
+   euccitrix/pdesktops/pdesktops
+   euccitrix/pdesktops/npdesktops
+   euccitrix/updatecatalog/updatecatalog
+   euccitrix/files/files
+
+.. toctree::
+   :maxdepth: 2
    :caption: Standalone Labs
    :name: _standalone
    :hidden:
 
-   /mine/hycu/hycu/hycu
-   /mine/hycu/protecting-applications/protectingapps
-   /mine/hycu/protecting-physical/protectingphysical
-   /mine/hycu/reporting/reporting
-   /mine/hycu/self-service/selfservice
+   mine/hycu/hycu/hycu
+   mine/hycu/protecting-applications/protectingapps
    peer/peer
+..   /mine/hycu/protecting-physical/protectingphysical
+..   /mine/hycu/reporting/reporting
+..   /mine/hycu/self-service/selfservice
 ..   db/lab1/rstfile
 
 .. toctree::
