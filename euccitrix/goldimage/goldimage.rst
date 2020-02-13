@@ -170,3 +170,16 @@ Running VMware OS Optimization Tool
    .. figure:: images/18.png
 
 #. Review the results and then restart your Gold Image VM.
+
+Completing the Gold Image
++++++++++++++++++++++++++
+
+#. Once restarted, Perform a graceful shutdown of the VM from within the guest.
+
+#. From **Prism Element**, take a snapshot of the VM (e.g. *Post optimization and VDA install*)
+
+   .. figure:: images/20.png
+
+   .. note::
+
+      This snapshot **must** be taken from Prism Element in order to be recognized by the Citrix AHV plug-in.
