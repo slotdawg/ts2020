@@ -52,6 +52,17 @@ Exploring Era Resources
 
    .. figure:: images/4.png
 
+#. Click **+ Create** again and fill out the following fields:
+
+   - **Engine** - Oracle
+   - **Type** - Single Instance
+   - **Name** - *Assigned User VLAN*-ORACLE-NETWORK
+   - **Public Service VLAN** - *Assigned User VLAN*
+
+#. Click **Create** to finish creating your Oracle network profile.
+
+   .. figure:: images/4b.png
+
 Registering Your MSSQL VM
 +++++++++++++++++++++++++
 
