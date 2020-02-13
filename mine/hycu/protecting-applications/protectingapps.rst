@@ -1,8 +1,8 @@
 .. _protectingapps:
 
------------------------------------
-HYCU: Protecting Applications (SQL)
------------------------------------
+-----------------------------
+PROTECTING APPLICATIONS (SQL)
+-----------------------------
 
 *The estimated time to complete this lab is 60 minutes.*
 
@@ -13,7 +13,7 @@ HYCU has a very unique ability to protect applications without requiring deploym
 Assigning credentials
 =====================
 
-#. Let’s start by selecting the VM that has SQL Server installed and then select *Credentials* in the upper right corner of the HYCU UI.
+#. Let’s start by selecting the VM that has SQL Server installed and then select *Credentials* in the upper right corner of the HYCU UI. 
 
 #. Once the credentials screen appears, then add the credentials (using *+New*) for the SQL server. It is required that the credentials have sysadmin privileges on the VM.
 
@@ -85,13 +85,13 @@ To restore a complete SQL Server VM, its instance or a single DB, select the app
 
    .. figure:: images/15.png
 
-#. Now you will see that you have the option to restore the entire instance or an individual database.  If you select the entire instance, all databases will be restored.
+#. Now you will see that you have the option to restore the entire instance or an individual database.  If you select the entire instance, all databases will be restored. 
 
    .. figure:: images/16.png
 
    HYCU restore gives you an abundance of recovery options, let’s explore different use cases.
 
-#. For moving production data into a Dev/Test SQL instance you can use *Target Instance* dropdown menu to select a different SQL instance.  In this lab, we do not have a separate SQL instance, but the screen shot below shows how this can be done if you have more than one SQL instance in your Nutanix environment which has been discovered by HYCU.
+#. For moving production data into a Dev/Test SQL instance you can use *Target Instance* dropdown menu to select a different SQL instance.  In this lab, we do not have a separate SQL instance, but the screen shot below shows how this can be done if you have more than one SQL instance in your Nutanix environment which has been discovered by HYCU. 
 
    .. figure:: images/17.png
 
@@ -110,6 +110,6 @@ To restore a complete SQL Server VM, its instance or a single DB, select the app
 Summary
 =======
 You have now completed the exercise of backing up and recovering a standard SQL instance.  HYCU can also backup and recover AlwaysOn SQL as well as SQL Failover Clusters.
-HYCU can also backup and perform granular recovery for Microsoft Exchange incl. DAG (database and mailbox level recovery) and for Oracle (tablespace level recovery).
+HYCU can also backup and perform granular recovery for Microsoft Exchange incl. DAG (database and mailbox level recovery) and for Oracle (tablespace level recovery).  
 For AD, HYCU can perform application consistent backups, for granular recovery it is recommended to simply use AD recycle bin.  Restores of AD VMs is performed using non-authoritative restores.  Once the AD VM is restored and joined back into the domain, it will synchronize with the domain.  To perform and authoritative restore please reach out to HYCU support.
 For up to date list of application integrations check out latest HYCU compatibility matrix at support.hycu.com. Bear in mind that even if HYCU does not integrate directly with an application, application consistent backup can be achieved through pre and post exec scripts.

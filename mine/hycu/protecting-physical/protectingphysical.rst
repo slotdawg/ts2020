@@ -1,8 +1,8 @@
 .. _protectingphysical:
 
-----------------------------------------
-HYCU: Physical Windows Server Protection
-----------------------------------------
+----------------------------------
+PHYSICAL WINDOWS SERVER PROTECTION
+----------------------------------
 
 *The estimated time to complete this lab is 60 minutes.*
 
@@ -98,14 +98,14 @@ To start the backup of physical server, it first needs to be added as a source w
 
    .. figure:: images/18.png
 
-#. You will see this message in *View Report*
+#. You will see this message in *View Report* 
 
    .. figure:: images/19.png
 
 #. Login to your Nutanix Prism Element UI and verify the existence of the new cloned VM.  Add a NIC, configure a VLAN, provide an appropriate IP address, and login to test it out.
 
    More often than not in physical world, it is enough to recover just a single file or folder.
-   To achieve this HYCU will need a staging area on one of the Virtual environments. In the Virtual Machines menu, click on a physical Windows Server and select *Prepare for Restore Files* to create a snapshot to use for a File-Level Restore. This may take little while for HYCU to rehydrate the data and establish a snapshot that can be used for a restore. Once done, *SNAP* tag will be visible on that restore point and simply click on the Restore Files.
+   To achieve this HYCU will need a staging area on one of the Virtual environments. In the Virtual Machines menu, click on a physical Windows Server and select *Prepare for Restore Files* to create a snapshot to use for a File-Level Restore. This may take little while for HYCU to rehydrate the data and establish a snapshot that can be used for a restore. Once done, *SNAP* tag will be visible on that restore point and simply click on the Restore Files. 
 
    .. figure:: images/20.png
 
@@ -116,3 +116,4 @@ To start the backup of physical server, it first needs to be added as a source w
 #. Choose where you want to restore your files, click Next, and complete the rest of the process intuitively, according to your selection.
 
    .. figure:: images/22.png
+

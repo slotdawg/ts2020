@@ -1,8 +1,8 @@
-.. _selfservice:
+.. _selfservice: 
 
-------------------
-HYCU: Self-Service
-------------------
+------------
+SELF-SERVICE
+------------
 
 Overview
 ++++++++
@@ -39,7 +39,7 @@ The next steps is to configure and add users to this group. HYCU can manage user
 
    - Name – A simple representative name for an AD domain
    - Domain – The FQDN of a domain name
-   - Provider URL – https://<DC_hostname_or_IP
+   - Provider URL – https://<DC_hostname_or_IP 
    - No need to enter the port as it’s optional
 
    .. figure:: images/4.png
@@ -54,7 +54,7 @@ The next steps is to configure and add users to this group. HYCU can manage user
 Add Active Directory Groups and Users
 =====================================
 
-All functions of HYCU’s user-management are available within the self-service section.
+All functions of HYCU’s user-management are available within the self-service section. 
 
 #. In HYCU > Left panel > *Self-Service* > *Users* (on the top left-hand side of the screen)
 
@@ -136,8 +136,8 @@ Customizing Policies for Multi-tenancy
 
 In some cases it makes sense to have specific policies defined per each user group (tenant), allowing also different targets per group. In that case, you need to make sure each user group sees only their own set of policies. To achieve this and assign ownership of a policy to a specific user group you will need to tweak the HYCU configuration file, as this is not yet supported through UI:
 
-- Create a backup policy/policies with the name of the HYCU internal user group as prefix.
-
+- Create a backup policy/policies with the name of the HYCU internal user group as prefix. 
+      
   - For example, if the user group name is eng-grp, then the backup policy should be names as eng-grp_<policy_name>
 
 - Once you’re done creating appropriate policies for the user group, SSH to hycu backup controller
@@ -155,7 +155,7 @@ In some cases it makes sense to have specific policies defined per each user gro
     policies.group.specific.synchronized=true
 
 - Restart the grizzly service:
-
+ 
 .. code-block:: powershell
 
     services grizzly restart
@@ -165,3 +165,7 @@ In some cases it makes sense to have specific policies defined per each user gro
    .. figure:: images/17.png
 
 #. Lastly, start a backup of a Virtual machine/Share by assigning a policy to it. Users with Backup Operator or Administrator roles will also be able to configure credentials and discover and protect the applications. Users with Restore Operator and Administrator role will also have the ability to perform restore and granular file and application recovery.
+
+
+
+
