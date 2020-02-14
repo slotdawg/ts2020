@@ -17,9 +17,8 @@
    :hidden:
 
    pc/dayinlife/dayinlife
-   pc/prismops/prism_pro_efficiency_anomaly/prism_pro_efficiency_anomaly
-   pc/prismops/prism_pro_resource_planning/prism_pro_resource_planning
-   pc/prismops/prism_pro_xplay/prism_pro_xplay
+   prismops/prismops_capacity_lab/prismops_capacity_lab
+   prismops/prismops_rightsize_lab/prismops_rightsize_lab
    pc/files/files
    pc/flow/flow_isolate_environments/flow_isolate_environments
    pc/flow/flow_quarantine_vm/flow_quarantine_vm
@@ -38,6 +37,8 @@
    db/aag/aag
    db/oraclepatch/oraclepatch
    db/flow_secure_fiesta/flow_secure_fiesta
+   prismops/prismops_capacity_lab/prismops_capacity_lab
+   prismops/prismops_blue_medora_lab/prismops_blue_medora_lab
 
 .. toctree::
    :maxdepth: 2
@@ -63,6 +64,8 @@
    euccitrix/pdesktops/npdesktops
    euccitrix/updatecatalog/updatecatalog
    euccitrix/files/files
+   prismops/prismops_capacity_lab/prismops_capacity_lab
+   prismops/prismops_rightsize_euc_lab/prismops_rightsize_euc_lab
 
 .. toctree::
    :maxdepth: 2
