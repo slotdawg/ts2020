@@ -70,22 +70,22 @@ In this exercise, you will deploy an Oracle database VM, using pre-created disk 
       - Select **Add**
 
    - Select **+ Add New Disk**
-   - **Type** - DISK
-   - **Operation** - Clone from Image Service
-   - **Image** - 19c_disk7.qcow2
-   - Select **Add**
+      - **Type** - DISK
+      - **Operation** - Clone from Image Service
+      - **Image** - 19c_disk7.qcow2
+      - Select **Add**
 
    - Select **+ Add New Disk**
-   - **Type** - DISK
-   - **Operation** - Clone from Image Service
-   - **Image** - 19c_disk8.qcow2
-   - Select **Add**
+      - **Type** - DISK
+      - **Operation** - Clone from Image Service
+      - **Image** - 19c_disk8.qcow2
+      - Select **Add**
 
    - Select **+ Add New Disk**
-   - **Type** - DISK
-   - **Operation** - Clone from Image Service
-   - **Image** - 19c_disk9.qcow2
-   - Select **Add**
+      - **Type** - DISK
+      - **Operation** - Clone from Image Service
+      - **Image** - 19c_disk9.qcow2
+      - Select **Add**
 
    - Select **Add New NIC**
       - **VLAN Name** - *Assigned User VLAN*
@@ -116,21 +116,20 @@ In this exercise, you will register your April PSU VM and register it as version
 
    - **Engine** - Oracle
    - **IP Address or Name of VM** - *Initials*\ _oracle_base
-   -  **Database Version** - 19.0.0.0
+   - **Database Version** - 19.0.0.0
    - **Era Drive User** - oracle
-
-   *The Era Drive User can be any user on the VM that has sudo access with NOPASSWD setting. Era will use this user's credentials to perform various operations, such as taking snapshots.*
-
    - **Oracle Database Home** - /u02/app/oracle/product/19.0.0/dbhome_1
-
-   *This is the directory where the Oracle database software is installed, and is a mandatory parameter for registering a database server.*
-
-   -  **Grid Infrastructure Home** - /u01/app/19.0.0/grid
-
-   *This is the directory where the Oracle Grid Infrastructure software is installed. This is only applicable for Oracle RAC or SIHA databases.*
-
+   - **Grid Infrastructure Home** - /u01/app/19.0.0/grid
    - **Provide Credentials Through** - Password
    - **Password** - Nutanix/4u
+
+   .. note::
+
+      The Era Drive User can be any user on the VM that has sudo access with NOPASSWD setting. Era will use this user's credentials to perform various operations, such as taking snapshots.
+
+      Oracle Database Home is the directory where the Oracle database software is installed, and is a mandatory parameter for registering a database server.
+
+      Grid Infrastructure Home is the directory where the Oracle Grid Infrastructure software is installed. This is only applicable for Oracle RAC or SIHA databases.
 
    .. figure:: images/2.png
 
@@ -176,15 +175,16 @@ In this exercise you will deploy a fresh Oracle database using your *Initials*\ 
    - **Network Profile** - *User VLAN*\ _ORACLE_NETWORK
    - Select **Enable High Availability**
    - **SYS ASM Password** - oracle
-
-   *By selecting Enable High Availability, Oracle Grid is configured as part of the deployment and Oracle Automatic Storage Management (ASM) is used for volume management. Without High Availability enabled, Linux LVM and file systems would be used for database storage. Gris and ASM are required for clustered Oracle RAC deployments.*
-
    - **SSH Public Key for Node Access** -
 
    ::
 
       ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAii7qFDhVadLx5lULAG/ooCUTA/ATSmXbArs+GdHxbUWd/bNGZCXnaQ2L1mSVVGDxfTbSaTJ3En3tVlMtD2RjZPdhqWESCaoj2kXLYSiNDS9qz3SK6h822je/f9O9CzCTrw2XGhnDVwmNraUvO5wmQObCDthTXc72PcBOd6oa4ENsnuY9HtiETg29TZXgCYPFXipLBHSZYkBmGgccAeY9dq5ywiywBJLuoSovXkkRJk3cd7GyhCRIwYzqfdgSmiAMYgJLrz/UuLxatPqXts2D8v1xqR9EPNZNzgd4QHK4of1lqsNRuz2SxkwqLcXSw0mGcAL8mIwVpzhPzwmENC5Orw==
 
+
+   .. note::
+
+         By selecting Enable High Availability, Oracle Grid is configured as part of the deployment and Oracle Automatic Storage Management (ASM) is used for volume management. Without High Availability enabled, Linux LVM and file systems would be used for database storage. Gris and ASM are required for clustered Oracle RAC deployments.
 
    .. figure:: images/4.png
 
@@ -227,7 +227,7 @@ In this exercise, you will apply the October PSU patches to your manually cloned
 #. Execute the following script to install the Oracle and Grid October PSU patches:
 
    ::
-      
+
       cd Downloads
       ./applypsu.sh
 
