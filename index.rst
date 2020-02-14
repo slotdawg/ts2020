@@ -21,8 +21,7 @@
    pc/prismops/prism_pro_resource_planning/prism_pro_resource_planning
    pc/prismops/prism_pro_xplay/prism_pro_xplay
    pc/files/files
-   pc/flow/flow_isolate_environments/flow_isolate_environments
-   pc/flow/flow_quarantine_vm/flow_quarantine_vm
+   pc/flow_secure_fiesta/flow_secure_fiesta
 
 .. toctree::
    :maxdepth: 2
@@ -38,6 +37,7 @@
    db/aag/aag
    db/oraclepatch/oraclepatch
    db/flow_secure_fiesta/flow_secure_fiesta
+   db/flow_isolate_fiesta/flow_isolate_fiesta
 
 .. toctree::
    :maxdepth: 2

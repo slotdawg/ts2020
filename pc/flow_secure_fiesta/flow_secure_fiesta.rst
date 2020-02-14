@@ -44,7 +44,7 @@ Prism Central uses categories as metadata to tag VMs to determine how policies w
 
 #. Specify *Initials*-**Web**  as the value name. This category will be applied to the application's web tier.
 
-#. Click :fa:`plus-circle` and specify *Initials*-**DB**. This category will be applied to the application's MSSQL database tier.
+#. Click :fa:`plus-circle` and specify *Initials*-**DB**. This category will be applied to the application's MySQL database tier.
 
    .. figure:: images/14.png
 
@@ -120,7 +120,7 @@ Create the security policies that will protect the Fiesta application.
 
 #. Click **Save**.
 
-   Calm could also require access to the web VM for workflows including scaling out, scaling in, or upgrades. Calm communicates with these VMs via SSH, using TCP port 22.
+   Calm could also require access to the VMs for workflows including scaling out, scaling in, or upgrades. Calm communicates with these VMs via SSH, using TCP port 22.
 
 #. Under **Inbound**, click **+ Add Source**.
 
@@ -139,7 +139,7 @@ Create the security policies that will protect the Fiesta application.
 
 #. Select the **+** icon that appears to the left of **AppTier:**\ *Initials*-**Web**, specify **TCP** port **22** and click **Save**.
 
-#. Repeat Steps 15 through 18 for **AppTier:**\ *Initials*-**DB** allowing the IP address of the Era server to communicate with the database VM on TCP port 1433.
+#. Repeat Step 18 for **AppTier:**\ *Initials*-**DB** to allow Calm to communicate with the database VM.
 
    .. figure:: images/24.png
 
@@ -170,10 +170,10 @@ Create the security policies that will protect the Fiesta application.
 
 #. While **AppTier:**\ *Initials*-**Web** is still selected, click the :fa:`plus-circle` icon to the right of **AppTier:**\ *Initials*-**DB** to create a tier to tier rule.
 
-#. Fill out the following fields to allow communication on TCP port 1433 between the web and database tiers:
+#. Fill out the following fields to allow communication on TCP port 3306 between the web and database tiers:
 
    - **Protocol** - TCP
-   - **Ports** - 1433
+   - **Ports** - 3306
 
    .. figure:: images/28.png
 
