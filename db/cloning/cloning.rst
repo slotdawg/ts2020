@@ -1,8 +1,8 @@
 .. _cloning:
 
-----------------------
-Time Machine & Cloning
-----------------------
+-------------------------------
+Time Machine, Cloning, and APIs
+-------------------------------
 
 Introduction
 

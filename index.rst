@@ -32,8 +32,6 @@
 
    db/gettingstarted
    db/mssqldeploy/mssqldeploy
-   db/regmssql/regmssql
-   db/provmssql/provmssql
    db/cloning/cloning
    db/aag/aag
    db/oraclepatch/oraclepatch
