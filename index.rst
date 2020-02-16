@@ -73,6 +73,7 @@
    :name: _standalone
    :hidden:
 
+   beam_cost_governance/beam_cost_governance
    calm_karbon_cicd/calm_karbon_cicd
    mine/hycu/hycu/hycu
    mine/hycu/protecting-applications/protectingapps
