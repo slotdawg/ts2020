@@ -62,18 +62,6 @@ In this exercise, you will be using three shared VMs, all of which should alread
    * - **PeerAgent-Win**
      - This Windows File Server will be used as a target for replication.
 
-
-Port Diagram
-............
-
-The following illustration shows necessary ports and communication flow for the joint Nutanix Files and Peer Global File Service environment. It is informational only, as the lab environment will only leverage a single Nutanix Files cluster.
-
-.. figure:: images/portdiagram.png
-
-.. note::
-
-  For complete details on firewall requirements for Nutanix Files, Peer Agents, and Peer Management Center, click `here <https://kb.peersoftware.com/tb/firewall-ports-and-communication-flow-for-nutanix-files>`_.
-
 Configuring Nutanix Files
 ............
 
