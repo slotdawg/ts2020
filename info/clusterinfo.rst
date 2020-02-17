@@ -13,18 +13,20 @@ Refer to **YOUR NAME** in the table below for all critical environmental informa
 
 .. raw:: html
 
-  <iframe width="99%" height="450" frameborder="0" scrolling="no" src="https://nutanixinc-my.sharepoint.com/:x:/g/personal/matthew_bator_nutanix_com/EZ1ixb2RUHlBhZSq373eJLEBYmpuiQ6R1Bbn8PrHbsFKbw?e=f9qRHk&action=embedview&Item='Sheet1'!A1%3AP565&wdDownloadButton=True&wdInConfigurator=True"></iframe>
+   <iframe width="99%" height="500" frameborder="0" scrolling="no" src="https://nutanixinc-my.sharepoint.com/personal/matthew_bator_nutanix_com/_layouts/15/Doc.aspx?sourcedoc={0df44832-eed9-49c1-a1e2-6a36846ca6af}&action=embedview&ActiveCell='QA%20Clusters'!A1&Item='QA%20Clusters'!A1%3AP49&wdDownloadButton=True&wdInConfigurator=True"></iframe>
 
 .. note::
 
-  The table above can be filtered in place to display only your assignment or can be downloaded and viewed locally.
+  It is highly recommended to open the Cluster Assignment spreadsheet in a separate tab by clicking the highlighted icon in the toolbar. It is also recommended to filter the table to display ONLY your cluster information.
+
+  .. figure:: images/excel.png
 
 .. _stagingdetails:
 
 Cluster Staging Details
 +++++++++++++++++++++++
 
-Each attendee will have access to a a **SHARED** AOS 5.10.1 (AHV 20170830.185) cluster, staged as follows:
+Each attendee will have access to a a **SHARED** AOS 5.11.2.3 (AHV 20170830.337) cluster, staged as follows:
 
 .. note::
 
@@ -35,7 +37,7 @@ Each attendee will have access to a a **SHARED** AOS 5.10.1 (AHV 20170830.185) c
 Virtual Machines
 ................
 
-The following VMs have already been provisioned to each cluster:
+The following VMs/Services have already been provisioned to each cluster:
 
 .. list-table::
    :widths: 25 25 50
@@ -46,17 +48,29 @@ The following VMs have already been provisioned to each cluster:
      - Description
    * - **Prism Central**
      - 10.XX.YY.39
-     - Nutanix Prism Central 5.10.1
-   * - **AutoDC2**
-     - 10.XX.YY.40
+     - Nutanix Prism Central 5.11.2
+   * - **AutoAD**
+     - 10.XX.YY.41
      - ntnxlab.local Domain Controller
+   * - **GTSPrismOpsLabUtilityServer**
+     - 10.XX.YY.42
+     - Shared VM used in Prism Pro labs
+   * - **BootcampFS**
+     - (DHCP) bootcampfs.ntnxlab.local
+     - Single-node Nutanix Files cluster
+   * - **DDC**
+     - 10.XX.YY.45
+     - Shared Citrix Delivery Controller/StoreFront
+   * - **Era**
+     - 10.XX.YY.22
+     - Shared Era
 
 Images
 ......
 
-All disk images required to complete the labs have been uploaded to the Image Service for each cluster:
+All disk images required to complete the labs have been uploaded to the Image Service for each cluster.
 
-.. list-table::
+.. .. list-table::
    :widths: 50 50
    :header-rows: 1
 
@@ -97,16 +111,16 @@ The lab guides will explicitly share any unique credentials, the table below con
     - Password
   * - **Prism Element**
     - admin
-    - techX2019!
+    - techX2020!
   * - **Prism Central**
     - admin
     - techX2019!
   * - **Controller VMs**
     - nutanix
-    - techX2019!
+    - techX2020!
   * - **Prism Central VM**
     - admin
-    - techX2019!
+    - techX2020!
   * - **NTNXLAB Domain**
     - NTNXLAB\\Administrator
     - nutanix/4u
@@ -114,7 +128,7 @@ The lab guides will explicitly share any unique credentials, the table below con
 Networks
 ........
 
-The following virtual networks have been pre-configured for each cluster:
+At the beginning of each lab track, you will be instructed to create a user specific VLAN, detailed in the :ref:`clusterassignments` spreadsheet. This network will be used for the majority of exercises. The following, additional virtual networks have been pre-configured for each cluster:
 
 .. list-table::
    :widths: 33 33 33
@@ -141,4 +155,4 @@ The following virtual networks have been pre-configured for each cluster:
 
 .. raw:: html
 
-  <strong><font color="red">With 5-6 participants sharing each physical cluster, there is limited system memory and ~30 IP addresses available per participant. Refer to the CLEANUP section at the end of each lab for direction on VMs that can be removed before proceeding to your next lab. THANK YOU!</font></strong>
+   <strong><font color="red">Unless instructed otherwise in a lab, please use your user specific VLAN for VM deployments. If instructed to use the Primary or Secondary networks for an exercise, be sure to clean up unneeded VMs afterwards (or remove their NICs) to ensure IP space availability. With ~6 users sharing each cluster, IP space and memory are the two most contended resources.</font></strong>
