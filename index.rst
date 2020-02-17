@@ -72,6 +72,7 @@
    :name: _bonus
    :hidden:
 
+   beam_cost_governance/beam_cost_governance
    calm_karbon_cicd/calm_karbon_cicd
    mine/hycu/hycu/hycu
    peer/peer
