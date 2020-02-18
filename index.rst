@@ -75,6 +75,7 @@
    :hidden:
 
    beam_cost_governance/beam_cost_governance
+   beam_security_compliance/beam_security_compliance
    calm_karbon_cicd/calm_karbon_cicd
    mine/hycu/hycu/hycu
    peer/peer
