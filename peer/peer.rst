@@ -14,9 +14,9 @@ Peer Global File Service
 Overview
 ++++++++
 
-The explosive growth of unstructured data has driven organizations to seek solutions to efficiently store, share, manage and protect an ever-growing universe of data while deriving new value and intelligence. Since 1993, Peer Software has focused on these requirements and more by building best-of-breed data management and real-time replication solutions for distributed on-premises and cloud storage environments.
+The explosive growth of unstructured data has driven organizations to seek solutions to efficiently store, share, manage, and protect an ever-growing universe of data while deriving new value and intelligence. Since 1993, Peer Software has focused on these requirements and more by building best-of-breed data management and real-time replication solutions for distributed on-premises and cloud storage environments.
 
-Peer’s flagship offering, Peer Global File Service (PeerGFS), features enterprise-class replication technology with integrated file locking, and a globally accessible namespace that powers multi-site, multi-vendor, and multi-cloud deployment.
+Peer’s flagship offering, Peer Global File Service (PeerGFS), features enterprise-class replication technology with integrated file locking and a globally accessible namespace that powers multi-site, multi-vendor, and multi-cloud deployment.
 
 PeerGFS enables fast local data access for users and applications at different locations, protects against version conflicts, makes data highly available, and allows Nutanix Files to co-exist with legacy NAS platforms to ease adoption of Files into existing environments.
 
@@ -24,14 +24,14 @@ Key use cases for combining Peer Software with Nutanix include:
 
 - **Global File Sharing and Collaboration** - Deliver fast local access to shared project files for distributed teams while ensuring version integrity and high availability.
 - **HA and Load Balancing for User and Application Data** - Enable high availability and load balancing of end user data as well as application data.
-- **Storage Interoperability and Migration** - Introduce Nutanix Files into an existing environment by allowing replication between storage vendors and helping migrate off of existing platforms.
-//MTM add bullets for objects
+- **Storage Interoperability** - Cross-platform support powers coexistence of Nutanix Files with existing NAS and hybrid cloud storage systems, as well as between file and object formats.
+- **Analysis and Migration** - Analyze existing storage for resource planning, optimization, and minimally disruptive data migrations.
 
 *How does it work?*
 
 .. figure:: images/integration.png
 
-Working from left to right, users interact with the SMB shares on the Nutanix Files cluster via a public LAN. When SMB activity occurs on the Files cluster through these shares, the Peer Partner Server (referred to as a Peer Agent) is notified via the File Activity Monitoring API from Files. The Peer Agent accesses the updated content via SMB then facilitates the flow of data to one or many remote and/or local file servers.
+Working from left to right, users interact with the SMB shares on the Nutanix Files cluster via a public LAN. When SMB activity occurs on the Files cluster through these shares, the Peer Partner Server (referred to as a Peer Agent) is notified via the File Activity Monitoring API from Files. The Peer Agent accesses the updated content via SMB, and then facilitates the flow of data to one or many remote and/or local file servers.
 
 **In this lab you will configure Peer Global File Service to create an Active-Active file services solution with Nutanix Files.**
 
@@ -82,7 +82,7 @@ Peer Global File Service requires both a File Server Admin account as well as RE
 
    .. figure:: images/5.png
 
-#. Click **Next**, **Next**, then **Create**.
+#. Click **Next**, **Next**, and then **Create**.
 
 #. Click **Manage roles**.
 
@@ -100,7 +100,7 @@ Peer Global File Service requires both a File Server Admin account as well as RE
 
    - **Username** - peer
 
-     *This MUST be in all lower case.*
+     *The username must be in all lower case.*
      
    - **Password** - nutanix/4u
 
@@ -108,14 +108,14 @@ Peer Global File Service requires both a File Server Admin account as well as RE
 
    .. note::
 
-     All participants on a single Nutanix AOS cluster will be sharing the same BootcampFS file server as well as the **peer** API account.
+     All participants on a single Nutanix AOS cluster will be sharing the same BootcampFS file server, as well as the **peer** API account.
 
 #. Click **Close**.
 
 Staging Test Data on PeerAgent-Win
 ...................
 
-The final step of staging the lab is configuring creating some sample data on PeerAgent-Win, which will be acting as a Windows File Server. Peer is capable of replicating between multiple Files clusters as well as between a mix of Files and other NAS platforms. For this lab, you will be replicating between your Nutanix Files cluster and a Windows File Server.
+The final step of staging the lab is creating some sample data on PeerAgent-Win, which will be acting as a Windows File Server. Peer is capable of replicating between multiple Files clusters, as well as between a mix of Files and other NAS platforms. For this lab, you will be replicating between your Nutanix Files cluster and a Windows File Server.
 
 #. Connect to your *Initials*\ **-Windows-ToolsVM** via RDP using the following credentials:
 
@@ -132,22 +132,22 @@ The final step of staging the lab is configuring creating some sample data on Pe
 Connecting to the Peer Management Center Web Interface
 ...................
 
-The Peer Management Center (PMC) serves as the centralized management component for Peer Global File Service. It does not store any file data but does facilitate communication between locations so it should be deployed at a location with the best connectivity. A single deployment of PMC can manage 100 or more Agents/file servers.
+The Peer Management Center (PMC) serves as the centralized management component for Peer Global File Service. It does not store any file data but does facilitate communication between locations, so it should be deployed at a location with the best connectivity. A single deployment of PMC can manage 100 or more Agents/file servers.
 
 For this lab, you will be acccessing a shared PMC deployment via a web interface.
 
 #. Open a non-Firefox browser (Chrome, Edge, and Safari will all work) on your *Initials*\ **-Windows-ToolsVM** VM or on your laptop.
 
-#. If you are using a browser on your *Initials*\ **-Windows-ToolsVM** VM, browse to *https://PeerMgmt:8443/hub*
+#. If you are using a browser on your *Initials*\ **-Windows-ToolsVM** VM, browse to `https://PeerMgmt:8443/hub<https://PeerMgmt:8443/hub>`_.
 
-#. If you are using a browser on your laptop, log in to **Prism Element** (e.g. 10.XX.YY.37) on your Nutanix cluster to find the IP of the PeerMgmt VM, then browse to *https://<IP of PeerMgmt Server>:8443/hub*
+#. If you are using a browser on your laptop, log in to **Prism Element** (e.g. 10.XX.YY.37) on your Nutanix cluster to find the IP of the PeerMgmt VM, then browse to `https://<IP of PeerMgmt Server>:8443/hub<https://<IP of PeerMgmt Server>:8443/hub>`_.
 
 #. When prompted to login, use the following credentials:
 
    - **Username** - admin
    - **Password** - nutanix/4u
 
-#. Once connected, confirm that **PeerAgent-Files** and **PeerAgent-Win** are both listed as green in the **Agents** view in the bottom left of the PMC interface.
+#. Once connected, confirm that **PeerAgent-Files** and **PeerAgent-Win** are both appear in green in the **Agents** view in the bottom left of the PMC web interface.
 
    .. figure:: images/pmc.png
 
@@ -161,7 +161,7 @@ Peer Global File Service utilizes a job-based configuration engine. Several diff
 - A specific share/volume/folder of data on each file server.
 - Various settings tied to replication, synchronization and/or locking.
 
-When creating a new job, you will be prompted by a dialog outlining the different job types with graphics and text outlining why you would use each type.
+When creating a new job, you will be prompted by a dialog outlining the different job types and why you would use each type.
 
 Available job types include:
 
@@ -201,11 +201,11 @@ Files and PeerAgent-Files
 
    .. figure:: images/21.png
 
-#. On the **Storage Information** page, you will see one of two pages. If another participant sharing your Files cluster has already done the Peer lab, you will be able to select their **Existing Credentials** as shown here.
+#. On the **Storage Information** page, you are prompted to enter credentials for accessing the storage device. If another participant sharing your Files cluster has already done the Peer lab, you can select **Existing Credentials** as shown here.
 
    .. figure:: images/22a.png
 
-   If you are the first participant on this cluster to do the Peer lab, fill out the following fields:
+   If you are the first participant on this cluster to do the Peer lab, **New Credentials** will be automatically selected. Fill out the following fields:
 
    - **Nutanix Files Cluster Name** - BootcampFS
 
@@ -213,7 +213,7 @@ Files and PeerAgent-Files
 
    - **Username** - peer
 
-     *This is the Files API account username configured earlier in the lab and MUST be in all lower case.*
+     *This is the Files API account username configured earlier in the lab and must be in all lower case.*
 
    - **Password** - nutanix/4u
 
@@ -221,7 +221,7 @@ Files and PeerAgent-Files
 
    - **Peer Agent IP** - **PeerAgent-Files** IP Address
 
-     *The IP address of the Agent server that will receive real-time notifications from the File Activity Monitoring API built into Files. It will be selectable from a dropdown list of available IPs on this Agent server.*
+     *The IP address of the Agent server that will receive real-time notifications from the File Activity Monitoring API built into Files. It is selectable from a drop-down list of available IPs on this Agent server.*
 
 #. Click **Validate** to confirm Files can be accessed via API using the provided credentials.
 
@@ -229,7 +229,7 @@ Files and PeerAgent-Files
 
    .. note::
 
-     Once you enter these credentials, they will be reusable when creating new jobs that use this particular Agent.  When you create your next job, select **Existing Credentials** on this page to display a list of previously configured credentials.
+     Once you enter these credentials, they are reusable when creating new jobs that use this particular Agent.  When you create your next job, select **Existing Credentials** on this page to display a list of previously configured credentials.
 
 #. Click **Next**.
 
@@ -281,11 +281,11 @@ Peer offers robust functionality for handling the synchronization of NTFS permis
 
 - **Synchronize Security Description Options**
 
-  *(Optional) Select the NTFS permission types you would like to replicate*
+  *(Optional) Select the NTFS permission types you would like to replicate.*
 
   - **Owner**
 
-    *The NTFS Creator-Owner who owns the object (which is, by default, whomever created it).*
+    *The NTFS Creator-Owner who owns the object (which is, by default, whoever created it).*
 
   - **DACL**
 
@@ -297,9 +297,9 @@ Peer offers robust functionality for handling the synchronization of NTFS permis
 
 - **File Metadata Conflict Resolution**
 
-  *If there is a permission discrepancy between two or more sites, the permissions set on the file server tied to the Master Host will override those on the other file servers.*
+  *If there is a permission discrepancy between two or more sites, the permissions set on the file server tied to the master host will override those on the other file servers.*
 
-#. For the purposes of this lab exercise, leave the default configuration and click **Next**.
+#. For the purposes of this lab exercise, accept the default configuration and click **Next**.
 
    .. figure:: images/26.png
 
@@ -316,7 +316,7 @@ Starting a Collaboration Job
 
 Once a job has been created, it must be started to initiate synchronization and file locking.
 
-#. In the **PMC Client**, under **Jobs**, right-click on your newly created job and select **Start**.
+#. In the **PMC Web Interface**, under **Jobs**, right-click on your newly created job, and then select **Start**.
 
    .. figure:: images/28.png
 
@@ -341,26 +341,26 @@ Testing Collaboration
 
     This exercise requires the :ref:`windows_tools_vm`.
 
-The easiest way to verify synchronization is functioning properly is to open 2 different File Explorer windows to the respective Nutanix Files and Windows File Server paths.
+The easiest way to verify synchronization is functioning properly is to open separate File Explorer windows for the Nutanix Files and Windows File Server paths.
 
 .. note::
 
-  Do **NOT** test using an Agent server VM. All activity from these servers are automatically filtered to reduce overhead on the Nutanix Files cluster.
+  Do **not** test using an Agent server VM. All activity from these servers are automatically filtered to reduce overhead on the Nutanix Files cluster.
 
 #. Connect to your *Initials*\ **-Windows-ToolsVM** via RDP using the following credentials:
 
    - **Username** - NTNXLAB\\Administrator
    - **Password** - nutanix/4u
 
-#. Open File Explorer and browse to your Nutanix Files share, e.g. ``\\BootcampFS\Initials-Peer``. Drag this window to the left side of the desktop.
+#. Open File Explorer and browse to your Nutanix Files share, e.g., ``\\BootcampFS\Initials-Peer``. Drag this window to the left side of the desktop.
 
-   Note that the sample data seeded into the Windows File Server during lab setup has already been replicated to Nutanix Files.
+   Note that the sample data seeded in the Windows File Server during lab setup has already been replicated to Nutanix Files.
 
    .. note::
 
      You can also verify the replicated files in **Prism > File Server**.
 
-#. Open a second File Explorer and browse to your Windows File Server share, e.g. ``\\PeerAgent-Win-IP\Data\Initials-Data``. Drag this window to the right side of the desktop.
+#. Open a second File Explorer window and browse to your Windows File Server share, e.g., ``\\PeerAgent-Win\Data\Initials-Data``. Drag this window to the right side of the desktop.
 
    .. figure:: images/30.png
 
@@ -370,23 +370,23 @@ The easiest way to verify synchronization is functioning properly is to open 2 d
 
    .. figure:: images/32.png
 
-#. The changes that are performed on the Nutanix Files share will be sent to its paired Agent, the Agent will then facilitate the replication of these files and folders to the other server (and vice versa).
+#. The changes that are performed on the Nutanix Files share will be sent to its paired Agent; the Agent will then facilitate the replication of these files and folders to the other server (and vice versa).
 
    .. figure:: images/33.png
 
-#. To test file locking, create a new OpenDocument Text file within the root of your Nutanix Files share, e.g. ``\\BootcampFS\Initials-Peer``.
+#. To test file locking, create a new OpenDocument Text file within the root of your Nutanix Files share, e.g., ``\\BootcampFS\Initials-Peer``.
 
    .. figure:: images/34.png
 
-#. Give the file a name. Within a few seconds, it should appear under your Windows File Server share, e.g. ``\\PeerAgent-Win-IP\Data``.
+#. Name the file. Within a few seconds, it should appear under your Windows File Server share, e.g., ``\\PeerAgent-Win\Data\Initials-Data``.
 
    .. figure:: images/35.png
 
-#. Open the file under the Nutanix Files share with OpenOffice Writer. Then open the file by the same name under ``\\PeerAgent-Win-IP\Data``. You should see the following warning that the file is locked.
+#. Open the file under the Nutanix Files share with OpenOffice Writer. Next, open the file with the same name under ``\\PeerAgent-Win\Data\Initials-Data``. You should see the following warning that the file is locked.
 
    .. figure:: images/36.png
 
-   **Congratulations!** You have successfully deployed an Active-Active file share replicated across 2 sites. Using Peer, this same approach can be leveraged to support file collaboration across sites, migrations from legacy solutions to Nutanix Files, or disaster recovery for use cases such as VDI, where user data and profiles need to be accessible from multiple sites for business continuity.
+   **Congratulations!** You have successfully deployed an Active-Active file share replicated across two file servers. Using Peer, this same approach can be leveraged to support file collaboration across sites, migrations from legacy solutions to Nutanix Files, or disaster recovery for use cases such as VDI, where user data and profiles need to be accessible from multiple sites for business continuity.
 
 Analyzing Existing Environments
 ++++++++++++++++++++++++++++++++++++++++++
@@ -409,13 +409,13 @@ Installing and Running the File System Analyzer
    - **Username** - NTNXLAB\\Administrator
    - **Password** - nutanix/4u
 
-#. Within the VM, download the File System Analyzer installer: https://www.peersoftware.com/downloads/fsa/13/FileSystemAnalyzer_win64.exe.
+#. Within the VM, download the File System Analyzer installer: https://www.peersoftware.com/downloads/fsa/13/FileSystemAnalyzer_win64.exe
 
 #. Run the installer and select **Immediate Installation**.
 
    .. figure:: images/fsa1.png
 
-   Once the installation is complete, the File System Analyzer wizard will automatically be launched.
+   Once the installation is complete, the File System Analyzer wizard is automatically launched.
 
 #. The **Introduction** screen provides details on information collected and reported by the utility. Click **Next**.
 
@@ -425,11 +425,11 @@ Installing and Running the File System Analyzer
 
    - **Company** – Enter your company name.
    - **Location** – Enter the physical location of the server that is running the File System Analyzer. In multi-site environments, this could be a city or state name. A data center name also works.
-   - **Project** – Enter a project name or business reason for running this analysis. This (and the Company and Location fields) are strictly used to organize the final reports.
-   - **Mode** – The mode of operation to be used – **General Analysis** -or- **Migration Preparation**. **Migration Preparation** is useful when preparing for a migration project between storage systems. In addition to collecting standard telemetry on file systems, this mode also offers the option to test performance of both the existing and new storage systems to help gauge potential migration performance and timing. For this lab, we wil use **General Analysis**.
-   - **Name/Phone/Title** – *Optionally* enter your name and contact information.
-   - **Email** – Enter the email address to which the final reports will be sent. This can include more than one address in a comma separated list.
-   - **Upload Region** – Select US, EU, or APAC to tell the File System Analyzer which S3 location to use for uploading the final reports.
+   - **Project** – Enter a project name or business reason for running this analysis. This (and the Company and Location fields) are used solely to organize the final reports.
+   - **Mode** – Select the mode of operation to be used – **General Analysis** or **Migration Preparation**. **Migration Preparation** is useful when preparing for a migration project between storage systems. In addition to collecting standard telemetry on file systems, this mode also offers the option to test performance of both the existing and new storage systems to help gauge potential migration performance and timing. For this lab, we wil use **General Analysis**.
+   - **Name/Phone/Title** – *(Optional)* Enter your name and contact information.
+   - **Email** – Enter the email address to which the final reports will be sent. For multiple addresses, enter a comma-separated list.
+   - **Upload Region** – Select **US**, **EU**, or **APAC** to tell the File System Analyzer which S3 location to use for uploading the final reports.
 
    .. raw:: html
 
@@ -439,7 +439,7 @@ Installing and Running the File System Analyzer
 
 #. Click **Next**.
 
-   The File System Analyzer can be configured to scan one or more paths. These paths can be local (e.g. ``D:\MyData``) or a remote UNC Path (e.g. ``\\files01\homes1``).
+   The File System Analyzer can be configured to scan one or more paths. These paths can be local (e.g., ``D:\MyData``) or a remote UNC Path (e.g., ``\\files01\homes1``).
 
 #. Add the following paths:
 
@@ -448,11 +448,11 @@ Installing and Running the File System Analyzer
 
    .. figure:: images/fsa4.png
 
-     Cick the **Search** button and enter the name of a file server if you wish the discover the available shares on that file server. You can also right-click within the dialog and select **Check All** to automatically add all discovered shares.
+     Cick the **Search** button and enter the name of a file server if you wish to discover the available shares on that file server. You can also right-click within the dialog and select **Check All** to automatically add all discovered shares.
 
    .. figure:: images/fsa4a.png
 
-     Checking **Log totals by owner** will poke every file and folder within the selected scan path(s) for its owner. This owner information will be tallied by bytes, files, and folders and included in the final report.
+     Selecting the **Log totals by owner** option will poke every file and folder within the selected scan path(s) for its owner. This owner information will be tallied by bytes, files, and folders and included in the final report.
 
 #. Click **Next**.
 
@@ -460,13 +460,13 @@ Installing and Running the File System Analyzer
 
    .. figure:: images/fsa5.png
 
-#. File System Analyzer will also e-mail the report to all configured addresses. To view the full report, click the hyperlink(s) listed under **Detailed Reports** in the e-mail. If multiple paths were scanned, you will also see a link to a cumulative report across all paths.
+#. File System Analyzer will also email the report to all configured addresses. To view the full report, click the hyperlink(s) listed under **Detailed Reports** in the email. If multiple paths were scanned, you will also see a link to a cumulative report across all paths.
 
    .. figure:: images/fsa6.png
 
    .. note::
 
-     Report download links are only active for **24 hours**. Contact Peer Software to access any expired reports.
+     Report download links are active for **24 hours** only. Contact Peer Software to access any expired reports.
 
    Some systems may open these workbooks in a protected mode, displaying this message in Excel:
 
@@ -500,7 +500,7 @@ Volume reports give more detailed information about a specific path that has bee
 
    Each volume report may contain some or all of the following worksheets:
 
-   - **Overview** – A series of pivot tables and charts showing high level statistics about the path that was scanned.
+   - **Overview** – A series of pivot tables and charts showing high-level statistics about the path that was scanned.
    - **InfoSheet** – Details about this specific scan. This page will also show Total Bytes formatted in both decimal (1 KB is 1,000 bytes) and binary (1 KiB is 1,024 bytes) forms.
    - **OverallStats** – Overall statistics for the folder that was scanned. This includes total bytes, files, folders, etc.
    - **Analysis** – Includes a pivot table and a pair of charts highlighting additional statistics about the path that was scanned.
@@ -516,14 +516,14 @@ Volume reports give more detailed information about a specific path that has bee
    - **ReparsePoints** – A list of all folder reparse points discovered.
    - **TimeAnalysis** – A breakdown of total files, folders, and bytes by age.
    - **LastModifiedAnalysis** – A view of all files, folders, and bytes modified each hour for the past year. These numbers are then totaled and averaged to show files, folders, and bytes modified by: day of week; month; hour of the day; day of month; and day of year.
-   - **CreatedAnalysis** – A view of all files, folders, and bytes created each hour for the past year. These numbers are then totaled and averaged to show files, folders, and bytes created by: day of week; month; hour of the day; day of month; and day of year.
+   - **CreatedAnalysis** – A view of all files, folders, and bytes created each hour for the past year. These numbers are then totaled and averaged to show files, folders, and bytes created by day of week, month, hour of the day, day of month, and day of year.
    - **LastAccessedAnalysis** – A view of all files, folders, and bytes accessed each hour for the past year. These numbers are then totaled and averaged to show files, folders, and bytes accessed by: day of week; month; hour of the day; day of month; and day of year.
    - **TLDAnalysis** - A list of each folder immediately under a specified path with statistics for each of these subfolders. In a user home directory environment, each of these subfolders should represent a different user.
-   - **TopTLDsByTotals** – A series of pivot tables and charts showing the top 10 top-level directories based on total bytes used, total files, and total folders.
+   - **TopTLDsByTotals** – A series of pivot tables and charts showing the top ten top-level directories based on total bytes used, total files, and total folders.
    - **TopTLDsByLastModBytes** – A pivot table and chart showing top 10 top-level directories based on most bytes modified in the past year.
    - **TopTLDsByLastModFiles** – A pivot table and chart showing top 10 top-level directories based on most files modified in the past year.
    - **LegacyTLDs** – A list of all top-level directories that do not contain any files modified in the past 365 days.
-   - **TreeDepth** – A tally of bytes, folders, and files found at each depth level of the folder structure. For customers doing a pre-migration analysis, depths that are showing as green are good candidates for PeerSync Migration’s tree depth setting.
+   - **TreeDepth** – A tally of bytes, folders, and files found at each depth level of the folder structure. For customers doing a pre-migration analysis, depths that appear as green are good candidates for PeerSync Migration’s tree depth setting.
    - **FileExtInfo** – A list of all discovered extensions, including pivot tables sorted by total bytes and total files.
    - **FileAttributes** – A summary of all file and folder attributes found.
    - **SmallFileAnalysis** – A list of all files discovered below a certain size. This page is useful for estimating the storage impact of small files on storage platforms that have large minimum file sizes on disk.
@@ -540,14 +540,14 @@ Here is a sample of the **LastModifiedAnalysis** page mentioned above:
 Working with Nutanix Objects
 ++++++++++++++
 
-Peer Global File Service includes the ability to replicate data from NAS devices into Nutanix Objects... //MTM add the why and use cases from Ready cert docs !!!
+Peer Global File Service includes the ability to push data from NAS devices into object storage. The same real-time replication technology used to power the collaboration scenario above can also be used to replicate data into Nutanix Objects with optional snapshot capabilities for point-in-time recovery. All objects are replicated in a transparent format that can be immediately used by other apps and services.
 
 Getting Client IP and Credentials for Nutanix Objects
 ............
 
-In order to replicate data into Objects, you will need the Client IP of the object store and will need to generate access and secrect keys. If you already have this information from a prior lab, you can skip this section and re-use that existing information.
+In order to replicate data into Objects, you need the Client IP of the object store and need to generate access and secrect keys. If you already have this information from a prior lab, you can skip this section and re-use that existing information.
 
-#. Log in to **Prism Central** (e.g. 10.XX.YY.39) on your Nutanix cluster, then navigate to to **Services** > **Objects**.
+#. Log in to **Prism Central** (e.g., 10.XX.YY.39) on your Nutanix cluster, and then navigate to to **Services** > **Objects**.
 
 #. In the **Object Stores** section, find the appropriate object store in the table and note the Client Used IPs.
 
@@ -588,7 +588,7 @@ In this section, we will focus on creating a **Cloud Backup and Replication** jo
 
 #. Select **Cloud Backup and Replication** and click **Create**.
 
-#. Enter *Initials*\ - **Replication to Objects** as the name for the job and click **OK**.
+#. Enter *Initials*\  - **Replication to Objects** as the name for the job and click **OK**.
 
    .. figure:: images/cloud2.png
 
@@ -682,7 +682,7 @@ In this section, we will focus on creating a **Cloud Backup and Replication** jo
 
 #. Click **OK** in the **Success** window, and then click **Next**.
 
-#. On the **Bucket Details** page, uncheck **Automatically name** and provide a unique bucket name of *initials*\ -**peer-objects**.
+#. On the **Bucket Details** page, deselect the **Automatically name** checkbox, and then provide a unique bucket name of *initials*\ -**peer-objects**.
 
    .. figure:: images/cloud12.png
 
@@ -690,13 +690,13 @@ In this section, we will focus on creating a **Cloud Backup and Replication** jo
 
      The bucket name MUST be in all lower case.
 
-#. On the **Replication and Retention Policy** page, select **Existing Policy**, **Continuous Data Protection** and click **Next**.
+#. On the **Replication and Retention Policy** page, select **Existing Policy**, **Continuous Data Protection**, and then click **Next**.
 
    .. figure:: images/cloud13.png
 
 #. Click **Next** on the **Miscellaneous Options**, **Email Alerts**, and **SNMP Alerts** pages.
 
-#. Review the configuration on the **Confirmation** screen and click **Finish**.
+#. Review the configuration on the **Confirmation** screen, and then then click **Finish**.
 
    .. figure:: images/cloud14.png
 
@@ -705,7 +705,7 @@ Starting a Cloud Replication Job
 
 Once a job has been created, it must be started to initiate replication.
 
-#. In the **PMC Web Interface**, right-click on your newly created job and select **Start**.
+#. In the **PMC Web Interface**, right-click on your newly created job, and then select **Start**.
 
    .. figure:: images/cloud15.png
 
@@ -743,7 +743,7 @@ The easiest way to verify that files have been replicated into Nutanix Objects i
 
    .. figure:: images/buckets_07.png
 
-#. Enter the following fields for the user created earlier, and click **Connect**:
+#. Fill out the following fields for the user created earlier, and then click **Connect**:
 
    - **Server**  - *Objects Client Used IP*
    - **Port**  - 443
@@ -756,7 +756,7 @@ The easiest way to verify that files have been replicated into Nutanix Objects i
 
    .. figure:: images/buckets_08.png
 
-#. Check the box **Always Trust** and then click **Continue** on the **The certificate is not valid** dialog box.
+#. Check the **Always Trust** checkbox, and then click **Continue** in the **The certificate is not valid** dialog box.
 
    .. figure:: images/invalid_certificate.png
 
@@ -772,9 +772,9 @@ Integrating with Microsoft DFS Namespace
 
 Peer Global File Service includes the ability to create and manage Microsoft DFS Namespaces (DFS-N). When this DFS-N integration is combined with its real-time replication and file locking engine, PeerGFS powers a true global namespace that spans locations and storage devices.
 
-As part of its DFS namespace management capabilities, PeerGFS will also automatically redirect users away from a failed file server. When that failed server comes back online, PeerGFS will bring this file server back in-sync then re-enable user access to it. *This is a must have Disaster Recovery feature for any deployment looking to leverage Nutanix Files for user profile & user data shares for VDI environments.*  //MTM update plus revise language !!!
+As part of its DFS namespace management capabilities, PeerGFS also automatically redirects users away from a failed file server. When that failed server comes back online, PeerGFS brings this file server back in-sync, and then re-enables user access to it. *This is an essential Disaster Recovery feature for any deployment looking to leverage Nutanix Files for user profile & user data shares for VDI environments.*
 
-The following screenshot shows the PMC with a DFS Namespace under management.
+The following screenshot shows the PMC interface with a DFS Namespace under management.
 
 .. figure:: images/dfsn.png
 
@@ -789,8 +789,6 @@ Takeaways
 
 - Peer can directly manage Microsoft Distributed File Services (DFS) namespaces, allowing multiple file servers to be presented through a single namespace. This is a key component for supporting true Active-Active DR solutions for file sharing.
 
-- Peer can replicate files from Nutanix Files and other NAS platforms into Nutanix Objects for .... //MTM update !!!
+- Peer can replicate files from Nutanix Files and other NAS platforms into Nutanix Objects with optional snapshot capabilities for point-in-time recovery. All objects are in a transparent format that can be immediately used by other apps and services.
 
-- Peer offers tools for analyzing existing file servers to help with resource planning, optimization, and migration. 
-
-//MTM update takeaways to match more closely with presentation?? !!!
+- Peer tools for analyzing existing file servers to help with resource planning, optimization, and migration.
