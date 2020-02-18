@@ -70,6 +70,10 @@ Manual VM Deployment
    - **Enter the Nutanix password for "admin"** - techX2020!
    - **Enter the Nutanix container name** - Default
 
+   .. note::
+
+      All fields in the above script are case sensitive.
+
    <Explain what script does>
 
 #. Once VM has rebooted, verify the new disk configuration in **Prism** and **File Explorer**
@@ -240,7 +244,7 @@ Background on Era capabilities to provision databases to existing servers or cre
 
       Database Parameter profiles define...
 
-   .. figure:: images/.png
+   .. figure:: images/19.png
 
 #. Click **Next**, and fill out the following fields to configure the Database:
 
@@ -317,9 +321,9 @@ Migrating Fiesta App Data
 
    .. code-block:: sql
 
-   SELECT * FROM dbo.products
-   SELECT * FROM dbo.stores
-   SELECT * FROM dbo.InventoryRecords
+      SELECT * FROM dbo.products
+      SELECT * FROM dbo.stores
+      SELECT * FROM dbo.InventoryRecords
 
    .. figure:: images/29.png
 
@@ -328,7 +332,7 @@ Provision Fiesta Web Tier
 
 Manipulating data using **SQL Server Management Studio** is boring, especially when THE *Sharon Santana* went through all of the trouble of building a neat front end for your business critical app. In this section you'll deploy the web tier of the application and connect it to your production database.
 
-#. Download the **Fiesta** blueprint used to provision only the web tier by clicking :download:`here <FiestaNoDB.json>`.
+#. :download:`Download the Fiesta Blueprint <FiestaNoDB.json>` used to provision only the web tier.
 
 #. From **Prism Central > Calm**, select **Blueprints** from the lefthand menu and click **Upload Blueprint**.
 
