@@ -98,7 +98,10 @@ Peer Global File Service requires both a File Server Admin account as well as RE
 
 #. Under **REST API access users**, check to see if a **peer** account has already been created. If not, click **+ Add new user**, fill out the following fields, and click **Save**:
 
-   - **Username** - **peer** - This MUST be in all lower case.
+   - **Username** - peer
+
+     *This MUST be in all lower case.*
+     
    - **Password** - nutanix/4u
 
    .. figure:: images/8.png
@@ -119,7 +122,7 @@ The final step of staging the lab is configuring creating some sample data on Pe
    - **Username** - NTNXLAB\\Administrator
    - **Password** - nutanix/4u
 
-#. Open **File Explorer** and navigate to **\\PeerAgent-Win\Data**.
+#. Open **File Explorer** and navigate to **\\\\PeerAgent-Win\\Data**.
 
 #. Create a copy of the **Sample Data** folder. Rename the copy to *Initials*\ **-Data** as shown below.
 
@@ -179,7 +182,7 @@ In this section, we will focus on **File Collaboration**.
 
    .. figure:: images/17.png
 
-#. Enter *Initials *\ - **Collab** as the name for the job and click **OK**.
+#. Enter *Initials*\  - **Collab** as the name for the job and click **OK**.
 
    .. figure:: images/18.png
 
@@ -408,7 +411,7 @@ Installing and Running the File System Analyzer
 
 #. Within the VM, download the File System Analyzer installer: https://www.peersoftware.com/downloads/fsa/13/FileSystemAnalyzer_win64.exe.
 
-#. Run the installer and select **Standard Installation**.
+#. Run the installer and select **Immediate Installation**.
 
    .. figure:: images/fsa1.png
 
@@ -484,6 +487,10 @@ Summary reports contain overall statistical and historical information across al
    - **History-Bytes** – Contains historical changes in bytes for each time each path is scanned.
    - **History-Files** – Contains historical changes in total number of files for each time each path is scanned.
    - **History-Folders** – Contains historical changes in total numbers of folders for each time each path is scanned.
+   
+    .. note::
+
+     History worksheets will only appear after running multiple scans.
 
 Volume Reports
 ............
@@ -521,6 +528,10 @@ Volume reports give more detailed information about a specific path that has bee
    - **FileAttributes** – A summary of all file and folder attributes found.
    - **SmallFileAnalysis** – A list of all files discovered below a certain size. This page is useful for estimating the storage impact of small files on storage platforms that have large minimum file sizes on disk.
    - **SIDCache** – A list of all the owners and SID strings that have been discovered.
+   
+       .. note::
+
+     History worksheets will only appear after running multiple scans.
 
 Here is a sample of the **LastModifiedAnalysis** page mentioned above:
 
@@ -577,7 +588,7 @@ In this section, we will focus on creating a **Cloud Backup and Replication** jo
 
 #. Select **Cloud Backup and Replication** and click **Create**.
 
-#. Enter *Initials *\ - **Replication to Objects** as the name for the job and click **OK**.
+#. Enter *Initials*\ - **Replication to Objects** as the name for the job and click **OK**.
 
    .. figure:: images/cloud2.png
 
