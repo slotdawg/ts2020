@@ -63,6 +63,7 @@
    euccitrix/pdesktops/npdesktops
    euccitrix/updatecatalog/updatecatalog
    euccitrix/files/files
+   euccitrix/flow_quarantine_vm/flow_quarantine_vm
 
 .. toctree::
    :maxdepth: 2
