@@ -138,9 +138,9 @@ For this lab, you will be accessing a shared PMC deployment via a web interface.
 
 #. Open a non-Firefox browser (Chrome, Edge, and Safari will all work) on your *Initials*\ **-Windows-ToolsVM** VM or on your laptop.
 
-#. If you are using a browser on your *Initials*\ **-Windows-ToolsVM** VM, browse to `https://PeerMgmt:8443/hub<https://PeerMgmt:8443/hub>`_.
+#. If you are using a browser on your *Initials*\ **-Windows-ToolsVM** VM, browse to https://PeerMgmt:8443/hub
 
-#. If you are using a browser on your laptop, log in to **Prism Element** (e.g. 10.XX.YY.37) on your Nutanix cluster to find the IP of the PeerMgmt VM, then browse to `https://<IP of PeerMgmt Server>:8443/hub<https://<IP of PeerMgmt Server>:8443/hub>`_.
+#. If you are using a browser on your laptop, log in to **Prism Element** (e.g. 10.XX.YY.37) on your Nutanix cluster to find the IP of the PeerMgmt VM, then browse to https://<IP of PeerMgmt Server>:8443/hub
 
 #. When prompted to login, use the following credentials:
 
