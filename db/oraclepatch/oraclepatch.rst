@@ -1,19 +1,19 @@
 .. _oraclepatch:
 
-------------------
-Patching Databases
-------------------
+------------------------
+Patching Oracle with Era
+------------------------
 
-Introduction
+Maintaining consistent patch levels across database servers in a traditional environment can be a very difficult process. Era makes this simple by providing a means of database engine patching through versioned software profiles. Groups of database servers can be patched or rolled back through Era using the web interface, or via CLI or API.
 
-**In this lab you will...**
+Each quarter, Oracle releases a grouping of patches referred to as a PSU. **In this lab you will walk through the deployment and patching of both Oracle and Grid software for an Oracle 19c database using Era.**
 
 Manual Oracle VM Deployment
 +++++++++++++++++++++++++++
 
-#. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs**.
+In this exercise, you will deploy an Oracle database VM, using pre-created disk images. This VM is the running Oracle 19c with April PSU patches applied.
 
-   .. figure:: images/1.png
+#. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs**.
 
 #. Click **Create VM**.
 
@@ -30,61 +30,61 @@ Manual Oracle VM Deployment
    - Select **+ Add New Disk**
       - **Type** - DISK
       - **Operation** - Clone from Image Service
-      - **Image** - Oracle19c_bootdisk.qcow2
+      - **Image** - 19c_bootdisk.qcow2
       - Select **Add**
 
    - Select **+ Add New Disk**
       - **Type** - DISK
       - **Operation** - Clone from Image Service
-      - **Image** - Oracle19c_disk1.qcow2
+      - **Image** - 19c_disk1.qcow2
       - Select **Add**
 
    - Select **+ Add New Disk**
       - **Type** - DISK
       - **Operation** - Clone from Image Service
-      - **Image** - Oracle19c_disk2.qcow2
+      - **Image** - 19c_disk2.qcow2
       - Select **Add**
 
    - Select **+ Add New Disk**
       - **Type** - DISK
       - **Operation** - Clone from Image Service
-      - **Image** - Oracle19c_disk3.qcow2
+      - **Image** - 19c_disk3.qcow2
       - Select **Add**
 
    - Select **+ Add New Disk**
       - **Type** - DISK
       - **Operation** - Clone from Image Service
-      - **Image** - Oracle19c_disk4.qcow2
+      - **Image** - 19c_disk4.qcow2
       - Select **Add**
 
    - Select **+ Add New Disk**
       - **Type** - DISK
       - **Operation** - Clone from Image Service
-      - **Image** - Oracle19c_disk5.qcow2
+      - **Image** - 19c_disk5.qcow2
       - Select **Add**
 
    - Select **+ Add New Disk**
       - **Type** - DISK
       - **Operation** - Clone from Image Service
-      - **Image** - Oracle19c_disk6.qcow2
+      - **Image** - 19c_disk6.qcow2
       - Select **Add**
 
-    - Select **+ Add New Disk**
+   - Select **+ Add New Disk**
       - **Type** - DISK
       - **Operation** - Clone from Image Service
-      - **Image** - Oracle19c_disk7.qcow2
+      - **Image** - 19c_disk7.qcow2
       - Select **Add**
 
-    - Select **+ Add New Disk**
+   - Select **+ Add New Disk**
       - **Type** - DISK
       - **Operation** - Clone from Image Service
-      - **Image** - Oracle19c_disk8.qcow2
+      - **Image** - 19c_disk8.qcow2
       - Select **Add**
 
-    - Select **+ Add New Disk**
+   - Select **+ Add New Disk**
       - **Type** - DISK
       - **Operation** - Clone from Image Service
-      - **Image** - Oracle19c_disk9.qcow2
+      - **Image** - 19c_disk9.qcow2
       - Select **Add**
 
    - Select **Add New NIC**
@@ -93,99 +93,49 @@ Manual Oracle VM Deployment
 
 #. Click **Save** to create the VM.
 
-#. Select your VM and click **Actions > Power On**.
+   You will now create a copy of this VM which will later be used to install October PSU patches.
 
-.. #. Once powered on, click **Actions > Launch Console** and complete Windows Server setup:
+#. Once the VM has been created, select your *Initials*\ **_oracle_base** and click **Actions > Clone**.
 
-   Registering Production Oracle VM
-   ++++++++++++++++++++++++++++++++
+   .. figure:: images/1.png
 
-   Unlike the MS SQL labs, the intention here is to directly register a database, along with the database server, in order to manage your production Oracle database with Era.
+#. Change the name to *Initials*\ **_oracle_patched** and click **Save**.
 
-   #. In **Era**, select **Databases** from the dropdown menu and **Sources** from the lefthand menu.
-
-      .. figure:: images/1.png
-
-   #. Click **+ Register** and fill out the following **Database Server** fields:
-
-      - **Engine** - Oracle
-      - **Database is on a Server this is** - Not Registered
-      - **IP Address or Name of VM** - *Initials*\ -OracleProd
-      - **Era Drive User** - oracle
-
-         *The Era Drive User can be any user on the VM that has sudo access with NOPASSWD setting. Era will use this user's credentials to perform various operations, such as taking snapshots.*
-
-      - **Oracle Database Home** - /u02/app/oracle/product/19.0.0/dbhome_1
-
-         *This is the directory where the Oracle database software is installed, and is a mandatory parameter for registering a database server.*
-
-      - **Provide Credentials Through** - Password
-      - **Password** - Nutanix/4u
-
-      .. figure:: images/2.png
-
-   #. Click **Next**, and fill out the following **Database** fields:
-
-      - **Database Name in Era** - *Initials*\ _ORCL19C
-      - **SID** - orcl18c
-
-         *What is the SID?*
-
-      .. figure:: images/3.png
-
-   #. Click **Next**, and modify the following **Time Machine** default values:
-
-      - **SLA** - DEFAULT_OOB_GOLD_SLA
-
-      .. figure:: images/4.png
-
-   #. Click **Register** to begin registering both the Database Server and the existing Database on your production Oracle VM.
-
-   #. Select **Operations** from the dropdown menu to monitor the registration. This process should take approximately 5 minutes.
+#. Select both VMs and click **Actions > Power On**.
 
 Register Oracle Server with Era
 +++++++++++++++++++++++++++++++
 
-Similar to the MS SQL labs, the intention here is to create a new Oracle database server VM based on the imported profile.
+In this exercise, you will register your April PSU VM and register it as version 1.0 of your Oracle 19c Software Profile. The Software Profile is a template containing both the operating system and database software, and can be used to deploy additional database servers.
 
 #. In **Era**, select **Database Servers** from the dropdown menu and **List** from the lefthand menu.
 
 #. Click **+ Register**.
 
-#. In the First **Register Database Server** Dialog box, select **Oracle**, and click **Next**.
-
 #. Click **+ Register** and fill out the following **Database Server** fields:
 
    - **Engine** - Oracle
    - **IP Address or Name of VM** - *Initials*\ _oracle_base
-   -  **Database Version** - 19.0.0.0
+   - **Database Version** - 19.0.0.0
    - **Era Drive User** - oracle
-
-      *The Era Drive User can be any user on the VM that has sudo access with NOPASSWD setting. Era will use this user's credentials to perform various operations, such as taking snapshots.*
-
    - **Oracle Database Home** - /u02/app/oracle/product/19.0.0/dbhome_1
-
-      *This is the directory where the Oracle database software is installed, and is a mandatory parameter for registering a database server.*
-
-   -  **Grid Infrastructure Home** - /u01/app/19.0.0/grid
-
-      *This is the directory where the Oracle Grid Infrastructure software is installed. This is only applicable for Oracle RAC or SIHA databases.*
-
+   - **Grid Infrastructure Home** - /u01/app/19.0.0/grid
    - **Provide Credentials Through** - Password
    - **Password** - Nutanix/4u
 
-   .. figure:: images/registerdb_01.png
-
-#. Click **Register** and monitor the progress on the **Operations** page. This process should take approximately 2 minutes.
-
    .. note::
 
-   Wait for the registration operation to successfully complete before moving on.
+      The Era Drive User can be any user on the VM that has sudo access with NOPASSWD setting. Era will use this user's credentials to perform various operations, such as taking snapshots.
 
-Create Base Software Profile
-++++++++++++++++++++++++++++
+      Oracle Database Home is the directory where the Oracle database software is installed, and is a mandatory parameter for registering a database server.
 
-Once the *Initials*\ **_oracle_base** server has been registered with Era, we need to create a software profile in order to deploy additional Oracle VMs.
+      Grid Infrastructure Home is the directory where the Oracle Grid Infrastructure software is installed. This is only applicable for Oracle RAC or SIHA databases.
+
+   .. figure:: images/2.png
+
+#. Click **Register** and monitor the progress on the **Operations** page. This process should take approximately 2 minutes. Wait for the registration operation to successfully complete before moving on.
+
+   Once the *Initials*\ **_oracle_base** server has been registered with Era, we need to create a software profile in order to deploy additional Oracle VMs.
 
 #. Select **Profiles** from the dropdown menu and **Software** from the lefthand menu.
 
@@ -193,11 +143,11 @@ Once the *Initials*\ **_oracle_base** server has been registered with Era, we ne
 
    - **Engine** - Oracle
    - **Type** - Single Instance
-   - **Name** - *Initials*\ _ORACLE_BASE
+   - **Name** - *Initials*\ _ORACLE_19C
    - **Description** - (Optional)
    - **Database Server** - Select your registered *Initials*\ _oracle_base VM
 
-   .. figure:: images/5.png
+   .. figure:: images/3.png
 
 #. Click **Create**.
 
@@ -206,9 +156,9 @@ Once the *Initials*\ **_oracle_base** server has been registered with Era, we ne
 #. Once the profile creation completes successfully, power off your *Initials*\ **_oracle_base** VM in Prism.
 
 Create Oracle Server with Era
-+++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++
 
-<Here we will create our production Oracle database server which will eventually be patched>
+In this exercise you will deploy a fresh Oracle database using your *Initials*\ **_ORACLE_19C** 1.0 Software Profile.
 
 #. Select **Databases** from the dropdown menu and **Sources** from the lefthand menu.
 
@@ -218,191 +168,156 @@ Create Oracle Server with Era
 
    - **Engine** - Oracle
    - **Database Server** - Create New Server
-   - **Database Server Name** - *Initials*\ _oracle_prd
+   - **Database Server Name** - *Initials*\ _oracle_prod
    - **Description** - (Optional)
-   - **Software Profile** - *Initials*\ _ORACLE_BASE
-   - **Compute Profile** - ORACLE_MEDIUM
+   - **Software Profile** - *Initials*\ _ORACLE_19C
+   - **Compute Profile** - ORACLE_SMALL
    - **Network Profile** - *User VLAN*\ _ORACLE_NETWORK
    - Select **Enable High Availability**
    - **SYS ASM Password** - oracle
-
-   *What is this?*
-
    - **SSH Public Key for Node Access** -
 
-      ::
+   ::
 
-         ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAii7qFDhVadLx5lULAG/ooCUTA/ATSmXbArs+GdHxbUWd/bNGZCXnaQ2L1mSVVGDxfTbSaTJ3En3tVlMtD2RjZPdhqWESCaoj2kXLYSiNDS9qz3SK6h822je/f9O9CzCTrw2XGhnDVwmNraUvO5wmQObCDthTXc72PcBOd6oa4ENsnuY9HtiETg29TZXgCYPFXipLBHSZYkBmGgccAeY9dq5ywiywBJLuoSovXkkRJk3cd7GyhCRIwYzqfdgSmiAMYgJLrz/UuLxatPqXts2D8v1xqR9EPNZNzgd4QHK4of1lqsNRuz2SxkwqLcXSw0mGcAL8mIwVpzhPzwmENC5Orw==
+      ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAii7qFDhVadLx5lULAG/ooCUTA/ATSmXbArs+GdHxbUWd/bNGZCXnaQ2L1mSVVGDxfTbSaTJ3En3tVlMtD2RjZPdhqWESCaoj2kXLYSiNDS9qz3SK6h822je/f9O9CzCTrw2XGhnDVwmNraUvO5wmQObCDthTXc72PcBOd6oa4ENsnuY9HtiETg29TZXgCYPFXipLBHSZYkBmGgccAeY9dq5ywiywBJLuoSovXkkRJk3cd7GyhCRIwYzqfdgSmiAMYgJLrz/UuLxatPqXts2D8v1xqR9EPNZNzgd4QHK4of1lqsNRuz2SxkwqLcXSw0mGcAL8mIwVpzhPzwmENC5Orw==
 
 
-   .. figure:: images/6.png
+   .. note::
+
+         By selecting Enable High Availability, Oracle Grid is configured as part of the deployment and Oracle Automatic Storage Management (ASM) is used for volume management. Without High Availability enabled, Linux LVM and file systems would be used for database storage. Gris and ASM are required for clustered Oracle RAC deployments.
+
+   .. figure:: images/4.png
 
 #. Click **Next**, and fill out the following fields to configure the Database:
 
-   -  **Database Name** - *Initials*\ _prddb
-   -  **SID** - *Initials*\ prd
-   -  **SYS and SYSTEM Password** - nutanix/4u
-   -  **Database Parameter Profile** - ORACLE_MEDIUM_PARAMS
+   -  **Database Name** - *Initials*\ _proddb
+   -  **SID** - *Initials*\ prod
+   -  **SYS and SYSTEM Password** - Nutanix/4u
+   -  **Database Parameter Profile** - ORACLE_SMALL_PARAMS
 
-   .. figure:: images/7.png
+   .. figure:: images/5.png
 
    <Info about common use cases for pre and post scripts and encryption>
 
 #. Click **Next** and fill out the following fields to configure the Time Machine for your database:
 
-   - **Name** - *Initials*\ _oracle_prod_TM (Default)
+   - **Name** - *Initials*\ _proddb_TM (Default)
    - **Description** - (Optional)
    - **SLA** - DEFAULT_OOB_GOLD_SLA
    - **Schedule** - (Defaults)
 
+   .. figure:: images/6.png
+
+#. Click **Provision** to begin creating your new database server VM and *Initials*\ **_proddb** database.
+
+#. Select **Operations** from the dropdown menu to monitor the provisioning. This process should take approximately 60 minutes (depending on your cluster configuration), but you can proceed to the following exercises while the database is being provisioned.
+
+Patching Base Oracle VM
++++++++++++++++++++++++
+
+In this exercise, you will apply the October PSU patches to your manually cloned VM, register the database server with Era, and then use it as the basis for creating a new version of your *Initials*\ **_ORACLE_19C** Software Profile.
+
+#. In **Prism Central**, note the IP address of your *Initials*\ **_oracle_patched** VM.
+
+#. Connect to your *Initials*\ **_oracle_patched** VM via SSH using the following credentials:
+
+   - **User Name** - root
+   - **Password** - Nutanix/4u
+
+#. Execute the following script to install the Oracle and Grid October PSU patches:
+
+   ::
+
+      cd Downloads
+      ./applypsu.sh
+
+#. Observe that the script will first display the current patch level of the VM, note the April dates on the displayed releases. Press any key to continue the patch installation.
+
+   .. figure:: images/7.png
+
+#. If prompted, type **A** to overwrite any existing files while extracting the patch and follow any prompts to press any key to continue. The script should run for approximately 20 minutes.
+
    .. figure:: images/8.png
 
-#. Click **Provision** to begin creating your new database server VM and *Initials*\ **prd** database.
+#. Once the script has finished, return to **Era > Database Servers > List**.
 
-#. Select **Operations** from the dropdown menu to monitor the provisioning. This process should take approximately 45 minutes.
-
-Create Prod Software Profile
-++++++++++++++++++++++++++++
-
-Once the *Initials*\ **_oracle_prod** database has been registered with Era, the Time Machine for the database will start creating snapshots and collecting transaction log backups.
-
-#. Select **Profiles** from the dropdown menu and **Software** from the lefthand menu.
-
-#. Click **+ Create** and fill out the following fields:
+#. Click **+ Register** and fill out the following **Database Server** fields:
 
    - **Engine** - Oracle
-   - **Type** - Single Instance
-   - **Name** - *Initials*\ _ORACLE_PROD
-   - **Description** - (Optional)
-   - **Database Server** - Select your registered *Initials*\ _oracle_prd VM
+   - **IP Address or Name of VM** - *Initials*\ _oracle_patched
+   -  **Database Version** - 19.0.0.0
+   - **Era Drive User** - oracle
+   - **Oracle Database Home** - /u02/app/oracle/product/19.0.0/dbhome_1
+   -  **Grid Infrastructure Home** - /u01/app/19.0.0/grid
+   - **Provide Credentials Through** - Password
+   - **Password** - Nutanix/4u
 
    .. figure:: images/9.png
 
-#. Click **Create**.
+#. Click **Register** and monitor the progress on the **Operations** page. This process should take approximately 2 minutes.
 
-#. Select **Operations** from the dropdown menu to monitor the registration. This process should take approximately 5 minutes.
-
-Create Clone for Patching
-+++++++++++++++++++++++++
-
-#. In **Era**, select **Time Machines** from the dropdown menu.
-
-#. Select the Time Machine associated with your production database (e.g. *XYZ_prddb_TM*).
-
-..   #. Select **Actions > Snapshot**, specify a name for your snapshot and click **Create**.
-
-      .. figure:: images/12.png
-
-   #. After snapshot creation succeeds, select **Actions > Clone Database > Single Node Database**.
-
-   #. Select your previously created snapshot and click **Next**.
-
-      .. figure:: images/13.png
-
-#. Click **Next** to create a clone based on the latest available Point in Time.
-
-#. Make the following selections and click **Next**:
-
-   - **Database Server** - Create New Server
-   - **Database Server Name** - *Initials*\ _oracle_patch
-   - **Compute Profile** - ORACLE_MEDIUM
-   - **Network Profile** - *User Assigned VLAN*\ _ORACLE_NETWORK
-   - **SSH Public Key for Node Access** -
-
-      ::
-
-         ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAii7qFDhVadLx5lULAG/ooCUTA/ATSmXbArs+GdHxbUWd/bNGZCXnaQ2L1mSVVGDxfTbSaTJ3En3tVlMtD2RjZPdhqWESCaoj2kXLYSiNDS9qz3SK6h822je/f9O9CzCTrw2XGhnDVwmNraUvO5wmQObCDthTXc72PcBOd6oa4ENsnuY9HtiETg29TZXgCYPFXipLBHSZYkBmGgccAeY9dq5ywiywBJLuoSovXkkRJk3cd7GyhCRIwYzqfdgSmiAMYgJLrz/UuLxatPqXts2D8v1xqR9EPNZNzgd4QHK4of1lqsNRuz2SxkwqLcXSw0mGcAL8mIwVpzhPzwmENC5Orw==
+#. Once registration completes, select **Era > Profiles > Software** and click your *Initials*\ **_ORACLE_19C** Software Profile. Observe that Era provides complete introspection into the packages installed within the operating system, including the **Database Software** and **Grid Software**. Note the **Patches Found** under **Database Software**.
 
    .. figure:: images/10.png
 
-#. Fill out the following fields and click **Clone**:
+#. With your *Initials*\ **_ORACLE_19C** Software Profile selected, click **+ Create** to create a new version based on the *Initials*\ **_oracle_patched** VM you registered in the previous step.
 
--  **Name** - (Default)
--  **SID** - *Initials*\ pat (e.g. xyzpat)
--  **Description ** - (Optional) Description
--  **SYS and SYSTEM Password** - nutanix/4u
--  **Database Parameter Profile** - ORACLE_MEDIUM_PARAMS
+#. Fill out the following fields and click **Create**:
 
-.. figure::  images/11.png
+   - **Name** - *Initials*\ _ORACLE_19C (Oct19 PSU)
+   - Select *Initials*\ **_oracle_patched**
 
-#. Select **Operations** from the dropdown menu to monitor the database cloning. This process should take approximately 15 minutes.
+   .. figure:: images/11.png
 
-Apply Patch to Clone
-++++++++++++++++++++
+#. Monitor the progress on the **Operations** page. This process should take approximately 5 minutes.
 
-#. Select **Databases** from the dropdown menu and **Sources** from the lefthand menu.
+#. Return to **Era > Profiles > Software** and click your *Initials*\ **_ORACLE_19C** Software Profile. Note the 2.0 version now appears, with additional patches found under **Database Software** and **Grid Infrastructure Software**.
 
-#. Click on your *Initials*\ **_oracle_patch** clone to view additional details about the database. Note
+   .. figure:: images/12.png
 
-#. Click on **initials_oracle_patch**
+   Before you can apply to patched Software Profile to your *Initials*\ **_oracle_prod** VM, the Software Profile must first be published, otherwise Era will not show the version as available or recommended for updating.
 
-#. Click **See Description** under Connect via SSH
+#. Select the **2.0** profile and click **Update**.
 
-   .. figure:: images/patchdb_06.png
+#. Under **Status**, select **Published** and click **Next**.
 
-#. Use the ip address listed to connect to vm from your tools vm with putty
-    - **username** - oracle
-    - **password** - Nutanix/4u
+   .. figure:: images/13.png
 
-#. Once logged into the vm type **bash** and press enter
+#. Optionally, you can provide notes regarding patches applied to Operating System, Oracle, and Grid software. Click **Next > Update**.
 
-#. run the command below
-   - sudo /root/Downloads/applypsu.sh
-   - press enter to start patch
-   - You can ignore any errors about directories not existing.
-# type **exit** three times to exit
+   .. figure:: images/14.png
 
-Update Software Profile
-.......................
+#. Return to **Era > Database Servers > List** and click your *Initials*\ **_oracle_prod** database server.
 
-Update the software profile of the patched server to use for patching existing server
+#. Under **Profiles**, note that the newer, published software profile is being recommended as an available update to the database server. Click **Update**.
 
-#. Select the **Era > Getting Started** drop down menu and click **Profiles**.
+   .. figure:: images/15.png
 
-#. Select **Software** in the **Profiles** pane on the left-hand side of the screen.
+#. Select the desired patch profile from the drop down menu (in a real environment you could potentially publish several options) and click **Patch 1 Database** to begin the update process.
 
-#. Chose **initials_oracle_base** and click **View Versions**
+   .. note::
 
-#. Chose **initials_oracle_base(1.0)** and click **+ Create**
+      Era also offers the ability to schedule patching application, allowing you to select a pre-determined maintenance window. For clustered database deployments, Era supports rolling updates, ensuring database accessibility throughout the update process.
 
-#. On the **Crate Software Profile** chose the server you cloned input the following and click **create**:
-    -  **Name** - initials_oracle_patched
-    -  **Description** - (Optional) Description
+      .. figure:: images/17.png
 
-.. figure:: images/patchdb_05.png
+#. Monitor the progress on the **Operations** page. This process should take approximately 25 minutes.
 
-#. Select initials_oracle_patched to check the progress
+   During the patching process, Era will gracefully bring down database and Grid services, shut down the VM, replace the relevant virtual disks with thin clones from the 2.0 Software Profile, and bring the database server back online. <Anything more to add here?>
 
-#. Once creation of profile is complete, go back to **Software Profiles**
+   .. figure:: images/18.png
 
-#. Chose **initials_oracle_prod** and click **View Versions**
+#. Once the patching operation has completed, you can easily validate the VM is running with the patched software outside of Era. SSH into your *Initials*\ **_oracle_prod** VM with the following credentials:
 
-#. Chose **initials_oracle_patched** and click **Update**
+   - **User Name** - oracle
+   - **Password** - Nutanix/4u
 
-#. Select **Published** and click **Next** until you can click **Update**
+#. Execute the following command to display installed patch versions:
 
-.. figure:: images/patchdb_07.png
+   ::
 
+      $ORACLE_HOME/OPatch/opatch lsinventory | egrep 'appl|desc'
 
-Patch Prod Sever
-................
+   .. figure:: images/19.png
 
-Now that we have a published patched software profile we can patch your original "Prod" Servers
-
-#. Select the **Era >** drop down menu and click **Database Servers**.
-
-#. Under Oracle Click on **Source DB Servers**
-
-#. Select on  **initials_oracle_prod**
-
-#. Scroll Down to Profiles, you should see update available
-
-.. figure:: images/patchdb_08.png
-
-#. Select **Update**
-
-#. On Patch 1 Database(s) on server Screen make sure Now is selected and click patch Database
-
-.. figure:: images/patchdb_09.png
-
-#. Click on operations to see patch progress
+<Need a wrapup here>

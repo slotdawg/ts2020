@@ -465,7 +465,7 @@ Create Access Keys
 
 #. Click on "Access Keys" in the top left menu
 
-#. Click on "+ Add People," then select "Add people not in a directory service," then specify the name "hycu@ntnxlab.local." Click Next
+#. Click on "+ Add People," then select "Add people not in a directory service," then specify the name "*Initials*-hycu@ntnxlab.local." Click Next
 
    .. note:: You can configure a directory service for user authentication here rather than local users
 
@@ -480,13 +480,13 @@ Configuring a Bucket
 
 #. Click on "ntnx-objects," then select "Create Bucket"
 
-#. Name the bucket "hycu-bucket" and leave the default options. Then click "Create"
+#. Name the bucket "*initials*-hycu-bucket" and leave the default options. Then click "Create"
 
    .. figure:: images/34.png
 
 #. Once created, click on the bucket and select "User Access," then click the "Edit User Access"
 
-#. Type "hcyu@ntnxlab.local" and select both the "Read" and "Write" options, then click Save
+#. Type "*initials*-hcyu@ntnxlab.local" and select both the "Read" and "Write" options, then click Save
 
    .. figure:: images/35.png
 
@@ -512,7 +512,7 @@ Configure Nutanix Objects within HYCU
 
    .. figure:: images/37.png
 
-#. For Bucket Name, specify "hycu-bucket"
+#. For Bucket Name, specify "*initials*hycu-bucket"
 
 #. Retrieve the Access Key ID and Secret Access Key from the file you downloaded earlier when configuring the user within Nutanix Objects. Click "Save"
 

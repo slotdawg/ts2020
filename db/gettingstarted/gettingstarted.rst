@@ -80,7 +80,7 @@ Some exercises in this track will depend on leveraging the Windows Tools VM. Fol
 
 #. Click **+ Create VM**.
 
-#. Fill out the following fields to complete the user VM request:
+#. Fill out the following fields to complete the user VM request, using the **User** specific network details in :ref:`clusterassignments`:
 
    - **Name** - *Initials*\ -WinToolsVM
    - **Description** - Manually deployed Tools VM
