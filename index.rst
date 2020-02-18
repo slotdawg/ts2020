@@ -63,7 +63,7 @@
    move/move
    euccitrix/goldimage/goldimage
    euccitrix/pdesktops/pdesktops
-   euccitrix/pdesktops/npdesktops
+   euccitrix/npdesktops/npdesktops
    euccitrix/updatecatalog/updatecatalog
    euccitrix/files/files
    prismops/prismops_rightsize_euc_lab/prismops_rightsize_euc_lab
