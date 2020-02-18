@@ -11,7 +11,9 @@ Introduction
 Configuring Storage
 +++++++++++++++++++
 
-Using your **Cluster Assignment Spreadsheet**, identify your **Prism Element** cluster IP.
+In this brief exercise, you will experience how IT generalists can provision and monitor primary storage for their virtualized environment through Prism with just a few clicks - a stark contrast to planning and managing traditional SAN storage.
+
+#. Using your **Cluster Assignment Spreadsheet**, identify your **Prism Element** cluster IP.
 
 #. In a browser, open **Prism Element** and log in using the following local user credentials:
 
@@ -24,11 +26,15 @@ Using your **Cluster Assignment Spreadsheet**, identify your **Prism Element** c
 
    .. figure:: images/2.png
 
-   <Exposition about storage overview dashboad, data reduction/efficiency, capacity>
+#. Mouse over the **Storage Summary** and **Capacity Optimization** widgets for explanations of what each is displaying.
+
+   It's important to understand that Nutanix considers the **Data Reduction** ratio as savings ONLY from compression, deduplication, and erasure coding. The **Overall Efficiency**, comparable to what many other vendors consider "Data Reduction," incorporates the aforementioned data efficiency features, as well as data avoidance features like thin provisioning, intelligent cloning, and zero suppression.
 
    .. figure:: images/3.png
 
-#. Select **Table** and click **+Storage Container**.
+#. Select **Table** and click **+ Storage Container**.
+
+   Storage Containers represent logical policies for storage, allowing you to create reservations, enable/disable data efficiency features like compression, deduplication, and erasure coding, and to configure Redundancy Factor (RF). Every Storage Container on a Nutanix cluster still leverages all physical disks within the cluster, referred to as the Storage Pool. A typical Nutanix cluster will have a small number of Storage Containers, typically corresponding to workloads that benefit from different data efficiency technologies.
 
    .. figure:: images/4.png
 
@@ -36,14 +42,34 @@ Using your **Cluster Assignment Spreadsheet**, identify your **Prism Element** c
 
    .. figure:: images/5.png
 
-   <Exposition about different options, when to use them, when you would need different storage containers, configuring resiliency, how they all share 1 pool of physical storage>
+   Observe that the Redundancy Factor cannot be configured for this cluster, this is due to the minimum number of nodes required to support RF3 is 5.
+
+   <info on when to use what data efficiency settings>
+
+   For more information on how Nutanix protects your data, click the diagram below to review the relevant section of the Nutanix Bible.
+
+   .. figure:: https://nutanixbible.com/imagesv2/data_protection.png
+      :target: https://nutanixbible.com/#anchor-book-of-acropolis-data-protection
+      :alt: Nutanix Bible - Data Protection
 
 #. Click **Save** to create the storage and mount it to all available hosts within the cluster.
+
+   In vSphere or Hyper-V environments, creating the Storage Container will also automate the process of mounting the storage to the hypervisor.
+
+#. Select an existing Storage Container, such as **buckets-ctr-data...**, and review the individual savings from different data reduction/avoidance features, as well as the **Effective Capacity**, which is a projection of available storage based on the overall efficiency. These values are found in the **Storage Container Details** table.
+
+   Unfortunately it is not possible to easily test data resiliency capabilities of the cluster in a shared environment, but the short video below will walk you through the experience from Prism when a node in the cluster is unexpectedly lost.
+
+   .. raw:: html
+
+     <center><iframe width="640" height="360" src="https://www.youtube.com/embed/hA4l1UHZO2w?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
 
 Provisioning a New Network
 ++++++++++++++++++++++++++
 
-<Exposition about need to create additional VM network>
+AHV leverages Open vSwitch (OVS) for all VM networking. OVS is an open source software switch implemented in the Linux kernel and designed to work in a multiserver virtualization environment. Each AHV server maintains an OVS instance, and all OVS instances combine to form a single logical switch. Each node is typically uplinked to a physical switch port trunked/tagged to multiple VLANs, which will be exposed as virtual networks.
+
+In this exercise you'll use Prism to configure a new VM Network for your cluster.
 
 .. note::
 
@@ -55,7 +81,7 @@ Provisioning a New Network
 
    .. figure:: images/9.png
 
-#. Click **+ Create Network** and fill out the following fields:
+#. Click **+ Create Network** and fill out the following fields, using the **User** specific network details in :ref:`clusterassignments`:
 
    - **Name** - *Refer to Cluster Assignment Spreadsheet*
    - **VLAN ID** - *Refer to Cluster Assignment Spreadsheet*
@@ -71,14 +97,20 @@ Provisioning a New Network
 
    .. figure:: images/8.png
 
+   Note that AHV is capable of providing integrated DHCP services (IPAM), allowing virtualization administrators to allocate IPs to VMs from a configured pool, or easily specifying IPs as DHCP reservations when adding virtual NICs to VMs.
+
 #. Click **Save**.
 
+   The configured virtual network will now be available across all nodes within the cluster. Virtual networks in AHV behave like Distributed Virtual Switches in ESXi, meaning you do not need to configure the same settings on each individual host within the cluster.
+
 #. Close the **Network Configuration** window.
+
+   You're done - simple stuff! You will continue to use this network for the following exercises.
 
 Responding to VM Creation Requests
 ++++++++++++++++++++++++++++++++++
 
-<Some exposition about building template images, ability to merge in unattend files, script via CLI>
+Virtualization administrators are commonly tasked with deployment of new VMs. In this exercise, Carol walks through deployment of an AHV VM in Prism as a Nutanix administrator.
 
 #. Return to the **VM** page in **Prism Element** from the drop down menu.
 
@@ -104,13 +136,23 @@ Responding to VM Creation Requests
       - **VLAN Name** - *Assigned User VLAN*
       - Select **Add**
 
+   Similar to public cloud providers, Nutanix AHV provides an Image Service feature allows you to build a store of imported files that you can use to mount a CD-ROM device from an ISO image or an operating system Disk from a disk image when creating a VM. The Image Service supports raw, vhd, vhdx, vmdk, vdi, iso, and qcow2 disk formats.
+
+   Note that the VM creation wizard also provides the ability to specify a Unattend.xml file for Windows Sysprep automation, or Cloud-Init file for Linux OS configuration.
+
 #. Click **Save** to create the VM.
+
+   .. note::
+
+      Many VM operations, including VM creation can be scripted using the AHV CLI, ``acli``. Certain features, such as Secure Boot and vNUMA can currently only be enabled for a VM through the command line. The ACLI Reference Guide can be found `here <https://portal.nutanix.com/#/page/docs/details?targetId=Command-Ref-AOS-v5_16:acl-acli-vm-auto-r.html>`_.
+
+      You can SSH into any of your Nutanix CVMs and attempt creating an additional VM using ``acli``.
 
 #. Using the search field at the top of the table, filter for the requested VM. Select the VM and click **Power On** from the list of actions below the table.
 
    .. figure:: images/12.png
 
-#. Once the VM has completed booting, Carol can note the IP address
+#. Once the VM has completed booting, note the **IP Address**.
 
    .. figure:: images/11.png
 
@@ -122,6 +164,10 @@ Responding to VM Creation Requests
 
 Enabling User Self Service
 ++++++++++++++++++++++++++
+
+While Prism and ``acli`` provide simple workflows for creating VMs, Carol is regularly inundated with these requests and would love to focus more of her time on modernizing other parts of her organization's aging infrastructure, and attending her son's soccer games.
+
+In the following exercises, Carol is going to up her Private Cloud game and bring IaaS self-service to her users leveraging native capabilities in **Prism Central**.
 
 #. Return to the **Home** page of **Prism Element**.
 
@@ -135,7 +181,11 @@ Enabling User Self Service
 Exploring Categories
 ====================
 
-<Categories are used to...>
+A category is a grouping of entities into a key value pair. Typically, new entities (such as VMs, Networks, or Images) are assigned to a category based on some criteria. Policies can then be tied to those entities that are assigned (grouped by) a specific category value.
+
+For example, you might have a Department category that includes values such as Engineering, Finance, and HR. In this case you could create one backup policy that applies to Engineering and HR and a separate (more stringent) backup policy that applies to just Finance. Categories allow you to implement a variety of policies across entity groups, and Prism Central allows you to quickly view any established relationships.
+
+In this exercise you'll create a custom category for Carol to help align access to the proper resources for the Fiesta app team.
 
 #. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Categories**.
 
@@ -177,7 +227,7 @@ Exploring Categories
 Exploring Roles
 ===============
 
-<Roles are used to...>
+By default, Prism Central ships with several Roles that map to common user personas. Roles define what actions a user can perform, and are mapped to categories or other entities.
 
 Carol needs to support two types of users working on the Fiesta team, developers who need to provision VMs for test environments, and operators who monitor multiple environments within the organization, but who have very limited capabilities to modify each environment.
 
@@ -239,6 +289,10 @@ Carol needs to support two types of users working on the Fiesta team, developers
 
 Exploring Projects
 ==================
+
+The previous exercises are sufficient to provide basic VM creation self-service to Carol's users, but much of their work involves applications that consist of multiple VMs. Manual deployment of multiple VMs for a single development, testing, or staging environment is slow and subject to inconsistency and user error.
+
+Nutanix Calm provides
 
 In order for non-infrastructure administrators to access Calm, allowing them to create or manage applications and Blueprints, users or groups must first be assigned to a **Project**, which acts as a logical container for...
 
@@ -508,6 +562,11 @@ Using Entity Browser, Search, and Analysis
 #. To fully appreciate the power of Prism Central of leveraging the Entity Browser in combination with Search & the Analysis page, view the following video:
 
    - <Embedded Atreyee video>
+
+Creating Custom Dashboards
+++++++++++++++++++++++++++
+
+Prism Pro Only
 
 Improved Life Cycle Management
 ++++++++++++++++++++++++++++++
