@@ -152,7 +152,7 @@ Testing Profiles and Folder Redirection
 
    .. code-block:: PowerShell
 
-   New-Item \\BootcampFS\INITIALS-CitrixProfiles\operator02\Win10RS6x64\UPM_Profile\Documents\test.mp3
+      New-Item \\BootcampFS\INITIALS-CitrixProfiles\operator02\Win10RS6x64\UPM_Profile\Documents\test.mp3
 
    Observe that creation of the new file is denied.
 
@@ -160,7 +160,7 @@ Testing Profiles and Folder Redirection
 
 #. Again, log in to Citrix StoreFront as **NTNXLAB\\operator02** and connect to a **Pooled Windows 10 Desktop**. Note that your files and settings persist across sessions, despite the underlying desktop being freshly provisioned every time you log in.
 
-#. Open ``**\\BootcampFS\Initials-CitrixProfiles\operator02**`` in **File Explorer**. Drill down into the directory structure to find the data associated with your user profile.
+#. Open ``\\BootcampFS\Initials-CitrixProfiles\operator02`` in **File Explorer**. Drill down into the directory structure to find the data associated with your user profile.
 
 #. Log in to Citrix StoreFront as **NTNXLAB\\operator01** and connect to a **Pooled Windows 10 Desktop**. Open ``\\BootcampFS\Initials-CitrixProfiles\`` and note that you don't see or have access to **operator02**'s profile directory. Disable **Access Based Enumeration (ABE)** in **Prism > File Server > Share/Export > home > Update** and try again.
 

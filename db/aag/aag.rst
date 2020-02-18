@@ -1,8 +1,8 @@
 .. _aag:
 
--------------------
-Clustered Databases
--------------------
+---------------------------------
+Simplifying Database Availability
+---------------------------------
 
 Introduction
 
