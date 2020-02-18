@@ -390,7 +390,11 @@ Manipulating data using **SQL Server Management Studio** is boring, especially w
 
    - **Name of the Application** - XYZ-Fiesta
    - **db_dialect** - mssql
-   - **db_doma
+   - **db_domain_name** - ntnxlab.local
+   - **db_host_address** - The IP of your *Initials*\ **-MSSQL2** VM
+   - **db_name** - *Initials*\ -fiesta (as configured when you deployed through Era)
+   - **db_password** - nutanix/4u
+   - **db_username** - Administrator
 
    .. figure:: images/34.png
 
