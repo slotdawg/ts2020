@@ -108,7 +108,7 @@ Peer Global File Service requires both a File Server Admin account as well as RE
 
    .. note::
 
-     All participants on a single Nutanix AOS cluster will be sharing the same BootcampFS file server, as well as the **peer** API account.
+     All participants on a single Nutanix AOS cluster will be sharing the same **BootcampFS** file server, as well as the **peer** API account.
 
 #. Click **Close**.
 
@@ -140,7 +140,7 @@ For this lab, you will be accessing a shared PMC deployment via a web interface.
 
 #. If you are using a browser on your *Initials*\ **-Windows-ToolsVM** VM, browse to https://PeerMgmt:8443/hub
 
-#. If you are using a browser on your laptop, log in to **Prism Element** (e.g. 10.XX.YY.37) on your Nutanix cluster to find the IP of the PeerMgmt VM, then browse to https://<IP of PeerMgmt Server>:8443/hub
+#. If you are using a browser on your laptop, log in to **Prism Element** (e.g. 10.XX.YY.37) on your Nutanix cluster to find the IP of the PeerMgmt VM, then browse to https://IP-of-PeerMgmt-Server:8443/hub
 
 #. When prompted to login, use the following credentials:
 
@@ -247,14 +247,14 @@ Files and PeerAgent-Files
 
      You can only select a single share or folder. You will need to create an additional job for each additional share you wish to replicate.
 
-#. Click **Finish**. You have now completed pairing the Peer Agent to Nutanix Files.
+#. Click **Finish**. You have now completed pairing **PeerAgent-Files** to Nutanix Files.
 
    .. figure:: images/24.png
 
 PeerAgent-Win
 ..........
 
-To simplify the lab exercise, a second Peer Agent server running on the same cluster will function as a standard Windows File Server. While Peer can be used to replicate shares between Nutanix Files clusters, one of its key advantages is the ability to work with mixed NAS platforms. This can help drive adoption of Nutanix Files when only a single site has been refreshed with Nutanix Files, but replication is still required to support collaboration or disaster recovery.
+To simplify this lab exercise, a second Peer Agent server running on the same cluster will function as a standard Windows File Server. While Peer can be used to replicate shares between Nutanix Files clusters, one of its key advantages is the ability to work with a mix of NAS platforms. This can help drive adoption of Nutanix Files when only a single site has been refreshed with Nutanix Files, but replication is still required to support collaboration or disaster recovery.
 
 #. Repeat Steps 1-8 in `Files and PeerAgent-Files`_ to add **PeerAgent-Win** to the job, :html:`<strong><font color="red">making the following changes</font></strong>`:
 
@@ -529,7 +529,7 @@ Volume reports give more detailed information about a specific path that has bee
    - **SmallFileAnalysis** – A list of all files discovered below a certain size. This page is useful for estimating the storage impact of small files on storage platforms that have large minimum file sizes on disk.
    - **SIDCache** – A list of all the owners and SID strings that have been discovered.
    
-       .. note::
+    .. note::
 
      History worksheets will only appear after running multiple scans.
 
