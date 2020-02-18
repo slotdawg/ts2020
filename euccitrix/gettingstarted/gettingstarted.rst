@@ -24,7 +24,7 @@ Typically, Hosted POC clusters provide 2x /25 VLANs. In order to provide adequat
 
 #. Click **Network Config**, select *Your Assigned Cluster*, and click **OK**.
 
-#. Click **+ Create Network** and fill out the following fields:
+#. Click **+ Create Network** and fill out the following fields, using the **User** specific network details in :ref:`clusterassignments`:
 
    - **Name** - *Refer to Cluster Assignment Spreadsheet*
    - **VLAN ID** - *Refer to Cluster Assignment Spreadsheet*
@@ -46,8 +46,6 @@ Deploying your Tools VM
 +++++++++++++++++++++++
 
 #. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs**.
-
-   .. figure:: images/1.png
 
 #. Click **Create VM**.
 
