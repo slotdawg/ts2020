@@ -114,7 +114,7 @@ The lab guides will explicitly share any unique credentials, the table below con
     - techX2020!
   * - **Prism Central**
     - admin
-    - techX2019!
+    - techX2020!
   * - **Controller VMs**
     - nutanix
     - techX2020!
