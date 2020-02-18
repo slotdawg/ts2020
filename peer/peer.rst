@@ -25,7 +25,7 @@ Key use cases for combining Peer Software with Nutanix include:
 - **Global File Sharing and Collaboration** - Deliver fast local access to shared project files for distributed teams while ensuring version integrity and high availability.
 - **HA and Load Balancing for User and Application Data** - Enable high availability and load balancing of end user data as well as application data.
 - **Storage Interoperability** - Cross-platform support powers coexistence of Nutanix Files with existing NAS and hybrid cloud storage systems, as well as between file and object formats.
-- **Analysis and Migration** - Analyze existing storage for resource planning, optimization, and minimally disruptive data migrations.
+- **Analysis and Migration** - Analyze existing storage for resource planning, optimization, and migrations. Analysis combined with real-time replication powers minimally disruptive data migrations.
 
 *How does it work?*
 
@@ -134,7 +134,7 @@ Connecting to the Peer Management Center Web Interface
 
 The Peer Management Center (PMC) serves as the centralized management component for Peer Global File Service. It does not store any file data but does facilitate communication between locations, so it should be deployed at a location with the best connectivity. A single deployment of PMC can manage 100 or more Agents/file servers.
 
-For this lab, you will be acccessing a shared PMC deployment via a web interface.
+For this lab, you will be accessing a shared PMC deployment via a web interface.
 
 #. Open a non-Firefox browser (Chrome, Edge, and Safari will all work) on your *Initials*\ **-Windows-ToolsVM** VM or on your laptop.
 
@@ -309,7 +309,7 @@ Peer offers robust functionality for handling the synchronization of NTFS permis
 
    .. figure:: images/27.png
 
-#. Click **Next > Finish** to complete the job setup.
+#. Click **Finish** to complete the job setup.
 
 Starting a Collaboration Job
 ++++++++++++++
@@ -426,7 +426,7 @@ Installing and Running the File System Analyzer
    - **Company** – Enter your company name.
    - **Location** – Enter the physical location of the server that is running the File System Analyzer. In multi-site environments, this could be a city or state name. A data center name also works.
    - **Project** – Enter a project name or business reason for running this analysis. This (and the Company and Location fields) are used solely to organize the final reports.
-   - **Mode** – Select the mode of operation to be used – **General Analysis** or **Migration Preparation**. **Migration Preparation** is useful when preparing for a migration project between storage systems. In addition to collecting standard telemetry on file systems, this mode also offers the option to test performance of both the existing and new storage systems to help gauge potential migration performance and timing. For this lab, we wil use **General Analysis**.
+   - **Mode** – Select the mode of operation to be used – **General Analysis** or **Migration Preparation**. **Migration Preparation** is useful when preparing for a migration project between storage systems. In addition to collecting standard telemetry on file systems, this mode also offers the option to test performance of both the existing and new storage systems to help gauge potential migration performance and timing. For this lab, we will use **General Analysis**.
    - **Name/Phone/Title** – *(Optional)* Enter your name and contact information.
    - **Email** – Enter the email address to which the final reports will be sent. For multiple addresses, enter a comma-separated list.
    - **Upload Region** – Select **US**, **EU**, or **APAC** to tell the File System Analyzer which S3 location to use for uploading the final reports.
@@ -448,7 +448,7 @@ Installing and Running the File System Analyzer
 
    .. figure:: images/fsa4.png
 
-     Cick the **Search** button and enter the name of a file server if you wish to discover the available shares on that file server. You can also right-click within the dialog and select **Check All** to automatically add all discovered shares.
+     Click the **Search** button and enter the name of a file server if you wish to discover the available shares on that file server. You can also right-click within the dialog and select **Check All** to automatically add all discovered shares.
 
    .. figure:: images/fsa4a.png
 
@@ -542,12 +542,14 @@ Working with Nutanix Objects
 
 Peer Global File Service includes the ability to push data from NAS devices into object storage. The same real-time replication technology used to power the collaboration scenario above can also be used to replicate data into Nutanix Objects with optional snapshot capabilities for point-in-time recovery. All objects are replicated in a transparent format that can be immediately used by other apps and services.
 
+This lab section will walk you through the necessary steps to replicate data from Nutanix Files into Nutanix Objects.
+
 Getting Client IP and Credentials for Nutanix Objects
 ............
 
-In order to replicate data into Objects, you need the Client IP of the object store and need to generate access and secrect keys. If you already have this information from a prior lab, you can skip this section and re-use that existing information.
+In order to replicate data into Objects, you need the Client IP of the object store and need to generate access and secret keys. If you already have this information from a prior lab, you can skip this section and re-use that existing information.
 
-#. Log in to **Prism Central** (e.g., 10.XX.YY.39) on your Nutanix cluster, and then navigate to to **Services** > **Objects**.
+#. Log in to **Prism Central** (e.g., 10.XX.YY.39) on your Nutanix cluster, and then navigate to **Services** > **Objects**.
 
 #. In the **Object Stores** section, find the appropriate object store in the table and note the Client Used IPs.
 
@@ -724,7 +726,7 @@ Verifying Replication
 
     This exercise requires the :ref:`windows_tools_vm`.
 
-The easiest way to verify that files have been replicated into Nutanix Objects is to use the CyberDuck tool on your *Initials*\ **-Windows-ToolsVM**
+The easiest way to verify that files have been replicated into Nutanix Objects is to use the Cyberduck tool on your *Initials*\ **-Windows-ToolsVM**
 
 #. Connect to your *Initials*\ **-Windows-ToolsVM** via RDP using the following credentials:
 
@@ -752,7 +754,7 @@ The easiest way to verify that files have been replicated into Nutanix Objects i
 
       .. note::
 
-     Reference the `Getting Client IP and Credentials for Nutanix Objects`_ section above for the appropriate access and secret keys, as well as the Client IP of the object store.
+     See the `Getting Client IP and Credentials for Nutanix Objects`_ section above for the appropriate access and secret keys, as well as the Client IP of the object store.
 
    .. figure:: images/buckets_08.png
 
@@ -791,4 +793,4 @@ Takeaways
 
 - Peer can replicate files from Nutanix Files and other NAS platforms into Nutanix Objects with optional snapshot capabilities for point-in-time recovery. All objects are in a transparent format that can be immediately used by other apps and services.
 
-- Peer tools for analyzing existing file servers to help with resource planning, optimization, and migration.
+- Peer offers tools for analyzing existing file servers to help with resource planning, optimization, and minimally disruptive migrations.
