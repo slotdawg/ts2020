@@ -4,9 +4,9 @@
 Getting Started
 ----------------------
 
-Introduction of EUC-Citrix lab track, user scenario is migrating VDI environment from Horizon View to Citrix/AHV, enabling user directories, profile management, flow, reporting.
+<Introduction of EUC Xi Frame lab track, user scenario is migrating VDI environment from Horizon View to Citrix/AHV, enabling user directories, profile management, flow, reporting.>
 
-If you have not previously completed the **Private Cloud** lab track, follow the quick instructions below to provision your user VLAN and Windows Tools VM that will be used throughout this lab track.
+If you have not previously completed the **Private Cloud** lab track, follow the quick instructions below to provision the user VLANvthat will be used throughout this lab track.
 
 Configuring your User VLAN
 ++++++++++++++++++++++++++
@@ -41,36 +41,3 @@ Typically, Hosted POC clusters provide 2x /25 VLANs. In order to provide adequat
    .. figure:: images/1.png
 
 #. Click **Save**.
-
-Deploying your Tools VM
-+++++++++++++++++++++++
-
-#. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs**.
-
-#. Click **Create VM**.
-
-#. Select your assigned cluster and click **OK**.
-
-#. Fill out the following fields:
-
-   - **Name** - *Initials*-WinToolsVM
-   - **Description** - (Optional) Description for your VM.
-   - **vCPU(s)** - 2
-   - **Number of Cores per vCPU** - 1
-   - **Memory** - 4 GiB
-
-   - Select **+ Add New Disk**
-      - **Type** - DISK
-      - **Operation** - Clone from Image Service
-      - **Image** - ToolsVM.qcow2
-      - Select **Add**
-
-   - Select **Add New NIC**
-      - **VLAN Name** - *Assigned User VLAN*
-      - Select **Add**
-
-#. Click **Save** to create the VM.
-
-#. Select your VM and click **Actions > Power On**.
-
-   Once booted, the VM will automatically complete the Sysprep process, join the **NTNXLAB.local** domain, and log in as the **NTNXLAB\\Administrator** user.

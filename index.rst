@@ -30,7 +30,7 @@
    :name: _dbs
    :hidden:
 
-   db/gettingstarted
+   db/gettingstarted/gettingstarted
    db/mssqldeploy/mssqldeploy
    db/cloning/cloning
    db/aag/aag
@@ -45,6 +45,7 @@
    :name: _eucframe
    :hidden:
 
+   eucframe/gettingstarted/gettingstarted
    move/move
    eucframe/goldimage/goldimage
    eucframe/deploycca/deploycca
@@ -58,6 +59,7 @@
    :name: _euccitrix
    :hidden:
 
+   euccitrix/gettingstarted/gettingstarted
    move/move
    euccitrix/goldimage/goldimage
    euccitrix/pdesktops/pdesktops
