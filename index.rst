@@ -21,8 +21,6 @@
    prismops/prismops_rightsize_lab/prismops_rightsize_lab
    pc/security/security
    pc/files/files
-   .. pc/flow/flow_isolate_environments/flow_isolate_environments
-   .. pc/flow/flow_quarantine_vm/flow_quarantine_vm
 
 .. toctree::
    :maxdepth: 2
@@ -35,9 +33,6 @@
    db/cloning/cloning
    db/aag/aag
    db/oraclepatch/oraclepatch
-   .. db/flow_secure_fiesta/flow_secure_fiesta
-   prismops/prismops_blue_medora_lab/prismops_blue_medora_lab
-   mine/hycu/protecting-applications/protectingapps
 
 .. toctree::
    :maxdepth: 2
