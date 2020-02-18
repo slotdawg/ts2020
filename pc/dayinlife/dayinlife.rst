@@ -4,9 +4,16 @@
 A Day in the Life
 -----------------
 
-Introduction
+In a constant effort to improve our products, members of the Nutanix Product Management team have been working in conjunction with field sales teams to conduct long form interviews and panels with large-scale Nutanix customers to understand how we can ease adoption, tighten workflows, and prioritize the introduction of new functionality. *Basically - why do people love Nutanix, and what can we do to make their experience better.*
 
-**In this lab you will...**
+From these studies, we were able to identify much of what a typical "Day in the Life" of a Nutanix administrator can look like - and have adapted it into the starting point for the Private Cloud lab track. It is easy to get caught up in all of the amazing things Nutanix is working to bring to market, and subsequently lose sight of the core capabilities that have brought Nutanix success:
+
+- The industry's best HCI software - AOS
+- An unmatched consumer-grade management experience in Prism
+
+Our Private Cloud story is built on the strongest *foundation* (sorry, couldn't help it) possible.
+
+**In this lab you will follow a day in the life of Carol O'Kay, a 10 year veteran of administrating vSphere environments on 3-tier architecture, who has recently deployed her first Nutanix cluster. The Nutanix cluster is being used for a mix of production IT workloads, and supporting the engineering efforts for her company's primary application, an inventory management solution called Fiesta, used to support the company's retail storefronts.**
 
 Configuring Storage
 +++++++++++++++++++
@@ -67,9 +74,9 @@ In this brief exercise, you will experience how IT generalists can provision and
 Provisioning a New Network
 ++++++++++++++++++++++++++
 
-AHV leverages Open vSwitch (OVS) for all VM networking. OVS is an open source software switch implemented in the Linux kernel and designed to work in a multiserver virtualization environment. Each AHV server maintains an OVS instance, and all OVS instances combine to form a single logical switch. Each node is typically uplinked to a physical switch port trunked/tagged to multiple VLANs, which will be exposed as virtual networks.
+In this exercise Carol will use Prism to configure a new VM Network for the cluster.
 
-In this exercise you'll use Prism to configure a new VM Network for your cluster.
+AHV leverages Open vSwitch (OVS) for all VM networking. OVS is an open source software switch implemented in the Linux kernel and designed to work in a multiserver virtualization environment. Each AHV server maintains an OVS instance, and all OVS instances combine to form a single logical switch. Each node is typically uplinked to a physical switch port trunked/tagged to multiple VLANs, which will be exposed as virtual networks.
 
 .. note::
 
@@ -290,11 +297,11 @@ Carol needs to support two types of users working on the Fiesta team, developers
 Exploring Projects
 ==================
 
-The previous exercises are sufficient to provide basic VM creation self-service to Carol's users, but much of their work involves applications that consist of multiple VMs. Manual deployment of multiple VMs for a single development, testing, or staging environment is slow and subject to inconsistency and user error.
+The previous exercises are sufficient to provide basic VM creation self-service to Carol's users, but much of their work involves applications that consist of multiple VMs. Manual deployment of multiple VMs for a single development, testing, or staging environment is slow and subject to inconsistency and user error. To provide a better experience for her users, Carol will introduce Nutanix Calm into the environment.
 
-Nutanix Calm provides
+Nutanix Calm allows you to build, provision, and manage your applications across both private (AHV, ESXi) and public cloud (AWS, Azure, GCP) infrastructure.
 
-In order for non-infrastructure administrators to access Calm, allowing them to create or manage applications and Blueprints, users or groups must first be assigned to a **Project**, which acts as a logical container for...
+In order for non-infrastructure administrators to access Calm, allowing them to create or manage applications, users or groups must first be assigned to a **Project**, which acts as a logical container to define user roles, infrastructure resources, and resource quotas. Projects define a set users with a common set of requirements or a common structure and function, such as a team of engineers collaborating on the Fiesta project.
 
 #. In **Prism Central**, select :fa:`bars` **> Services > Calm**.
 
@@ -337,7 +344,11 @@ Note that only **Operator02** was given access to the **Calm** project, rather t
 Staging Blueprints
 ==================
 
-While developers will have the ability to create and publish, Carol wants to provide a common blueprint used by the team.
+A Blueprint is the framework for every application that you model by using Nutanix Calm. Blueprints are templates that describe all the steps that are required to provision, configure, and execute tasks on the services and applications that are created. A Blueprint also defines the lifecycle of an application and its underlying infrastructure, starting from the creation of the application to the actions that are carried out on a application (updating software, scaling out, etc.) until the termination of the application.
+
+You can use Blueprints to model applications of various complexities; from simply provisioning a single virtual machine to provisioning and managing a multi-node, multi-tier application.
+
+While developer users will have the ability to create and publish their own Blueprints, Carol wants to provide a common Fiesta Blueprint used by the team.
 
 #. Download the **Fiesta-Multi** blueprint by clicking :download:`here <Fiesta-Multi.json>`.
 
@@ -395,12 +406,16 @@ While developers will have the ability to create and publish, Carol wants to pro
 
 #. Click **Save** and click **Back** once the Blueprint has completed saving.
 
-Within an hour, Carol has prepared the environment to service <more exposition>.
+   Within minutes, Carol has laid the groundwork to provide virtual infrastructure and application self-service directly to her end users.
 
 Developer Workflow
 ++++++++++++++++++
 
-Meet Dan. Dan works as part of the Fiesta Engineering team and...
+Meet Dan. Dan is a member of the Fiesta Engineering team, is currently going through a divorce, and trying to cut down on dairy. Dan is having a rough time. To make matters worse, he's behind on testing a new feature because previous requests to IT for virtual infrastructure Dan needs to work have each taken several days.
+
+Dan has resorted to deploying VMs outside of the corporate network on his favorite public cloud service, with no security oversight, and putting company IP at risk. Dan has a lot on his plate, so we're not going to fault him for it.
+
+Carol to the rescue - she encourages Dan to follow the exercise below to allow him to easily deploy resources within the Fiesta project through Prism.
 
 #. Log out of the local **admin** account and log back into **Prism Central** with Dan's credentials:
 
@@ -442,7 +457,7 @@ Meet Dan. Dan works as part of the Fiesta Engineering team and...
 
    .. note::
 
-      If you're unfamiliar with Calm Blueprints, explore the following key components of the **Fiesta-Multi** Blueprint:
+      If you're unfamiliar with Calm Blueprints, take a moment to explore the following key components of the **Fiesta-Multi** Blueprint:
 
       - Select either the **NodeReact** or **MySQL** service and review the **VM** configuration in the configuration pane on the right hand of the screen.
 
@@ -497,12 +512,12 @@ Meet Dan. Dan works as part of the Fiesta Engineering team and...
 
    .. figure:: images/41.png
 
-   By leveraging the built-in RBAC capabilities of Prism Central and Calm, Carol has enabled the engineering team...
+   Instead of filing tickets and waiting days, Dan was able to get his test environment up and running before lunch. Instead of drowning his sorrows in Ben & Jerry's tonight, Dan is going to go to the gym, and eat vegetables with his dinner. Go, Dan!
 
 Operator Workflows
 ++++++++++++++++++
 
-Meet Ronald and Elise.
+Meet Ronald and Elise. Ronald works as a Level 3 engineering with the corporate IT helpdesk, and Elise works as a QA intern on the Fiesta team. In the brief exercise below you will explore and contrast their levels of access based on the roles defined and categories assigned by Carol.
 
 #. Log out of the **devuser01** account and log back into **Prism Central** with Ronald's credentials:
 
@@ -528,6 +543,8 @@ Meet Ronald and Elise.
 
 Using Entity Browser, Search, and Analysis
 ++++++++++++++++++++++++++++++++++++++++++
+
+Now that Carol has freed up time to focus on replacing additional legacy infrastructure, it is important for her to understand how a large, diverse environment can all be managed and monitored via Prism Central. In the exercise below you will explore common workflows for working with entities across multiple clusters in a Nutanix environment.
 
 #. Log out of the **operator02** account and log back into **Prism Central** with Carol's AD credentials:
 
@@ -559,30 +576,34 @@ Using Entity Browser, Search, and Analysis
 
    .. figure:: images/46.png
 
-#. To fully appreciate the power of Prism Central of leveraging the Entity Browser in combination with Search & the Analysis page, view the following video:
+#. To fully appreciate the power of Prism Central for searching, sorting, and analyzing entities, view the following brief video:
 
    - <Embedded Atreyee video>
-
-Creating Custom Dashboards
-++++++++++++++++++++++++++
-
-Prism Pro Only
 
 Improved Life Cycle Management
 ++++++++++++++++++++++++++++++
 
-<Thiago's embedded, interative LCM demos for PE & PC>
+While not a daily activity, Carol previously dedicated as much as 40% of her time planning and executing software and firmware updates to legacy infrastructure, leaving little time for innovation. In her Nutanix environments, Carol is leveraging the rules engine and rich automation in Lifecycle Manager (LCM) to take the hassle out of planning and applying her infrastructure software updates.
+
+Nutanix LCM is the new home for all things One Click upgrade. <Need some filler in here about what LCM currently does in PE vs PC and when it will converge>
+
+Unfortunately in a shared cluster environment, you're not able to test LCM directly. To become more familiar with LCM's capabilities and ease of use, click through each of the interactive demos available below.
+
+**5.11 Prism Element LCM Interactive Demo**
+
+.. figure:: https://demo-captures.s3-us-west-1.amazonaws.com/pe-5.11-lcm/story_content/thumbnail.jpg
+   :target: https://demo-captures.s3-us-west-1.amazonaws.com/pe-5.11-lcm/story.html
+   :alt: Prism Element 5.11 LCM Interactive Demo
+
+**5.11 Prism Central LCM Interactive Demo**
+
+.. figure:: https://demo-captures.s3-us-west-1.amazonaws.com/pe-5.11-lcm/story_content/thumbnail.jpg
+   :target: https://demo-captures.s3-us-west-1.amazonaws.com/pe-5.11-lcm/story.html
+   :alt: Prism Central 5.11 LCM Interactive Demo
 
 Next Steps
 ++++++++++
 
-In this lab we've explored who Prism Central can be used to enable critical functionality for multiple personas, including:
+In under 2 hours, we've shown you how Prism delivers a frictionless experience for virtual infrastructure administrators when it comes to deploying storage, networks, and workloads, monitoring the environment, and updating software. You've seen how native Prism Central capabilities, combined with Active Directory, can be used to control access and enable self-service for non-administrator personas. Additionally you enabled rich application automation capabilities for your Private Cloud through Nutanix Calm.
 
-   - Simplified operations for virtual infrastructure owners
-   - Categories
-   - Projects
-   - AD-integrated self-service for application developers and operators
-   - Calm
-   - EB/Search/Analysis
-
-Continue to the following exercise to dive deeper into Prism Central's operational insights and smart datacenter automation capabilities!
+Private Clouds aren't built on IaaS, self-service, and application automation alone, however. In the upcoming labs, you will see how Nutanix has built on its foundation to provide advanced monitoring and operations capabilities through its additional **Prism Pro** features, consolidate storage technologies with **Files**, native microsegmentation with **Flow**, and more!
