@@ -1,4 +1,4 @@
-.. _dbflow_secure_fiesta:
+.. _pcflow_secure_fiesta:
 
 -------------------------------
 Securing Applications with Flow
@@ -10,6 +10,7 @@ Overview
 ++++++++
 
 Flow is an application-centric network security product tightly integrated into Nutanix AHV and Prism Central. Flow provides rich network traffic visualization, automation, and security for VMs running on AHV.
+
 Microsegmentation is a component of Flow that uses simple policy-based management to secure VM networking. Using Prism Central categories (logical groups), you can create a powerful distributed firewall. Combining this with Calm allows automated deployment of applications that are secured as they are created.
 
 In this exercise you will restrict access to the Fiesta application and protect traffic between the application tiers.
@@ -17,7 +18,7 @@ In this exercise you will restrict access to the Fiesta application and protect 
 Securing the Fiesta Application
 +++++++++++++++++++++++
 
-Flow provides multiple System categories out of the box, such as AppType, AppTier, and Environment, that are used to quickly group virtual machines. Security policies are applied using these categories. Start using these pre-existing categories right away, or add your own categories for custom grouping.
+Flow provides multiple System categories out of the box, such as AppType, AppTier, and Environment, that are used to quickly group virtual machines. Security policies are applied using these categories. You can start using these pre-existing categories right away, or add your own categories for custom grouping.
 
 Defining Category Values
 ........................
@@ -44,7 +45,7 @@ Prism Central uses categories as metadata to tag VMs to determine how policies w
 
 #. Specify *Initials*-**Web**  as the value name. This category will be applied to the application's web tier.
 
-#. Click :fa:`plus-circle` and specify *Initials*-**DB**. This category will be applied to the application's MSSQL database tier.
+#. Click :fa:`plus-circle` and specify *Initials*-**DB**. This category will be applied to the application's MySQL database tier.
 
    .. figure:: images/14.png
 
@@ -120,7 +121,7 @@ Create the security policies that will protect the Fiesta application.
 
 #. Click **Save**.
 
-   Calm could also require access to the web VM for workflows including scaling out, scaling in, or upgrades. Calm communicates with these VMs via SSH, using TCP port 22.
+   Calm could also require access to the VMs for workflows including scaling out, scaling in, or upgrades. Calm communicates with these VMs via SSH, using TCP port 22.
 
 #. Under **Inbound**, click **+ Add Source**.
 
@@ -139,15 +140,26 @@ Create the security policies that will protect the Fiesta application.
 
 #. Select the **+** icon that appears to the left of **AppTier:**\ *Initials*-**Web**, specify **TCP** port **22** and click **Save**.
 
-#. Repeat Steps 15 through 18 for **AppTier:**\ *Initials*-**DB** allowing the IP address of the Era server to communicate with the database VM on TCP port **1433**.
+#. Repeat Step 18 for **AppTier:**\ *Initials*-**DB** to allow Calm to communicate with the database VM.
 
    .. figure:: images/24.png
 
-   By default, the security policy allows the application to send all outbound traffic to any destination. This can be restricted further if required, but for this example let's allow all outbound access.
+   By default, the security policy allows the application to send all outbound traffic to any destination. The only outbound communication required for your application is to communicate with your DNS server.
 
-#. Under **Outbound**, select **Allow All** from the drop down menu.
+#. Under **Outbound**, select **Whitelist Only** from the drop down menu, and click **+ Add Destination**.
+
+#. Fill out the following fields:
+
+   - **Add source by:** - Select **Subnet/IP**
+   - Specify *Your Domain Controller IP*\ /32
 
    .. figure:: images/25.png
+
+#. Click **Add**.
+
+#. Select the **+** icon that appears to the right of **AppTier:**\ *Initials*-**Web**, specify **UDP** port **53** and click **Save** to allow DNS traffic. Repeat this for **AppTier:**\ *Initials*-**DB**.
+
+   .. figure:: images/26.png
 
    Each tier of the application communicates with other tiers and the policy must allow this traffic. Some tiers such as web do not require communication within the same tier.
 
@@ -159,10 +171,10 @@ Create the security policies that will protect the Fiesta application.
 
 #. While **AppTier:**\ *Initials*-**Web** is still selected, click the :fa:`plus-circle` icon to the right of **AppTier:**\ *Initials*-**DB** to create a tier to tier rule.
 
-#. Fill out the following fields to allow communication on TCP port **1433** between the web and database tiers:
+#. Fill out the following fields to allow communication on TCP port 3306 between the web and database tiers:
 
    - **Protocol** - TCP
-   - **Ports** - 1433
+   - **Ports** - 3306
 
    .. figure:: images/28.png
 
@@ -179,31 +191,25 @@ You will now apply the previously created categories to the VMs provisioned from
 
 #. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs**.
 
-#. Click **Filters** and enter *Your Initials* in the **NAME** field to display your database VM.
+#. Click **Filters** and select the label for *Initials AHV Fiesta VMs* to display your virtual machines.
 
    .. figure:: images/15.png
 
-#. Using the checkboxes, select the DB VM associated with the application and select **Actions > Manage Categories**.
+#. Using the checkboxes, select the 2 VMs associated with the application (Web and DB) and select **Actions > Manage Categories**.
 
    .. figure:: images/16.png
 
-#. Type **AppType:**\ *Initials*-**Fiesta** in the search bar and click the :fa:`plus-circle` icon to add a second category.
-
-#. Enter **AppType:**\ *Initials*-**DB** and select **Save** to apply the categories to the VM.
+#. Specify **AppType:**\ *Initials*-**Fiesta** in the search bar and click **Save** icon to bulk assign the category to all VMs.
 
    .. figure:: images/16a.png
 
-#. Click **Filters** and enter *Your Initials* in the **Categories** field to display your web VM that is part of the **CalmApplication:\ *XYZ_Fiesta*** category.
-
-   .. figure:: images/16b.png
-
-#. Select your *nodereact* VM, select **Actions > Manage Categories**, specify the **AppTier:**\ *Initials*-**Web** category and click the :fa:`plus-circle` icon to add a second category.
-
-#. Enter **AppType:**\ *Initials*-**Fiesta** and click **Save**.
+#. Select ONLY the *nodereact* VM, select **Actions > Manage Categories**, specify the **AppTier:**\ *Initials*-**Web** category and click **Save**.
 
    .. figure:: images/17.png
 
-#. Finally, Repeat step 7 to assign **Environment:Dev** to your Windows Tools VM.
+#. Repeat Step 5 to assign **AppTier:**\ *Initials*-**DB** to your MySQL VM.
+
+#. Finally, Repeat step 5 to assign **Environment:Dev** to your Windows Tools VM.
 
 Monitoring and Applying a Security Policy
 +++++++++++++++++++++++++++++++++++++++++
@@ -213,7 +219,7 @@ Before applying the Flow policy, you will ensure the Fiesta application is worki
 Testing the Application
 .......................
 
-#. From **Prism Central > Virtual Infrastructure > VMs**, note the IP address of your **-nodereact...** and **-MSSQL-...** VMs.
+#. From **Prism Central > Virtual Infrastructure > VMs**, note the IP address of your **-nodereact...** and **-MYSQL-...** VMs.
 
 #. Launch the console for your *Initials*\ **-WinToolsVM** VM.
 
@@ -223,7 +229,7 @@ Testing the Application
 
    .. figure:: images/30.png
 
-#. Open **Command Prompt** and run ``ping -t MSSQL-VM-IP`` to verify connectivity between the client and database. Leave the ping running.
+#. Open **Command Prompt** and run ``ping -t MYSQL-VM-IP`` to verify connectivity between the client and database. Leave the ping running.
 
 #. Open a second **Command Prompt** and run ``ping -t node-VM-IP`` to verify connectivity between the client and web server. Leave the ping running.
 

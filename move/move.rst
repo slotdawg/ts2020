@@ -34,7 +34,7 @@ In this exercise, you will deploy Move from a disk image that has already been p
    - Select **+ Add New Disk**
        - **Type** - DISK
        - **Operation** - Clone from Image Service
-       - **Image** - move3.4.0.qcow2
+       - **Image** - move3.4.1.qcow2
        - Select **Add**
 
    - Select **Add New NIC**
@@ -160,9 +160,13 @@ Migrating VMs
 
    .. figure:: images/14.png
 
+   .. note::
+
+      You may need to click **Refresh** for your VM to appear.
+
 #. Click **Next**.
 
-#. Map the **Source Network** to a **Target Network** (e.g. **Secondary** or your *User Assigned VLAN*) and click **Next**.
+#. Map the **Source Network** to a **Target Network** (e.g. your *User Assigned VLAN*) and click **Next**.
 
    By default, **Automatic** Preparation Mode is selected. VM Preparation refers to installing the **virtio** drivers within the source VM prior to migration beginning. The **virtio** drivers provide a high performance I/O interface for disk and network devices on KVM, and allow VMs that were originally deployed on an alternate hypervisor to boot on AHV.
 
@@ -211,6 +215,10 @@ Migrating VMs
 
 #. Once the final migration is completed, the migrated VM is powered on on the target AHV cluster. Click **View in Prism** and verify the VM is running and has obtained an IP address on the assigned target network.
 
+   .. note::
+
+      If your VM does not receive an IP address, remove the virtual NIC and add a new virtual NIC with your *User VLAN* VM Network.
+
 #. To prepare for your Citrix or Frame gold image creation, launch the VM console and uninstall the **VMware Horizon Agent** and **VMware Tools**, then reboot your VM.
 
    .. figure:: images/19.png
@@ -219,7 +227,7 @@ Migrating VMs
 
    .. figure:: images/20.png
 
-Takeaways
+Next Steps
 +++++++++
 
 What are the key things you should know about **Nutanix Move**?

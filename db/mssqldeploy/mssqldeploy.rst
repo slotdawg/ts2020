@@ -70,6 +70,10 @@ Manual VM Deployment
    - **Enter the Nutanix password for "admin"** - techX2020!
    - **Enter the Nutanix container name** - Default
 
+   .. note::
+
+      All fields in the above script are case sensitive.
+
    <Explain what script does>
 
 #. Once VM has rebooted, verify the new disk configuration in **Prism** and **File Explorer**
@@ -89,7 +93,7 @@ Manual VM Deployment
 Exploring Era Resources
 +++++++++++++++++++++++
 
-#. In **Prism Central > VMs > List**, identify the IP address assigned to the **EraServer-\*** VM using the **IP Addresses** column.
+#. In **Prism Central > VMs > List**, identify the IP address assigned to the **Era** VM using the **IP Addresses** column.
 
 #. Open \https://*ERA-VM-IP:8443*/ in a new browser tab.
 
@@ -166,13 +170,13 @@ Background on what's required to register a DB, what Era can do with it once reg
 
     You can click **API Equivalent** for many operations in Era to enter an interactive wizard providing JSON payload based data you've input or selected within the UI, and examples of the API call in multiple languages (cURL, Python, Golang, Javascript, and Powershell).
 
-    .. figure:: images/13.png
+    .. figure:: images/17.png
 
 #. Click **Register** to begin ingesting the Database Server into Era.
 
 #. Select **Operations** from the dropdown menu to monitor the registration. This process should take approximately 5 minutes.
 
-   .. figure:: images/4.png
+   .. figure:: images/13.png
 
 <Talk about ability to directly register an existing DB and not just a DB server>
 
@@ -183,7 +187,7 @@ Creating A Software Profile
 
 #. Select **Profiles** from the dropdown menu and **Software** from the lefthand menu.
 
-   .. figure:: images/15.png
+   .. figure:: images/14.png
 
 #. Click **+ Create** and fill out the following fields:
 
@@ -192,13 +196,13 @@ Creating A Software Profile
    - **Description** - (Optional)
    - **Database Server** - Select your registered *Initials*\ -MSSQL VM
 
-   .. figure:: images/16.png
+   .. figure:: images/15.png
 
 #. Click **Create**.
 
 #. Select **Operations** from the dropdown menu to monitor the registration. This process should take approximately 5 minutes.
 
-   .. figure:: images/17.png
+   .. figure:: images/16.png
 
 #. Once the profile creation completes successfully, power off your *Initials*\ **-MSSQL** VM in Prism.
 
@@ -222,6 +226,7 @@ Background on Era capabilities to provision databases to existing servers or cre
    - **Software Profile** - *Initials*\ _MSSQL_2016
    - **Compute Profile** - CUSTOM_EXTRA_SMALL
    - **Network Profile** - *User VLAN*\ _MSSQL_NETWORK
+   - **Database Time Zone** - Eastern Standard Time
    - Select **Join Domain**
    - **Windows Domain Profile** - NTNXLAB
    - **Windows License Key** - (Leave Blank)
@@ -240,7 +245,7 @@ Background on Era capabilities to provision databases to existing servers or cre
 
       Database Parameter profiles define...
 
-   .. figure:: images/.png
+   .. figure:: images/19.png
 
 #. Click **Next**, and fill out the following fields to configure the Database:
 
@@ -317,9 +322,9 @@ Migrating Fiesta App Data
 
    .. code-block:: sql
 
-   SELECT * FROM dbo.products
-   SELECT * FROM dbo.stores
-   SELECT * FROM dbo.InventoryRecords
+      SELECT * FROM dbo.products
+      SELECT * FROM dbo.stores
+      SELECT * FROM dbo.InventoryRecords
 
    .. figure:: images/29.png
 
@@ -328,7 +333,7 @@ Provision Fiesta Web Tier
 
 Manipulating data using **SQL Server Management Studio** is boring, especially when THE *Sharon Santana* went through all of the trouble of building a neat front end for your business critical app. In this section you'll deploy the web tier of the application and connect it to your production database.
 
-#. Download the **Fiesta** blueprint used to provision only the web tier by clicking :download:`here <FiestaNoDB.json>`.
+#. :download:`Download the Fiesta Blueprint <FiestaNoDB.json>` used to provision only the web tier.
 
 #. From **Prism Central > Calm**, select **Blueprints** from the lefthand menu and click **Upload Blueprint**.
 
@@ -386,7 +391,11 @@ Manipulating data using **SQL Server Management Studio** is boring, especially w
 
    - **Name of the Application** - XYZ-Fiesta
    - **db_dialect** - mssql
-   - **db_doma
+   - **db_domain_name** - ntnxlab.local
+   - **db_host_address** - The IP of your *Initials*\ **-MSSQL2** VM
+   - **db_name** - *Initials*\ -fiesta (as configured when you deployed through Era)
+   - **db_password** - nutanix/4u
+   - **db_username** - Administrator
 
    .. figure:: images/34.png
 
