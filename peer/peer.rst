@@ -147,7 +147,7 @@ For this lab, you will be accessing a shared PMC deployment via a web interface.
    - **Username** - admin
    - **Password** - nutanix/4u
 
-#. Once connected, confirm that **PeerAgent-Files** and **PeerAgent-Win** are both appear in green in the **Agents** view in the bottom left of the PMC web interface.
+#. Once connected, confirm that **PeerAgent-Files** and **PeerAgent-Win** both appear in green in the **Agents** view in the bottom left of the PMC web interface.
 
    .. figure:: images/pmc.png
 
@@ -229,7 +229,7 @@ Files and PeerAgent-Files
 
    .. note::
 
-     Once you enter these credentials, they are reusable when creating new jobs that use this particular Agent.  When you create your next job, select **Existing Credentials** on this page to display a list of previously configured credentials.
+     Once you enter these credentials, they are reusable when creating new jobs that use this particular Agent. When you create your next job, select **Existing Credentials** on this page to display a list of previously configured credentials.
 
 #. Click **Next**.
 
@@ -602,7 +602,7 @@ In this section, we will focus on creating a **Cloud Backup and Replication** jo
 
    .. figure:: images/cloud4.png
 
-#. On the **Storage Information** page, you will see one of two pages. If another participant sharing your Files cluster has already done the Peer lab, you will be able to select their **Existing Credentials** as shown here.
+#. On the **Storage Information** page, you will see one of two pages. If another participant sharing your Files cluster has already done the Peer lab, you can select their **Existing Credentials** as shown here.
 
    .. figure:: images/cloud5.png
 
@@ -630,7 +630,7 @@ In this section, we will focus on creating a **Cloud Backup and Replication** jo
 
    .. note::
 
-     Once you enter these credentials, they will be reusable when creating new jobs that use this particular Agent.  When you create your next job, select **Existing Credentials** on this page to display a list of previously configured credentials.
+     Once you enter these credentials, they are reusable when creating new jobs that use this particular Agent. When you create your next job, select **Existing Credentials** on this page to display a list of previously configured credentials.
 
 #. Click **Next**.
 
@@ -656,19 +656,19 @@ In this section, we will focus on creating a **Cloud Backup and Replication** jo
 
 #. On the **Nutanix Objects Credentials** page, fill out the following fields:
    
-   - Description – Name your destination
+   - **Description** – Name your destination
 
      *This is a short name for the Objects credential configuration.*
 
-   - Access Key 
+   - **Access Key**
 
      *The Access Key associated with the Objects account.*
 
-   - Secret Key
+   - **Secret Key**
 
      *The Secret Key associated with the Objects account.*
 
-   - Service Point
+   - **Service Point**
 
      *The client access IP address or FDQN name of the object store.*
 
@@ -676,7 +676,7 @@ In this section, we will focus on creating a **Cloud Backup and Replication** jo
 
       .. note::
 
-     Reference the `Getting Client IP and Credentials for Nutanix Objects`_ section above for the appropriate access and secret keys, as well as the Client IP of the object store.
+     Refer to the `Getting Client IP and Credentials for Nutanix Objects`_ section above for the appropriate access and secret keys, as well as the Client IP of the object store.
 
 #. Click **Validate** to confirm Objects can be accessed using the provided configuration.
 
@@ -774,7 +774,7 @@ Integrating with Microsoft DFS Namespace
 
 Peer Global File Service includes the ability to create and manage Microsoft DFS Namespaces (DFS-N). When this DFS-N integration is combined with its real-time replication and file locking engine, PeerGFS powers a true global namespace that spans locations and storage devices.
 
-As part of its DFS namespace management capabilities, PeerGFS also automatically redirects users away from a failed file server. When that failed server comes back online, PeerGFS brings this file server back in-sync, and then re-enables user access to it. *This is an essential Disaster Recovery feature for any deployment looking to leverage Nutanix Files for user profile & user data shares for VDI environments.*
+As part of its DFS namespace management capabilities, PeerGFS also automatically redirects users away from a failed file server. When that failed server comes back online, PeerGFS brings this file server back in-sync, and then re-enables user access to it. *This is an essential Disaster Recovery feature for any deployment looking to leverage Nutanix Files for user profile and user data shares for VDI environments.*
 
 The following screenshot shows the PMC interface with a DFS Namespace under management.
 
