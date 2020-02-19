@@ -66,6 +66,7 @@
    euccitrix/updatecatalog/updatecatalog
    euccitrix/files/files
    prismops/prismops_rightsize_euc_lab/prismops_rightsize_euc_lab
+   euccitrix/flow_quarantine_vm/flow_quarantine_vm
 
 .. toctree::
    :maxdepth: 2
