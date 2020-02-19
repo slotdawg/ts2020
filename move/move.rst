@@ -11,7 +11,7 @@ Introduction
 Deploying Move
 ++++++++++++++++
 
-Move is a .qcow2 virtual appliance, similar to other Nutanix tools. It is distributed as a .zip package and can be downloaded from the `Nutanix Support Portal <https://portal.nutanix.com/#/page/xtract>`_. The .zip package includes the .qcow2 disk image, as well as command line tools for Windows, macOS, and Linux that can be used to script the deployment and IP assignment of the Move VM.
+Move is a .qcow2 virtual appliance, similar to other Nutanix tools. It is distributed as a .zip package and can be downloaded from the `Nutanix Support Portal <https://portal.nutanix.com/#/page/NutanixMove>`_. The .zip package includes the .qcow2 disk image, as well as command line tools for Windows, macOS, and Linux that can be used to script the deployment and IP assignment of the Move VM.
 
 In this exercise, you will deploy Move from a disk image that has already been populated on your Nutanix cluster. **It is not necessary to download the Move package from the Support Portal.**
 
@@ -34,7 +34,7 @@ In this exercise, you will deploy Move from a disk image that has already been p
    - Select **+ Add New Disk**
        - **Type** - DISK
        - **Operation** - Clone from Image Service
-       - **Image** - move3.4.1.qcow2
+       - **Image** - move-3.4.1.qcow2
        - Select **Add**
 
    - Select **Add New NIC**
@@ -49,7 +49,7 @@ In this exercise, you will deploy Move from a disk image that has already been p
 
    .. note::
 
-     By default, the Move appliance will obtain an IP address via DHCP. If a static IP address is required, it can be configured via the local Move VM console by following the instructions `here <https://portal.nutanix.com/#/page/docs/details?targetId=Xtract-for-VMs-v20:v20-xtract-assign-ip-addresses-t.html#ntask_vlz_f1t_f1b>`_.
+     By default, the Move appliance will obtain an IP address via DHCP. If a static IP address is required, it can be configured via the local Move VM console by following the instructions `here <https://portal.nutanix.com/#/page/docs/details?targetId=Nutanix-Move-v34:v34-assign-ip-addresses-t.html>`_.
 
 #. Open \https://*Move-VM-IP*/ in a new browser tab.
 
@@ -193,7 +193,7 @@ Migrating VMs
 
    .. figure:: images/16.png
 
-   An initial VM will be taken of the VM, at which point data based on that snapshot is transferred from the source and to the target cluster. As the VM can change (new data written, new applications installed, etc.) during data seeding, subsequent snapshots will be taken to continuously copy deltas to the target cluster.
+   An initial snapshot will be taken of the VM, at which point data based on that snapshot is transferred from the source and to the target cluster. As the VM can change (new data written, new applications installed, etc.) during data seeding, subsequent snapshots will be taken to continuously copy deltas to the target cluster.
 
    The initial **Seeding Data** process will take ~15 minutes to complete for the VM in this exercise. Time to seed in other environments will be dependent on the amount of source data and bandwidth.
 

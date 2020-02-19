@@ -93,7 +93,7 @@ Manual VM Deployment
 Exploring Era Resources
 +++++++++++++++++++++++
 
-#. In **Prism Central > VMs > List**, identify the IP address assigned to the **Era** VM using the **IP Addresses** column.
+#. In **Prism Central > VMs > List**, identify the IP address assigned to the **EraServer-\*** VM using the **IP Addresses** column.
 
 #. Open \https://*ERA-VM-IP:8443*/ in a new browser tab.
 
