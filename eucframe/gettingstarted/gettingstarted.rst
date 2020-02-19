@@ -37,6 +37,7 @@ Typically, Hosted POC clusters provide 2x /25 VLANs. In order to provide adequat
    - Select **+ Create Pool**
    - **Start Address** - *Refer to Cluster Assignment Spreadsheet*
    - **End Address** - *Refer to Cluster Assignment Spreadsheet*
+   - Click **Submit**
 
    .. figure:: images/1.png
 

@@ -1,19 +1,6 @@
-.. title:: Nutanix .Next Prism Pro HOL
-
-
-.. toctree::
-  :maxdepth: 2
-  :caption: Appendix
-  :name: _appendix
-  :hidden:
-
-  tools_vms/linux_tools_vm
-
-.. _xplay:
-
-------------------------
-Prism Pro MSSQL with Blue Medora
-------------------------
+-------------------------------
+Monitoring MSSQL with Prism Pro
+-------------------------------
 
 .. figure:: images/operationstriangle.png
 
@@ -43,7 +30,7 @@ Please be sure to complete the `Deploying MS SQL` lab as you will need to use th
    .. figure:: images/init3.png
 
 Monitoring MSSQL with Blue Medora
-+++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++
 
 Prism Pro has partnered with Blue Medora to collect metrics and data that Blue Medora monitors and expose them in the Prism Central console. This feature will be having an Early Access phase in 5.17 and is planned to go GA in 5.18. Using these additional metrics, Prism Pro can give more insights into Database workloads such as MSSQL. Let's take a look.
 
