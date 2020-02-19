@@ -1,8 +1,8 @@
-.. _flow_secure_fiesta:
+.. _dbflow_secure_fiesta:
 
----------------------
-Flow: Securing Fiesta
----------------------
+-------------------------------
+Securing Applications with Flow
+-------------------------------
 
 *The estimated time to complete this lab is 30 minutes.*
 
@@ -187,7 +187,7 @@ You will now apply the previously created categories to the VMs provisioned from
 
    .. figure:: images/16.png
 
-#. Type **AppType:**\ *Initials*-**Fiesta** in the search bar and click the :fa:`plus-circle` icon to add a second category. 
+#. Type **AppType:**\ *Initials*-**Fiesta** in the search bar and click the :fa:`plus-circle` icon to add a second category.
 
 #. Enter **AppType:**\ *Initials*-**DB** and select **Save** to apply the categories to the VM.
 

@@ -1,8 +1,8 @@
 .. title:: Files
 
----------------------
-Storage Consolidation
----------------------
+--------------------------------
+Consolidating Storage with Files
+--------------------------------
 
 *The estimated time to complete this lab is 45 minutes.*
 
@@ -524,7 +524,7 @@ Because the default mapping is to deny access the Permission denied error is exp
        Documents\ -\ Copy  Graphics\ -\ Copy  Pictures\ -\ Copy  Presentations\ -\ Copy  Recordings\ -\ Copy  Technical\ PDFs\ -\ Copy  XYZ-MyFolder
        [root@CentOS ~]#
 
-#. From your SSH session, create a text file and then validate you can access the file from your Windows client. 
+#. From your SSH session, create a text file and then validate you can access the file from your Windows client.
 
 Takeaways
 +++++++++

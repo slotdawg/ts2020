@@ -1,8 +1,8 @@
-.. _flow_secure_fiesta:
+.. _pcflow_secure_fiesta:
 
----------------------
-Flow: Securing Fiesta
----------------------
+-------------------------------
+Securing Applications with Flow
+-------------------------------
 
 *The estimated time to complete this lab is 30 minutes.*
 
@@ -10,6 +10,7 @@ Overview
 ++++++++
 
 Flow is an application-centric network security product tightly integrated into Nutanix AHV and Prism Central. Flow provides rich network traffic visualization, automation, and security for VMs running on AHV.
+
 Microsegmentation is a component of Flow that uses simple policy-based management to secure VM networking. Using Prism Central categories (logical groups), you can create a powerful distributed firewall. Combining this with Calm allows automated deployment of applications that are secured as they are created.
 
 In this exercise you will restrict access to the Fiesta application and protect traffic between the application tiers.
@@ -17,7 +18,7 @@ In this exercise you will restrict access to the Fiesta application and protect 
 Securing the Fiesta Application
 +++++++++++++++++++++++
 
-Flow provides multiple System categories out of the box, such as AppType, AppTier, and Environment, that are used to quickly group virtual machines. Security policies are applied using these categories. Start using these pre-existing categories right away, or add your own categories for custom grouping.
+Flow provides multiple System categories out of the box, such as AppType, AppTier, and Environment, that are used to quickly group virtual machines. Security policies are applied using these categories. You can start using these pre-existing categories right away, or add your own categories for custom grouping.
 
 Defining Category Values
 ........................

@@ -1,8 +1,8 @@
-.. _flow_isolate_fiesta:
+.. _dbflow_isolate_fiesta:
 
---------------------------
-Flow: Isolate Database Environments
---------------------------
+-----------------------------------------
+Isolating Database Environments with Flow
+-----------------------------------------
 
 *The estimated time to complete this lab is 30 minutes.*
 

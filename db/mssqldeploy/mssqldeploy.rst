@@ -93,7 +93,7 @@ Manual VM Deployment
 Exploring Era Resources
 +++++++++++++++++++++++
 
-#. In **Prism Central > VMs > List**, identify the IP address assigned to the **EraServer-\*** VM using the **IP Addresses** column.
+#. In **Prism Central > VMs > List**, identify the IP address assigned to the **Era** VM using the **IP Addresses** column.
 
 #. Open \https://*ERA-VM-IP:8443*/ in a new browser tab.
 
@@ -170,13 +170,13 @@ Background on what's required to register a DB, what Era can do with it once reg
 
     You can click **API Equivalent** for many operations in Era to enter an interactive wizard providing JSON payload based data you've input or selected within the UI, and examples of the API call in multiple languages (cURL, Python, Golang, Javascript, and Powershell).
 
-    .. figure:: images/13.png
+    .. figure:: images/17.png
 
 #. Click **Register** to begin ingesting the Database Server into Era.
 
 #. Select **Operations** from the dropdown menu to monitor the registration. This process should take approximately 5 minutes.
 
-   .. figure:: images/4.png
+   .. figure:: images/13.png
 
 <Talk about ability to directly register an existing DB and not just a DB server>
 
@@ -187,7 +187,7 @@ Creating A Software Profile
 
 #. Select **Profiles** from the dropdown menu and **Software** from the lefthand menu.
 
-   .. figure:: images/15.png
+   .. figure:: images/14.png
 
 #. Click **+ Create** and fill out the following fields:
 
@@ -196,13 +196,13 @@ Creating A Software Profile
    - **Description** - (Optional)
    - **Database Server** - Select your registered *Initials*\ -MSSQL VM
 
-   .. figure:: images/16.png
+   .. figure:: images/15.png
 
 #. Click **Create**.
 
 #. Select **Operations** from the dropdown menu to monitor the registration. This process should take approximately 5 minutes.
 
-   .. figure:: images/17.png
+   .. figure:: images/16.png
 
 #. Once the profile creation completes successfully, power off your *Initials*\ **-MSSQL** VM in Prism.
 
@@ -226,6 +226,7 @@ Background on Era capabilities to provision databases to existing servers or cre
    - **Software Profile** - *Initials*\ _MSSQL_2016
    - **Compute Profile** - CUSTOM_EXTRA_SMALL
    - **Network Profile** - *User VLAN*\ _MSSQL_NETWORK
+   - **Database Time Zone** - Eastern Standard Time
    - Select **Join Domain**
    - **Windows Domain Profile** - NTNXLAB
    - **Windows License Key** - (Leave Blank)
