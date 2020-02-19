@@ -22,6 +22,7 @@
    pc/security/security
    pc/files/files
    pc/flow_secure_fiesta/flow_secure_fiesta
+   pc/cleanup/cleanup
 
 .. toctree::
    :maxdepth: 2
@@ -37,6 +38,7 @@
    db/flow_secure_fiesta/flow_secure_fiesta
    db/flow_isolate_fiesta/flow_isolate_fiesta
    prismops/prismops_blue_medora_lab/prismops_blue_medora_lab
+   db/cleanup/cleanup
 
 .. toctree::
    :maxdepth: 2
@@ -51,6 +53,7 @@
    eucframe/manage/manage
    eucframe/framefiles/framefiles
    prismops/prismops_rightsize_euc_lab/prismops_rightsize_euc_lab
+   eucframe/cleanup/cleanup
 
 .. toctree::
    :maxdepth: 2
@@ -67,6 +70,8 @@
    euccitrix/files/files
    prismops/prismops_rightsize_euc_lab/prismops_rightsize_euc_lab
    euccitrix/flow_quarantine_vm/flow_quarantine_vm
+   euccitrix/flow_secure_desktops/flow_secure_desktops
+   euccitrix/cleanup/cleanup
 
 .. toctree::
    :maxdepth: 2

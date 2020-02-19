@@ -1,23 +1,13 @@
-.. _flow_quarantine_vm:
-
--------------------
-Flow: Quarantine VM
--------------------
+.. _euccitrixflow_quarantine_vm:
 
 *The estimated time to complete this lab is 10 minutes.*
 
-Overview
-++++++++
+Quarantine places a VM in a restricted policy, giving the admin an option to either block all network traffic or allow a limited subset of traffic. Strict quarantine blocks a VM from all communication, while forensic quarantine allows a pre-defined list of inbound and outbound traffic. This capability can be very helpful in a virtual desktop environment when a VM has been impacted by malware.
 
-Quarantine places a VM in a restricted policy, giving the admin an option to either block all network traffic or allow a limited subset of traffic. Strict quarantine blocks a VM from all communication, while forensic quarantine allows a pre-defined list of inbound and outbound traffic. 
-
-Quarantining a VM
-+++++++++++++++++
-
-In this task we will place a desktop VM into quarantine and observe the behavior of the VM. We will also inspect the configurable options inside the quarantine policy to simulate troubleshooting an infected VM.
+**In this lab we will place a desktop VM into quarantine and observe the behavior of the VM. We will also inspect the configurable options inside the quarantine policy to simulate troubleshooting an infected VM.**
 
 Categorizing the SecOps VM
-..........................
+++++++++++++++++++++++++++
 
 #. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Categories**.
 
@@ -44,7 +34,7 @@ Categorizing the SecOps VM
    .. figure:: images/15.png
 
 Accessing and Quarantining the Desktops
-.......................................
++++++++++++++++++++++++++++++++++++++++
 
 #. From your *Initials*\ -**WinToolsVM**, open http://ddc.ntnxlab.local/Citrix/NTNXLABWeb in a browser to access the Citrix StoreFront server.
 
@@ -57,7 +47,7 @@ Accessing and Quarantining the Desktops
 
 #. In addition, Open a **Command Prompt** on your *Initials*\ **WinToolsVM** and run ``ping -t XYZ-PD-1-VM-IP`` to verify connectivity between the windows tools client and the persistent desktop.
 
-#. In **Prism Central > Virtual Infrastructure > VMs**, select your *Initials*\ **-PD-1** and *Initials*\ **-PD-2**VMs .
+#. In **Prism Central > Virtual Infrastructure > VMs**, select your *Initials*\ **-PD-1** and *Initials*\ **-PD-2** VMs .
 
 #. Click **Actions > Quarantine VMs**.
 
@@ -68,7 +58,7 @@ Accessing and Quarantining the Desktops
    What happens with the continuous ping between the Windows Tools VM and the desktop?
 
 Creating a Custom Quarantine Policy
-............................
++++++++++++++++++++++++++++++++++++
 
 #. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Policies > Security Policies > Quarantine** to view all Quarantined VMs.
 
