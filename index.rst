@@ -21,6 +21,7 @@
    prismops/prismops_rightsize_lab/prismops_rightsize_lab
    pc/security/security
    pc/files/files
+   pc/flow_secure_fiesta/flow_secure_fiesta
 
 .. toctree::
    :maxdepth: 2
@@ -33,6 +34,8 @@
    db/cloning/cloning
    db/aag/aag
    db/oraclepatch/oraclepatch
+   db/flow_secure_fiesta/flow_secure_fiesta
+   db/flow_isolate_fiesta/flow_isolate_fiesta
 
 .. toctree::
    :maxdepth: 2
@@ -62,6 +65,7 @@
    euccitrix/updatecatalog/updatecatalog
    euccitrix/files/files
    prismops/prismops_rightsize_euc_lab/prismops_rightsize_euc_lab
+   euccitrix/flow_quarantine_vm/flow_quarantine_vm
 
 .. toctree::
    :maxdepth: 2
