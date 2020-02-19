@@ -31,6 +31,10 @@ Creating a Frame Account
 
    .. figure:: images/0c.png
 
+   .. note::
+
+      If you are prompted with an authorization error, inform a proctor so that your account can be fixed.
+
    <Do we want to include info in here about customers/organizations/accounts?>
 
 Adding Prism Service Account

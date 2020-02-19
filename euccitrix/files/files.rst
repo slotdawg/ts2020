@@ -1,8 +1,8 @@
 .. _citrixfiles:
 
------------------
-Integrating Files
------------------
+-------------------------------
+User Personalization with Files
+-------------------------------
 
 <Info about Files, UPM, folder redirection>
 
@@ -135,16 +135,16 @@ Configuring Citrix User Profile Management
 
 #. Click **Next**.
 
-#. Provide a friendly **Policy name** (e.g. **UPM**) and select **Enable policy**. Review your configuration and click **Finish**.
+#. Provide a friendly **Policy name** (e.g. *Initials*\ **-UPM**) and select **Enable policy**. Review your configuration and click **Finish**.
 
    .. figure:: images/12.png
 
 Testing Profiles and Folder Redirection
 +++++++++++++++++++++++++++++++++++++++
 
-#. Log in to Citrix StoreFront as **NTNXLAB\\operator02** and connect to a **Pooled Windows 10 Desktop**.
+#. From your *Initials*\ **ToolsVM**, open http://ddc.ntnxlab.local/Citrix/NTNXLABWeb, login as **NTNXLAB\\operator02** and connect to a **Pooled Windows 10 Desktop**.
 
-#. Make some simple changes such as adding files to your Documents folder and changing the desktop background. Note the hostname of the desktop to which you are connected.
+#. Within your virtual desktop, make some simple changes such as adding files to your Documents folder and changing the desktop background. Note the hostname of the desktop to which you are connected.
 
    .. figure:: images/afsprofiles15.png
 
@@ -162,18 +162,96 @@ Testing Profiles and Folder Redirection
 
 #. Open ``\\BootcampFS\Initials-CitrixProfiles\operator02`` in **File Explorer**. Drill down into the directory structure to find the data associated with your user profile.
 
+#. Sign out of your virtual desktop. **Do not simply disconnect or close the Citrix Workspace App**.
+
 #. Log in to Citrix StoreFront as **NTNXLAB\\operator01** and connect to a **Pooled Windows 10 Desktop**. Open ``\\BootcampFS\Initials-CitrixProfiles\`` and note that you don't see or have access to **operator02**'s profile directory. Disable **Access Based Enumeration (ABE)** in **Prism > File Server > Share/Export > home > Update** and try again.
 
 #. (Optional) Create and save a text file in the **Documents** folder of your non-persistent virtual desktop. After ~1 hour, return to your virtual desktop, modify and save the document you previously created. Right-click the file and select **Restore previous versions**. Select an available previous version of the document and click **Open** to access the file.
 
 .. figure:: images/afsprofiles16.png
 
+(Optional) Using Files with Citrix User Personalization Layers
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+#. Return to **Prism Element > File Server > Share/Export**, click **+ Share/Export**.
+
+#. Under **Basic**, fill out the following fields and click **Next**:
+
+   - **Name** - *Initials*\ **-CitrixUPL**
+   - **Description** - Citrix User Profile Layer storage
+   - **File Server** - BootcampFS
+   - **Select Protocol** - SMB
+
+#. Click **Next > Create**.
+
+#. From your *Initials*\ **-WinTools** VM, open ``\\BootcampFS.ntnxlab.local\`` in File Explorer.
+
+#. Open your *Initials*\ **-CitrixUPL** share and create a new directory named **Users**.
+
+   .. figure:: images/15.png
+
+   .. note::
+
+      The folder name is hard coded in Citrix UPL and must be named **Users**.
+
+#. Return to **Citrix Studio > Policies**. Right-click your **UPM** policy and select **Disable**.
+
+   You will be applying your UPL policy to the same group of desktops.
+
+#. Click **Create Policy**.
+
+#. Specify **User Layer** in the **Search** field to filter for the required settings.
+
+   .. figure:: images/16.png
+
+#. Select **User Layer Repository Path** and specify the path to your *Initials*\ **-CitrixUPL** share. Do not include the **Users** folder in the path, this will be appended automatically. Click **OK**
+
+   .. figure:: images/17.png
+
+#. Select **User Layer Size in GB** and specify a value of **20** GB. Click **OK**.
+
+   .. note:: The default value of 0 will configure 10GB UPL disks.
+
+#. Click **Next**.
+
+#. Click **Assign** to the right of **Delivery Group**.
+
+#. Select your Non-Persistent Delivery Group from the **Delivery Group** drop down menu. Click **OK**.
+
+   .. figure:: images/11.png
+
+   .. note::
+
+      Citrix UPL works with Pooled-Random and Pooled-Static Machine Catalogs. Citrix UPL does not support Pooled-Static Machine Catalogs with Citrix Personal vDisk (now deprecated) or dedicated, persistent machines that save changes to local disk.
+
+#. Click **Next**.
+
+#. Provide a friendly **Policy name** (e.g. *Initials*\ **-UPL**) and select **Enable policy**. Review your configuration and click **Finish**.
+
+#. From your *Initials*\ **ToolsVM**, open http://ddc.ntnxlab.local/Citrix/NTNXLABWeb, login as **NTNXLAB\\operator03** and connect to a **Pooled Windows 10 Desktop**.
+
+#. Open ``\\BootcampFS.ntnxlab.local\<Initials>-CitrixUPL\Users`` in File Explorer and note there is now a directory for your user containing a VHD with your personal desktop layer.
+
+   .. figure:: images/18.png
+
+#. Download and install **Mozilla Firefox** on your desktop. Launch Firefox and configure as your default browser.
+
+#. Restart your virtual desktop.
+
+#. After ~2 minutes, return to Citrix StoreFront and launch another **Pooled Windows 10 Desktop**. Observe that Firefox in still installed and configured as your default browser. Launch Firefox and note that the initial setup does not run again, as it has saved the settings from the previous session.
+
+   .. figure:: images/19.png
+
+#. Disconnect from your virtual desktop.
+
 Takeaways
 +++++++++
 
-- Nutanix provides native file services suitable for storing user profiles and data.
+- Nutanix Files provides native files services suitable for storing user profile, data, and Citrix User Personalization Layer VHD files.
 
-- AFS can be deployed on the same Nutanix cluster as your virtual desktops, resulting in better utilization of storage capacity and the elimination of an additional storage silo.
+- Citrix User Personalization Layer is a simplified version of App Layering User Layers for non-persistent Provisioning and Machine Creation Services images.
+
+- Nutanix Files can be deployed on the same Nutanix cluster as your Citrix virtual desktops, resulting in better utilization of storage capacity and eliminating additional storage silos.
 
 - Supporting mixed workloads (e.g. virtual desktops and file services) is further enhanced by Nutanix's ability to mix different node configurations within a single cluster, such as:
 
