@@ -1,8 +1,8 @@
 .. _flow_quarantine_vm:
 
--------------------
-Flow: Quarantine VM
--------------------
+------------------------------
+Quarntining Desktops with Flow
+------------------------------
 
 *The estimated time to complete this lab is 10 minutes.*
 
