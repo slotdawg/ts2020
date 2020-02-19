@@ -15,6 +15,10 @@ Cloning from the Era UI
 
 #. Select the Time Machine associated with your production database (e.g. *xyz-fiesta_TM*).
 
+.. #. Before cloning our database, we want to ensure a snapshot has been taken representative of the data you imported into your database in the previous exercise. Select **Actions > Snapshot**.
+
+.. #. Provide a **Snapshot Name** and click **Create**.
+
 #. Select **Actions > Clone Database > Single Node Database**.
 
    By default, a clone will be created from the most recent **Point in Time**. Alternatively you can explicitly specify a previous point in time or snapshot.
@@ -46,12 +50,13 @@ Cloning from the Era UI
 
 #. Click **Close** and then click **X** to close the Clone Database wizard.
 
+
 Cloning from Calm
 +++++++++++++++++
 
 Databases aren't applications, they can be coprised of multiple components. For this dev/test workflow, we'll leverage Calm to spin up a development copy of our Fiesta web tier, and call on Era to provision a clone of the production database programmatically.
 
-#. Download the **FiestaClonedDB** blueprint by clicking :download:`here <FiestaClonedDB.json>`.
+#. :download:`Download the FiestaClonedDB Blueprint <FiestaClonedDB.json>`.
 
 #. From **Prism Central > Calm**, select **Blueprints** from the lefthand menu and click **Upload Blueprint**.
 
@@ -115,6 +120,10 @@ Databases aren't applications, they can be coprised of multiple components. For 
    - **db_username** - Administrator
    - **era_ip** - *IP address of your assigned Era server*
    - **source_db_name** - *The Era database to be cloned (NOT the Time Machine name)*
+
+   .. note::
+
+      Variables may show up in a different order than displayed in the lab, be sure you are putting the correct information in the appropriate fields.
 
    .. figure:: images/7.png
 

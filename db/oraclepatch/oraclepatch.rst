@@ -1,8 +1,8 @@
 .. _oraclepatch:
 
-------------------------
-Patching Oracle with Era
-------------------------
+-----------------
+Database Patching
+-----------------
 
 Maintaining consistent patch levels across database servers in a traditional environment can be a very difficult process. Era makes this simple by providing a means of database engine patching through versioned software profiles. Groups of database servers can be patched or rolled back through Era using the web interface, or via CLI or API.
 
