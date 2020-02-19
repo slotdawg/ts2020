@@ -101,6 +101,7 @@ AHV leverages Open vSwitch (OVS) for all VM networking. OVS is an open source so
    - Select **+ Create Pool**
    - **Start Address** - *Refer to Cluster Assignment Spreadsheet*
    - **End Address** - *Refer to Cluster Assignment Spreadsheet*
+   - Click **Submit**
 
    .. figure:: images/8.png
 
