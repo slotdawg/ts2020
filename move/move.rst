@@ -94,7 +94,7 @@ The source environment is the AHV, ESXi, Hyper-V, or AWS environment from which 
    - **Environment Type** - VMware ESXi
    - **Source Name** - Source-ESXi
    - (If using a PHX Cluster) **vCenter Server** - 10.42.38.40
-   - (If using a RTP Cluster) **vCenter Server** - 10.42.38.40
+   - (If using a RTP Cluster) **vCenter Server** - 10.55.76.40
    - **User Name** - move@vsphere.local
    - **Password** - techX2020!
 
