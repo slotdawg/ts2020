@@ -15,7 +15,7 @@ As you can see there’s a 48% improvement of desktop density per node when appl
 Deploying a VM
 ++++++++++++++
 
-If you completed the :ref:`move` lab, skip to `Installing the VDA`_. Otherwise, follow the steps below to provision a VM to begin building your gold image.
+If you completed the :ref:`move` lab, skip to InstallingTheVDA_. Otherwise, follow the steps below to provision a VM to begin building your gold image.
 
 #. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs**.
 
@@ -46,6 +46,8 @@ If you completed the :ref:`move` lab, skip to `Installing the VDA`_. Otherwise, 
 #. Click **Save** to create the VM.
 
 #. Select your Move VM and click **Power On**.
+
+.. _InstallingTheVDA:
 
 Installing the VDA
 ++++++++++++++++++

@@ -4,7 +4,14 @@
 Getting Started
 ----------------------
 
-Introduction of EUC-Citrix lab track, user scenario is migrating VDI environment from Horizon View to Citrix/AHV, enabling user directories, profile management, flow, reporting.
+Welcome to the End User Computing lab track featuring Citrix Apps & Desktops. This track is meant to provide you with first hand experience in why Nutanix is an ideal platform for Citrix workloads. In addition to the benefits than Nutanix HCI brings to any virtual desktop deployment, such as linear scalability and consistent performance, Nutanix brings additional benefits that you'll explore through labs:
+
+- Native tools for migrating existing desktop images from ESXi
+- Citrix integration with AHV to provide a no-cost, easy to manage platform for desktop virtualization
+- Fast desktop provisioning, including rolling out image updates to large pools of desktops
+- Native file services with Nutanix Files to deliver user data, profiles, and User Personalization Layers
+- Native microsegmentation with Nutanix Flow to secure a virtual desktop environment
+- Rich monitoring and automation capabilities with Prism Pro
 
 If you have not previously completed the **Private Cloud** lab track, follow the quick instructions below to provision your user VLAN and Windows Tools VM that will be used throughout this lab track.
 
