@@ -1,8 +1,8 @@
 .. _citrixfiles:
 
------------------
-Integrating Files
------------------
+-------------------------------
+User Personalization with Files
+-------------------------------
 
 <Info about Files, UPM, folder redirection>
 
