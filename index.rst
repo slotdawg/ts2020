@@ -87,6 +87,7 @@
    mine/veeam/veeam
    mine/hycu/hycu/hycu
    /mine/hycu/protecting-physical/protectingphysical
+   splunkobjectslab/splunkobjectslab
 ..   /mine/hycu/reporting/reporting
 ..   /mine/hycu/self-service/selfservice
 ..   db/lab1/rstfile
