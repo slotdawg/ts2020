@@ -53,7 +53,7 @@
    eucframe/manage/manage
    eucframe/framefiles/framefiles
    eucframe/flow_secure_desktops/flow_secure_desktops
-   prismops/prismops_rightsize_euc_lab/prismops_rightsize_euc_lab
+   prismops/prismops_rightsize_frm_lab/prismops_rightsize_euc_lab
    eucframe/cleanup/cleanup
 
 .. toctree::
@@ -69,9 +69,9 @@
    euccitrix/npdesktops/npdesktops
    euccitrix/updatecatalog/updatecatalog
    euccitrix/files/files
-   prismops/prismops_rightsize_euc_lab/prismops_rightsize_euc_lab
    euccitrix/flow_quarantine_vm/flow_quarantine_vm
    euccitrix/flow_secure_desktops/flow_secure_desktops
+   prismops/prismops_rightsize_ctx_lab/prismops_rightsize_euc_lab
    euccitrix/cleanup/cleanup
 
 .. toctree::

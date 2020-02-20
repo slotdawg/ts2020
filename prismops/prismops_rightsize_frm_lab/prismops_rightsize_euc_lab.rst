@@ -1,6 +1,8 @@
--------------------------------
-Right-sizing VMs with Prism Pro
--------------------------------
+.. _framerightsize:
+
+------------------------------------
+Right-sizing Desktops with Prism Pro
+------------------------------------
 
 .. figure:: images/operationstriangle.png
 
@@ -10,6 +12,8 @@ In this lab you will learn how Prism Pro can help IT Admins monitor, analyze and
 
 Lab Setup
 +++++++++
+
+Please be sure to complete the `Building & Optimizing the Gold Image` lab as you will need to use the VM created there to complete this lab.
 
 #. Open your **Prism Central** and navigate to the **VMs** page. Note down the IP Address of the **GTSPrismOpsLabUtilityServer**. You will need to access this IP Address throughout this lab.
 
@@ -79,7 +83,11 @@ Automatically Increase Constrained VM Memory with X-Play
 
 Now let's look at how we can take automated action to resolve some of these inefficiencies. For this lab we will assume that this VM is constrained for memory and will show how we can automatically remediate the right sizing of this VM. We will also use a custom Ticket system to give an idea of how this typical workflow could integrate with ticketing system such as Service Now.
 
-#. Navigate to your **`Initials`-LinuxToolsVM**. The examples will use a VM called **ABC - VM**.
+#. In **Prism Central**, select one of your desktop VMs provisioned as part of the previous labs. The examples will use a VM called **ABC - VM**.
+
+   .. note::
+
+      You can use the Frame **Status** page to find the **Machine ID** of your **Production** desktop VMs and then filter in **Prism Central** based on the associated **Machine ID**.
 
    .. figure:: images/rs1.png
 
