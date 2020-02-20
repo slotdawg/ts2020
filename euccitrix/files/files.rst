@@ -4,14 +4,18 @@
 User Personalization with Files
 -------------------------------
 
-<Info about Files, UPM, folder redirection>
+As mentioned in :ref:`citrixnpdesktops`, a key challenge in rolling out non-persistent desktops is ensuring you can still deliver the appropriate level of user customization based on use case. While there are multiple 3rd party solutions that exist in the EUC space, Citrix offers multiple out of the box options, including Citrix User Profile Management (UPM) and Citrix User Personalization Layers (UPL). Both of these solutions require file servers to host profiles and layers.
+
+In addition to user customization, user's also require external storage for their files - as saving things to a non-redirected Desktop folder on a non-persistent desktop is a recipe for data loss!
+
+Nutanix Files introduces a software defined approach of delivering native, distributed file services for EUC environments. No more separate NAS infrastructure to manage, Files can even be deployed on the same infrastructure as your virtual desktops themselves!
 
 **In this lab you will configure Nutanix Files to provide user profiles and data storage for your non-persistent Citrix desktops.**
 
 Creating Profiles Share
 +++++++++++++++++++++++
 
-For the purposes of saving time and resources, a Nutanix Files instance has already been deployed to your cluster. For a quick overview on deploying Nutanix Files, click `here <http://youtube.com>`_.
+For the purposes of saving time and resources, a Nutanix Files instance has already been deployed to your cluster. For a quick overview on how Nutanix Files can be deployed in minutes, click `here <https://www.youtube.com/watch?v=gJagnILsd94>`_.
 
 #. In **Prism Element > File Server > Share/Export**, click **+ Share/Export**.
 
@@ -65,7 +69,7 @@ For the purposes of saving time and resources, a Nutanix Files instance has alre
 Configuring Share Permissions
 +++++++++++++++++++++++++++++
 
-<exposition about why we're setting these permissions, allowing all users to create a top level directory that they own for their profile>
+Managing access control for Files SMB shares is still performed natively through Windows. In this exercise you'll configure permissions on your share to allow for any user to create a top level directory, which they then own, within the share. As users log in to their virtual desktops, a folder created based on their AD username will be automatically created.
 
 #. From your *Initials*\ **-WinTools** VM, open ``\\BootcampFS.ntnxlab.local\`` in File Explorer.
 
@@ -99,7 +103,9 @@ Configuring Share Permissions
 Configuring Citrix User Profile Management
 ++++++++++++++++++++++++++++++++++++++++++
 
-<todo on citrix UPM being installed as part of VDA, we are enabling the processing of those logons and telling it where to look for profiles>
+UPM runs as a system service installed as part of the Virtual Delivery Agent within the virtual desktop or XenApp server. While similar to Microsoft Roaming Profiles, it offers key advantages such as faster logons by streaming the profile on-demand, administrative controls to limit profile size, and detailed logging.
+
+In this exercise you will enable UPM through the Citrix Policy engine, similar to Microsoft Group Policy.
 
 #. In **Citrix Studio > Policies**, right-click **Policies > Create Policy**.
 
@@ -172,6 +178,23 @@ Testing Profiles and Folder Redirection
 
 (Optional) Using Files with Citrix User Personalization Layers
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+The Citrix UPL feature of Citrix Virtual Apps and Desktops (VAD) extends capabilities of non-persistent Windows 10 desktops by preserving data and locally user installed applications (UIA) across sessions.  Citrix UPL is the same technology as App Layering User Layers but is integrated into the Citrix Virtual Delivery Agent (VDA) and uses the Citrix policy engine.  Citrix UPL has all the features and functionality of User Layers (UL) without having to go through the entire App Layering process or having to deploy the Enterprise Layering Manager (ELM) virtual appliance.
+
+.. note::
+
+   All applications the user installs locally in the virtual desktop are supported in Citrix UPL, except for the following items:
+
+   - Enterprise applications, such as Microsoft Office and Visual Studio
+   - Applications that modify network stack or hardware, such as a VPN client
+   - Applications that have boot level drivers, such as antivirus programs
+   - Applications that have drivers that use the driver store, such as a printer driver
+
+   Instead of having the user install the applications listed above locally in the virtual desktop as part of their UPL, install these applications in the master image.
+
+   Any applications that attempt to add or edit local users or groups will not have the changes persist.  Instead add any required local users or groups to the master image.
+
+   For full requirements and recommendations, see `Citrix Product Documentation on Citrix Virtual Apps and Desktops User Personalization Layer <https://docs.citrix.com/en-us/citrix-virtual-apps-desktops/install-configure/user-personalization-layer.html>`_.
 
 #. Return to **Prism Element > File Server > Share/Export**, click **+ Share/Export**.
 
