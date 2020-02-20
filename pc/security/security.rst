@@ -120,7 +120,7 @@ The format of each result within the report is as follows:
 
 Below is an example of a non-finding in the STIG report, meaning that the check did not discover an unwanted configuration:
 
-.. code-block::
+::
 
    CAT II RHEL-07-021030 SRG-OS-000480-GPOS-00227 CCI-000366 CM-5 (1)
    All world-writable directories must be group-owned by root, sys, bin, or an application group.
@@ -130,13 +130,13 @@ Below is an example of a non-finding in the STIG report, meaning that the check 
 
 And an example of a finding, where the check was found to have an unwanted configuration:
 
-.. code-block::
+::
 
-  CAT I RHEL-07-021710 SRG-OS-000095-GPOS-00049 CCI-000381 CM-7 a, CM-7 b
-  The telnet-server package must not be installed.
-  The result of the check should be yes.  If no, then it's a finding
-  no
-  Completed.
+   CAT I RHEL-07-021710 SRG-OS-000095-GPOS-00049 CCI-000381 CM-7 a, CM-7 b
+   The telnet-server package must not be installed.
+   The result of the check should be yes.  If no, then it's a finding
+   no
+   Completed.
 
 Compromising the Environment
 ............................
