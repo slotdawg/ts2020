@@ -315,21 +315,31 @@ In order for non-infrastructure administrators to access Calm, allowing them to 
 #. Fill out the following fields:
 
    - **Project Name** - *Initials*\ -FiestaProject
-   - **AHV Cluster** - *Your assigned cluster*
+
    - Under **Infrastructure**, select **Select Provider > Nutanix**
+
    - Click **Select Clusters & Subnets**
+
    - Select *Your Assigned Cluster*
+
    - Under **Subnets**, select **Primary**, **Secondary**, and *Your Assigned User VLAN*, and click **Confirm**
+
    - Mark *Your Assigned User VLAN* as the default network by clicking the :fa:`star`
+
    - Under **Users, Groups, and Roles**, select **+ User**
+
       - **Name** - SSP Developers
       - **Role** - Developers
       - **Action** - Save
+      
    - Select **+ User**
+
       - **Name** - Operator02
       - **Role** - SmoothOperator
       - **Action** - Save
+
    - Under **Quotas**, specify
+
       - **vCPUs** - 100
       - **Storage** - <Leave Blank>
       - **Memory** - 100
