@@ -224,9 +224,9 @@ In this exercise, you will apply the October PSU patches to your manually cloned
    - **User Name** - root
    - **Password** - Nutanix/4u
 
-#. Execute the following script to install the Oracle and Grid October PSU patches:
+#. Execute the following script to download and install the Oracle and Grid October PSU patches:
 
-   ::
+    .. code-block:: bash
 
       cd Downloads
       ./applypsu.sh

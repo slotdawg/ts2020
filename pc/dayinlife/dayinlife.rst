@@ -291,6 +291,8 @@ Carol needs to support two types of users working on the Fiesta team, developers
 
    .. figure:: images/22.png
 
+#. Click **Save**.
+
 #. For infrastructure administrators such as Carol, you can map AD users to the **Prism Admin** or **Super Admin** roles through selecting :fa:`bars` **> Prism Central Settings > Role Mapping** and adding a new **Cluster Admin** or **User Admin** mapping to AD accounts.
 
    .. figure:: images/28.png
