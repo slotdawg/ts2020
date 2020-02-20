@@ -50,13 +50,12 @@ Cloning from the Era UI
 
 #. Click **Close** and then click **X** to close the Clone Database wizard.
 
-
 Cloning from Calm
 +++++++++++++++++
 
 Databases aren't applications, they can be coprised of multiple components. For this dev/test workflow, we'll leverage Calm to spin up a development copy of our Fiesta web tier, and call on Era to provision a clone of the production database programmatically.
 
-#. :download:`Download the FiestaClonedDB Blueprint <FiestaClonedDB.json>`.
+#. `Download the FiestaClonedDB Blueprint by right-clicking here <https://raw.githubusercontent.com/nutanixworkshops/ts2020/master/db/cloning/FiestaClonedDB.json>`_.
 
 #. From **Prism Central > Calm**, select **Blueprints** from the lefthand menu and click **Upload Blueprint**.
 
