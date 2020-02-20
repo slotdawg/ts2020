@@ -1,4 +1,4 @@
-.. _ctxflow_secure_desktops:
+.. _frameflow_secure_desktops:
 
 ---------------------------
 Securing Desktops with Flow
@@ -19,7 +19,7 @@ Categorizing the Desktop VMs
 
 #. Click the :fa:`plus-circle` icon beside the last value to add an additional Category value.
 
-#. Specify *Initials*-**Desktops**  as the value name.
+#. Specify *Initials*-**FrameDesktops**  as the value name.
 
    .. figure:: images/2.png
 
@@ -29,25 +29,43 @@ Categorizing the Desktop VMs
 
 #. Click the :fa:`plus-circle` icon beside the last value to add an additional Category value.
 
-#. Specify *Initials*-**PD** and *Initials*-**NPD** as the value names.
+#. Specify *Initials*-**Frame-W10NP** value name.
 
    .. figure:: images/3.png
 
 #. Click **Save**.
 
-#. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs**.
+   Next we need to ensure all of our Frame desktops are running for testing. We also need to determine which **frame-instance-prod...** VMs in **Prism Central** correspond to your environment.
 
-#. Use the checkbox to select the persistent desktop VMs *Initials*\ -**PD** and navigate to **Actions > Manage Categories**.
+#. Return to the Frame Admin Portal. Select **Capacity** from the sidebar and increase your **Minimum number of instances** to **3** and click **Save**. This will ensure all 3 VMs are booted once the new image is published.
 
-   .. figure:: images/4.png
+   .. figure:: images/3g.png
 
-#. Specify **AppType:**\ *Initials*-**Desktops** in the search bar.
+   .. note::
 
-#. Click the :fa:`plus-circle` icon beside the last value to add **AppTier:**\ *Initials*-**PD** and click the **Save**.
+      Depending on your prior configuration, you may need to decrease **Buffer instances** to **0**.
 
-   .. figure:: images/5.png
+#. Select **Status** from the sidebar and copy the **Machine ID** for your **Sandbox** VM.
 
-#. Repeat the previous steps to assign the **AppType:**\ *Initials*-**Desktops** and **AppTier:**\ *Initials*-**NPD** categories to the non-persistent desktops.
+   .. figure:: images/3c.png
+
+#. In **Prism Central > Virtual Infrastructure > VMs**, paste the **Machine ID** into the **Name** filter to identify your Sandbox VM.
+
+   .. figure:: images/3d.png
+
+#. Select the VM and click **Actions > Manage Categories**. Copy the **FrameAccountID** value that corresponds to your Frame account. Click **Cancel**
+
+   .. figure:: images/3h.png
+
+#. In **Prism Central > Virtual Infrastructure > VMs**, paste the **FrameAccountID** into the **Category** filter to identify your Frame VMs. Select all of your **frame-instance-prod...** VMs and click **Actions > Manage Categories**.
+
+   .. figure:: images/3i.png
+
+#. Specify **AppType:**\ *Initials*\ **-FrameDesktops** in the search bar.
+
+#. Click the :fa:`plus-circle` icon beside the last value to add **AppTier:**\ *Initials*\ **-Frame-W10NP** and click the **Save**.
+
+   .. figure:: images/3j.png
 
 Creating a Desktop Security Policy
 ++++++++++++++++++++++++++++++++++
@@ -58,9 +76,9 @@ Creating a Desktop Security Policy
 
 #. Fill out the following fields:
 
-   - **Name** - *Initials*-Desktops
-   - **Purpose** - Restrict unnecessary traffic between desktops
-   - **Secure this app** - AppType: *Initials*-Desktops
+   - **Name** - *Initials*-FrameDesktops
+   - **Purpose** - Restrict unnecessary traffic between Frame desktops
+   - **Secure this app** - AppType: *Initials*-FrameDesktops
    - Do **NOT** select **Filter the app type by category**.
 
    .. figure:: images/6.png
@@ -75,9 +93,9 @@ Creating a Desktop Security Policy
 
 #. Click **+ Add Tier**.
 
-#. Select **AppTier:**\ *Initials*-**PD** from the drop down.
+#. Select **AppTier:**\ *Initials*-**Frame-W10NP** from the drop down.
 
-#. Repeat Steps 7-8 for **AppTier:**\ *Initials*-**NPD**.
+#. Repeat Steps 7-8 for **AppTier:Default**.
 
    .. figure:: images/8.png
 
@@ -93,13 +111,13 @@ Creating a Desktop Security Policy
 
    .. figure:: images/10.png
 
-#. Click **AppTier:**\ *Initials*-**PD** and select **No** to prevent communication between VMs in this tier. This will block persistent desktops from communicating with each other.
+#. Click **AppTier:**\ *Initials*\ **-Frame-W10NP** and select **No** to prevent communication between VMs in this tier. This will block desktops from communicating with each other.
 
    .. figure:: images/11.png
 
-#. While **AppTier:**\ *Initials*-**PD** is still selected, click the :fa:`plus-circle` icon to the right of **AppTier:**\ *Initials*-**NPD** to create a tier to tier rule.
+#. While **AppTier:**\ *Initials*-**PD** is still selected, click the :fa:`plus-circle` icon to the right of **AppTier:Default** to create a tier to tier rule.
 
-#. Fill out the following fields to allow communication on TCP port **7680** between the persistent and non-persistent tiers to allow peer-to-peer Windows updates:
+#. Fill out the following fields to allow communication on TCP port **7680** between the Frame desktops and VMs in the **Default** tiers to allow peer-to-peer Windows updates:
 
    - **Protocol** - TCP
    - **Ports** - 7680
@@ -108,8 +126,6 @@ Creating a Desktop Security Policy
 
 #. Click **Save**.
 
-#. Select **AppTier:**\ *Initials*-**NPD** and select **No** to block VM to VM communication for the non-persistent desktops.
-
 #. Click **Next** to review the security policy.
 
 #. Click **Save and Monitor** to save the policy.
@@ -117,24 +133,19 @@ Creating a Desktop Security Policy
 Verifying Desktop Security
 ++++++++++++++++++++++++++
 
-#. Use the Prism Central VM list to note the IP addresses of your persistent desktops.
+#. Return to the Frame Admin Portal. Select **Status** from the sidebar and note the **Private IP** addresses of your desktop VMs.
 
-#. From your *Initials*\ -**WinToolsVM**, open http://ddc.ntnxlab.local/Citrix/NTNXLABWeb in a browser to access the Citrix StoreFront server.
+   .. figure:: images/12a.png
 
-#. Specify the following credentials and click **Log On**:
+#. Click **Launchpad** and log into your Frame **Desktop**.
 
-   - **Username** - NTNXLAB\\devuser01
-   - **Password** - nutanix/4u
-
-#. Select the **Desktops** tab and click your **Personal Win10 Desktop** to launch the session.
-
-#. In the persistent desktop, Open a **Command Prompt** and run ``ping -t XYZ-PD-VM-IP`` to verify connectivity between the persistent desktops.
+#. Within the desktop, open a **Command Prompt** and run ``ping -t ANOTHER-FRAME-VM-IP`` to verify connectivity between the persistent desktops.
 
    .. figure:: images/13.png
 
    Can you ping between the desktops now? Why?
 
-#. In **Prism Central > Policies > Security Policies**, select the *Initials*\ **-Desktops** policy.
+#. In **Prism Central > Policies > Security Policies**, select the *Initials*\ **-FrameDesktops** policy.
 
 #. Click **Actions > Apply**.
 
@@ -147,6 +158,6 @@ Verifying Desktop Security
 Takeaways
 +++++++++
 
-- In this exercise you utilized Flow to block traffic between desktops to prevent the spread of malware.
+- Application policies can be used to protect virtual infrastructure like desktops, as well as traditional applications.
+- In this exercise you utilized Flow to block traffic between desktops, a simple policy that can be implemented to prevent unneeded access between desktop VMs and assist with preventing the spread of malware on a network.
 - Monitor mode is used to visualize traffic to the defined application, but Apply mode enforces the policy.
-- Application policies can be used to protect desktops as well as traditional applications.

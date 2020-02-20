@@ -47,11 +47,12 @@
    :hidden:
 
    eucframe/gettingstarted/gettingstarted
-   move/move
+   eucframe/move/move
    eucframe/goldimage/goldimage
    eucframe/deploycca/deploycca
    eucframe/manage/manage
    eucframe/framefiles/framefiles
+   eucframe/flow_secure_desktops/flow_secure_desktops
    prismops/prismops_rightsize_euc_lab/prismops_rightsize_euc_lab
    eucframe/cleanup/cleanup
 
@@ -62,7 +63,7 @@
    :hidden:
 
    euccitrix/gettingstarted/gettingstarted
-   move/move
+   eucframe/move/move
    euccitrix/goldimage/goldimage
    euccitrix/pdesktops/pdesktops
    euccitrix/npdesktops/npdesktops
