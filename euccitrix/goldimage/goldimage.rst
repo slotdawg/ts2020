@@ -15,7 +15,7 @@ As you can see there’s a 48% improvement of desktop density per node when appl
 Deploying a VM
 ++++++++++++++
 
-If you completed the :ref:`move` lab, skip to InstallingTheVDA_. Otherwise, follow the steps below to provision a VM to begin building your gold image.
+If you completed the :ref:`move` lab, skip to CtxPausingUpdates_. Otherwise, follow the steps below to provision a VM to begin building your gold image.
 
 #. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs**.
 
@@ -47,14 +47,30 @@ If you completed the :ref:`move` lab, skip to InstallingTheVDA_. Otherwise, foll
 
 #. Select your Move VM and click **Power On**.
 
-.. _InstallingTheVDA:
+.. _CtxPausingUpdates:
+
+Pausing Updates
++++++++++++++++
+
+Before starting to build your **Windows 10** image it is important the ensure that no Windows Updates are in progress, as this can cause issues with cloning.
+
+#. Open the VM console or connect via RDP.
+
+   - **User Name** - Nutanix
+   - **Password** - nutanix/4u
+
+#. Open **System Settings > Windows Update** and click **Pause Updates for 7 Days**.
+
+   .. figure:: images/24.png
+
+#. Restart the VM.
 
 Installing the VDA
 ++++++++++++++++++
 
 <What is the VDA?>
 
-#. Open the VM console or connect via RDP.
+#. Once the VM has restarted, reconnect to the VM console or connect via RDP.
 
 #. Change the **Computer Name** (e.g. *Initials*\ -GoldImage) and join the **NTNXLAB.local** domain using the following credentials:
 
@@ -159,7 +175,7 @@ Running VMware OS Optimization Tool
 
 #. Right-click **VMwareOSOptimizationTool.exe** and select **Run as Administrator**.
 
-#. Click the **Select All** checkbox, and click **Analyze**.
+#. Click the **Select All** checkbox. Scroll down to **Cleanup Jobs** and un-select the 4 available optimizations. Click **Analyze**.
 
    .. figure:: images/16.png
 

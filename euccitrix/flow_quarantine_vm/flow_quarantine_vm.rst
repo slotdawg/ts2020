@@ -1,6 +1,8 @@
 .. _euccitrixflow_quarantine_vm:
 
-*The estimated time to complete this lab is 10 minutes.*
+-------------------------------
+Quarantining Desktops with Flow
+-------------------------------
 
 Quarantine places a VM in a restricted policy, giving the admin an option to either block all network traffic or allow a limited subset of traffic. Strict quarantine blocks a VM from all communication, while forensic quarantine allows a pre-defined list of inbound and outbound traffic. This capability can be very helpful in a virtual desktop environment when a VM has been impacted by malware.
 
