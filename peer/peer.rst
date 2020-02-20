@@ -775,7 +775,7 @@ Here is a sample of the **LastModifiedAnalysis** page mentioned above:
 
    .. figure:: images/fsa7b.png
    
-   **Congratulations!** You have completed the Peer Global File Service lab! Get your lab validated by a member of the Peer Software team. We have a Rocketbook reusable notepad with pen and refresh cloth for you!
+**Congratulations!** You have completed the Peer Global File Service lab! Get your lab validated by a member of the Peer Software team. We have a Rocketbook reusable notepad with pen and refresh cloth for you!
 
 Integrating with Microsoft DFS Namespace
 ++++++++++++++++++++++++++++++++++++++++
