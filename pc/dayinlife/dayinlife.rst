@@ -314,6 +314,10 @@ In order for non-infrastructure administrators to access Calm, allowing them to 
 
 #. Fill out the following fields:
 
+   .. note::
+
+      Adding the User/Group mappings before adding the Infrastructure can cause adding the Infrastructure to fail. To avoid this, add the Infrastructure before the User/Group mappings.
+
    - **Project Name** - *Initials*\ -FiestaProject
 
    - Under **Infrastructure**, select **Select Provider > Nutanix**
@@ -331,7 +335,7 @@ In order for non-infrastructure administrators to access Calm, allowing them to 
       - **Name** - SSP Developers
       - **Role** - Developers
       - **Action** - Save
-      
+
    - Select **+ User**
 
       - **Name** - Operator02
@@ -345,10 +349,6 @@ In order for non-infrastructure administrators to access Calm, allowing them to 
       - **Memory** - 100
 
    .. figure:: images/24.png
-
-   .. note::
-
-      Adding the User/Group mappings before adding the Infrastructure can cause adding the Infrastructure to fail. To avoid this, add the Infrastructure before the User/Group mappings.
 
 #. Click **Save & Configure Environment**.
 
@@ -384,6 +384,8 @@ While developer users will have the ability to create and publish their own Blue
 #. Repeat the **NIC 1** and **Category** assignment for the **MySQL** Service.
 
 #. Click **Credentials** to define a private key used to authenticate to the CentOS VM that will be provisioned by the Blueprint.
+
+   .. figure:: images/27b.png
 
 #. Expand the **CENTOS** credential and use your preferred SSH key, or paste in the following value as the **SSH Private Key**:
 
