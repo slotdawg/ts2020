@@ -63,7 +63,7 @@
    :hidden:
 
    euccitrix/gettingstarted/gettingstarted
-   eucframe/move/move
+   euccitrix/move/move
    euccitrix/goldimage/goldimage
    euccitrix/pdesktops/pdesktops
    euccitrix/npdesktops/npdesktops
