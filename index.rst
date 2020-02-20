@@ -82,9 +82,9 @@
    beam_cost_governance/beam_cost_governance
    beam_security_compliance/beam_security_compliance
    calm_karbon_cicd/calm_karbon_cicd
-   mine/hycu/hycu/hycu
    peer/peer
-..   /mine/hycu/protecting-physical/protectingphysical
+   mine/hycu/hycu/hycu
+   /mine/hycu/protecting-physical/protectingphysical
 ..   /mine/hycu/reporting/reporting
 ..   /mine/hycu/self-service/selfservice
 ..   db/lab1/rstfile

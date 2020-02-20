@@ -4,9 +4,6 @@
 Isolating Database Environments with Flow
 -----------------------------------------
 
-Overview
-++++++++
-
 Isolation policies are used when one group of VMs must be completely blocked from communicating with another group of VMs without any whitelist exceptions. A common example is using isolation policies to block VMs tagged **Environment: Dev** from talking to VMs in **Environment: Production**. Do not use isolation policies if you want to create exceptions between the two groups, instead use an Application Policy which allows a whitelist model.
 
 **In this exercise you protect the production and development Fiesta applications by creating new environment categories and assigning these to the cloned Fiesta application VMs. Next you will create and implement an isolation security policy that uses the newly created categories to stop the two environments from communicating.**
