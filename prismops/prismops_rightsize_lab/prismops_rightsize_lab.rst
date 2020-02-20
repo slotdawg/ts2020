@@ -1,16 +1,3 @@
-.. title:: Nutanix .Next Prism Pro HOL
-
-
-.. toctree::
-  :maxdepth: 2
-  :caption: Appendix
-  :name: _appendix
-  :hidden:
-
-  tools_vms/linux_tools_vm
-
-.. _xplay:
-
 ------------------------
 Prism Pro VM Right Sizing
 ------------------------
@@ -110,7 +97,7 @@ Now let's look at how we can take automated action to resolve some of these inef
 
    .. figure:: images/rs4.png
 
-#. We are creating an Action that we can later use in our playbook to Generate a Service Ticket. Fill in the following values replacing your initials in the *Initials* part, and the <GTSPrismOpsLabUtilityServer_IP_ADDRESS> in the URL field.
+#. We are creating an Action that we can later use in our playbook to Generate a Service Ticket. Fill in the following values replacing your initials in the *Initials* part, and the <GTSPrismOpsLabUtilityServer_IP_ADDRESS> in the URL field. Click **Copy**.
 
 **Name:** *Initials* - Generate Service Ticket
 
@@ -150,11 +137,11 @@ Now let's look at how we can take automated action to resolve some of these inef
 
    .. figure:: images/rs11.png
 
-#. Next we would like to notify someone that the ticket was created by X-Play. Click **Add Action** and select the Email action.
+#. Notice the details from the **Generate Service Ticket** Action you created are automatically filled in for you.
 
    .. figure:: images/rs12.png
 
-#. Fill in the field in the email action. Here are the examples. Be sure to replace <GTSPrismOpsLabUtilityServer_IP_ADDRESS> in the message with it's IP Address.
+#. Next we would like to notify someone that the ticket was created by X-Play. Click **Add Action** and select the Email action. Fill in the field in the email action. Here are the examples. Be sure to replace <GTSPrismOpsLabUtilityServer_IP_ADDRESS> in the message with it's IP Address.
 
 **Recipient:** Fill in your email address.
 
