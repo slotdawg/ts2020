@@ -37,7 +37,7 @@ Working from left to right, users interact with the SMB shares on the Nutanix Fi
 
 When you are done with these three sections, get your lab validated by a member of the Peer Software team. We have a Rocketbook reusable notepad with pen and refresh cloth for you!
 
-.. figure:: images/rocketbook.png
+.. figure:: images/rocketbook_small.png
 
 Lab Setup
 +++++++++
