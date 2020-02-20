@@ -55,7 +55,7 @@ Configuring HYCU Appliance
    - Remove **CD-ROM** Disk
    - Select **Add New NIC**
 
-     - **VLAN Name** - Primary
+     - **VLAN Name** - Secondary
      - Select **Add**
 
 #. Select the *Initials*\ **-HYCU** VM and click **Power on**.
@@ -109,7 +109,7 @@ If the cluster on which the HYCU virtual appliance is being deployed is a Nutani
 
    - **URL** - *Your Prism Element URL* (e.g. https://10.XX.YY.37:9440)
    - **User** - admin
-   - **Password** - nutanix/4u
+   - **Password** - *Prism Element Password*
 
 #. Click **Next**.
 
@@ -165,7 +165,7 @@ HYCU makes it incredibly easy to configure a Nutanix cluster (whether Mine or ot
    - **Type** - Nutanix
    - **URL** - *Your Prism Element URL* (e.g. https://10.XX.YY.37:9440)
    - **Username** - admin
-   - **Password** - nutanix/4u
+   - **Password** - *Prism Element Password*
 
    .. figure:: images/9.png
 
@@ -610,7 +610,7 @@ HYCU requires credentials that allow it to access Nutanix Files REST APIs, inclu
 
 #. Fill out the following fields and click **Save > Close**:
 
-   - **Username** - hycu
+   - **Username** - *Initials*\ -hycu
    - **Password** - nutanix/4u
 
    .. figure:: images/26.png
@@ -627,7 +627,7 @@ For AHV clusters with DHCP enabled, the additional HYCU instance can be provisio
 #. Click **+ New** and fill out the following fields:
 
    - **URL** - https://\ *Initials*\ -files.ntnxlab.local:9440
-   - **Nutanix Files Server Credentials > Username** - hycu
+   - **Nutanix Files Server Credentials > Username** - *Initials*\ -hycu
    - **Nutanix Files Server Credentials > Password** - nutanix/4u
    - **Backup Credentials > Username** - NTNXLAB\\Administrator
    - **Backup Credentials > Password** - nutanix/4u
