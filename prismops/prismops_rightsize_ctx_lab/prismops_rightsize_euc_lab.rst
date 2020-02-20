@@ -1,6 +1,8 @@
------------------------
-Prism Pro VM Right Sizing
-------------------------
+.. _citrixrightsize:
+
+------------------------------------
+Right-sizing Desktops with Prism Pro
+------------------------------------
 
 .. figure:: images/operationstriangle.png
 
@@ -30,7 +32,7 @@ Please be sure to complete the `Building & Optimizing the Gold Image` lab as you
    .. figure:: images/init3.png
 
 Inefficiency Detection with Prism Pro X-FIT
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++
 
 Prism Pro uses X-FIT machine learning to detect and monitor the behaviors of VMs running within the managed clusters.
 
