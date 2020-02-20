@@ -1,17 +1,4 @@
-.. title:: Nutanix .Next Prism Pro HOL
-
-
-.. toctree::
-  :maxdepth: 2
-  :caption: Appendix
-  :name: _appendix
-  :hidden:
-
-  tools_vms/linux_tools_vm
-
-.. _xplay:
-
-------------------------
+-----------------------
 Prism Pro VM Right Sizing
 ------------------------
 
@@ -94,7 +81,7 @@ Automatically Increase Constrained VM Memory with X-Play
 
 Now let's look at how we can take automated action to resolve some of these inefficiencies. For this lab we will assume that this VM is constrained for memory and will show how we can automatically remediate the right sizing of this VM. We will also use a custom Ticket system to give an idea of how this typical workflow could integrate with ticketing system such as Service Now.
 
-#. Navigate to your **`Initials`-TODO FILL IN NAME HERE**. The examples will use a VM called **ABC - VM**.
+#. Navigate to the VM hosting your Personal Desktop that you created and powered on in the `Delivering Persistent Desktops` lab [example. ABC-PD-1]. The examples will use a VM called **ABC - VM**.
 
    .. figure:: images/rs1.png
 
@@ -150,11 +137,11 @@ Now let's look at how we can take automated action to resolve some of these inef
 
    .. figure:: images/rs11.png
 
-#. Next we would like to notify someone that the ticket was created by X-Play. Click **Add Action** and select the Email action.
+#. Notice the details from the **Generate Service Ticket** Action you created are automatically filled in for you.
 
    .. figure:: images/rs12.png
 
-#. Fill in the field in the email action. Here are the examples. Be sure to replace <GTSPrismOpsLabUtilityServer_IP_ADDRESS> in the message with it's IP Address.
+#. Next we would like to notify someone that the ticket was created by X-Play. Click **Add Action** and select the Email action. Fill in the field in the email action. Here are the examples. Be sure to replace <GTSPrismOpsLabUtilityServer_IP_ADDRESS> in the message with it's IP Address.
 
 **Recipient:** Fill in your email address.
 
