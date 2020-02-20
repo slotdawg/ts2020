@@ -4,9 +4,11 @@
 Migrating Horizon View Image to AHV
 -----------------------------------
 
-Introduction
+It's a cool afternoon in late February, you look longingly over your cubicle wall towards the windows in the distance, and see a group of birds perched along a tree branch. What beautiful music they must be making. It's a shame you're stuck inside, still fighting performance issues in your Horizon View environment, running on blade server and fibre channel SAN infrastructure. Next week you're expected to add 100 additional desktops to the pool, you have the compute, but your storage is at peak utilization and further increases in latency will inevitably result in an increase in user complaints lobbed at the helpdesk.
 
-**In this lab you will...**
+In your minimal spare time, you've tried getting a Citrix pilot off the ground, but management can't justify the Citrix licensing cost in addition to the VMware licenses that would be required for expansion of the corporate VDI environment...
+
+**In this lab you will deploy and use the freely available Nutanix Move to migrate your existing Horizon View gold image from vSphere to Nutanix AHV, and use it as the basis for a Citrix gold image.**
 
 Deploying Move
 ++++++++++++++++
@@ -223,9 +225,11 @@ Migrating VMs
 
    .. figure:: images/19.png
 
-#. In **Prism**, take a snapshot of your VM before proceeding to the next lab. The name of the snapshot should include your *Initials* for easy identification.
+#. In **Prism Central**, select your VM and click **Actions > Snapshot** to create a snapshot of your VM before proceeding to the next lab. The name of the snapshot should include your *Initials* for easy identification.
 
-   .. figure:: images/20.png
+   .. note::
+
+      This snapshot acts as a point to revert/clone your VM back to a clean state if you experience issues creating your gold image in the next exercise.
 
 Next Steps
 +++++++++

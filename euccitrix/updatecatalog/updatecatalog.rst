@@ -4,12 +4,14 @@
 Managing Citrix Desktops
 ------------------------------
 
-Introduction...
+The combination of Nutanix, AHV, and XenDesktop make for a smooth experience in deploying new infrastructure and virtual desktops - but what about as that environment changes and expands?
 
 **In this exercise you will use perform "Day 2" operations for a XenDesktop environment, including expanding an existing Machine Catalog with more desktop VMs, and rolling out an updated gold image to your non-persistent Machine Catalog.**
 
 Adding More Desktops
 ++++++++++++++++++++
+
+Nutanix makes it simple to expand a cluster by 1 or more nodes through a One Click operation in Prism. In the below exercise, you'll expand your pool of virtual desktops to take advantage of the compute and storage resources that you're able to expand at will.
 
 #. In **Citrix Studio > Machine Catalogs**, right-click your Non-Persistent Machine Catalog and select **Add Machines**.
 
@@ -41,6 +43,8 @@ Adding More Desktops
 
 Updating the Gold Image
 +++++++++++++++++++++++
+
+One of the key benefits of non-persistent desktops is the ability to uniformly roll out updates to a large number of systems after only having made the change to your master image. In the exercise below you'll walk through how fast and easy that process is with Citrix on AHV.
 
 #. Power on your *Initials*\ **-GoldImage** VM and connect via VM console or RDP.
 
@@ -78,7 +82,7 @@ Updating the Gold Image
 
    .. note::
 
-     These choices are based on wanting to roll out an update as quickly as possible, but note Studio provides maximum flexibility for Rollout Strategy, allowing Administrators to proactively notify users and stagged gold image deployment for large pools over the period of several hours.
+     These choices are based on wanting to roll out an update as quickly as possible, but note Studio provides maximum flexibility for Rollout Strategy, allowing Administrators to proactively notify users and stagger gold image deployment for large pools over the period of several hours.
 
 #. Review configuration and click **Finish**.
 
