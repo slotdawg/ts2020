@@ -39,7 +39,7 @@ Fill out the following fields:
 - Select **+ Add New Disk**
     - **Type** - DISK
     - **Operation** - Clone from Image Service
-    - **Image** - ToolsVM.qcow2
+    - **Image** - WinToolsVM.qcow2
     - Select **Add**
 
 - Select **Add New NIC**
