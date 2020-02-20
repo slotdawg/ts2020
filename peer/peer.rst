@@ -33,10 +33,19 @@ Key use cases for combining Peer Software with Nutanix include:
 
 Working from left to right, users interact with the SMB shares on the Nutanix Files cluster via a public LAN. When SMB activity occurs on the Files cluster through these shares, the Peer Partner Server (referred to as a Peer Agent) is notified via the File Activity Monitoring API from Files. The Peer Agent accesses the updated content via SMB, and then facilitates the flow of data to one or many remote and/or local file servers.
 
-**In this lab you will configure Peer Global File Service to create an Active-Active file services solution with Nutanix Files.**
+**In this lab you will configure Peer Global File Service to create an Active-Active file services solution with Nutanix Files, replicate content from Nutanix Files to Nutanix Objects, and use our File System Analyzer tool to analyze some sample data.**
+
+When you are done with these three sections, get your lab validated by a member of the Peer Software team. We have a Rocketbook reusable notepad with pen and refresh cloth for you!
+
+.. figure:: images/rocketbook_small.png
 
 Lab Setup
 +++++++++
+
+   .. note::
+
+    This lab requires the :ref:`windows_tools_vm`.
+    
 
 Files
 .....
@@ -337,10 +346,6 @@ Once a job has been created, it must be started to initiate synchronization and 
 Testing Collaboration
 +++++++++++++++++
 
-   .. note::
-
-    This exercise requires the :ref:`windows_tools_vm`.
-
 The easiest way to verify synchronization is functioning properly is to open separate File Explorer windows for the Nutanix Files and Windows File Server paths.
 
 .. note::
@@ -387,155 +392,6 @@ The easiest way to verify synchronization is functioning properly is to open sep
    .. figure:: images/36.png
 
    **Congratulations!** You have successfully deployed an Active-Active file share replicated across two file servers. Using Peer, this same approach can be leveraged to support file collaboration across sites, migrations from legacy solutions to Nutanix Files, or disaster recovery for use cases such as VDI, where user data and profiles need to be accessible from multiple sites for business continuity.
-
-Analyzing Existing Environments
-++++++++++++++++++++++++++++++++++++++++++
-
-   .. note::
-
-   This exercise requires the :ref:`windows_tools_vm`.
-
-As the capacity of file server environments increase at a record pace, storage admins often do not know how users and applications are leveraging these file server environments. This fact becomes most evident when it is time to migrate to a new storage platform. The File System Analyzer is a tool from Peer Software that is designed to help partners discover and analyze existing file and folder structures for the purpose of planning and optimization.
-
-The File System Analyzer performs a very fast scan of one or more specified paths, uploads results to Amazon S3, assembles key pieces of information into one or more Excel workbooks, and emails reports with links to access the workbooks.
-
-As this tool is primarily for our partners, we would love to hear any feedback you have on it. Reach out to us on Slack via the **#_peer_software_ext** channel with comments and suggestions.
-
-Installing and Running the File System Analyzer
-............
-
-#. Connect to your *Initials*\ **-Windows-ToolsVM** via RDP using the following credentials:
-
-   - **Username** - NTNXLAB\\Administrator
-   - **Password** - nutanix/4u
-
-#. Within the VM, download the File System Analyzer installer: https://www.peersoftware.com/downloads/fsa/13/FileSystemAnalyzer_win64.exe
-
-#. Run the installer and select **Immediate Installation**.
-
-   .. figure:: images/fsa1.png
-
-   Once the installation is complete, the File System Analyzer wizard is automatically launched.
-
-#. The **Introduction** screen provides details on information collected and reported by the utility. Click **Next**.
-
-   .. figure:: images/fsa2.png
-
-#. The **Contact Information** screen collects information used to organize the output of the File System Analyzer and to send the final reports. Fill out the following fields:
-
-   - **Company** – Enter your company name.
-   - **Location** – Enter the physical location of the server that is running the File System Analyzer. In multi-site environments, this could be a city or state name. A data center name also works.
-   - **Project** – Enter a project name or business reason for running this analysis. This (and the Company and Location fields) are used solely to organize the final reports.
-   - **Mode** – Select the mode of operation to be used – **General Analysis** or **Migration Preparation**. **Migration Preparation** is useful when preparing for a migration project between storage systems. In addition to collecting standard telemetry on file systems, this mode also offers the option to test performance of both the existing and new storage systems to help gauge potential migration performance and timing. For this lab, we will use **General Analysis**.
-   - **Name/Phone/Title** – *(Optional)* Enter your name and contact information.
-   - **Email** – Enter the email address to which the final reports will be sent. For multiple addresses, enter a comma-separated list.
-   - **Upload Region** – Select **US**, **EU**, or **APAC** to tell the File System Analyzer which S3 location to use for uploading the final reports.
-
-   .. raw:: html
-
-     <strong><font color="red">Be sure to enter your own details into the wizard page shown below. Otherwise, the final report will not be sent to you.</font></strong>
-
-   .. figure:: images/fsa3.png
-
-#. Click **Next**.
-
-   The File System Analyzer can be configured to scan one or more paths. These paths can be local (e.g., ``D:\MyData``) or a remote UNC Path (e.g., ``\\files01\homes1``).
-
-#. Add the following paths:
-
-   - ``C:\`` - The local C: drive of *Initials*\ **-Windows-ToolsVM**
-   - ``\\BootcampFS\<Your Share Name>\`` - A share previously created on Nutanix Files
-
-   .. figure:: images/fsa4.png
-
-     Click the **Search** button and enter the name of a file server if you wish to discover the available shares on that file server. You can also right-click within the dialog and select **Check All** to automatically add all discovered shares.
-
-   .. figure:: images/fsa4a.png
-
-     Selecting the **Log totals by owner** option will poke every file and folder within the selected scan path(s) for its owner. This owner information will be tallied by bytes, files, and folders and included in the final report.
-
-#. Click **Next**.
-
-   Click the **Start** button to begin scanning the entered paths. When all scans, analyses, and uploads are complete, you will see a status that is similar to the following:
-
-   .. figure:: images/fsa5.png
-
-#. File System Analyzer will also email the report to all configured addresses. To view the full report, click the hyperlink(s) listed under **Detailed Reports** in the email. If multiple paths were scanned, you will also see a link to a cumulative report across all paths.
-
-   .. figure:: images/fsa6.png
-
-   .. note::
-
-     Report download links are active for **24 hours** only. Contact Peer Software to access any expired reports.
-
-   Some systems may open these workbooks in a protected mode, displaying this message in Excel:
-
-   .. figure:: images/fsa8.png
-
-   If you see this message at the top of Excel, click **Enable Editing** to fully open the workbook. If you do not do this, the pivot tables and charts will not load properly.
-
-Summary Reports
-............
-Summary reports contain overall statistical and historical information across all paths that have been selected to be scanned.  When you open a summary report, you are greeted with a worksheet like this:
-
-   .. figure:: images/fsa7.png
-
-   Each summary report may contain some or all of the following worksheets:
-
-   - **InfoSheet** – Details about this specific run. This page will also show Total Bytes formatted in both decimal (1 KB is 1,000 bytes) and binary (1 KiB is 1,024 bytes) forms.
-   - **CollectiveResults** – A list of all paths scanned along with high-level statistics for each.
-   - **History-Bytes** – Contains historical changes in bytes for each time each path is scanned.
-   - **History-Files** – Contains historical changes in total number of files for each time each path is scanned.
-   - **History-Folders** – Contains historical changes in total numbers of folders for each time each path is scanned.
-   
-    .. note::
-
-     History worksheets will only appear after running multiple scans.
-
-Volume Reports
-............
-Volume reports give more detailed information about a specific path that has been scanned. When you open a volume report, you are greeted with a worksheet like this:
-
-   .. figure:: images/fsa7a.png
-
-   Each volume report may contain some or all of the following worksheets:
-
-   - **Overview** – A series of pivot tables and charts showing high-level statistics about the path that was scanned.
-   - **InfoSheet** – Details about this specific scan. This page will also show Total Bytes formatted in both decimal (1 KB is 1,000 bytes) and binary (1 KiB is 1,024 bytes) forms.
-   - **OverallStats** – Overall statistics for the folder that was scanned. This includes total bytes, files, folders, etc.
-   - **Analysis** – Includes a pivot table and a pair of charts highlighting additional statistics about the path that was scanned.
-   - **History** – Shows statistics from each scan of this volume.
-   - **HistoryCharts** – Contains charts showing historical changes in files, folders, and bytes for this volume.
-   - **HighSubFolderCounts** – A list of all folders containing more than 100 child directories.
-   - **HighByteCounts** – A list of all folders containing more than 10GB of child file data.
-   - **HighFileCounts** – A list of all folders containing more than 10,000 child files.
-   - **LargeFiles** – A list of all discovered files that are 10GB or larger.
-   - **DeepPaths** – A list of all discovered folder paths that are 15 levels deep or deeper.
-   - **LongPaths** – A list of all discovered folder paths that are 256 characters or longer.
-   - **ReparsePointsSummary** – A summary of all reparse points discovered, regardless of file or folder.
-   - **ReparsePoints** – A list of all folder reparse points discovered.
-   - **TimeAnalysis** – A breakdown of total files, folders, and bytes by age.
-   - **LastModifiedAnalysis** – A view of all files, folders, and bytes modified each hour for the past year. These numbers are then totaled and averaged to show files, folders, and bytes modified by: day of week; month; hour of the day; day of month; and day of year.
-   - **CreatedAnalysis** – A view of all files, folders, and bytes created each hour for the past year. These numbers are then totaled and averaged to show files, folders, and bytes created by day of week, month, hour of the day, day of month, and day of year.
-   - **LastAccessedAnalysis** – A view of all files, folders, and bytes accessed each hour for the past year. These numbers are then totaled and averaged to show files, folders, and bytes accessed by: day of week; month; hour of the day; day of month; and day of year.
-   - **TLDAnalysis** - A list of each folder immediately under a specified path with statistics for each of these subfolders. In a user home directory environment, each of these subfolders should represent a different user.
-   - **TopTLDsByTotals** – A series of pivot tables and charts showing the top ten top-level directories based on total bytes used, total files, and total folders.
-   - **TopTLDsByLastModBytes** – A pivot table and chart showing top 10 top-level directories based on most bytes modified in the past year.
-   - **TopTLDsByLastModFiles** – A pivot table and chart showing top 10 top-level directories based on most files modified in the past year.
-   - **LegacyTLDs** – A list of all top-level directories that do not contain any files modified in the past 365 days.
-   - **TreeDepth** – A tally of bytes, folders, and files found at each depth level of the folder structure. For customers doing a pre-migration analysis, depths that appear as green are good candidates for PeerSync Migration’s tree depth setting.
-   - **FileExtInfo** – A list of all discovered extensions, including pivot tables sorted by total bytes and total files.
-   - **FileAttributes** – A summary of all file and folder attributes found.
-   - **SmallFileAnalysis** – A list of all files discovered below a certain size. This page is useful for estimating the storage impact of small files on storage platforms that have large minimum file sizes on disk.
-   - **SIDCache** – A list of all the owners and SID strings that have been discovered.
-   
-    .. note::
-
-     History worksheets will only appear after running multiple scans.
-
-Here is a sample of the **LastModifiedAnalysis** page mentioned above:
-
-   .. figure:: images/fsa7b.png
 
 Working with Nutanix Objects
 ++++++++++++++
@@ -767,7 +623,159 @@ The easiest way to verify that files have been replicated into Nutanix Objects i
 #. Navigate to the appropriate bucket set above and verify that it contains content.
 
    .. figure:: images/cloud19.png
+   
+   **Congratulations!** You have successfully setup replication between Nutanix Files and Nutanix Objects! Using Peer, this same approach can be leveraged to support scenarios including coexistence of file data with object-based apps and services as well as point-in-time recovery of enterprise NAS data backed by Objects.
 
+Analyzing Existing Environments
+++++++++++++++++++++++++++++++++++++++++++
+
+   .. note::
+
+   This exercise requires the :ref:`windows_tools_vm`.
+
+As the capacity of file server environments increase at a record pace, storage admins often do not know how users and applications are leveraging these file server environments. This fact becomes most evident when it is time to migrate to a new storage platform. The File System Analyzer is a tool from Peer Software that is designed to help partners discover and analyze existing file and folder structures for the purpose of planning and optimization.
+
+The File System Analyzer performs a very fast scan of one or more specified paths, uploads results to Amazon S3, assembles key pieces of information into one or more Excel workbooks, and emails reports with links to access the workbooks.
+
+As this tool is primarily for our partners, we would love to hear any feedback you have on it. Reach out to us on Slack via the **#_peer_software_ext** channel with comments and suggestions.
+
+Installing and Running the File System Analyzer
+............
+
+#. Connect to your *Initials*\ **-Windows-ToolsVM** via RDP using the following credentials:
+
+   - **Username** - NTNXLAB\\Administrator
+   - **Password** - nutanix/4u
+
+#. Within the VM, download the File System Analyzer installer: https://www.peersoftware.com/downloads/fsa/13/FileSystemAnalyzer_win64.exe
+
+#. Run the installer and select **Immediate Installation**.
+
+   .. figure:: images/fsa1.png
+
+   Once the installation is complete, the File System Analyzer wizard is automatically launched.
+
+#. The **Introduction** screen provides details on information collected and reported by the utility. Click **Next**.
+
+   .. figure:: images/fsa2.png
+
+#. The **Contact Information** screen collects information used to organize the output of the File System Analyzer and to send the final reports. Fill out the following fields:
+
+   - **Company** – Enter your company name.
+   - **Location** – Enter the physical location of the server that is running the File System Analyzer. In multi-site environments, this could be a city or state name. A data center name also works.
+   - **Project** – Enter a project name or business reason for running this analysis. This (and the Company and Location fields) are used solely to organize the final reports.
+   - **Mode** – Select the mode of operation to be used – **General Analysis** or **Migration Preparation**. **Migration Preparation** is useful when preparing for a migration project between storage systems. In addition to collecting standard telemetry on file systems, this mode also offers the option to test performance of both the existing and new storage systems to help gauge potential migration performance and timing. For this lab, we will use **General Analysis**.
+   - **Name/Phone/Title** – *(Optional)* Enter your name and contact information.
+   - **Email** – Enter the email address to which the final reports will be sent. For multiple addresses, enter a comma-separated list.
+   - **Upload Region** – Select **US**, **EU**, or **APAC** to tell the File System Analyzer which S3 location to use for uploading the final reports.
+
+   .. raw:: html
+
+     <strong><font color="red">Be sure to enter your own details into the wizard page shown below. Otherwise, the final report will not be sent to you.</font></strong>
+
+   .. figure:: images/fsa3.png
+
+#. Click **Next**.
+
+   The File System Analyzer can be configured to scan one or more paths. These paths can be local (e.g., ``D:\MyData``) or a remote UNC Path (e.g., ``\\files01\homes1``).
+
+#. Add the following paths:
+
+   - ``C:\`` - The local C: drive of *Initials*\ **-Windows-ToolsVM**
+   - ``\\BootcampFS\<Your Share Name>\`` - A share previously created on Nutanix Files
+
+   .. figure:: images/fsa4.png
+
+     Click the **Search** button and enter the name of a file server if you wish to discover the available shares on that file server. You can also right-click within the dialog and select **Check All** to automatically add all discovered shares.
+
+   .. figure:: images/fsa4a.png
+
+     Selecting the **Log totals by owner** option will poke every file and folder within the selected scan path(s) for its owner. This owner information will be tallied by bytes, files, and folders and included in the final report.
+
+#. Click **Next**.
+
+   Click the **Start** button to begin scanning the entered paths. When all scans, analyses, and uploads are complete, you will see a status that is similar to the following:
+
+   .. figure:: images/fsa5.png
+
+#. File System Analyzer will also email the report to all configured addresses. To view the full report, click the hyperlink(s) listed under **Detailed Reports** in the email. If multiple paths were scanned, you will also see a link to a cumulative report across all paths.
+
+   .. figure:: images/fsa6.png
+
+   .. note::
+
+     Report download links are active for **24 hours** only. Contact Peer Software to access any expired reports.
+
+   Some systems may open these workbooks in a protected mode, displaying this message in Excel:
+
+   .. figure:: images/fsa8.png
+
+   If you see this message at the top of Excel, click **Enable Editing** to fully open the workbook. If you do not do this, the pivot tables and charts will not load properly.
+
+Summary Reports
+............
+Summary reports contain overall statistical and historical information across all paths that have been selected to be scanned.  When you open a summary report, you are greeted with a worksheet like this:
+
+   .. figure:: images/fsa7.png
+
+   Each summary report may contain some or all of the following worksheets:
+
+   - **InfoSheet** – Details about this specific run. This page will also show Total Bytes formatted in both decimal (1 KB is 1,000 bytes) and binary (1 KiB is 1,024 bytes) forms.
+   - **CollectiveResults** – A list of all paths scanned along with high-level statistics for each.
+   - **History-Bytes** – Contains historical changes in bytes for each time each path is scanned.
+   - **History-Files** – Contains historical changes in total number of files for each time each path is scanned.
+   - **History-Folders** – Contains historical changes in total numbers of folders for each time each path is scanned.
+   
+    .. note::
+
+     History worksheets will only appear after running multiple scans.
+
+Volume Reports
+............
+Volume reports give more detailed information about a specific path that has been scanned. When you open a volume report, you are greeted with a worksheet like this:
+
+   .. figure:: images/fsa7a.png
+
+   Each volume report may contain some or all of the following worksheets:
+
+   - **Overview** – A series of pivot tables and charts showing high-level statistics about the path that was scanned.
+   - **InfoSheet** – Details about this specific scan. This page will also show Total Bytes formatted in both decimal (1 KB is 1,000 bytes) and binary (1 KiB is 1,024 bytes) forms.
+   - **OverallStats** – Overall statistics for the folder that was scanned. This includes total bytes, files, folders, etc.
+   - **Analysis** – Includes a pivot table and a pair of charts highlighting additional statistics about the path that was scanned.
+   - **History** – Shows statistics from each scan of this volume.
+   - **HistoryCharts** – Contains charts showing historical changes in files, folders, and bytes for this volume.
+   - **HighSubFolderCounts** – A list of all folders containing more than 100 child directories.
+   - **HighByteCounts** – A list of all folders containing more than 10GB of child file data.
+   - **HighFileCounts** – A list of all folders containing more than 10,000 child files.
+   - **LargeFiles** – A list of all discovered files that are 10GB or larger.
+   - **DeepPaths** – A list of all discovered folder paths that are 15 levels deep or deeper.
+   - **LongPaths** – A list of all discovered folder paths that are 256 characters or longer.
+   - **ReparsePointsSummary** – A summary of all reparse points discovered, regardless of file or folder.
+   - **ReparsePoints** – A list of all folder reparse points discovered.
+   - **TimeAnalysis** – A breakdown of total files, folders, and bytes by age.
+   - **LastModifiedAnalysis** – A view of all files, folders, and bytes modified each hour for the past year. These numbers are then totaled and averaged to show files, folders, and bytes modified by: day of week; month; hour of the day; day of month; and day of year.
+   - **CreatedAnalysis** – A view of all files, folders, and bytes created each hour for the past year. These numbers are then totaled and averaged to show files, folders, and bytes created by day of week, month, hour of the day, day of month, and day of year.
+   - **LastAccessedAnalysis** – A view of all files, folders, and bytes accessed each hour for the past year. These numbers are then totaled and averaged to show files, folders, and bytes accessed by: day of week; month; hour of the day; day of month; and day of year.
+   - **TLDAnalysis** - A list of each folder immediately under a specified path with statistics for each of these subfolders. In a user home directory environment, each of these subfolders should represent a different user.
+   - **TopTLDsByTotals** – A series of pivot tables and charts showing the top ten top-level directories based on total bytes used, total files, and total folders.
+   - **TopTLDsByLastModBytes** – A pivot table and chart showing top 10 top-level directories based on most bytes modified in the past year.
+   - **TopTLDsByLastModFiles** – A pivot table and chart showing top 10 top-level directories based on most files modified in the past year.
+   - **LegacyTLDs** – A list of all top-level directories that do not contain any files modified in the past 365 days.
+   - **TreeDepth** – A tally of bytes, folders, and files found at each depth level of the folder structure. For customers doing a pre-migration analysis, depths that appear as green are good candidates for PeerSync Migration’s tree depth setting.
+   - **FileExtInfo** – A list of all discovered extensions, including pivot tables sorted by total bytes and total files.
+   - **FileAttributes** – A summary of all file and folder attributes found.
+   - **SmallFileAnalysis** – A list of all files discovered below a certain size. This page is useful for estimating the storage impact of small files on storage platforms that have large minimum file sizes on disk.
+   - **SIDCache** – A list of all the owners and SID strings that have been discovered.
+   
+    .. note::
+
+     History worksheets will only appear after running multiple scans.
+
+Here is a sample of the **LastModifiedAnalysis** page mentioned above:
+
+   .. figure:: images/fsa7b.png
+   
+**Congratulations!** You have completed the Peer Global File Service lab! Get your lab validated by a member of the Peer Software team. We have a Rocketbook reusable notepad with pen and refresh cloth for you!
 
 Integrating with Microsoft DFS Namespace
 ++++++++++++++++++++++++++++++++++++++++
