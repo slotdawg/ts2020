@@ -70,9 +70,11 @@ Adding Frame Category
 
    - **Name** - FrameRole
    - **Purpose** - Allowing resource access based on Application Team
-   - **Values** - Instance
-                  Template
-                  MasterTemplate
+   - **Values**
+   
+      - Instance
+      - Template
+      - MasterTemplate
 
    .. note::
 
