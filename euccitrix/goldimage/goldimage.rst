@@ -68,7 +68,7 @@ Before starting to build your **Windows 10** image it is important the ensure th
 Installing the VDA
 ++++++++++++++++++
 
-<What is the VDA?>
+The Virtual Delivery Agent (VDA) is a collection of drivers and services installed on each physical or virtual machine available for user connection. The VDA allows the machine to register with the Delivery Controller, allowing the Delivery Controller to assign those resources to users. The VDA is also responsible for establishing the HDX connection, the Citrix remoting protocol, between the machine and the user device, verifying licensing, and applying Citrix Policy.
 
 #. Once the VM has restarted, reconnect to the VM console or connect via RDP.
 
@@ -192,6 +192,8 @@ Running VMware OS Optimization Tool
 Completing the Gold Image
 +++++++++++++++++++++++++
 
+XenDesktop provisions pools of desktops based on a hypervisor snapshot of the gold image. Unlike traditional hypervisors which can experience performance degradation from traversing long snapshot chains, Nutanix's redirect-on-write algorithm for implementing snapshots has no such drawback. This difference allows for flexibility in using gold image snapshots to maintain many gold image versions from a single VM. Watch `this video <https://youtu.be/uK5wWR44UYE>`_ for additional details on how Nutanix implements snapshots and cloning.
+
 #. Once restarted, Perform a graceful shutdown of the VM from within the guest.
 
 #. From **Prism Element**, take a snapshot of the VM (e.g. *Post optimization and VDA install*)
@@ -201,3 +203,14 @@ Completing the Gold Image
    .. note::
 
       This snapshot **must** be taken from Prism Element in order to be recognized by the Citrix AHV plug-in.
+
+Takeaways
++++++++++
+
+What are the key things learned in this exercise?
+
+- The gold VM does not require Sysprep or being domain joined.
+
+- Using MCS helps simplify the gold image by not having to manually specify (or depend on Active Directory to specify) what XenDesktop Delivery Controller(s) with which the image should attempt to register. This allows more flexibility in having a single gold image support multiple environments without external dependencies.
+
+- EUC image optimization tools are not solution or hypervisor specific and can be easily applied to improve virtual desktop performance and increase host density.
