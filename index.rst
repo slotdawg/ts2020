@@ -84,6 +84,7 @@
    beam_security_compliance/beam_security_compliance
    calm_karbon_cicd/calm_karbon_cicd
    peer/peer
+   mine/veeam/veeam
    mine/hycu/hycu/hycu
    /mine/hycu/protecting-physical/protectingphysical
 ..   /mine/hycu/reporting/reporting
