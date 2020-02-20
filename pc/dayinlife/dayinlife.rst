@@ -426,7 +426,7 @@ While developer users will have the ability to create and publish their own Blue
 Developer Workflow
 ++++++++++++++++++
 
-Meet Dan. Dan is a member of the Fiesta Engineering team, is currently going through a divorce, and trying to cut down on dairy. Dan is having a rough time. To make matters worse, he's behind on testing a new feature because previous requests to IT for virtual infrastructure Dan needs to work have each taken several days.
+Meet Dan. Dan is a member of the Fiesta Engineering team, is currently going through a divorce, and trying to cut down on dairy. Dan is having a rough time. To make matters worse, he's behind on testing a new feature because previous requests to IT for virtual infrastructure that Dan needs to work have each taken several days.
 
 Dan has resorted to deploying VMs outside of the corporate network on his favorite public cloud service, with no security oversight, and putting company IP at risk. Dan has a lot on his plate, so we're not going to fault him for it.
 

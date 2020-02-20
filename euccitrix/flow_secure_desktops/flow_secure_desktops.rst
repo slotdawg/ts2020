@@ -4,7 +4,7 @@
 Securing Desktops with Flow
 ---------------------------
 
-Flow application security policies can prevent VMs from communicating with each other while still allowing inbound and outbound access. This is perfect for applications such as web servers, or even desktops, where preventing the spread of VM to VM traffic is critical to stop attacks.
+Another benefit of running virtual desktop workloads on Nutanix AHV is the ability to take advantage of native microsegmentation capabilities with Flow. Flow provides the ability to graphically monitor and model powerful East/West firewall rules between VMs, and control inbound and outbound access. This is perfect for applications such as web servers, or even desktops, where preventing the spread of VM to VM traffic is critical to stop attacks.
 
 **In this task we will place desktop VMs into an application policy as part of an application tier that restricts VM to VM communication within the tier. The desktops will have normal inbound and outbound access, but traffic between desktops will be blocked.**
 
