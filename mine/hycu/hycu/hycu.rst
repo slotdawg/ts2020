@@ -198,14 +198,14 @@ HYCU uses policies to define RPO, RTO, retention, and backup target(s), allowing
 #. Fill out the following fields and click **Save**:
 
    - **Name** - Fast
-   - **Description** - 1 Hour RPO/RTO, Fast Restore Enabled (1 Day)
+   - **Description** - 1 Hour RPO/RTO, Fast Restore Enabled (1 Week)
    - **Enabled Options** - Backup, Fast Restore
    - **Backup Every** - 1 Hours
    - **Recover Within** - 1 Hours
    - **Retention** - 4 Weeks
    - **Targets** - Automatically selected
    - **Backup Threshold** - 25%
-   - **Fast Restore Retention** - 1 Day
+   - **Fast Restore Retention** - 1 Weeks
 
    .. figure:: images/11.png
 
