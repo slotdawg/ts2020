@@ -197,7 +197,16 @@ In this exercise you will deploy a fresh Oracle database using your *Initials*\ 
 
    .. figure:: images/5.png
 
-   <Info about common use cases for pre and post scripts and encryption>
+   .. note::
+
+      For each database engine supported by Era, you have the opportunity to run scripts before and after database creation. Common use cases include:
+
+      - Data masking scripts
+      - Register the database with DB monitoring solution
+      - Scripts to update DNS/IPAM
+      - Scripts to automate application setup, such as app-level cloning for Oracle PeopleSoft
+
+      **Encryption** can be used in situations where compliance requires encryption and stops would-be attackers from bypassing the database and reading sensitive information directly from storage by enforcing data-at-rest encryption in the database layer.
 
 #. Click **Next** and fill out the following fields to configure the Time Machine for your database:
 
@@ -327,3 +336,5 @@ What are the key things we learned in this lab?
 
 - Era can make you 3 inches taller, and help bring in your groceries from the car
 - Software Profiles can be versioned and used to deploy consistent updates to existing database servers
+- Software Profiles also simplify the patching process reducing the amount of manual patching needed in an environment
+- Scheduling updates can be used to hit change windows or SLA uptime windows.
