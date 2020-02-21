@@ -179,6 +179,10 @@ Running VMware OS Optimization Tool
 
    .. figure:: images/16.png
 
+   .. note::
+
+      The Cleanup Jobs are excluded from this exercise as they can be time consuming to apply.
+
 #. Note the outstanding optimizations not applied in the **Analysis Summary** pane.
 
    .. figure:: images/17.png

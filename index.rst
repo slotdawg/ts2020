@@ -1,4 +1,4 @@
-.. title:: Tech Summit 2020
+.. title:: Nutanix Global Tech Summit 2020
 
 .. toctree::
    :maxdepth: 2
@@ -101,9 +101,8 @@
 
 .. _welcome:
 
---------------------------------
-Welcome to Nutanix GTS 2020 Labs
---------------------------------
+.. figure:: images/gtsvegas.png
+   :align: center
 
 This year we're celebrating how we power customer use cases by exposing you to multiple new options that will be launched as Bootcamps for you to drive prospect and customer engagement during 2020. During this year's Hands on Learning day, you'll choose and complete **at least** one of four available solution-focused lab tracks.
 
