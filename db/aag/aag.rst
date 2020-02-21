@@ -4,20 +4,22 @@
 Simplifying Database Availability
 ---------------------------------
 
-Introduction
+Up to this point, we have been using Era to create single instance databases. For any real, production database, you would want to use a clustered solution to provide high availability, reducing any chance of downtime for your application or your business. Era supports provisioning and managing Microsoft SQL Server AlwaysOn Availability Group and Oracle RAC clustered databases.
 
-**In this lab you will...**
+SQL Server AAG clusters have many moving parts, and deploying a single cluster can easily take several hours or more.
+
+**In this lab you will clone your existing production SQL Server database to a database cluster and test its availability using the Fiesta app.**
 
 Creating an Era Managed Network
 +++++++++++++++++++++++++++++++
 
 .. note::
 
-   This operation only needs to be performed **ONCE** per cluster. If the **EraManaged** network has already been added as a resource in Era, you can move on to `Provisioning an AAG`_.
+   This operation only needs to be performed **ONCE** per cluster. If the **EraManaged** network has already been added as a resource in Era, you can move on to :ref:`provisioningaag`.
 
    .. figure:: images/1.png
 
-<Why does Era require an Era manged network in order to provision a clustered database?>
+Era requires a network whose IPs are managed by the Era appliance, allowing it to assign that static IPs required for the cluster VMs and floating IP for the SQL Listener.
 
 #. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Subnets**.\
 
@@ -62,6 +64,8 @@ Creating an Era Managed Network
 
 #. Click **Create**.
 
+.. _provisioningaag:
+
 Provisioning an AAG
 +++++++++++++++++++
 
@@ -105,12 +109,14 @@ Provisioning an AAG
 
    .. figure:: images/9.png
 
-#. Monitor the refresh on the **Operations** page. This operation should take approximately 35 minutes. You can proceed to the <NEXT LAB> while your clustered database servers are provisioned.
+#. Monitor the refresh on the **Operations** page. This operation should take approximately 35 minutes. **You can proceed to the while your clustered database servers are provisioned.**
 
    .. figure:: images/10.png
 
 Configure Fiesta for AAG
 ++++++++++++++++++++++++
+
+Rather than deploy an additional Fiesta web server VM, you will update the configuration of your existing VM to point to the database cluster.
 
 #. In **Era > Databases > Clones**, and select your most recent clone to view the details of the AAG deployment. Note the **Listener IP Address** of the Always on Availability Group.
 
@@ -135,6 +141,8 @@ Configure Fiesta for AAG
 Failing A Cluster Server
 ++++++++++++++++++++++++
 
+Time to break stuff!
+
 #. Open your **Dev Fiesta** web app and make a change such as deleting a store and/or adding additional products to a store.
 
    .. figure:: images/15.png
@@ -150,3 +158,11 @@ Failing A Cluster Server
    .. figure:: images/17.png
 
 #. Refresh your **Dev Fiesta** web app and validate data is being displayed properly.
+
+Takeaways
++++++++++
+
+What are the key things we learned in this lab?
+
+- Production databases require high levels of availability to prevent downtime
+- Era makes the deployment of complex, clustered databases as easy (and as fast) as single instance databases
