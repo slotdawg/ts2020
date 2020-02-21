@@ -66,7 +66,7 @@ One of the key benefits of non-persistent desktops is the ability to uniformly r
 
    .. note::
 
-     Update Machines is not an available for your Persistent Machine Catalog as updates to persistent desktops are handled via traditional patch management tools.
+     Update Machines is not available for your Persistent Machine Catalog as updates to persistent desktops are handled via traditional patch management tools.
 
 #. Click **Next**.
 
