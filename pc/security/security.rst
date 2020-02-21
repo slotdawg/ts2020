@@ -196,7 +196,7 @@ Example 2
 
 This example focuses on the following check from the previously created report:
 
-.. code-block::
+::
 
    All world-writable directories must be group-owned by root, sys, bin, or an application group.
    The result of the check should be yes.  If no, then it's a finding
