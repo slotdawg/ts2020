@@ -4,9 +4,11 @@
 Migrating Horizon View Image to AHV
 -----------------------------------
 
-Introduction
+It's a cool afternoon in late February, you look longingly over your cubicle wall towards the windows in the distance, and see a group of birds perched along a tree branch. What beautiful music they must be making. It's a shame you're stuck inside, still fighting performance issues in your Horizon View environment, running on blade server and fibre channel SAN infrastructure. Next week you're expected to add 100 additional desktops to the pool, you have the compute, but your storage is at peak utilization and further increases in latency will inevitably result in an increase in user complaints lobbed at the helpdesk.
 
-**In this lab you will...**
+In addition to your scalability woes, you're also trying to juggle planning for an upgrade to the vCenter and Horizon View Connection Servers required to broker connections to the virtual desktops. You previously played with a free trial of Nutanix Xi Frame, running desktops in AWS, and loved the cloud hosted control plane, but your virtual desktops need to run on-premises so client applications can provide low-latency connectivity to business critical apps such as SAP. Hmmmm, what to do, what to do...
+
+**In this lab you will deploy and use the freely available Nutanix Move to migrate your existing Horizon View gold image from vSphere to Nutanix AHV, and use it as the basis for a Frame gold image.**
 
 Deploying Move
 ++++++++++++++++
@@ -227,11 +229,13 @@ Migrating VMs
 
    .. figure:: images/19.png
 
-#. In **Prism**, take a snapshot of your VM before proceeding to the next lab. The name of the snapshot should include your *Initials* for easy identification.
+#. In **Prism Central**, select your VM and click **Actions > Snapshot** to create a snapshot of your VM before proceeding to the next lab. The name of the snapshot should include your *Initials* for easy identification.
 
-   .. figure:: images/20.png
+   .. note::
 
-Next Steps
+      This snapshot acts as a point to revert/clone your VM back to a clean state if you experience issues creating your gold image in the next exercise.
+
+Takeaways
 +++++++++
 
 What are the key things you should know about **Nutanix Move**?
