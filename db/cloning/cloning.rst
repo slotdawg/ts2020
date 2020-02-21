@@ -65,6 +65,8 @@ Databases aren't applications, they can be comprised of multiple components. For
 
 #. Select **FiestaClonedDB.json**.
 
+#. Update the **Blueprint Name** to include your initials.
+
 #. Select your Calm project and click **Upload**.
 
    .. figure:: images/4.png

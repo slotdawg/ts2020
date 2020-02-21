@@ -227,13 +227,13 @@ Connecting to the Desktop
 Takeaways
 +++++++++
 
-- Citrix is capable of delivering a high-fidelity desktop experience via HTML5. Simiarly, the HTML 5 Nutanix Prism interface provides a single UI for managing and monitoring your infrastructure from anywhere.
+- Citrix is capable of delivering a high-fidelity desktop experience via HTML5. Similarly, the HTML 5 Nutanix Prism interface provides a single UI for managing and monitoring your infrastructure from anywhere.
 
 - The ability to support a large environment from a single storage container simplifies configuration and improves deployment speed.
 
 - Despite being based off of a single, shared, gold image, all the VMs in the Machine Catalog continue to benefit from data locality (reduced latency for reads and reduced network congestion). For non-AHV hypervisors, the same benefit is realized through Shadow Clones.
 
-- Intelligent cloning avoids significant storage overhead for deploying persistent virtual desktops. If mixing persistent and non-persisdent desktops within the same cluster, best practice would be to leverage a storage container with deduplication enabled for persistent desktops and a separate storage container with deduplication disabled for non-persistent desktops. Having the flexibility to pair workloads with appropriate storage efficiency technologies can imrpvoe density and reduce waste.
+- Intelligent cloning avoids significant storage overhead for deploying persistent virtual desktops. If mixing persistent and non-persistent desktops within the same cluster, best practice would be to leverage a storage container with deduplication enabled for persistent desktops and a separate storage container with deduplication disabled for non-persistent desktops. Having the flexibility to pair workloads with appropriate storage efficiency technologies can improve density and reduce waste.
 
 - Citrix MCS allows for end to end provisioning and entitlement management in a single console.
 
