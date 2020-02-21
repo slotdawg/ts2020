@@ -33,10 +33,19 @@ Key use cases for combining Peer Software with Nutanix include:
 
 Working from left to right, users interact with the SMB shares on the Nutanix Files cluster via a public LAN. When SMB activity occurs on the Files cluster through these shares, the Peer Partner Server (referred to as a Peer Agent) is notified via the File Activity Monitoring API from Files. The Peer Agent accesses the updated content via SMB, and then facilitates the flow of data to one or many remote and/or local file servers.
 
-**In this lab you will configure Peer Global File Service to create an Active-Active file services solution with Nutanix Files.**
+**In this lab you will configure Peer Global File Service to create an Active-Active file services solution with Nutanix Files, replicate content from Nutanix Files to Nutanix Objects, and use our File System Analyzer tool to analyze some sample data.**
+
+When you are done with these three sections, get your lab validated by a member of the Peer Software team. We have a Rocketbook reusable notepad with pen and refresh cloth for you!
+
+.. figure:: images/rocketbook_small.png
 
 Lab Setup
 +++++++++
+
+   .. note::
+
+    This lab requires the :ref:`windows_tools_vm`.
+    
 
 Files
 .....
@@ -147,7 +156,7 @@ For this lab, you will be accessing a shared PMC deployment via a web interface.
    - **Username** - admin
    - **Password** - nutanix/4u
 
-#. Once connected, confirm that **PeerAgent-Files** and **PeerAgent-Win** are both appear in green in the **Agents** view in the bottom left of the PMC web interface.
+#. Once connected, confirm that **PeerAgent-Files** and **PeerAgent-Win** both appear in green in the **Agents** view in the bottom left of the PMC web interface.
 
    .. figure:: images/pmc.png
 
@@ -229,7 +238,7 @@ Files and PeerAgent-Files
 
    .. note::
 
-     Once you enter these credentials, they are reusable when creating new jobs that use this particular Agent.  When you create your next job, select **Existing Credentials** on this page to display a list of previously configured credentials.
+     Once you enter these credentials, they are reusable when creating new jobs that use this particular Agent. When you create your next job, select **Existing Credentials** on this page to display a list of previously configured credentials.
 
 #. Click **Next**.
 
@@ -337,10 +346,6 @@ Once a job has been created, it must be started to initiate synchronization and 
 Testing Collaboration
 +++++++++++++++++
 
-   .. note::
-
-    This exercise requires the :ref:`windows_tools_vm`.
-
 The easiest way to verify synchronization is functioning properly is to open separate File Explorer windows for the Nutanix Files and Windows File Server paths.
 
 .. note::
@@ -387,6 +392,239 @@ The easiest way to verify synchronization is functioning properly is to open sep
    .. figure:: images/36.png
 
    **Congratulations!** You have successfully deployed an Active-Active file share replicated across two file servers. Using Peer, this same approach can be leveraged to support file collaboration across sites, migrations from legacy solutions to Nutanix Files, or disaster recovery for use cases such as VDI, where user data and profiles need to be accessible from multiple sites for business continuity.
+
+Working with Nutanix Objects
+++++++++++++++
+
+Peer Global File Service includes the ability to push data from NAS devices into object storage. The same real-time replication technology used to power the collaboration scenario above can also be used to replicate data into Nutanix Objects with optional snapshot capabilities for point-in-time recovery. All objects are replicated in a transparent format that can be immediately used by other apps and services.
+
+This lab section will walk you through the necessary steps to replicate data from Nutanix Files into Nutanix Objects.
+
+Getting Client IP and Credentials for Nutanix Objects
+............
+
+In order to replicate data into Objects, you need the Client IP of the object store and need to generate access and secret keys. If you already have this information from a prior lab, you can skip this section and re-use that existing information.
+
+#. Log in to **Prism Central** (e.g., 10.XX.YY.39) on your Nutanix cluster, and then navigate to **Services** > **Objects**.
+
+#. In the **Object Stores** section, find the appropriate object store in the table and note the Client Used IPs.
+
+   .. figure:: images/clientip.png
+
+#. Click on the **Access Keys** section and click **Add People** to begin the process for creating credentials.
+
+   .. figure:: images/buckets_add_people.png
+
+#. Select **Add people not in Active Directory** and enter your e-mail address.
+
+   .. figure:: images/buckets_add_people2.png
+
+#. Click **Next**.
+
+#. Click **Download Keys** to download a .csv file containing the **Access Key** and **Secret Key**.
+
+   .. figure:: images/buckets_add_people3.png
+
+#. Click **Close**.
+
+#. Open the file with a text editor.
+
+   .. figure:: images/buckets_csv_file.png
+
+   .. note::
+
+     Keep the text file open so that you have the access and secret keys readily available for the sections below.
+
+Creating a New Cloud Replication Job
+............
+
+In this section, we will focus on creating a **Cloud Backup and Replication** job to replicate data from Nutanix Files into Nutanix Objects.
+
+#. In the **PMC Web Interface**, click **File > New Job**.
+
+   .. figure:: images/cloud1.png
+
+#. Select **Cloud Backup and Replication** and click **Create**.
+
+#. Enter *Initials*\  - **Replication to Objects** as the name for the job and click **OK**.
+
+   .. figure:: images/cloud2.png
+
+#. Select **Nutanix Files** and click **Next**.
+
+   .. figure:: images/cloud3.png
+
+#. Select the Agent named **PeerAgent-Files** and click **Next**. This Agent will manage the Files cluster.
+
+   .. figure:: images/cloud4.png
+
+#. On the **Storage Information** page, you will see one of two pages. If another participant sharing your Files cluster has already done the Peer lab, you can select their **Existing Credentials** as shown here.
+
+   .. figure:: images/cloud5.png
+
+   If you are the first participant on this cluster to do the Peer lab, fill out the following fields:
+
+   - **Nutanix Files Cluster Name** - **BootcampFS**
+
+     *The NETBIOS name of the Files cluster that will be paired with the Agent selected in the previous step.*
+
+   - **Username** - peer
+
+     *This is the Files API account username configured earlier in the lab and MUST be in all lower case.*
+
+   - **Password** - nutanix/4u
+
+     *The password associated with the Files API account.*
+
+   - **Peer Agent IP** - **PeerAgent-Files** IP Address
+
+     *The IP address of the Agent server that will receive real-time notifications from the File Activity Monitoring API built into Files. It will be selectable from a dropdown list of available IPs on this Agent server.*
+
+#. Click **Validate** to confirm Files can be accessed via API using the provided credentials.
+
+   .. figure:: images/cloud6.png
+
+   .. note::
+
+     Once you enter these credentials, they are reusable when creating new jobs that use this particular Agent. When you create your next job, select **Existing Credentials** on this page to display a list of previously configured credentials.
+
+#. Click **Next**.
+
+#. Select your *Initials*\ **-Peer** share and click **OK**.
+
+   .. figure:: images/cloud7.png
+
+   .. note::
+
+     Peer Global File Service supports the replication of data within nested shares starting with Nutanix Files v3.5.1 and above.
+
+   .. note::
+
+     With **Cloud Backup and Replication**, you can select multiple shares and/or folders for a single job.
+
+#. On the **File Filters** page, verify the **Default** filter selected as well as the **Include Files Without Extensions**, and click **Next**.
+
+   .. figure:: images/cloud8.png
+
+#. On the **Destination** page, select **Nutanix Objects** and click **Next**.
+
+   .. figure:: images/cloud9.png
+
+#. On the **Nutanix Objects Credentials** page, fill out the following fields:
+   
+   - **Description** – Name your destination
+
+     *This is a short name for the Objects credential configuration.*
+
+   - **Access Key**
+
+     *The Access Key associated with the Objects account.*
+
+   - **Secret Key**
+
+     *The Secret Key associated with the Objects account.*
+
+   - **Service Point**
+
+     *The client access IP address or FDQN name of the object store.*
+
+   .. figure:: images/cloud10.png
+
+      .. note::
+
+     Refer to the `Getting Client IP and Credentials for Nutanix Objects`_ section above for the appropriate access and secret keys, as well as the Client IP of the object store.
+
+#. Click **Validate** to confirm Objects can be accessed using the provided configuration.
+
+   .. figure:: images/cloud11.png
+
+#. Click **OK** in the **Success** window, and then click **Next**.
+
+#. On the **Bucket Details** page, deselect the **Automatically name** checkbox, and then provide a unique bucket name of *initials*\ -**peer-objects**.
+
+   .. figure:: images/cloud12.png
+
+      .. note::
+
+     The bucket name MUST be in all lower case.
+
+#. On the **Replication and Retention Policy** page, select **Existing Policy**, **Continuous Data Protection**, and then click **Next**.
+
+   .. figure:: images/cloud13.png
+
+#. Click **Next** on the **Miscellaneous Options**, **Email Alerts**, and **SNMP Alerts** pages.
+
+#. Review the configuration on the **Confirmation** screen, and then then click **Finish**.
+
+   .. figure:: images/cloud14.png
+
+Starting a Cloud Replication Job
+............
+
+Once a job has been created, it must be started to initiate replication.
+
+#. In the **PMC Web Interface**, right-click on your newly created job, and then select **Start**.
+
+   .. figure:: images/cloud15.png
+
+#. Double-click the job in the **Job** pane to view its runtime information and statistics.
+
+   .. figure:: images/cloud16.png
+
+   .. note::
+
+     Click **Auto-Update** to have the console regularly refresh as files begin replicating.
+
+Verifying Replication
+............
+
+   .. note::
+
+    This exercise requires the :ref:`windows_tools_vm`.
+
+The easiest way to verify that files have been replicated into Nutanix Objects is to use the Cyberduck tool on your *Initials*\ **-Windows-ToolsVM**
+
+#. Connect to your *Initials*\ **-Windows-ToolsVM** via RDP using the following credentials:
+
+   - **Username** - NTNXLAB\\Administrator
+   - **Password** - nutanix/4u
+
+#. Launch **Cyberduck** (Click the Window icon > Down Arrow > Cyberduck).
+
+   If you are prompted to update Cyberduck, click **Skip This Version**.
+
+#. Click on **Open Connection**.
+
+   .. figure:: images/buckets_06.png
+
+#. Select **Amazon S3** from the dropdown list.
+
+   .. figure:: images/buckets_07.png
+
+#. Fill out the following fields for the user created earlier, and then click **Connect**:
+
+   - **Server**  - *Objects Client Used IP*
+   - **Port**  - 443
+   - **Access Key ID**  - *Generated When User Created*
+   - **Password (Secret Key)** - *Generated When User Created*
+
+      .. note::
+
+     See the `Getting Client IP and Credentials for Nutanix Objects`_ section above for the appropriate access and secret keys, as well as the Client IP of the object store.
+
+   .. figure:: images/buckets_08.png
+
+#. Check the **Always Trust** checkbox, and then click **Continue** in the **The certificate is not valid** dialog box.
+
+   .. figure:: images/invalid_certificate.png
+
+#. Click **Yes** to continue installing the self-signed certificate.
+
+#. Navigate to the appropriate bucket set above and verify that it contains content.
+
+   .. figure:: images/cloud19.png
+   
+   **Congratulations!** You have successfully setup replication between Nutanix Files and Nutanix Objects! Using Peer, this same approach can be leveraged to support scenarios including coexistence of file data with object-based apps and services as well as point-in-time recovery of enterprise NAS data backed by Objects.
 
 Analyzing Existing Environments
 ++++++++++++++++++++++++++++++++++++++++++
@@ -536,245 +774,15 @@ Volume reports give more detailed information about a specific path that has bee
 Here is a sample of the **LastModifiedAnalysis** page mentioned above:
 
    .. figure:: images/fsa7b.png
-
-Working with Nutanix Objects
-++++++++++++++
-
-Peer Global File Service includes the ability to push data from NAS devices into object storage. The same real-time replication technology used to power the collaboration scenario above can also be used to replicate data into Nutanix Objects with optional snapshot capabilities for point-in-time recovery. All objects are replicated in a transparent format that can be immediately used by other apps and services.
-
-This lab section will walk you through the necessary steps to replicate data from Nutanix Files into Nutanix Objects.
-
-Getting Client IP and Credentials for Nutanix Objects
-............
-
-In order to replicate data into Objects, you need the Client IP of the object store and need to generate access and secret keys. If you already have this information from a prior lab, you can skip this section and re-use that existing information.
-
-#. Log in to **Prism Central** (e.g., 10.XX.YY.39) on your Nutanix cluster, and then navigate to **Services** > **Objects**.
-
-#. In the **Object Stores** section, find the appropriate object store in the table and note the Client Used IPs.
-
-   .. figure:: images/clientip.png
-
-#. Click on the **Access Keys** section and click **Add People** to begin the process for creating credentials.
-
-   .. figure:: images/buckets_add_people.png
-
-#. Select **Add people not in Active Directory** and enter your e-mail address.
-
-   .. figure:: images/buckets_add_people2.png
-
-#. Click **Next**.
-
-#. Click **Download Keys** to download a .csv file containing the **Access Key** and **Secret Key**.
-
-   .. figure:: images/buckets_add_people3.png
-
-#. Click **Close**.
-
-#. Open the file with a text editor.
-
-   .. figure:: images/buckets_csv_file.png
-
-   .. note::
-
-     Keep the text file open so that you have the access and secret keys readily available for the sections below.
-
-Creating a New Cloud Replication Job
-............
-
-In this section, we will focus on creating a **Cloud Backup and Replication** job to replicate data from Nutanix Files into Nutanix Objects.
-
-#. In the **PMC Web Interface**, click **File > New Job**.
-
-   .. figure:: images/cloud1.png
-
-#. Select **Cloud Backup and Replication** and click **Create**.
-
-#. Enter *Initials*\  - **Replication to Objects** as the name for the job and click **OK**.
-
-   .. figure:: images/cloud2.png
-
-#. Select **Nutanix Files** and click **Next**.
-
-   .. figure:: images/cloud3.png
-
-#. Select the Agent named **PeerAgent-Files** and click **Next**. This Agent will manage the Files cluster.
-
-   .. figure:: images/cloud4.png
-
-#. On the **Storage Information** page, you will see one of two pages. If another participant sharing your Files cluster has already done the Peer lab, you will be able to select their **Existing Credentials** as shown here.
-
-   .. figure:: images/cloud5.png
-
-   If you are the first participant on this cluster to do the Peer lab, fill out the following fields:
-
-   - **Nutanix Files Cluster Name** - **BootcampFS**
-
-     *The NETBIOS name of the Files cluster that will be paired with the Agent selected in the previous step.*
-
-   - **Username** - peer
-
-     *This is the Files API account username configured earlier in the lab and MUST be in all lower case.*
-
-   - **Password** - nutanix/4u
-
-     *The password associated with the Files API account.*
-
-   - **Peer Agent IP** - **PeerAgent-Files** IP Address
-
-     *The IP address of the Agent server that will receive real-time notifications from the File Activity Monitoring API built into Files. It will be selectable from a dropdown list of available IPs on this Agent server.*
-
-#. Click **Validate** to confirm Files can be accessed via API using the provided credentials.
-
-   .. figure:: images/cloud6.png
-
-   .. note::
-
-     Once you enter these credentials, they will be reusable when creating new jobs that use this particular Agent.  When you create your next job, select **Existing Credentials** on this page to display a list of previously configured credentials.
-
-#. Click **Next**.
-
-#. Select your *Initials*\ **-Peer** share and click **OK**.
-
-   .. figure:: images/cloud7.png
-
-   .. note::
-
-     Peer Global File Service supports the replication of data within nested shares starting with Nutanix Files v3.5.1 and above.
-
-   .. note::
-
-     With **Cloud Backup and Replication**, you can select multiple shares and/or folders for a single job.
-
-#. On the **File Filters** page, verify the **Default** filter selected as well as the **Include Files Without Extensions**, and click **Next**.
-
-   .. figure:: images/cloud8.png
-
-#. On the **Destination** page, select **Nutanix Objects** and click **Next**.
-
-   .. figure:: images/cloud9.png
-
-#. On the **Nutanix Objects Credentials** page, fill out the following fields:
    
-   - Description – Name your destination
-
-     *This is a short name for the Objects credential configuration.*
-
-   - Access Key 
-
-     *The Access Key associated with the Objects account.*
-
-   - Secret Key
-
-     *The Secret Key associated with the Objects account.*
-
-   - Service Point
-
-     *The client access IP address or FDQN name of the object store.*
-
-   .. figure:: images/cloud10.png
-
-      .. note::
-
-     Reference the `Getting Client IP and Credentials for Nutanix Objects`_ section above for the appropriate access and secret keys, as well as the Client IP of the object store.
-
-#. Click **Validate** to confirm Objects can be accessed using the provided configuration.
-
-   .. figure:: images/cloud11.png
-
-#. Click **OK** in the **Success** window, and then click **Next**.
-
-#. On the **Bucket Details** page, deselect the **Automatically name** checkbox, and then provide a unique bucket name of *initials*\ -**peer-objects**.
-
-   .. figure:: images/cloud12.png
-
-      .. note::
-
-     The bucket name MUST be in all lower case.
-
-#. On the **Replication and Retention Policy** page, select **Existing Policy**, **Continuous Data Protection**, and then click **Next**.
-
-   .. figure:: images/cloud13.png
-
-#. Click **Next** on the **Miscellaneous Options**, **Email Alerts**, and **SNMP Alerts** pages.
-
-#. Review the configuration on the **Confirmation** screen, and then then click **Finish**.
-
-   .. figure:: images/cloud14.png
-
-Starting a Cloud Replication Job
-............
-
-Once a job has been created, it must be started to initiate replication.
-
-#. In the **PMC Web Interface**, right-click on your newly created job, and then select **Start**.
-
-   .. figure:: images/cloud15.png
-
-#. Double-click the job in the **Job** pane to view its runtime information and statistics.
-
-   .. figure:: images/cloud16.png
-
-   .. note::
-
-     Click **Auto-Update** to have the console regularly refresh as files begin replicating.
-
-Verifying Replication
-............
-
-   .. note::
-
-    This exercise requires the :ref:`windows_tools_vm`.
-
-The easiest way to verify that files have been replicated into Nutanix Objects is to use the Cyberduck tool on your *Initials*\ **-Windows-ToolsVM**
-
-#. Connect to your *Initials*\ **-Windows-ToolsVM** via RDP using the following credentials:
-
-   - **Username** - NTNXLAB\\Administrator
-   - **Password** - nutanix/4u
-
-#. Launch **Cyberduck** (Click the Window icon > Down Arrow > Cyberduck).
-
-   If you are prompted to update Cyberduck, click **Skip This Version**.
-
-#. Click on **Open Connection**.
-
-   .. figure:: images/buckets_06.png
-
-#. Select **Amazon S3** from the dropdown list.
-
-   .. figure:: images/buckets_07.png
-
-#. Fill out the following fields for the user created earlier, and then click **Connect**:
-
-   - **Server**  - *Objects Client Used IP*
-   - **Port**  - 443
-   - **Access Key ID**  - *Generated When User Created*
-   - **Password (Secret Key)** - *Generated When User Created*
-
-      .. note::
-
-     See the `Getting Client IP and Credentials for Nutanix Objects`_ section above for the appropriate access and secret keys, as well as the Client IP of the object store.
-
-   .. figure:: images/buckets_08.png
-
-#. Check the **Always Trust** checkbox, and then click **Continue** in the **The certificate is not valid** dialog box.
-
-   .. figure:: images/invalid_certificate.png
-
-#. Click **Yes** to continue installing the self-signed certificate.
-
-#. Navigate to the appropriate bucket set above and verify that it contains content.
-
-   .. figure:: images/cloud19.png
-
+**Congratulations!** You have completed the Peer Global File Service lab! Get your lab validated by a member of the Peer Software team. We have a Rocketbook reusable notepad with pen and refresh cloth for you!
 
 Integrating with Microsoft DFS Namespace
 ++++++++++++++++++++++++++++++++++++++++
 
 Peer Global File Service includes the ability to create and manage Microsoft DFS Namespaces (DFS-N). When this DFS-N integration is combined with its real-time replication and file locking engine, PeerGFS powers a true global namespace that spans locations and storage devices.
 
-As part of its DFS namespace management capabilities, PeerGFS also automatically redirects users away from a failed file server. When that failed server comes back online, PeerGFS brings this file server back in-sync, and then re-enables user access to it. *This is an essential Disaster Recovery feature for any deployment looking to leverage Nutanix Files for user profile & user data shares for VDI environments.*
+As part of its DFS namespace management capabilities, PeerGFS also automatically redirects users away from a failed file server. When that failed server comes back online, PeerGFS brings this file server back in-sync, and then re-enables user access to it. *This is an essential Disaster Recovery feature for any deployment looking to leverage Nutanix Files for user profile and user data shares for VDI environments.*
 
 The following screenshot shows the PMC interface with a DFS Namespace under management.
 
