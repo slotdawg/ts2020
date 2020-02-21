@@ -280,7 +280,7 @@ The first step of our Jenkins Setup is to add our various credentials to Jenkins
        :align: center
        :alt: Jenkins Add DockerHub Credentials
 
-#. Lastly, we’ll need to add our kubeconfig file as a credential to allow Jenkins to deploy our updated application onto our Kubernetes cluster.  In our Workstation CLI, run the following commands  to create a Kubernetes Service Account **jenkins**, and then create a Role Binding which maps our Service Account the the built-in **admin** role.
+#. Lastly, we’ll need to add our kubeconfig file as a credential to allow Jenkins to deploy our updated application onto our Kubernetes cluster.  In our Workstation CLI, run the following commands  to create a Kubernetes Service Account **jenkins**, and then create a Role Binding which maps our Service Account the the built-in **admin** role. 
 
     .. literalinclude:: create-sa.sh
        :language: bash
@@ -547,6 +547,6 @@ In this lab, we utilized the Kubernetes-Continuous-Deploy_ Jenkins Plugin to dep
 .. |mktmgr-icon| image:: ../images/marketplacemanager_icon.png
 .. |mkt-icon| image:: ../images/marketplace_icon.png
 .. |bp-icon| image:: ../images/blueprints_icon.png
-.. |blueprints| image:: ../images/blueprints.png
-.. |applications| image:: ../images/blueprints.png
-.. |projects| image:: ../images/projects.png
+.. |blueprints| image:: images/blueprints.png
+.. |applications| image:: images/blueprints.png
+.. |projects| image:: images/projects.png
