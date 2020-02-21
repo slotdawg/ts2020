@@ -86,7 +86,6 @@ In this lab you will leverage multiple pre-built Calm Blueprints to provision yo
 #. Fill out the following fields:
 
    - **Project Name** - *Initials*\ -Project
-   - **AHV Cluster** - *Your assigned cluster*
    - Under **Users, Groups, and Roles**, select **+ User**
       - **Name** - Administrators
       - **Role** - Project Admin
