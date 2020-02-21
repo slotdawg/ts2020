@@ -4,12 +4,16 @@
 Time Machine, Cloning, and APIs
 -------------------------------
 
-Introduction
+Copy Data Management, or database cloning, is a critical Day 2 database operation, with multiple teams including developers, QA, analysts, and others requesting non-production instances. As previously discussed, all of these clones can lead to tremendous storage capacity utilization. This is made worse by the constant need for these instances to be updated with up-to-date production data.
 
-**In this lab you will...**
+Era provides Time Machines to simplify cloning operations. Time Machines capture and maintain snapshots and transactional logs of your source databases as defined in the schedule. For every source database you register with Era, a Time Machine is created for that source database. You create clones and refresh clones either to a point in time (by using transactional logs) or by using snapshots.
+
+**In this lab you will use Era to create a clone of your SQL Server database to be used as part of a test environment. After making changes to your production database, you will refresh your test environment.**
 
 Cloning from the Era UI
 +++++++++++++++++++++++
+
+In this exercise you will explore the workflow for cloning a database through the Era web interface. **At the end of this exercise you will NOT click Clone to begin the cloning process, you will instead create the clone programmatically in the next exercise. This exercise is simply to show the UI workflow.**
 
 #. In **Era**, select **Time Machines** from the dropdown menu.
 
@@ -50,17 +54,18 @@ Cloning from the Era UI
 
 #. Click **Close** and then click **X** to close the Clone Database wizard.
 
-
 Cloning from Calm
 +++++++++++++++++
 
-Databases aren't applications, they can be coprised of multiple components. For this dev/test workflow, we'll leverage Calm to spin up a development copy of our Fiesta web tier, and call on Era to provision a clone of the production database programmatically.
+Databases aren't applications, they can be comprised of multiple components. For this dev/test workflow, we'll leverage Calm to spin up a development copy of our Fiesta web tier, and call on Era to provision a clone of the production database programmatically.
 
-#. :download:`Download the FiestaClonedDB Blueprint <FiestaClonedDB.json>`.
+#. `Download the FiestaClonedDB Blueprint by right-clicking here <https://raw.githubusercontent.com/nutanixworkshops/ts2020/master/db/cloning/FiestaClonedDB.json>`_.
 
 #. From **Prism Central > Calm**, select **Blueprints** from the lefthand menu and click **Upload Blueprint**.
 
 #. Select **FiestaClonedDB.json**.
+
+#. Update the **Blueprint Name** to include your initials.
 
 #. Select your Calm project and click **Upload**.
 
@@ -170,7 +175,7 @@ Databases aren't applications, they can be coprised of multiple components. For 
 Refreshing Cloned Databases
 +++++++++++++++++++++++++++
 
-Common issue with development databases is difficulty accessing up to date information.
+Now that you have a functioning development environment, it's time to create some changes within your production environment.
 
 #. In a new browser tab, return to your **Production** Fiesta web app. Click **Products > Add New Product**.
 
@@ -221,8 +226,12 @@ Common issue with development databases is difficulty accessing up to date infor
 
    .. figure:: images/18.png
 
+   With a few mouse clicks, your DBA was able to push current production data to the cloned database. This could be further automated through the Era CLI or APIs.
+
 (Optional) Provisioning Additional Databases to Existing Servers
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+It's not uncommon to have a single database server running multiple databases, especially in test/dev environments. In this exercise you will provision an additional database for a next generation version of the Fiesta application to your existing development SQL Server VM.
 
 #. In **Era > Databases > Sources**, click **Provision > Single Node Database**.
 
@@ -261,3 +270,12 @@ Common issue with development databases is difficulty accessing up to date infor
 #. Once the operation has completed, RDP to the cloned, development Database Server and validate in **SQL Server Management Studio** that your **fiesta2** database is available on your development server.
 
    .. figure:: images/27.png
+
+Takeaways
++++++++++
+
+What are the key things we learned in this lab?
+
+- Era makes it simple to create space efficient, zero-byte database clones to any point-in-time
+- Era provides production-like QoS for clones, with fast creation and data refresh
+- Era operations can be performed through REST API, making it easy to integration with Nutanix Calm or third-party automation solutions

@@ -1,6 +1,6 @@
-------------------------
-Prism Pro VM Right Sizing
-------------------------
+-------------------------------
+Right-sizing VMs with Prism Pro
+-------------------------------
 
 .. figure:: images/operationstriangle.png
 
@@ -10,8 +10,6 @@ In this lab you will learn how Prism Pro can help IT Admins monitor, analyze and
 
 Lab Setup
 +++++++++
-
-PREQUISITE - Please follow the steps to create the LinuxToolsVM.
 
 #. Open your **Prism Central** and navigate to the **VMs** page. Note down the IP Address of the **GTSPrismOpsLabUtilityServer**. You will need to access this IP Address throughout this lab.
 
@@ -30,7 +28,7 @@ PREQUISITE - Please follow the steps to create the LinuxToolsVM.
    .. figure:: images/init3.png
 
 Inefficiency Detection with Prism Pro X-FIT
-+++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++
 
 Prism Pro uses X-FIT machine learning to detect and monitor the behaviors of VMs running within the managed clusters.
 

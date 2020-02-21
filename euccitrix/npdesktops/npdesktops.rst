@@ -4,9 +4,13 @@
 Delivering Non-Persistent Desktops
 ----------------------------------
 
+Unlike persistent desktops, non-persistent desktops do not persist changes across VM reboots. Implementations of non-persistent desktops can vary based on the provisioning technology used, but in general, after a user session ends, the VM reverts back to a pristine state. Non-persistent desktops can simplify management operations as changes to the master image can be quickly rolled out (and rolled back) in a consistent fashion to large numbers of VMs. Non-persistent desktops can also eliminate the negative software and performance creep that can occur over time on traditional desktops or persistent virtual desktops.
+
+Due to the stateless nature of non-persistent desktops, this approach may not be viable for every use case. For use cases such as kiosks, which require no customization, non-persistent desktops are an ideal fit. For use cases where persisting end user customizations such as application settings are important, profile management solutions would need to be evaluated and employed. Similarly, the need to persist end user data would require additional network based storage. The need to maintain many master images due to varying requirements and application stacks across an organization can also present a challenge for non-persistent desktops at scale. In these cases, application virtualization, application layering, and/or server based application technologies may be applied to consolidate master image sprawl.
+
 Introduction - In this exercise you will use the Citrix Studio to deploy a pool of non-persistent virtual desktops based the same gold image as the previous exercise.
 
-**In this lab you will...**
+**In this lab you will deploy and test a pool of non-persistent virtual desktops with Citrix on AHV.**
 
 Creating the Machine Catalog
 ++++++++++++++++++++++++++++
@@ -115,7 +119,9 @@ Creating the Delivery Group
 
    .. figure:: images/7.png
 
-   .. note:: For more granular control of registered, powered on VMs you can click the Edit link and provide the number or percentage of VMs you want available for every hour of the day. You can also configure the disconnected VM policy to free up disconnected VMs after a configurable time out period, returning the desktop to the pool for another user.
+   .. note::
+
+      For more granular control of registered, powered on VMs you can click the Edit link and provide the number or percentage of VMs you want available for every hour of the day. You can also configure the disconnected VM policy to free up disconnected VMs after a configurable time out period, returning the desktop to the pool for another user.
 
 #. After increasing the number of powered on virtual machines, validate the **W10NP-##** VMs are powered on in **Prism** and appear as Registered in **Citrix Studio**.
 

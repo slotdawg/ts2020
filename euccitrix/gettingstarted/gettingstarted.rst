@@ -50,8 +50,8 @@ Typically, Hosted POC clusters provide 2x /25 VLANs. In order to provide adequat
 
 #. Click **Save**.
 
-Deploying your Tools VM
-+++++++++++++++++++++++
+Deploying your Windows Tools VM
++++++++++++++++++++++++++++++++
 
 #. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs**.
 

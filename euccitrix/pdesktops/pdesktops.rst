@@ -4,16 +4,18 @@
 Delivering Persistent Desktops
 ------------------------------
 
-Introduction - In this exercise you will use the Citrix Studio to deploy a pool of non-persistent virtual desktops based the same gold image as the previous exercise.
+Similar to a traditional desktops, persistent virtual desktops persist changes to the VM across reboots. Persistent desktops offer the greatest flexibility to the user, including the ability to install their own applications and customize OS and application settings without dependence on a remote profile. However, once the VM has been provisioned it will require patching/updating through traditional means such as SCCM, WSUS, or other 3rd party patch management tools, limiting the operational benefit of implementing VDI.
 
-**In this lab you will...**
+Rather than creating full byte-copy clones of a master image, Citrix can efficiently provision persistent desktops from a shared master image with Machine Creation Services (MCS). MCS is a VM creation/orchestration framework installed as part of the Desktop Delivery Controller role and managed through Citrix Studio.
+
+**In this lab you will deploy and test a pool of persistent virtual desktops with Citrix on AHV.**
 
 Configuring AHV Resources
 +++++++++++++++++++++++++
 
-For the purposes of this exercise, a XenDesktop Delivery Controller (DDC) has been installed as a shared resource on your assigned cluster. The DDC has been configured with:
+For the purposes of this exercise, a **XenDesktop Delivery Controller (DDC)** has been installed as a shared resource on your assigned cluster. The DDC acts as the connection broker for XenDesktop and is deployed on a Windows Server. Additionally this VM includes services for Citrix web front end (StoreFront), and Citrix Licensing - both are components that would typically run on dedicated infrastructure in a production environment.
 
-<Exposition about DDC config>
+A single XenDesktop site can contain multiple Delivery Controllers and StoreFronts for the purposes of redundancy and scaling out to support increasingly large environments.
 
 #. Connect to your *Initials*\ **-WinToolsVM** VM via the VM console or RDP (RDP recommended):
 
@@ -21,6 +23,8 @@ For the purposes of this exercise, a XenDesktop Delivery Controller (DDC) has be
    - **Password** - nutanix/4u
 
 #. From the Start menu, open **Citrix Studio**.
+
+   Citrix Studio is a MMC snap-in used for managing a XenDesktop site, including Delivery Controller, StoreFront, and Licensing. It is installed by default on the DDC, but can be run as a client on any machine on the network.
 
 #. Specify **ddc.ntnxlab.local** as your XenDesktop Controller and click **Connect**.
 
@@ -30,9 +34,11 @@ For the purposes of this exercise, a XenDesktop Delivery Controller (DDC) has be
 
    .. figure:: images/2.png
 
-   ..note::
+   .. note::
 
-      Exposition about AHV plugin install on DDC
+      By default, XenDesktop has support for provisioning virtual machines to a number of platforms, including: VMware vSphere, Microsoft Hyper-V, Citrix XenServer, Microsoft Azure, and AWS. The Citrix Provisioning SDK provides the ability to integrate additional platforms with the Delivery Controller's provisioning and power management functions, creating a native Citrix management experience on top of Nutanix AHV.
+
+      To enable this integration, the **Nutanix AHV Plugin for Citrix** has been pre-installed on the DDC. In a production environment, the plugin must be installed on each DDC. The plugin is available for download on the `Nutanix Portal <https://portal.nutanix.com/#/page/static/supportTools>`_.
 
       .. figure:: images/5.png
 
@@ -78,7 +84,7 @@ Machine Catalogs are collections of either physical or virtual machines. When us
 
    .. note::
 
-      <exposition about recommended data efficiency settings for VDI containers>
+      Compression (Inline or Post-process) is recommended for all storage containers running virtual desktops. Deduplication is recommended only for storage containers running full byte-copy cloned  VMs.
 
 #. Select your *Initials* **Post VDA Install** snapshot and click **Next**.
 
@@ -144,7 +150,9 @@ Delivery Groups are collections of machines from one or more Machine Catalogs. T
 
 #. Under **Delivery Type**, select **Desktops** and click **Next**.
 
-   .. note:: <exposition about using desktops to deliver apps for purpose of isolation or licensing>
+   .. note::
+
+      While Citrix is well known for delivering applications running on shared, server operating systems, desktop operating systems can also be used to deliver seamless applications without delivering the full desktop experience. This approach is typically used when there are licensing issues preventing an application from being delivered via a server OS, or to create better performance isolation for an application by running it in a VM where only a single user can access that resource at one time.
 
 #. Select **Restrict use of this Delivery Group to the following users** and click **Add**.
 
@@ -219,13 +227,13 @@ Connecting to the Desktop
 Takeaways
 +++++++++
 
-- Citrix is capable of delivering a high-fidelity desktop experience via HTML5. Simiarly, the HTML 5 Nutanix Prism interface provides a single UI for managing and monitoring your infrastructure from anywhere.
+- Citrix is capable of delivering a high-fidelity desktop experience via HTML5. Similarly, the HTML 5 Nutanix Prism interface provides a single UI for managing and monitoring your infrastructure from anywhere.
 
 - The ability to support a large environment from a single storage container simplifies configuration and improves deployment speed.
 
 - Despite being based off of a single, shared, gold image, all the VMs in the Machine Catalog continue to benefit from data locality (reduced latency for reads and reduced network congestion). For non-AHV hypervisors, the same benefit is realized through Shadow Clones.
 
-- Intelligent cloning avoids significant storage overhead for deploying persistent virtual desktops. If mixing persistent and non-persisdent desktops within the same cluster, best practice would be to leverage a storage container with deduplication enabled for persistent desktops and a separate storage container with deduplication disabled for non-persistent desktops. Having the flexibility to pair workloads with appropriate storage efficiency technologies can imrpvoe density and reduce waste.
+- Intelligent cloning avoids significant storage overhead for deploying persistent virtual desktops. If mixing persistent and non-persistent desktops within the same cluster, best practice would be to leverage a storage container with deduplication enabled for persistent desktops and a separate storage container with deduplication disabled for non-persistent desktops. Having the flexibility to pair workloads with appropriate storage efficiency technologies can improve density and reduce waste.
 
 - Citrix MCS allows for end to end provisioning and entitlement management in a single console.
 

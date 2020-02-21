@@ -104,7 +104,7 @@ Running VMware OS Optimization Tool
 
    .. figure:: images/16.png
 
-   .. figure::
+   .. note::
 
       The Cleanup Jobs are excluded from this exercise as they can be time consuming to apply.
 
@@ -149,6 +149,10 @@ Installing the Frame Guest Agent
    .. figure:: images/20.png
 
 #. **IMPORTANT** From the **Control Panel**, uninstall any previously installed copied of **Microsoft Visual C++ Redistributable**.
+
+   .. note::
+
+      Philip Lau would like to remind you that **ANY** previously installed **Microsoft Visual C++ Redistributable** means **ALL** of them, and not just the two in the screenshot below.
 
    .. figure:: images/22.png
 
