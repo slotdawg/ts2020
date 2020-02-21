@@ -444,7 +444,7 @@ Manipulating data using **SQL Server Management Studio** is boring, especially w
 
 #. Click **Launch** and fill out the following fields:
 
-   - **Name of the Application** - XYZ-Fiesta
+   - **Name of the Application** - *Initials*\ -Fiesta
    - **db_dialect** - mssql
    - **db_domain_name** - ntnxlab.local
    - **db_host_address** - The IP of your *Initials*\ **-MSSQL2** VM
