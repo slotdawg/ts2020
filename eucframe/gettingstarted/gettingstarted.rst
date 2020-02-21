@@ -1,4 +1,4 @@
-.. _citrixgettingstarted:
+.. _framegettingstarted:
 
 ----------------------
 Getting Started
