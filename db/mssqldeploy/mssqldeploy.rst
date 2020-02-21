@@ -4,9 +4,13 @@
 Deploying MS SQL with Era
 -------------------------
 
-Introduction
+Traditional database VM deployment over resembles the diagram below. The process generally starts with a IT ticket for a database (from Dev, Test, QA, Analytics, etc.). Next one or more teams will need to deploy the storage resources and VM(s) required. Once infrastructure is ready, a DBA needs to provision and configure database software. Once provisioned, any best practices and data protection/backup policies need to be applied. Finally the database can be handed over to the end user. That's a lot of handoffs, and the potential for a lot of friction.
 
-**In this lab you will...**
+.. figure:: images/0.png
+
+Whereas with a Nutanix cluster and Era, provisioning and protecting a database should take you no longer than it took to read this intro - assuming you did. Seriously the first person to walk up to Matt and mention this sentence is getting a hug. Unless you don't want a hug, maybe a high five? Anyways...
+
+**In this lab you will manually deploy a Microsoft SQL Server VM, using a script to apply best practices. This VM will act as a master image to create a profile for deploying additional SQL VMs using Era.**
 
 Manual VM Deployment
 ++++++++++++++++++++
@@ -49,11 +53,17 @@ Manual VM Deployment
 
 #. Log in to the VM using the Administrator password you configured.
 
-#. Launch **File Explorer** and note the current drive configuration.
+#. Launch **File Explorer** and note the current, single disk configuration.
 
    .. figure:: images/2.png
 
-   <Info about MSSQL 2016 already being installed but VM doesn't follow best practices, high level overview of best practices for disk configuration and links to BPG>
+   .. note::
+
+      Best practices for database VMs involve spreading the OS, SQL binaries, databases, TempDB, and logs across separate disks in order to maximize performance. On non-AHV hypervisors, these disks should be properly spread across multiple disk controllers, as shown in the diagram below.
+
+      .. figure:: images/2b.png
+
+      For complete details for tuning SQL Server on Nutanix (including guidance around NUMA, hyperthreading, SQL Server configuration settings, and more), see the `Nutanix Microsoft SQL Server Best Practices Guide <https://portal.nutanix.com/#/page/solutions/details?targetId=BP-2015-Microsoft-SQL-Server:BP-2015-Microsoft-SQL-Server>`_.
 
 #. From the desktop, launch the **01 - Rename Server.ps1** PowerShell script shortcut and fill out the following fields:
 
@@ -61,7 +71,7 @@ Manual VM Deployment
    - **Enter the Nutanix user name for...** - admin
    - **Enter the Nutanix password for "admin"** - techX2020!
 
-   <Explain what script does>
+   The script will validate the VM name does not exceed 15 characters and then rename the server to match the VM name.
 
 #. Once VM has rebooted, log in and launch the **02 - Complete Build.ps1** Powershell script shortcut. Fill out the following fields:
 
@@ -74,7 +84,7 @@ Manual VM Deployment
 
       All fields in the above script are case sensitive.
 
-   <Explain what script does>
+   This script will setup and create disk drives according to best practices place SQL data files on those drives. The SQL Systems File is placed on the D:\ drive and data and logs files are placed on separate drives.
 
 #. Once VM has rebooted, verify the new disk configuration in **Prism** and **File Explorer**
 
@@ -88,10 +98,16 @@ Manual VM Deployment
 
    .. figure:: images/5.png
 
-   Congratulations! <acli, API, Calm, etc. could be used to further automate this process, but this only solves a day 1 provisioning problem and can still result in storage sprawl.
+   Congratulations, you now have a functioning SQL Server VM. While this process could be further automated through ``acli``, Calm, or REST API calls orchestrated by a third party tool, provisioning only solves a Day 1 problem for databases, and does little to address storage sprawl, cloning, or patch management.
 
 Exploring Era Resources
 +++++++++++++++++++++++
+
+Era is distributed as a virtual appliance that can be installed on either AHV or ESXi. For the purposes of conversing memory resources, a shared Era server has already been deployed on your cluster.
+
+   .. note::
+
+      If you're interested, instructions for the brief installation of the Era appliance can be found `here <https://portal.nutanix.com/#/page/docs/details?targetId=Nutanix-Era-User-Guide-v12:era-era-installing-on-ahv-t.html>`_.
 
 #. In **Prism Central > VMs > List**, identify the IP address assigned to the **EraServer-\*** VM using the **IP Addresses** column.
 
@@ -116,11 +132,11 @@ Exploring Era Resources
 
 #. From the dropdown menu, select **SLAs**.
 
-   <Something about SLAs>
+   Era has five built-in SLAs (Gold, Silver, Bronze, Zero, and Brass). SLAs control however of the database server is backed up. This can with a combination of Continuous Protection, Daily, Weekly Monthly and Quarterly protection intervals.
 
 #. From the dropdown menu, select **Profiles**.
 
-#. <Something about Compute profiles>
+   Profiles pre-define resources and configurations, making it simple to consistently provision environments and reduce configuration sprawl. For example, Compute Profiles specifiy the size of the database server, including details such as vCPUs, cores per vCPU, and memory.
 
 #. Under **Network**, click **+ Create**.
 
@@ -148,7 +164,20 @@ Exploring Era Resources
 Registering Your MSSQL VM
 +++++++++++++++++++++++++
 
-Background on what's required to register a DB, what Era can do with it once registered.
+Registering a database server with Era allows you to deploy databases to that resource, or to use that resource as the basis for a Software Profile.
+
+You must meet the following requirements before you register a SQL Server database with Era:
+
+- A local user account or a domain user account with administrator privileges on the database server must be provided.
+- Windows account or the SQL login account provided must be a member of sysadmin role.
+- SQL Server instance must be running.
+- Database files must not exist in C:\ Drive.
+- Database must be in an online state.
+- Windows remote management (WinRM) must be enabled
+
+.. note::
+
+   Your *XYZ*\ **-MSSQL** VM meets all of these criteria.
 
 #. In **Era**, select **Database Servers** from the dropdown menu and **List** from the lefthand menu.
 
@@ -178,12 +207,14 @@ Background on what's required to register a DB, what Era can do with it once reg
 
    .. figure:: images/13.png
 
-<Talk about ability to directly register an existing DB and not just a DB server>
+   .. note::
+
+      It is also possible to register existing databases on any server, which will also register the database server it is on.
 
 Creating A Software Profile
 +++++++++++++++++++++++++++
 
-<Before you can provision new DBs from an existing DB, you need to create a profile. What's a profile, etc.>
+Before additional SQL Server VMs can be provisioned, a Software Profile must first be created from the database server VM registered in the previous step. A software profile is a template that includes the SQL Server database and operating system. This template exists as a hidden, cloned disk image on your Nutanix storage.
 
 #. Select **Profiles** from the dropdown menu and **Software** from the lefthand menu.
 
@@ -209,7 +240,7 @@ Creating A Software Profile
 Creating a New MSSQL Database Server
 ++++++++++++++++++++++++++++++++++++
 
-Background on Era capabilities to provision databases to existing servers or create new servers that follow best practices.
+You've completed all the one time operations required to be able to provision any number of SQL Server VMs. Follow the steps below to provision a database of a fresh database server, with best practices automatically applied by Era.
 
 #. In **Era**, select **Databases** from the dropdown menu and **Sources** from the lefthand menu.
 
@@ -256,7 +287,14 @@ Background on Era capabilities to provision databases to existing servers or cre
 
    .. figure:: images/20.png
 
-   <Info about common use cases for pre and post scripts>
+   .. note::
+
+      Common applications for pre/post-installation scripts include:
+
+      - Data masking scripts
+      - Register the database with DB monitoring solution
+      - Scripts to update DNS/IPAM
+      - Scripts to automate application setup, such as app-level cloning for Oracle PeopleSoft
 
 #. Click **Next** and fill out the following fields to configure the Time Machine for your database:
 
@@ -273,7 +311,20 @@ Background on Era capabilities to provision databases to existing servers or cre
 
    .. figure:: images/22.png
 
-   Info on best practices applied by Era when provisioning a DB from a software profile.
+   .. note::
+
+      Observe the step for applying best practices in **Operations**.
+
+      Some of the best practices automatically configured by Era include:
+
+      - Distribute databases and log files across multiple vDisks.
+      - Do not use Windows dynamic disks or other in-guest volume management
+      - Distribute vDisks across multiple SCSI controllers (for ESXi)
+      - For each database, use multiple data files: one file per vCPU.
+      - Configure initial log file size to 4 GB or 8 GB and iterate by the initial amount to reach the desired size.
+      - Use multiple TempDB data files, all the same size.
+      - Use available hypervisor network control mechanisms (for example, VMware NIOC).
+
 
 Exploring the Provisioned DB Server
 ++++++++++++++++++++++++++++++++++++
@@ -298,7 +349,9 @@ Exploring the Provisioned DB Server
 Migrating Fiesta App Data
 +++++++++++++++++++++++++
 
-<Intro on other ways app data could be migrated (AAG versus export/import)>
+In this exercise you will import data directly into your database from a backup exported from another database. While this is a suitable method for migrating data, it potentially involved downtime for an application, or our database potentially not having the very latest data.
+
+Another approach could involve adding your new Era database to an existing database cluster (AlwaysOn Availability Group) and having it replicate to your Era provisioned database. Application level synchronous or asynchronous replication (such as SQL Server AAG or Oracle RAC) can be used to provide Era benefits like cloning and Time Machine to databases whose production instances run on bare metal or non-Nutanix infrastructure.
 
 #. From your *Initials*\ **-MSSQL2** RDP session, launch **Microsoft SQL Server Management Studio** from the desktop and click **Connect** to authenticate as the currently logged in user.
 
@@ -340,6 +393,8 @@ Manipulating data using **SQL Server Management Studio** is boring, especially w
    .. figure:: images/30.png
 
 #. Select **FiestaNoDB.json**.
+
+#. Update the **Blueprint Name** to include your initials. Even across different projects, Calm Blueprint names must be unique.
 
 #. Select your Calm project and click **Upload**.
 
@@ -413,4 +468,15 @@ Manipulating data using **SQL Server Management Studio** is boring, especially w
 
    .. figure:: images/37.png
 
-Congratulations! You've completed the deployment of your production application.
+   Congratulations! You've completed the deployment of your production application.
+
+Takeaways
++++++++++
+
+What are the key things we learned in this lab?
+
+- Existing databases can be easily onboarded into Era, and turned into templates
+- Existing brownfield databases can also be registered with Era
+- Profiles allow administrators to provision resources based on published standards
+- Customizable recovery SLAs allow you to tune continuous, daily, and monthly RPO based on your app's requirements
+- Era provides One-click provisioning of multiple database engines, including automatic application of database best practices

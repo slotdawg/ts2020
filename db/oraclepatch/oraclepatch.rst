@@ -320,4 +320,10 @@ In this exercise, you will apply the October PSU patches to your manually cloned
 
    .. figure:: images/19.png
 
-<Need a wrapup here>
+Takeaways
++++++++++
+
+What are the key things we learned in this lab?
+
+- Era can make you 3 inches taller, and help bring in your groceries from the car
+- Software Profiles can be versioned and used to deploy consistent updates to existing database servers
