@@ -22,6 +22,7 @@
    pc/security/security
    pc/files/files
    pc/flow_secure_fiesta/flow_secure_fiesta
+   beam_cost_governance/beam_cost_governance
    pc/cleanup/cleanup
 
 .. toctree::
@@ -80,7 +81,6 @@
    :name: _bonus
    :hidden:
 
-   beam_cost_governance/beam_cost_governance
    beam_security_compliance/beam_security_compliance
    calm_karbon_cicd/calm_karbon_cicd
    peer/peer
@@ -101,7 +101,11 @@
 
 .. _welcome:
 
-.. figure:: images/gtsvegas.png
+--------------------------------
+Welcome to Nutanix GTS 2020 Labs
+--------------------------------
+
+.. .. figure:: images/gtsvegas.png
    :align: center
 
 This year we're celebrating how we power customer use cases by exposing you to multiple new options that will be launched as Bootcamps for you to drive prospect and customer engagement during 2020. During this year's Hands on Learning day, you'll choose and complete **at least** one of four available solution-focused lab tracks.
