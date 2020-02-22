@@ -121,7 +121,9 @@ Running VMware OS Optimization Tool
 Installing the Frame Guest Agent
 ++++++++++++++++++++++++++++++++
 
-<What is the Frame Agent?>
+The Frame Guest Agent (FGA) is the Frame component installed in every Frame-managed workload VM (Sandbox, Production instances, Utility servers). The FGA implements the Frame Remoting Protocol (FRP), an H.264-based video stream, between the end user’s endpoint device and the Frame-managed workload VM. If an NVIDIA GPU is supported within the workload VM, FGA will leverage NVENC hardware-based H.264 encoding to offload encoding from workload VM’s CPU(s).
+
+Additionally, during the brokering workflow, the Frame agent works in conjunction with Frame platform to ensure that end user requests for access to a workload VM is authorized before allowing the FRP stream to start. FGA also enforces session setting policies (clipboard sync, directionality of clipboard sync, file upload/download, printing, timeout parameters, QoS parameters, etc.) and handles the mounting and unmounting of personal drives, enterprise profile disks, and integrations to cloud storage providers, as configured by the Account Administrator.
 
    .. note::
 
@@ -181,3 +183,12 @@ Installing the Frame Guest Agent
    .. figure:: images/23.png
 
 You have successfully created a gold master image to use for your Xi Frame workloads.
+
+Takeaways
++++++++++
+
+What are the key things learned in this exercise?
+
+- Creating a customized Windows 10 gold image for Frame is quick and easy.
+
+- EUC image optimization tools are not solution or hypervisor specific and can be easily applied to improve virtual desktop performance and increase host density.

@@ -67,7 +67,7 @@ Creating the Machine Catalog
      - `Citrix MCS for AHV: Under the hood <http://blog.myvirtualvision.com/2016/01/14/citrix-mcs-for-ahv-under-the-hood/>`_
      - `Citrix MCS and PVS on Nutanix: Enhancing XenDesktop VM Provisioning with Nutanix  <http://next.nutanix.com/t5/Nutanix-Connect-Blog/Citrix-MCS-and-PVS-on-Nutanix-Enhancing-XenDesktop-VM/ba-p/3489>`_
 
-     To learn more about how Nutanix implements Shadow Clones, see the `Shadow Clones <http://nutanixbible.com/#anchor-shadow-clones-79>`_ section of the Nutanix Bible.
+     To learn more about how Nutanix implements Shadow Clones, see the `Shadow Clones <https://nutanixbible.com/#anchor-book-of-acropolis-shadow-clones>`_ section of the Nutanix Bible.
 
 Creating the Delivery Group
 +++++++++++++++++++++++++++
@@ -142,6 +142,10 @@ Connecting to the Desktop
    .. figure:: images/9.png
 
 #. After the virtual desktop has completed logging in, experiment by changing application settings, installing an application, restarting the VM, and logging in again. Try logging in as **operator01**, any differences?
+
+   .. note::
+
+      Your user is not part of the **Local Administrators** group, so you may be unable to install certain applications. If you encounter an error trying to install an application, hold the **Shift** key, right-click the installer, and select **Run as different user**. Use your NTNXLAB\\Administrator credentials to complete the installation.
 
 Takeaways
 +++++++++
