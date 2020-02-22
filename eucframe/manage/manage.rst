@@ -4,14 +4,15 @@
 Managing Xi Frame Desktops
 --------------------------
 
-Introduction...
+Now that you have registered and associated your AHV cluster to your customer entity, you can now create your first Frame account using your AHV cluster resources. What’s in a Frame account? A Frame account consists of, at a minimum:
 
-**In this lab...**
+- Sandbox VM which is used to manage the gold master image for the account. The Sandbox image is a copy of the template image you brought during the CCA creation workflow.
+- One or more pools of “production” VMs, based on the instance types you defined when you added the CCA to Frame. These production pool VMs will be used by end users to access their virtualized desktops or published applications.
+
+**In this lab you will walk through configuring a Frame account, including configuring capacity, Launchpads, user management, and other administrative controls. After testing your initial published desktop, you will explore how updates can be applied and rolled out through Frame.**
 
 Deploying a Desktop Pool
 ++++++++++++++++++++++++
-
-<Need some exposition here as to how an account represents a template image for a pool of desktops>
 
 #. From the **Xi Frame** portal, select **Accounts** from the left hand menu and click **Add Account**.
 
@@ -34,7 +35,7 @@ Deploying a Desktop Pool
 
      Historically, due to Microsoft Windows licensing restrictions, AWS and Azure provide Windows Server OS images. The Windows Server images are presented with a familiar Windows desktop UI, and generally support all of the same applications.
 
-     Microsoft has made some adjustments in their Windows licensing so Xi Frame will be able to support Windows 10 on Azure and Nutanix AHV. Customers must confirm that they have the appropriate enterprise license agreement that allows them to do so.
+     Microsoft has made some adjustments in their Windows licensing so Xi Frame is able to support Windows 10 on Azure and Nutanix AHV. Customers must bring their own Microsoft VDA licenses for Windows 10.
 
 #. Click **Create** to begin provisioning the pool based on your selections, including a Sandbox VM.
 
@@ -65,9 +66,11 @@ Configuring Capacity
 
    .. note::
 
-     For Cloud hosted desktops, each VM that is powered on results in a VM charge by AWS, Azure or GCP, regardless of whether the VM is being used. Unless there are justifiable reasons, the **Minimum number of instances** powered on and **Buffer instances** values should be set to 0 for Default capacity. If these two parameters are greater than 0, then AWS or Azure will charge for those powered on VMs.
+     For Cloud hosted desktops, each VM that is powered on results in a VM charge by AWS, Azure or GCP, regardless of whether the VM is being used. Unless there are justifiable reasons, the **Minimum number of instances** powered on and **Buffer instances** values should be set to 0 for Default capacity. If these two parameters are greater than 0, then AWS, Azure, and GCP will charge for those powered on VMs.
 
-#. Under **Active capacity**, observe you can configure separate capacity policy to accommodate usage during peak periods (e.g. weekdays vs. weekends).
+#. Click **Save**.
+
+#. Under **Active capacity**, observe you can configure separate capacity policy to accommodate usage during peak periods (e.g. weekdays vs. weekends). **Leave the default selections.**
 
    .. figure:: images/6.png
 
@@ -86,7 +89,13 @@ Configuring Capacity
 Configuring Launchpads
 ++++++++++++++++++++++
 
-<Launchpads are...?>
+The Launchpad is the end user-facing part of the Xi Frame platform interface where users have access to their published applications or desktops, as authorized by their Account Administrator. Each Launchpad is associated with a Frame account and dictates:
+
+- Whether the Launchpad provides access to published applications (Application Launchpad) or a desktop (Desktop Launchpad)
+- The instance types that are allowed to be used with the Launchpad
+- Session settings for governing availability of one or more cloud storage providers, session timeouts, ability to copy/paste (bidirectionally or unidirectionally), print, download/upload files, Quality of Service (QoS) parameters governing the Frame Remoting Protocol, etc.
+
+Additionally, the Account Administrator can use Role-Based Access Control (RBAC) to determine which end users or groups of end users have access to which Launchpad(s), thereby controlling what published applications or desktops are allowed, on which instance types, and under what session settings.
 
 #. Select **Launchpads** from the sidebar. Click **Add Launchpad**.
 
@@ -168,6 +177,10 @@ While you can access applications and desktops using your administrative Frame a
 
    For customers who do not have an IdP, Frame provides a native identity provider, allowing an administrator to create and control local e-mail address based accounts.
 
+   .. note::
+
+      The Frame Basic identity provider is not intended to be used as an enterprise identity provider. It has no support for configurable password strength policies, multi-factor authentication, or ability to aggregate users into groups. It is meant only for customers who need a simple IdP for testing. Nutanix highly recommends customers integrate an enterprise-grade identity provider.
+
    Because Frame is a Platform as a Service, there are both Javascript and Web Services APIs for enterprises and partners used to embed Frame into their own web applications. In the case of Web Services APIs, the API mechanism is used to generate API keys to authenticate to the Frame API endpoints.
 
    Additionally, providers can be enabled/configured on a per customer, organization, or account (pool) basis.
@@ -188,6 +201,10 @@ While you can access applications and desktops using your administrative Frame a
 
 Testing End User Experience
 +++++++++++++++++++++++++++
+
+In this exercise, you will connect to your Frame desktop as an end user. The diagram below illustrates the typical network topology for a user connecting to a Frame desktop running in a Nutanix Private Cloud. In this environment you are connecting via a LAN connection, so the optional Streaming Gateway Appliance is not used.
+
+.. figure:: images/31.png
 
 #. From the sidebar, select **Accounts >** *Initials*\ **-W10NP** to return to managing your pool.
 
@@ -233,13 +250,17 @@ Testing End User Experience
 
 #. Click the :fa:`gear` icon on the status bar to explore the actions available to a user during the session, such as launching and switching to other applications and network QoS settings.
 
-#. Click :fa:`gear` **> Show/hide stats**.
+#. Click :fa:`gear` **> Show/hide stats** to show bandwidth utilization in the status bar. Click **Session stats** to view expanded statistics.
 
-   Try playing a YouTube video with the highest available FPS and video bit rate values versus a max of 5 FPS and 0.5 Mbps bit rate. Note that when the display is not changing, the Frame Remoting Protocol will adapt and drop the frame rate to 0. Consumed bandwidth will fall to 1 kbps.
+   .. figure:: images/30.png
 
-   *Fun Fact: Did you know that last year Autodesk streamed their 3D CAD applications to their entire user conference in Dubai from AWS Singapore?*
+   Note that when the display is not changing, the Frame Remoting Protocol will adapt and drop the frame rate to 0. Consumed bandwidth will fall to 1 kbps.
 
-   Hover over the remaining elements in the status bar to see what they do.
+#. Begin playing a YouTube video with the highest available quality and note bandwidth consumption. Note the consumed bandwidth.
+
+#. Click :fa:`gear` **> Settings** and reduce **Max frame rate** and **Max videobit rate** to their lowest values. These settings can be controlled by an administrator to help balance experience and bandwidth consumption.
+
+#. Hover over the remaining elements in the status bar to see what they do.
 
 #. Click :fa:`gear` **> Disconnect** to return to the Launchpad without ending the session.
 
@@ -266,7 +287,7 @@ Frame makes it very simple to customize your "Gold" image and add new applicatio
 
    .. figure:: images/25.png
 
-#. Download an application installer to the Sandbox desktop (the example below uses the `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_) and install the new application. For many applications, Frame will recognize that you just installed an application and ask you if you wish to onboard the application (for application delivery).
+#. Download an application installer to the Sandbox desktop (the example below uses the `PuTTY <https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>`_) and install the new application. For many applications, Frame will recognize that you just installed an application and ask you if you wish to onboard the application (for application delivery). If prompted, click **OK** to automatically onboard the applications into Frame.
 
    .. figure:: images/26.png
 
@@ -309,3 +330,24 @@ Frame makes it very simple to customize your "Gold" image and add new applicatio
       This session may take slightly longer to start, as VM resources may not yet be pre-booted according to the Capacity configuration. You can verify this on the **Status** page in the **Xi Frame** portal.
 
    In minutes you've rolled out an updated image to your resource pool, without interrupting on-going sessions.
+
+Next Steps
+++++++++++
+
+To learn more about Xi Frame, here are specific resources for Sales Engineers:
+
+- `Frame Public Documentation <https://docs.frame.nutanix.com/>`_, including how your customers can get started with a `30-day Free Trial <https://docs.frame.nutanix.com/account-management/sign-up.html>`_.
+- Questions on selling Frame? Ask on #frame-sales, or send an email to frame-sales@nutanix.com
+- Questions about Frame on AHV? Post your questions on #frame-ahv
+
+Frame can be used in a variety of use cases. To best serve each customer, we advise the following selling best practices:
+
+- Know their use case, business and technical requirements, and success criteria. Qualify the customer’s use case using our `list of sales and technical questions <https://sites.google.com/nutanix.com/xiframe/home/qualifying-questions>`_ (Internal Only).
+- Share a completed `Frame Discovery Workbook <https://sites.google.com/nutanix.com/xiframe/home/service-delivery>`_ (Internal Only) with the Frame Sales Specialists and Solution Architects to accelerate getting the right proposal and solution design to your customer.
+
+Successful deployment of Frame-managed workloads on Nutanix AHV/AOS/HCI to support enterprise use cases is highly dependent on the enterprise’s IT infrastructure. Two critical infrastructure components that you need to confirm are ready for a Frame implementation are:
+
+- Networking (between the AHV clusters and the Frame Control Plane, between end user and Frame Control Plane, and between end user and workload VMs). Use the AHV Cluster Prerequisites Checklist as a guide to validate that the AHV Cluster and network is ready for Frame.
+- The enterprise’s Windows domain, if the Frame-managed workload VMs must be joined to the Windows Active Directory.
+
+*Good luck selling!*

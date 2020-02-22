@@ -29,7 +29,9 @@ Categorizing the Desktop VMs
 
 #. Click the :fa:`plus-circle` icon beside the last value to add an additional Category value.
 
-#. Specify *Initials*-**PD** and *Initials*-**NPD** as the value names.
+#. Specify *Initials*-**PD**.
+
+#. Click the :fa:`plus-circle` again and specify *Initials*-**NPD**.
 
    .. figure:: images/3.png
 

@@ -303,7 +303,7 @@ Nutanix can forward detailed system events to a syslog server in a few short min
 VM Secure Boot
 ++++++++++++++
 
-<Still need intro text from Bill>
+New in AOS 5.16, Secure Boot for user VMs is a security feature in which AHV checks that the guest OS boot loader is signed with a cryptographic key authorized by a database contained in the UEFI firmware, verifying and trusting the integrity of the OS boot loader.
 
 .. figure:: images/3.png
 

@@ -604,16 +604,18 @@ Nutanix LCM is the new home for all things One Click upgrade. <Need some filler 
 
 Unfortunately in a shared cluster environment, you're not able to test LCM directly. To become more familiar with LCM's capabilities and ease of use, click through each of the interactive demos available below.
 
-**5.11 Prism Element LCM Interactive Demo**
+5.11 Prism Element LCM Interactive Demo
+=======================================
 
 .. figure:: https://demo-captures.s3-us-west-1.amazonaws.com/pe-5.11-lcm/story_content/thumbnail.jpg
    :target: https://demo-captures.s3-us-west-1.amazonaws.com/pe-5.11-lcm/story.html
    :alt: Prism Element 5.11 LCM Interactive Demo
 
-**5.11 Prism Central LCM Interactive Demo**
+5.11 Prism Central LCM Interactive Demo
+=======================================
 
-.. figure:: https://demo-captures.s3-us-west-1.amazonaws.com/pe-5.11-lcm/story_content/thumbnail.jpg
-   :target: https://demo-captures.s3-us-west-1.amazonaws.com/pe-5.11-lcm/story.html
+.. figure:: https://demo-captures.s3-us-west-1.amazonaws.com/pc-5.11-lcm/story_content/thumbnail.jpg
+   :target: https://demo-captures.s3-us-west-1.amazonaws.com/pc-5.11-lcm/story.html
    :alt: Prism Central 5.11 LCM Interactive Demo
 
 Next Steps
