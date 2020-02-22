@@ -88,6 +88,7 @@
    mine/hycu/hycu/hycu
    /mine/hycu/protecting-physical/protectingphysical
    splunkobjectslab/splunkobjectslab
+   xileap/xileap
 ..   /mine/hycu/reporting/reporting
 ..   /mine/hycu/self-service/selfservice
 ..   db/lab1/rstfile
