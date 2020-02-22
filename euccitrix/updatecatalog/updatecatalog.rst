@@ -6,7 +6,7 @@ Managing Citrix Desktops
 
 The combination of Nutanix, AHV, and XenDesktop make for a smooth experience in deploying new infrastructure and virtual desktops - but what about as that environment changes and expands?
 
-**In this exercise you will use perform "Day 2" operations for a XenDesktop environment, including expanding an existing Machine Catalog with more desktop VMs, and rolling out an updated gold image to your non-persistent Machine Catalog.**
+**In this exercise you will perform "Day 2" operations for a XenDesktop environment, including expanding an existing Machine Catalog with more desktop VMs, and rolling out an updated gold image to your non-persistent Machine Catalog.**
 
 Adding More Desktops
 ++++++++++++++++++++
@@ -49,6 +49,10 @@ One of the key benefits of non-persistent desktops is the ability to uniformly r
 #. Power on your *Initials*\ **-GoldImage** VM and connect via VM console or RDP.
 
 #. Within your **GoldImage** VM, install or update an application (e.g. PuTTY, Atom, 7Zip, etc.) and then shut down the VM.
+
+   .. note::
+
+      Your user is not part of the **Local Administrators** group, so you may be unable to install certain applications. If you encounter an error trying to install an application, hold the **Shift** key, right-click the installer, and select **Run as different user**. Use your NTNXLAB\\Administrator credentials to complete the installation.
 
    .. figure:: images/5.png
 
