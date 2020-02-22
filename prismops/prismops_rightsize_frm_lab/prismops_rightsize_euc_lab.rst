@@ -38,10 +38,10 @@ Prism Pro uses X-FIT machine learning to detect and monitor the behaviors of VMs
 
 Using machine learning, Prism Pro then analyzes the data and applies a classification to VMs that are learned to be inefficient. The following are short descriptions of the different classifications:
 
-* **Overprovisioned:** VMs identified as using minimal amounts of assigned resources.
-* **Inactive:** VMs that have been powered off for a period of time or that are running VMs that do not consume any CPU, memory, or I/O resources.
-* **Constrained:** VMs that could see improved performance with additional resources.
-* **Bully:** VMs identified as using an abundance of resources and affecting other VMs.
+  * **Overprovisioned:** VMs identified as using minimal amounts of assigned resources.
+  * **Inactive:** VMs that have been powered off for a period of time or that are running VMs that do not consume any CPU, memory, or I/O resources.
+  * **Constrained:** VMs that could see improved performance with additional resources.
+  * **Bully:** VMs identified as using an abundance of resources and affecting other VMs.
 
 #. In **Prism Central**, select :fa:`bars` **> Dashboard** (if not already there).
 
@@ -55,12 +55,12 @@ Using machine learning, Prism Pro then analyzes the data and applies a classific
 
 #. Once an admin has examined the list of VM on the efficiency list they can determine any that they wish to take action against. From VMs that have too many or too little resources they will require the individual VMs to be resized. This can be done in a number of ways with a few examples listed below:
 
-* **Manually:** An admin edits the VM configuration via Prism or vCenter for ESXi VMs and changes the assigned resources.
-* **X-Play:** Use X-Plays automated play books to resize VM(s) automatically via a trigger or admins direction. There will be a lab story example of this later in this lab.
-* **Automation:** Use some other method of automation such as powershell or REST-API to resize a VM.
+   * **Manually:** An admin edits the VM configuration via Prism or vCenter for ESXi VMs and changes the assigned resources.
+   * **X-Play:** Use X-Plays automated play books to resize VM(s) automatically via a trigger or admins direction. There will be a lab story example of this later in this lab.
+   * **Automation:** Use some other method of automation such as powershell or REST-API to resize a VM.
 
 
-Using this machine learning data, Prism Pro is also able to generate baselines, or expected ranges, for VM, Host and Cluster metric data. The X-FIT alogrithms learn the normal behavior of these entities and represent that as a baseline range on the different charts. Whenever a metric value deviates from this expected range, Prism Pro will raise an anomaly.
+   Using this machine learning data, Prism Pro is also able to generate baselines, or expected ranges, for VM, Host and Cluster metric data. The X-FIT alogrithms learn the normal behavior of these entities and represent that as a baseline range on the different charts. Whenever a metric value deviates from this expected range, Prism Pro will raise an anomaly.
 
 #. Now let's take a take a look at a VM by searching for ‘bootcamp_good’ and selecting ‘bootcamp_good_1’.
 
@@ -105,17 +105,11 @@ Now let's look at how we can take automated action to resolve some of these inef
 
 #. We are creating an Action that we can later use in our playbook to Generate a Service Ticket. Fill in the following values replacing your initials in the *Initials* part, and the <GTSPrismOpsLabUtilityServer_IP_ADDRESS> in the URL field. Click **Copy**.
 
-**Name:** *Initials* - Generate Service Ticket
-
-**Method:** POST
-
-**URL:** http://<GTSPrismOpsLabUtilityServer_IP_ADDRESS>/generate_ticket/
-
-**Request Body:** ``{"vm_name":"{{trigger[0].source_entity_info.name}}","vm_id":"{{trigger[0].source_entity_info.uuid}}","alert_name":"{{trigger[0].alert_entity_info.name}}","alert_id":"{{trigger[0].alert_entity_info.uuid}}"}``
-
-**Request Header:**
-
-| Content-Type:application/json;charset=utf-8
+   - **Name:** - *Initials* - Generate Service Ticket
+   - **Method:** - POST
+   - **URL:** - http://<GTSPrismOpsLabUtilityServer_IP_ADDRESS>/generate_ticket/
+   - **Request Body:** - ``{"vm_name":"{{trigger[0].source_entity_info.name}}","vm_id":"{{trigger[0].source_entity_info.uuid}}","alert_name":"{{trigger[0].alert_entity_info.name}}","alert_id":"{{trigger[0].alert_entity_info.uuid}}"}``
+   - **Request Header:** - | Content-Type:application/json;charset=utf-8
 
    .. figure:: images/rs5.png
 
@@ -149,13 +143,9 @@ Now let's look at how we can take automated action to resolve some of these inef
 
 #. Next we would like to notify someone that the ticket was created by X-Play. Click **Add Action** and select the Email action. Fill in the field in the email action. Here are the examples. Be sure to replace <GTSPrismOpsLabUtilityServer_IP_ADDRESS> in the message with it's IP Address.
 
-**Recipient:** Fill in your email address.
-
-**Subject :**
-``Service Ticket Pending Approval: {{trigger[0].alert_entity_info.name}}``
-
-**Message:**
-``The alert {{trigger[0].alert_entity_info.name}} triggered Playbook {{playbook.playbook_name}} and has generated a Service ticket for the VM: {{trigger[0].source_entity_info.name}} which is now pending your approval. A ticket has been generated for you to take action on at http://<GTSPrismOpsLabUtilityServer_IP_ADDRESS>/ticketsystem``
+   - **Recipient:** - Fill in your email address.
+   - **Subject :** - ``Service Ticket Pending Approval: {{trigger[0].alert_entity_info.name}}``
+   - **Message:** - ``The alert {{trigger[0].alert_entity_info.name}} triggered Playbook {{playbook.playbook_name}} and has generated a Service ticket for the VM: {{trigger[0].source_entity_info.name}} which is now pending your approval. A ticket has been generated for you to take action on at http://<GTSPrismOpsLabUtilityServer_IP_ADDRESS>/ticketsystem``
 
    .. figure:: images/rs13.png
 
@@ -185,29 +175,22 @@ Now let's look at how we can take automated action to resolve some of these inef
 
 #. Fill in the field in the email action. Here are the examples.
 
-**Recipient:** Fill in your email address.
+   - **Recipient:** - Fill in your email address.
+   - **Subject :** - ``Playbook {{playbook.playbook_name}} was executed.``
+   - **Message:**``{{playbook.playbook_name}} has run and has added 1GiB of Memory to the VM {{trigger[0].source_entity_info.name}}.``
 
-**Subject :**
-``Playbook {{playbook.playbook_name}} was executed.``
+   .. note::
 
-**Message:**
-``{{playbook.playbook_name}} has run and has added 1GiB of Memory to the VM {{trigger[0].source_entity_info.name}}.``
-
-You are welcome to compose your own subject message. The above is just an example. You could use the “parameters” to enrich the message.
+      You are welcome to compose your own subject message. The above is just an example. You could use the “parameters” to enrich the message.
 
    .. figure:: images/rs20.png
 
 #. Last, we would like to call back to the ticket service to resolve the ticket in the ticket service. Click **Add Action** to add the REST API action. Fill in the following values replacing the <GTSPrismOpsLabUtilityServer_IP_ADDRESS> in the URL field.
 
-**Method:** PUT
-
-**URL:** http://<GTSPrismOpsLabUtilityServer_IP_ADDRESS>/resolve_ticket
-
-**Request Body:** ``{"vm_id":"{{trigger[0].source_entity_info.uuid}}"}``
-
-**Request Header:**
-
-| Content-Type:application/json;charset=utf-8
+   - **Method:** - PUT
+   - **URL:** - http://<GTSPrismOpsLabUtilityServer_IP_ADDRESS>/resolve_ticket
+   - **Request Body:** - ``{"vm_id":"{{trigger[0].source_entity_info.uuid}}"}``
+   - **Request Header:** -  Content-Type:application/json;charset=utf-8
 
    .. figure:: images/rs21.png
 
