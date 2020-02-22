@@ -1,17 +1,16 @@
 .. title:: Nutanix Global Tech Summit 2020
 
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Event Info
-   :name: _info
-   :hidden:
-
-   info/comingsoon
-   .. info/clusteraccess
-   .. info/clusterinfo
-   .. info/validation
 ..
+   .. toctree::
+      :maxdepth: 2
+      :caption: Event Info
+      :name: _info
+      :hidden:
+
+      info/clusteraccess
+      info/clusterinfo
+      info/validation
+
    .. toctree::
       :maxdepth: 2
       :caption: Private Cloud
@@ -102,14 +101,14 @@
    :name: _appendix
    :hidden:
 
-.. raw:: html
+.. _welcome:
 
-  <br><br><center><img src="https://get-ahv-images.s3.amazonaws.com/vegasbanner.png" alt="Welcome to Nutanix Global Tech Summit 2020"></center><br>
+-------
+Welcome
+-------
 
-.. .. figure:: images/gtsvegas.png
+.. image:: images/vegasbanner.png
    :align: center
-
-*Welcome! On Wednesday morning, this page will be updated with all available labs and cluster assignment information.*
 
 This year we're celebrating how we power customer use cases by exposing you to multiple new options that will be launched as Bootcamps for you to drive prospect and customer engagement during 2020. During this year's Hands on Learning day, you'll choose and complete **at least** one of four available solution-focused lab tracks.
 
@@ -133,14 +132,12 @@ For each lab you complete & validate, you'll be entered into a raffle to win you
 .. figure:: images/prizes.png
    :align: center
 
+**Proctors will be regularly checking in with each table to validate completed labs. You do NOT need to wait for lab validation before proceeding to your next lab, but please take the time to clean up unneeded VMs after each lab validation.**
 
+.. raw:: html
 
-..   **Proctors will be regularly checking in with each table to validate completed labs. You do NOT need to wait for lab validation before proceeding to your next lab, but please take the time to clean up unneeded VMs after each lab validation.**
+  <strong><font color="red">Before beginning any labs, review the following sections for important information regarding your lab specific lab environment:</font></strong>
 
-   .. raw:: html
-
-     <strong><font color="red">Before beginning any labs, review the following sections for important information regarding your lab specific lab environment:</font></strong>
-
-   - :ref:`clusteraccess` - *VPN configuration for accessing the Nutanix Hosted POC network*
-   - :ref:`clusterinfo` - *Your individual cluster assignment and details on how your cluster was staged*
-   - :ref:`validation` - *How to get assistance with a lab*
+- :ref:`clusteraccess` - *VPN configuration for accessing the Nutanix Hosted POC network*
+- :ref:`clusterinfo` - *Your individual cluster assignment and details on how your cluster was staged*
+- :ref:`validation` - *How to get assistance with a lab*
