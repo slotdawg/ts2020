@@ -189,7 +189,7 @@ In the following exercises, Carol is going to up her Private Cloud game and brin
 Exploring Categories
 ====================
 
-A category is a grouping of entities into a key value pair. Typically, new entities (such as VMs, Networks, or Images) are assigned to a category based on some criteria. Policies can then be tied to those entities that are assigned (grouped by) a specific category value.
+A **Category** is a key value pair. Categories are assigned to entities (such as VMs, Networks, or Images) based on some criteria (Location, Production-level, App Name, etc.). Policies can then be mapped to those entities that are assigned a specific category value.
 
 For example, you might have a Department category that includes values such as Engineering, Finance, and HR. In this case you could create one backup policy that applies to Engineering and HR and a separate (more stringent) backup policy that applies to just Finance. Categories allow you to implement a variety of policies across entity groups, and Prism Central allows you to quickly view any established relationships.
 
