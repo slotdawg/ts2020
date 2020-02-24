@@ -83,12 +83,14 @@
 
    beam_security_compliance/beam_security_compliance
    calm_karbon_cicd/calm_karbon_cicd
+   xileap/xileap
+   splunkobjectslab/splunkobjectslab
+   mine/hycu/hycu/hycu
    peer/peer
    mine/veeam/veeam
-   mine/hycu/hycu/hycu
-   /mine/hycu/protecting-physical/protectingphysical
-   splunkobjectslab/splunkobjectslab
-   xileap/xileap
+
+   .. /mine/hycu/protecting-physical/protectingphysical
+
 ..   /mine/hycu/reporting/reporting
 ..   /mine/hycu/self-service/selfservice
 ..   db/lab1/rstfile
