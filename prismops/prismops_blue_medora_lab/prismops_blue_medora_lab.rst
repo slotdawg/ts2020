@@ -4,7 +4,7 @@ Monitoring MSSQL with Prism Pro
 
 .. figure:: images/operationstriangle.png
 
-The above graphic is what we like to refer to as the Operations Triangle, which shows the typical operations flow in any environment, a continuous cycle of monitoring, analyzing and then taking action where necessary. With Prism Pro, IT Admins are able to leverage insights from machine data to automate this typical flow.
+Prism Pro brings smart automation to our customer’s daily IT operations. The typical operations workflow is a continuous cycle of monitoring, analyzing and taking action where necessary. Prism Pro mirrors traditional IT Admin's workflows to improve operations efficiency. With Prism Pro, IT Admins are able to connect insights from machine data to automate this typical flow using the power of the machine learning engine X-FIT and the X-Play automation engine.
 
 In this lab you will learn how Prism Pro can help IT Admins monitor, analyze and automatically act on data from our partner Blue Medora.
 
@@ -34,7 +34,7 @@ Monitoring MSSQL with Blue Medora
 
 Prism Pro has partnered with Blue Medora to collect metrics and data that Blue Medora monitors and expose them in the Prism Central console. This feature will be having an Early Access phase in 5.17 and is planned to go GA in 5.18. Using these additional metrics, Prism Pro can give more insights into Database workloads such as MSSQL. Let's take a look.
 
-#. Navigate to the **Alerts** page by clicking the bell icon in the top of the navigation bar. Notice you have an alert claiming **SQL server query average latency high**. Click on the alert to take a closer look.
+#. Navigate to the **Alerts** page by clicking the bell icon in the top of the navigation bar. Notice you have an alert claiming **SQL server query average latency high**. Click on the alert that has your MSSQL VM listed in the **Source Entity** column to take a closer look.
 
    .. figure:: images/bm1.png
 
@@ -106,5 +106,5 @@ Have a question about **Prism Pro**? Please reach out to the resources below:
 +================================+================================================+
 |  Slack Channel                 |  #prism-pro                                    |
 +--------------------------------+------------------------------------------------+
-|  Product Manager               |  Harry Yang, harry.yang@nutanix.com            |
+|  Email                         |  pops-pm@nutanix.com                           |
 +--------------------------------+------------------------------------------------+
