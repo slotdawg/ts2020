@@ -103,7 +103,7 @@ Manual VM Deployment
 Exploring Era Resources
 +++++++++++++++++++++++
 
-Era is distributed as a virtual appliance that can be installed on either AHV or ESXi. For the purposes of conversing memory resources, a shared Era server has already been deployed on your cluster.
+Era is distributed as a virtual appliance that can be installed on either AHV or ESXi. For the purposes of conserving memory resources, a shared Era server has already been deployed on your cluster.
 
    .. note::
 
