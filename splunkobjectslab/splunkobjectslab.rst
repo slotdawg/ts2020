@@ -1,9 +1,9 @@
 .. Adding labels to the beginning of your lab is helpful for linking to the lab from other pages
 .. _splunkobjectslab:
 
-------------------
-Splunk Objects Lab
-------------------
+------------------------
+Using Objects for Splunk
+------------------------
 
 Overview
 ++++++++
@@ -17,11 +17,61 @@ Objects allows users to store petabytes of unstructured data on the Nutanix plat
 Lab Setup
 +++++++++
 
-This lab requires applications provisioned as part of the :ref:`windows_tools_vm` **and** :ref:`linux_tools_vm`.
+This lab requires both the **WinToolsVM** and **LinuxToolsVM** VMs. If you have already provisioned these during another lab, continue to :ref:`splunkstart`.
 
-If you have not yet deployed **both** of these VMs, see the linked steps before proceeding with the lab.
+#. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs**.
 
-**Google Chrome is recommended for this lab.**
+#. Click **Create VM**.
+
+#. Select your assigned cluster and click **OK**.
+
+#. Fill out the following fields:
+
+   - **Name** - *Initials*-WinToolsVM
+   - **Description** - (Optional) Description for your VM.
+   - **vCPU(s)** - 2
+   - **Number of Cores per vCPU** - 1
+   - **Memory** - 4 GiB
+
+   - Select **+ Add New Disk**
+      - **Type** - DISK
+      - **Operation** - Clone from Image Service
+      - **Image** - WinToolsVM.qcow2
+      - Select **Add**
+
+   - Select **Add New NIC**
+      - **VLAN Name** - *Assigned User VLAN*
+      - Select **Add**
+
+#. Click **Save** to create the VM.
+
+#. Click **Create VM**.
+
+#. Select your assigned cluster and click **OK**.
+
+#. Fill out the following fields:
+
+   - **Name** - *Initials* -LinuxToolsVM
+   - **Description** - (Optional) Description for your VM.
+   - **vCPU(s)** - 2
+   - **Number of Cores per vCPU** - 1
+   - **Memory** - 4 GiB
+
+   - Select **+ Add New Disk**
+      - **Type** - DISK
+      - **Operation** - Clone from Image Service
+      - **Image** - Linux_ToolsVM.qcow2
+      - Select **Add**
+
+   - Select **Add New NIC**
+      - **VLAN Name** - *Assigned User VLAN*
+      - Select **Add**
+
+#. Click **Save** to create the VM.
+
+#. Select both VMs and click **Actions > Power On**.
+
+.. _splunkstart:
 
 Create Nutanix Objects AMI User Keys
 ++++++++++++++++++++++++++++++++++++
