@@ -13,7 +13,9 @@ Refer to **YOUR NAME** in the table below for all critical environmental informa
 
 .. raw:: html
 
-   <iframe width="99%" height="500" frameborder="0" scrolling="no" src="https://nutanixinc-my.sharepoint.com/personal/matthew_bator_nutanix_com/_layouts/15/Doc.aspx?sourcedoc={0df44832-eed9-49c1-a1e2-6a36846ca6af}&action=embedview&ActiveCell='QA%20Clusters'!A1&Item='QA%20Clusters'!A1%3AP49&wdDownloadButton=True&wdInConfigurator=True"></iframe>
+   <iframe width="99%" height="600" frameborder="0" scrolling="no" src="https://nutanixinc-my.sharepoint.com/personal/matthew_bator_nutanix_com/_layouts/15/Doc.aspx?sourcedoc={c096e482-b12f-49ec-9e0f-d023f6da3aa4}&action=embedview&ActiveCell='GTS%20AMER%20Cluster%20Assignments'!A1&Item=Table1&wdDownloadButton=True&wdInConfigurator=True"></iframe>
+
+..    <iframe width="99%" height="500" frameborder="0" scrolling="no" src="https://nutanixinc-my.sharepoint.com/personal/matthew_bator_nutanix_com/_layouts/15/Doc.aspx?sourcedoc={0df44832-eed9-49c1-a1e2-6a36846ca6af}&action=embedview&ActiveCell='QA%20Clusters'!A1&Item='QA%20Clusters'!A1%3AP49&wdDownloadButton=True&wdInConfigurator=True"></iframe>
 
 .. note::
 
