@@ -60,17 +60,26 @@ Frame
 
 Verify in :ref:`clusterassignments` if you have been assigned to a **PHX** or **RTP** cluster.
 
-Select the appropriate Frame URL based on your cluster assignment:
-
-- **PHX** - https://frame.nutanix.com/x/labs/phx-ahv
-- **RTP** - https://frame.nutanix.com/x/labs/rtp-ahv
-
-Log in using the following credentials:
+Log into https://frame.nutanix.com/x/labs using the following credentials:
 
 - **Username** - Refer to :ref:`clusterassignments` for your **Lab VPN Username**
 - **Password** - techX2020!
 
-Accept the Nutanix Cloud Services Terms of Service, and launch the **Desktop**.
+Accept the Nutanix Cloud Services Terms of Service.
+
+Click the **Launchpads** icon at the top of the screen.
+
+.. figure:: images/frame2.png
+
+Select a **Launchpad** that corresponds to your cluster location (**PHX** v. **RTP**).
+
+.. figure:: images/frame3.png
+
+.. note::
+
+   PHX has multiple pools of Frame desktops available to access PHX clusters, you can choose any of them.
+
+Launch the **Desktop**.
 
 .. figure:: images/frame.png
 
