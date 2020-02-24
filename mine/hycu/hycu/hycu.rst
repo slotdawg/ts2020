@@ -244,7 +244,7 @@ In this exercise you will back up a Windows Server VM with a mounted iSCSI Volum
    - Select **+ Add New Disk**
 
      - **Operation** - Clone from Image Service
-     - **Image** - Windows2012
+     - **Image** - Windows2012R2.qcow2
      - Select **Add**
    - Select **Add New NIC**
 
@@ -257,7 +257,15 @@ In this exercise you will back up a Windows Server VM with a mounted iSCSI Volum
 
 #. Complete the Sysprep process and provide a password for the local Administrator account (e.g. **nutanix/4u**).
 
-#. Log in as the local Administrator and open **iSCSI Initiator**. When prompted to start the Microsoft iSCSI service, click **Yes**.
+#. From within Prism, highlight the VM and select "Manage Guest Tools." Ensure that "Enable Nutanix Guest Tools," and "Mount Nutanix Guest Tools" are selected:
+
+   .. figure:: images/13c.png
+
+#. Log in as the local Administrator, navigate to the CDROM drive and install the Nutanix Guest Tools
+
+   .. figure:: images/13d.png
+
+#. Open **iSCSI Initiator** on the Windows VM. When prompted to start the Microsoft iSCSI service, click **Yes**.
 
 #. In **iSCSI Initiator Properties**, select the **Configuration** tab and note the **Initiator Name** value.
 
@@ -378,7 +386,7 @@ Restoring Backups
 
    .. figure:: images/21.png
 
-#. Select the most recent incremental restore point and click **Restore VM or vDisks**.
+#. Select the most recent incremental restore point and click **Restore VM**.
 
    HYCU offers the ability to overwrite or clone the entire VM, as well as the ability to selectively restore or clone individual VM disks or volume groups. Restoring volume groups is helpful in use cases where you would prefer to mount a disk to an existing VM.
 
@@ -387,6 +395,8 @@ Restoring Backups
 #. Select **Clone VM** and click **Next**.
 
    .. figure:: images/20.png
+
+   .. note:: HYCU will clone the VM, however there will be a warning since the VM has Volume Groups attached. You can safely disregard this warning
 
 #. Fill out the following fields and click **Restore**:
 
@@ -489,7 +499,7 @@ Configuring a Bucket
 
 #. Once created, click on the bucket and select "User Access," then click the "Edit User Access"
 
-#. Type "*initials*-hcyu@ntnxlab.local" and select both the "Read" and "Write" options, then click Save
+#. Type "*initials*-hycu@ntnxlab.local" and select both the "Read" and "Write" options, then click Save
 
    .. figure:: images/35.png
 
@@ -533,7 +543,7 @@ You can now modify existing HYCU policies or create new policies which "tier-off
 
    .. figure:: images/39.png
 
-#. Click Save
+#. Click Save then click Close
 
 #. Click "+ New" to create a new Backup Policy
 
