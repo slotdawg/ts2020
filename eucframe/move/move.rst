@@ -120,6 +120,10 @@ Staging a Source VM
 
 #. Under **Datacenter1 > Move Source VMs**, right-click **HorizonView-GoldImage** and select **New VM from This Template**.
 
+   .. note::
+
+      **IMPORTANT!** You must select the **Move Source VMs** folder, otherwise you will not be able to access your VM as the move@vsphere.local user.
+
    .. figure:: images/7.png
 
 #. Fill out the following fields and click **Next**:
