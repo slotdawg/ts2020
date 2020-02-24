@@ -23,6 +23,16 @@ Refer to **YOUR NAME** in the table below for all critical environmental informa
 
   .. figure:: images/excel.png
 
+.. note::
+
+   .. raw:: html
+
+     <strong><font color="red">If you are using the Google Chrome browser and macOS 10.5 Catalina, you may encounter issues with self-signed certifications in Prism and be unable to access the cluster. See below for available workarounds.</font></strong>
+
+  **Workaround 1** - Use Firefox and accept the self-signed certificate.
+
+  **Workaround 2** - In Chrome, type *thisisunsafe* in your browser and it will trust the page for the remainder of the browser session.
+
 .. _stagingdetails:
 
 Cluster Staging Details
