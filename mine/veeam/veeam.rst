@@ -121,7 +121,7 @@ The Veeam Backup Server is the main management component in the Veeam backup inf
 
 #. Accept the license agreements and click **Next**.
 
-#. Download the NFR license for the Veeam Backup and Replication Server, located `Here <http://10.42.194.11/images/Veeam/VBRv10RTM/Veeam-100instances-suite-nfr.lic>`_
+#. Download the NFR license for the Veeam Backup and Replication Server, located `Here <http://10.42.194.11/images/Veeam/VBRv10RTM/Veeam-100instances-suite-nfr.lic>`_ You can download the file to your local machine then copy and paste the file into the RDP session
 
 #. Click **Browse** and select the downloaded Veeam NFR license file. Click **Next > Next**.
 
@@ -143,7 +143,7 @@ The Veeam Backup Server is the main management component in the Veeam backup inf
 
    .. figure:: images/0d.png
 
-#. After the installation completes, we need to install the Veeam Nutanix AHV Plugin on the Veeam Backup and Replication Server. You can download the plugin to the xyz-VeeamServer `Here <http://10.42.194.11/images/Veeam/VBRv10RTM/NutanixAHVPlugin_10.0.0.908.exe>`_ 
+#. After the installation completes, we need to install the Veeam Nutanix AHV Plugin on the Veeam Backup and Replication Server. You can download the plugin to the xyz-VeeamServer using this `Link <http://10.42.194.11/images/Veeam/VBRv10RTM/NutanixAHVPlugin_10.0.0.908.exe>`_ 
 
 #. Launch the installer and follow the prompts to install the Nutanix AHV Plugin on the Veeam Server:
 
@@ -209,6 +209,9 @@ Deploying the AHV Backup Proxy
 
    - User: xyzveeam
    - Password: nutanix/4u
+   - First Name: [Your First Name]
+   - Last Name: [Your last name]
+   - E-mail: xyz-veeam@ntnxlab.local
 
 
 #. Grant the user *Cluster Admin* privileges then click Save
@@ -234,6 +237,8 @@ Deploying the AHV Backup Proxy
 #. Enter the credentials you had specified earlier on the Nutanix Cluster (xyzveeam / nutanix/4u). Click OK, then Next >
   
    .. figure:: images/5.png
+
+   .. note:: You will be prompted by a Security Warning when the Veeam Server connects to Prism. Click **Continue**
 
 #. Select the Default Storage Container and change the Network to "Secondary" by using the "Choose" button to the right. There's no need to specify a static IP address on this pane, so click Next >
 
@@ -333,6 +338,8 @@ Deploying the AHV Backup Proxy
 #. Leave the default Access Permissions
 
    .. figure:: images/12.png
+
+   .. note:: You will be prompted by a Security Warning when the Veeam Server connects to Prism. Click **Continue**
 
 #. The VBR will add the AHV Backup Proxy we deployed. Click **Next >**
 
@@ -447,7 +454,7 @@ Click **Next**.
 
 Select **Restore to a new location** and click **Next** to clone the VM from backup data rather than overwriting the existing VM.
 
-Select *Initials*\ **-VeeamBackupTest** and click **Rename VM**. Select **Add suffix**. Untick the option "Preserver virtual machine ID" and click **OK > Next**:
+Select *Initials*\ **-VeeamBackupTest** and click **Name VM**. Select **Add suffix**. **Untick** the option "Preserve virtual machine ID" and click **OK > Next**:
 
 .. figure:: images/27.png
 
@@ -524,7 +531,7 @@ Veeam supports the ability to backup workloads to S3-compatible object store. Th
 
 
 Create Access Keys
-*******************
+-------------------
 
 #. Navigate to Prism Central > Services > Objects
 
@@ -542,13 +549,13 @@ Create Access Keys
 
 
 Configuring a Bucket
-*********************
+---------------------
 
 Because Veeam issues a list-buckets command using the IAM user specified, buckets created within the Objects UI will not be enumerated by Veeam. To work around this, we have to create the bucket using our "xyzveeam@ntnxlab.local" user, which we can do via CyberDuck. You can use Cyberduck from your Windows Tools VM, which is preinstalled
 
 #. Connect to the Nutanix Objects object store from cyberduck, using the client IP for the Object Store
 
-   .. note:: You can locate the Service Point address from Objects by connecting to Prism Central navigating to **Services** > **Objects**. There in the table, you will find the "Client Used IPs" which is the Service Endpoint
+   .. note:: You can locate the Service Point address from Objects by connecting to Prism Central navigating to **Services** > **Objects**. Within the table, you will find the "Client Used IPs" which is the Service Endpoint
 
       .. figure:: images/38.png
 
@@ -562,7 +569,7 @@ Because Veeam issues a list-buckets command using the IAM user specified, bucket
 
 
 Configure Nutanix Objects within Veeam
-**************************************
+---------------------------------------
 
 #. Within the Veeam VBR console click on **Backup Infrastructure** > **Backup Repositories**. 
 
@@ -572,22 +579,28 @@ Configure Nutanix Objects within Veeam
 
    .. figure:: images/37.png
 
-#. Choose "S3 Compatible" and specify the information as noted below:
+#. Choose "S3 Compatible". Whem prompted, specify a Name for the new Object Storage Repository that matches the bucket you created earlier - *Initials*veeam-bucket, then click **Next>** 
+
+
+#. For the Account section, specify the information as noted below:
 
    - Service Point: https://<IP of Object Store Client IP>
    - Region: <leave default>
    - Credentials: Click **Add** > Enter Access key and Secret key, which are in the file previously downloaded when creating the Bucket in Nutanix Objects
 
-   .. note:: You can locate the Service Point address from Objects by connecting to Prism Central navigating to **Services** > **Objects**. There in the table, you will find the "Client Used IPs" which is the Service Endpoint
+   .. note:: You can locate the Service Point address from Objects by connecting to Prism Central navigating to **Services** > **Objects**. Within the table, you will find the "Client Used IPs" which is the Service Endpoint
 
       .. figure:: images/38.png
 
    .. figure:: images/39.png
 
    Click Next> and accept any Certificate Security Alerts
-   You should be able to see the bucket you created in the last section.  Click "Browse" for Folder and create a new folder named "backup"
+   
+#. You should be able to see the bucket you created in the last section.  Click "Browse" for Folder and create a new folder named "backup"
 
    .. figure:: images/40.png
+
+#. Click Finish
 
 You can now configure backup jobs to leverage Nutanix Objects as an archival tier.
 
