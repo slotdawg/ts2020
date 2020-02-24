@@ -230,6 +230,9 @@ Backing Up A VM
 
 In this exercise you will back up a Windows Server VM with a mounted iSCSI Volume Group. In-guest iSCSI disks are common in enterprise apps such as SQL Server that require shared storage for high availability.
 
+.. note::
+   It is recommended to connect to the *Initials*\ **-HYCUBackupTest** via RDP so you can copy/paste the initiator name (IQN).
+
 #. In **Prism > VM > Table**, click **+ Create VM**.
 
 #. Fill out the following fields and click **Save**:
@@ -260,13 +263,9 @@ In this exercise you will back up a Windows Server VM with a mounted iSCSI Volum
 
    .. figure:: images/14.png
 
-   .. note::
-
-     It is recommended to connect to the *Initials*\ **-HYCUBackupTest** via RDP so you can copy/paste the initiator name (IQN).
-
 #. From **Prism > Storage > Table > Volume Groups**, select **+ Volume Group**.
 
-#. Fill out the following fields and click **Save**:
+#. Fill out the following fields:
 
    - **Name** - *Initials*\ -BackupTestVG
    - **iSCSI Target Name Prefix** - *Initials*\ -HYCU-Target
@@ -278,8 +277,10 @@ In this exercise you will back up a Windows Server VM with a mounted iSCSI Volum
    - Select **Enable external client access**
    - Select **+ Add New Client**
 
-     - **Client IQN** - *Initials*\ -HYCUBackupTest *Initiator Name*
+     - **Client IQN** - *Initiator Name* (Initiator Name was noted earlier on the Windows VM under iSCSI Initiator Properties)
      - Select **Add**
+
+#. Click **Save**
 
 #. Return to your *Initials*\ **-HYCUBackupTest** console or RDP session.
 
@@ -312,11 +313,13 @@ In this exercise you will back up a Windows Server VM with a mounted iSCSI Volum
 
 #. From the upper toolbar, click **(Key Icon) Credentials > + New**.
 
-#. Fill out the following fields and click **Save**:
+#. Fill out the following fields:
 
    - **Name** - Local Windows Admin
    - **Username** - Administrator
    - **Password** - *The password you defined when creating the HYCUBackupTest VM*
+
+#. Click **Save**
 
 #. Select the *Initials*\ **-HYCUBackupTest** VM and click **(Key Icon) Credentials**. Select the **Local Windows Admin** credential and click **Assign** to map the credential to the selected VM.
 
