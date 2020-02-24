@@ -1,6 +1,6 @@
-------------------------
-Prism Pro Capacity Runway
-------------------------
+--------------------------------------------
+Capacity Planning & Reporting with Prism Pro
+--------------------------------------------
 
 .. figure:: images/operationstriangle.png
 
