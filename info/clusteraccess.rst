@@ -12,7 +12,7 @@ In order to access these resources you must be connected to one of the (2) VPN o
 
   Certain labs leverage a Windows VM with pre-installed tools to provide a controlled environment. It is **highly recommended** that you connect to these Windows VMs using the Microsoft Remote Desktop client rather than the VM console launched via Prism. An RDP connection will allow you to copy and paste between your device and the VMs.
 
-.. raw:: html
+.. .. raw:: html
 
   <strong><font color="red">If you encounter issues connecting to the VPN, Nutanix IT Helpdesk is available via...</font></strong>
 

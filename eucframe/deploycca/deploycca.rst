@@ -4,9 +4,13 @@
 Deploying Xi Frame Cloud Connector Appliance
 --------------------------------------------
 
-While the Frame control plane is fully cloud-hosted, running on-premises desktops requires a proxy VM, the Cloud Connector Appliance, to facilitate communications between Frame and Prism. This is shown in the below diagram of core Frame platform services.
+While the Frame control plane is fully cloud-hosted, running on-premises desktops require proxy VMs, as shown in the diagram below.
 
 .. figure:: images/00.png
+
+There is the Cloud Connector Appliance (CCA), which enables Frame Platform to communicate with the Prism Central API. The CCA forwards create, start, stop, and delete VM commands to Prism Central, based on requests from Frame Platform. The CCA must be on the same VLAN as Prism Central.
+
+After the initial configuration following the CCA wizard deployment workflow, and upon successful registration of the AHV Cloud Account in Frame Platform, a second appliance is automatically created. This second appliance is the Workload Cloud Connector Appliance (also known as the Workload Proxy in Prism). The WCCA allows for Frame Platform to send orchestration information to all user workload VMs (Sandbox, Production instances, and Utility Servers). Without this appliance, end users will not be able to connect to the workload VMs.
 
 **In this lab you will deploy the Frame Cloud Connector Appliance and configure the connection between your cluster and the Frame control plane.**
 
@@ -213,7 +217,4 @@ Configuring the CCA
 
    .. figure:: images/10.png
 
-Takeaways
-+++++++++
-
-- <Anything?>
+   You're now ready to begin provisioning AHV hosted desktops with Frame!
