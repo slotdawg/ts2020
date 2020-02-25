@@ -6,7 +6,7 @@ Accessing Your Cluster
 
 Clusters used for **Hands on Learning** run within the Hosted POC environment, hosted in the Nutanix PHX and RTP data centers.
 
-In order to access these resources you must be connected to one of the (2) VPN options listed below. Connection to a virtual desktop environment **is not necessary**, but details for connecting to the HPOC through an HTML5 Frame desktop is available for those experiencing issues with the VPN or unable to install VPN software.
+In order to access these resources you must be connected by one of the options listed below. Connection to a virtual desktop environment **is not necessary**, but details for connecting to the HPOC through an HTML5 Frame desktop is available for those experiencing issues with the VPN or unable to install VPN software.
 
 .. note::
 
@@ -37,8 +37,8 @@ Connect using your **Okta** credentials.
 
    If you experience issues connecting to the GlobalProtect VPN, Nutanix IT resources are on standby in #corp-it on Slack to assist.
 
-Partners
-........
+Partner VPN
+...........
 
 Log in to https://xlv-uswest1.nutanix.com using the following credentials:
 
@@ -59,8 +59,8 @@ Add a connection:
 
 Connect using the provided credentials.
 
-Frame
-.....
+Partner Frame Desktop
+.....................
 
 Verify in :ref:`clusterassignments` if you have been assigned to a **PHX** or **RTP** cluster.
 
