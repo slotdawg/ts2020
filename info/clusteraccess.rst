@@ -29,9 +29,13 @@ Connect using your **Okta** credentials.
 
 .. note::
 
-  Using the **Gateway** dropdown, select a Split Tunnel (ST) gateway to ensure only network traffic targeting the Hosted POC environment is sent over the VPN. Otherwise **Best Available** will default to a full VPN tunnel. If using a **PHX** cluster, **Phoenix (ST)** is recommended. If using a **RTP** cluster, **Durham (ST)** is recommended.
+  Using the **Gateway** dropdown, select a Split Tunnel (ST) gateway to ensure only network traffic targeting the Hosted POC environment is sent over the VPN. Otherwise **Best Available** will default to a full VPN tunnel. Regardless if using a **PHX** or **RTP** cluster, **Phoenix (ST)** and **Reno (ST)** are recommended. Do not use the **Durham (ST)** option.
 
   .. figure:: images/gp.png
+
+.. note::
+
+   If you experience issues connecting to the GlobalProtect VPN, Nutanix IT resources are on standby in #corp-it on Slack to assist.
 
 Partners
 ........
