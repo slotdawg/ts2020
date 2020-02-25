@@ -9,17 +9,9 @@ Your Cluster Details
 Cluster Assignments
 +++++++++++++++++++
 
-Refer to **YOUR NAME** in the table below for all critical environmental information, including IP addresses that you will use to complete the self-paced labs. **Please ensure you are using only the cluster details you have been assigned in order to not create issues for other participants.**
+Refer to **YOUR NAME** in the table below for all critical environmental information, including IP addresses that you will use to complete the self-paced labs. **Please ensure you are using only the cluster details you have been assigned in order to not create issues for other participants. You can filter the spreadsheet based on your name to hide assignments for other users.**
 
-.. raw:: html
-
-   <iframe width="99%" height="600" frameborder="0" scrolling="no" src="https://nutanixinc-my.sharepoint.com/:x:/g/personal/matthew_bator_nutanix_com/EYLklsAvsexJng_QI_baOqQBtCSUFCKuSbJpWx3EvyuK3Q?action=embedview&ActiveCell='GTS%20AMER%20Cluster%20Assignments'!A1&Item=Table1&wdDownloadButton=True&wdInConfigurator=True"></iframe>
-
-.. note::
-
-  It is highly recommended to open the Cluster Assignment spreadsheet in a separate tab by clicking the highlighted icon in the toolbar. It is also recommended to filter the table to display ONLY your cluster information.
-
-  .. figure:: images/excel.png
+`Click here to open to Cluster Assignment spreadsheet in a new tab. <https://nutanixinc-my.sharepoint.com/:x:/g/personal/matthew_bator_nutanix_com/EYLklsAvsexJng_QI_baOqQBtCSUFCKuSbJpWx3EvyuK3Q>`_
 
 .. note::
 
