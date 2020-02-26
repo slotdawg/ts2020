@@ -26,7 +26,7 @@ Pre-requisites
 
 This lab requires:
 
-- a **running Nutanix Karbon Kubernetes cluster**.  When the Calm blueprint is launched in the next step, a runtime variable will prompt you for the Karbon Kubernetes cluster name.  If you do not have a cluster already deployed, please go do that and then return to this lab.
+- a **running Nutanix Karbon Kubernetes cluster**.  When the Calm blueprint is launched in the next step, a runtime variable will prompt you for the Karbon Kubernetes cluster name.  If this bootcamp environment was staged, then use the default value of **karbon_bootcamp_cluster**.  Otherwise, please specify the name of an *existing* Karbon Kubernetes cluster.
 - a **DockerHub account**.  If you do not already have one, go ahead and sign up for an account_ (it's free).
 
 .. _account: https://hub.docker.com/
@@ -56,7 +56,7 @@ Building a CI/CD pipeline generally involves connecting a large number of dispar
 
    - **Name of the Application** - *initials*-cicd-infra
    - **gitea_password** - Any password desired, which will be set as the Gitea admin user password
-   - **karbon_cluster_name** - The name of the Karbon cluster to use for this lab (it **must** already be depoyed)
+   - **karbon_cluster_name** - The name of the Karbon cluster to use for this lab (it **must** already be depoyed).  If the cluster was staged, leave the default of **karbon_bootcamp_cluster**.
 
    .. figure:: images/03_bp_launch_2.png
        :align: center
@@ -157,7 +157,7 @@ To access the developer workstation, you have two options: 1, use the web SSH cl
        :align: center
        :alt: CI/CD Infrastructure App Copy Workstation IP
 
-#. In your laptop's terminal, run the following commands (TODO: figure out how we're handling keys) to SSH into your workstation.
+#. In your laptop's terminal, run the following commands to SSH into your workstation (be sure to subsitute in your workstation IP).
 
     .. literalinclude:: ssh-workstation.sh
        :language: bash
@@ -241,7 +241,7 @@ After a GitHub commit triggers a Jenkins build, and Jenkins successfully builds 
 
 .. _DockerHub: https://hub.docker.com/
 
-#. Name the repository **hello-kubernetes**, give it a description of your choice, leave all other fields as default, and click **Create**.
+#. Name the repository **hello-kubernetes**, give it a description of your choice, leave all other fields as default (be sure to leave the repo as **Public**), and click **Create**.
 
    .. figure:: images/21_dockerhub_create_2.png
        :align: center
@@ -280,7 +280,7 @@ The first step of our Jenkins Setup is to add our various credentials to Jenkins
        :align: center
        :alt: Jenkins Add DockerHub Credentials
 
-#. Lastly, we’ll need to add our kubeconfig file as a credential to allow Jenkins to deploy our updated application onto our Kubernetes cluster.  In our Workstation CLI, run the following commands  to create a Kubernetes Service Account **jenkins**, and then create a Role Binding which maps our Service Account the the built-in **admin** role.
+#. Lastly, we’ll need to add our kubeconfig file as a credential to allow Jenkins to deploy our updated application onto our Kubernetes cluster.  In our Workstation CLI, run the following commands  to create a Kubernetes Service Account **jenkins**, and then create a Role Binding which maps our Service Account the the built-in **admin** role (each individual command starts with a "$", they should be run one at a time, and do **not** include the "$" in the command). 
 
     .. literalinclude:: create-sa.sh
        :language: bash
@@ -402,7 +402,7 @@ We'll now create our Jenkinsfile, which is the script Jenkins uses to run our Pi
        :align: center
        :alt: DockerHub Username
 
-#. Head over into your Workstation SSH session, and run the following commands to create our **Jenkinsfile**, substituting your unique credential IDs in the second and third commands, and DockerHub username in the fourth.
+#. Head over into your Workstation SSH session, and run the following commands to create our **Jenkinsfile**, substituting your unique credential IDs in the second and third commands, and DockerHub username in the fourth (each individual command starts with a "$", they should be run one at a time, and do **not** include the "$" in the command).
 
     .. literalinclude:: create-jenkinsfile.sh
        :language: bash
@@ -411,7 +411,7 @@ We'll now create our Jenkinsfile, which is the script Jenkins uses to run our Pi
        :align: center
        :alt: Create Jenkinsfile
 
-#. We'll now create our two Yaml files which will define our application.  The first is a Service_ to expose the application outside of the Karbon Kubernetes cluster, and the second is a Deployment_ which defines the application containers.  We’ll create both files within the **hello-kubernetes/** directory, but we’ll *only* apply the service yaml, as Jenkins will apply the deployment yaml.
+#. We'll now create our two Yaml files which will define our application.  The first is a Service_ to expose the application outside of the Karbon Kubernetes cluster, and the second is a Deployment_ which defines the application containers.  We’ll create both files within the **hello-kubernetes/** directory, but we’ll *only* apply the service yaml, as Jenkins will apply the deployment yaml (each individual command starts with a "$", they should be run one at a time, and do **not** include the "$" in the command).
 
     .. literalinclude:: create-yaml.sh
        :language: bash
@@ -547,6 +547,6 @@ In this lab, we utilized the Kubernetes-Continuous-Deploy_ Jenkins Plugin to dep
 .. |mktmgr-icon| image:: ../images/marketplacemanager_icon.png
 .. |mkt-icon| image:: ../images/marketplace_icon.png
 .. |bp-icon| image:: ../images/blueprints_icon.png
-.. |blueprints| image:: ../images/blueprints.png
-.. |applications| image:: ../images/blueprints.png
-.. |projects| image:: ../images/projects.png
+.. |blueprints| image:: images/blueprints.png
+.. |applications| image:: images/blueprints.png
+.. |projects| image:: images/projects.png

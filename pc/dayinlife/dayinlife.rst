@@ -49,15 +49,37 @@ In this brief exercise, you will experience how IT generalists can provision and
 
    .. figure:: images/5.png
 
-   Observe that the Redundancy Factor cannot be configured for this cluster, this is due to the minimum number of nodes required to support RF3 is 5.
+   Nutanix provides different ways to optimize storage capacity that are intelligent and adaptive to workloads characteristics. Nutanix uses native data avoidance (thin provisioning, intelligent cloning and zero suppression) and data reduction (compression, deduplication, and erasure coding) techniques to handle data efficiently. All data reduction optimizations are performed at the container level, so different containers can use different settings.
 
-   <info on when to use what data efficiency settings>
+   **Compression**
 
-   For more information on how Nutanix protects your data, click the diagram below to review the relevant section of the Nutanix Bible.
+      Nutanix provides both inline and post-process data compression. Irrespective of inline or post-process compression, write data coming into OpLog that is >4k and shows good compression, will be written compressed in OpLog. For inline compression (Delay=0), sequential streams of data or large size I/Os (>64K) will be compressed when writing to the Extent Store. For post-process (Delay > 0), data is compressed after it is drained from OpLog to the Extent Store, after compression delay is met.
 
-   .. figure:: https://nutanixbible.com/imagesv2/data_protection.png
-      :target: https://nutanixbible.com/#anchor-book-of-acropolis-data-protection
-      :alt: Nutanix Bible - Data Protection
+      Compression provides on-disk space savings for applications such as databases, and results in a lower number of writes being written to storage. Post-process compression is turned ON by default on all containers. Starting 5.18, inline compression will be turned ON by default on all containers. We recommend turning ON inline compression for almost all use cases. Workloads not ideal for compression are encrypted datasets or already compressed datasets.
+
+   **Erasure Coding**
+
+      To provide a balance between availability and the amount of storage required, DSF provides the ability to encode data using erasure codes (EC). Like RAID (levels 4, 5, 6, etc.) where parity is calculated, EC encodes a strip of data blocks across different nodes and calculates parity. In the event of a host and/or disk failure, the parity data is used to calculate any missing data blocks (decoding).  In the case of DSF, the data block must be on a different node and belong to a different vDisk. EC is a post-process operation and is done on write cold data (Data that hasn’t been overwritten in more than 7 days). The number of data and parity blocks in a strip is chosen by the system based on number of nodes and configured failures to tolerate.
+
+      Turn on EC-X for non-mission-critical workloads and workloads that have a significant amount of write cold data, since erasure coding works on write cold data and provides more usable storage. For more information refer to `application specific best practice guides <https://portal.nutanix.com/page/documents/solutions/list/>`_.
+
+   **Deduplication**
+
+      When enabled, DSF does capacity-tier and performance-tier deduplication. Data is fingerprinted on ingest using a SHA-1 hash that is stored as metadata. When duplicate data is detected based on multiple copies with the same fingerprint, a background process removes the duplicates. When deduplicated data is read, it is placed in a unified cache, and any subsequent requests for data with the same fingerprint are satisfied directly from cache.
+
+      Deduplication is recommended for full clones, P2V migrations and Persistent Desktops.
+
+   **Redundancy Factor**
+
+      Redundancy Factor controls the number of data copies. Observe that the Redundancy Factor cannot be configured for this cluster, this is due to the minimum number of nodes required to support RF3 is 5.
+
+   .. note::
+
+      For more information on how Nutanix protects your data or implements data reduction, click the diagram below to review the relevant section of the Nutanix Bible.
+
+      .. figure:: https://nutanixbible.com/imagesv2/data_protection.png
+         :target: https://nutanixbible.com/#anchor-book-of-acropolis-data-protection
+         :alt: Nutanix Bible - Data Protection
 
 #. Click **Save** to create the storage and mount it to all available hosts within the cluster.
 
@@ -90,17 +112,17 @@ AHV leverages Open vSwitch (OVS) for all VM networking. OVS is an open source so
 
 #. Click **+ Create Network** and fill out the following fields, using the **User** specific network details in :ref:`clusterassignments`:
 
-   - **Name** - *Refer to Cluster Assignment Spreadsheet*
-   - **VLAN ID** - *Refer to Cluster Assignment Spreadsheet*
+   - **Name** - *Refer to*  :ref:`clusterassignments`
+   - **VLAN ID** - *Refer to*  :ref:`clusterassignments`
    - Select **Enable IP Address Management**
-   - **Network IP Address / Prefix Length** - *Refer to Cluster Assignment Spreadsheet*
-   - **Gateway IP Address** - *Refer to Cluster Assignment Spreadsheet*
-   - **Domain Name Servers** - *Refer to Cluster Assignment Spreadsheet*
+   - **Network IP Address / Prefix Length** - *Refer to*  :ref:`clusterassignments`
+   - **Gateway IP Address** - *Refer to*  :ref:`clusterassignments`
+   - **Domain Name Servers** - *Refer to*  :ref:`clusterassignments`
    - **Domain Search** - ntnxlab.local
    - **Domain Name** - ntnxlab
    - Select **+ Create Pool**
-   - **Start Address** - *Refer to Cluster Assignment Spreadsheet*
-   - **End Address** - *Refer to Cluster Assignment Spreadsheet*
+   - **Start Address** - *Refer to*  :ref:`clusterassignments`
+   - **End Address** - *Refer to*  :ref:`clusterassignments`
    - Click **Submit**
 
    .. figure:: images/8.png
@@ -189,7 +211,7 @@ In the following exercises, Carol is going to up her Private Cloud game and brin
 Exploring Categories
 ====================
 
-A category is a grouping of entities into a key value pair. Typically, new entities (such as VMs, Networks, or Images) are assigned to a category based on some criteria. Policies can then be tied to those entities that are assigned (grouped by) a specific category value.
+A **Category** is a key value pair. Categories are assigned to entities (such as VMs, Networks, or Images) based on some criteria (Location, Production-level, App Name, etc.). Policies can then be mapped to those entities that are assigned a specific category value.
 
 For example, you might have a Department category that includes values such as Engineering, Finance, and HR. In this case you could create one backup policy that applies to Engineering and HR and a separate (more stringent) backup policy that applies to just Finance. Categories allow you to implement a variety of policies across entity groups, and Prism Central allows you to quickly view any established relationships.
 
@@ -203,8 +225,10 @@ In this exercise you'll create a custom category for Carol to help align access 
 
    - **Name** - Team
    - **Purpose** - Allowing resource access based on Application Team
-   - **Values** - Fiesta
-                  ToDo
+   - **Values** -
+
+      Fiesta
+      ToDo
 
    .. figure:: images/15.png
 
@@ -241,13 +265,17 @@ Carol needs to support two types of users working on the Fiesta team, developers
 
 #. In **Prism Central**, select :fa:`bars` **> Administration > Roles**.
 
-   The Developer role provides...
+   The built-in Developer role allows users to create and modify VMs, create, provision, and manage Calm Blueprints, and more.
 
 #. Select the built-in **Developer** role and optionally review the approved actions for the role. Click **Manage Assignment**.
 
    .. figure:: images/19.png
 
 #. Under **Users and Groups**, specify the **SSP Developers** User Group which should be automatically discovered from the NTNXLAB.local domain.
+
+   .. note::
+
+      This may already have been completed by another user, but you'll need to ensure the proper entities are also added below.
 
 #. Under **Entities**, use the drop down menu to specify the following resources:
 
@@ -265,7 +293,7 @@ Carol needs to support two types of users working on the Fiesta team, developers
 
 #. Fill out the following fields and click **Save** to create your custom role:
 
-   - **Role Name** - SmoothOperator
+   - **Role Name** - *Initials*\ -SmoothOperator
    - **Description** - Limited operator accounts
    - **App** - No Access
    - **VM** - Edit Access
@@ -339,7 +367,7 @@ In order for non-infrastructure administrators to access Calm, allowing them to 
    - Select **+ User**
 
       - **Name** - Operator02
-      - **Role** - SmoothOperator
+      - **Role** - *Initials*\ -SmoothOperator
       - **Action** - Save
 
    - Under **Quotas**, specify
@@ -351,6 +379,8 @@ In order for non-infrastructure administrators to access Calm, allowing them to 
    .. figure:: images/24.png
 
 #. Click **Save & Configure Environment**.
+
+``This will redirect you to the Envrionments page, but there is nothing needed to configure here. Move onto the next step.``
 
 Note that only **Operator02** was given access to the **Calm** project, rather than all Operator accounts.
 
@@ -370,6 +400,8 @@ While developer users will have the ability to create and publish their own Blue
    .. figure:: images/25.png
 
 #. Select **Fiesta-Multi.json**.
+
+#. Update the **Blueprint Name** to include your initials. Even across different projects, Calm Blueprint names must be unique.
 
 #. Select your Calm project and click **Upload**.
 
@@ -496,8 +528,6 @@ Carol to the rescue - she encourages Dan to follow the exercise below to allow h
 
       - Click **Back**.
 
-      If you're interested in building a Blueprint from scratch, check out <insert lab link here>.
-
 #. Click **Launch** to provision an instance of the Blueprint.
 
    .. figure:: images/36.png
@@ -593,27 +623,29 @@ Now that Carol has freed up time to focus on replacing additional legacy infrast
 
 #. To fully appreciate the power of Prism Central for searching, sorting, and analyzing entities, view the following brief video:
 
-   - <Embedded Atreyee video>
+   .. raw:: html
+
+     <center><iframe width="640" height="360" src="https://www.youtube.com/embed/HXWCExTlXm4?rel=0&amp;showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
 
 Improved Life Cycle Management
 ++++++++++++++++++++++++++++++
 
 While not a daily activity, Carol previously dedicated as much as 40% of her time planning and executing software and firmware updates to legacy infrastructure, leaving little time for innovation. In her Nutanix environments, Carol is leveraging the rules engine and rich automation in Lifecycle Manager (LCM) to take the hassle out of planning and applying her infrastructure software updates.
 
-Nutanix LCM is the new home for all things One Click upgrade. <Need some filler in here about what LCM currently does in PE vs PC and when it will converge>
-
 Unfortunately in a shared cluster environment, you're not able to test LCM directly. To become more familiar with LCM's capabilities and ease of use, click through each of the interactive demos available below.
 
-**5.11 Prism Element LCM Interactive Demo**
+5.11 Prism Element LCM Interactive Demo
+=======================================
 
 .. figure:: https://demo-captures.s3-us-west-1.amazonaws.com/pe-5.11-lcm/story_content/thumbnail.jpg
    :target: https://demo-captures.s3-us-west-1.amazonaws.com/pe-5.11-lcm/story.html
    :alt: Prism Element 5.11 LCM Interactive Demo
 
-**5.11 Prism Central LCM Interactive Demo**
+5.11 Prism Central LCM Interactive Demo
+=======================================
 
-.. figure:: https://demo-captures.s3-us-west-1.amazonaws.com/pe-5.11-lcm/story_content/thumbnail.jpg
-   :target: https://demo-captures.s3-us-west-1.amazonaws.com/pe-5.11-lcm/story.html
+.. figure:: https://demo-captures.s3-us-west-1.amazonaws.com/pc-5.11-lcm/story_content/thumbnail.jpg
+   :target: https://demo-captures.s3-us-west-1.amazonaws.com/pc-5.11-lcm/story.html
    :alt: Prism Central 5.11 LCM Interactive Demo
 
 Next Steps

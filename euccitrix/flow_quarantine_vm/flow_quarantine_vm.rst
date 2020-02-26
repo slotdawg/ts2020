@@ -62,7 +62,7 @@ Accessing and Quarantining the Desktops
 Creating a Custom Quarantine Policy
 +++++++++++++++++++++++++++++++++++
 
-#. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > Policies > Security Policies > Quarantine** to view all Quarantined VMs.
+#. In **Prism Central**, select :fa:`bars` **> Policies > Security Policies > Quarantine** to view all Quarantined VMs.
 
 #. Click **Update** to edit the Quarantine policy.
 

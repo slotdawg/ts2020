@@ -53,6 +53,8 @@ Manual VM Deployment
 
 #. Log in to the VM using the Administrator password you configured.
 
+#. Disable Windows Firewall for all.
+
 #. Launch **File Explorer** and note the current, single disk configuration.
 
    .. figure:: images/2.png
@@ -103,7 +105,7 @@ Manual VM Deployment
 Exploring Era Resources
 +++++++++++++++++++++++
 
-Era is distributed as a virtual appliance that can be installed on either AHV or ESXi. For the purposes of conversing memory resources, a shared Era server has already been deployed on your cluster.
+Era is distributed as a virtual appliance that can be installed on either AHV or ESXi. For the purposes of conserving memory resources, a shared Era server has already been deployed on your cluster.
 
    .. note::
 
@@ -193,6 +195,10 @@ You must meet the following requirements before you register a SQL Server databa
    - **Connect to SQL Server Admin** - Windows Admin User
    - **User Name** - Administrator
 
+   .. note::
+
+      If **Instance** does not automatically populate, disable the Windows Firewall in your *XYZ*\ **-MSSQL** VM.
+
    .. figure:: images/12.png
 
    .. note::
@@ -268,15 +274,20 @@ You've completed all the one time operations required to be able to provision an
    - **SQL Service Startup Account** - ntnxlab.local\\Administrator
    - **SQL Service Startup Account Password** - nutanix/4u
 
+   .. figure:: images/19.png
+
    .. note::
 
-      Instance Name is...
+      A **Instance Name** is the name of the database server, this is not the hostname. The default is **MSSQLSERVER**. You can install multiple separate instances of MSSQL on the same server as long as they have different instance names. This was more common on a physical server, however, you do not need additional MSSQL licenses to run multiple instances of SQL on the same server.
 
-      Server Collation is...
+      **Server Collation** is a configuration setting that determines how the database engine should treat character data at the server, database, or column level. SQL Server includes a large set of collations for handling the language and regional differences that come with supporting users and applications in different parts of the world. A collation can also control case sensitivity on database. You can have different collations for each database on a single instance. The default collation is **SQL_Latin1_General_CP1_CI_AS** which breaks out like below:
 
-      Database Parameter profiles define...
+         - **Latin1** makes the server treat strings using charset latin 1, basically **ASCII**
+         - **CP1** stands for Code Page 1252. CP1252 is  single-byte character encoding of the Latin alphabet, used by default in the legacy components of Microsoft Windows for English and some other Western languages
+         - **CI** indicates case insensitive comparisons, meaning **ABC** would equal **abc**
+         - **AS** indicates accent sensitive, meaning **ü** does not equal **u**
 
-   .. figure:: images/19.png
+      **Database Parameter Profiles** define the minimum server memory SQL Server should start with, as well as the maximum amount of memory SQL server will use. By default, it is set high enough that SQL Server can use all available server memory. You can also enable contained databases feature which will isolate the database from others on the instance for authentication.
 
 #. Click **Next**, and fill out the following fields to configure the Database:
 

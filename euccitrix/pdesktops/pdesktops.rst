@@ -220,6 +220,12 @@ Connecting to the Desktop
 
 #. After the virtual desktop has completed logging in, experiment by changing application settings, installing applications, restarting the VM, and logging in again.
 
+   .. note::
+
+      Your user is not part of the **Local Administrators** group, so you may be unable to install certain applications. If you encounter an error trying to install an application, hold the **Shift** key, right-click the installer, and select **Run as different user**. Use your NTNXLAB\\Administrator credentials to complete the installation.
+
+      .. figure:: images/26.png
+
 #. In **Citrix Studio**, observe the changes to VM details. As a user logs in they are statically assigned a desktop and another desktop will power on and register with the Delivery Controller, waiting for the next user.
 
    .. figure:: images/25.png

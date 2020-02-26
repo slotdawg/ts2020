@@ -6,13 +6,13 @@ Accessing Your Cluster
 
 Clusters used for **Hands on Learning** run within the Hosted POC environment, hosted in the Nutanix PHX and RTP data centers.
 
-In order to access these resources you must be connected to one of the (2) VPN options listed below. Connection to a virtual desktop environment **is not necessary**, but details for connecting to the HPOC through an HTML5 Frame desktop is available for those experiencing issues with the VPN or unable to install VPN software.
+In order to access these resources you must be connected by one of the options listed below. Connection to a virtual desktop environment **is not necessary**, but details for connecting to the HPOC through an HTML5 Frame desktop is available for those experiencing issues with the VPN or unable to install VPN software.
 
 .. note::
 
   Certain labs leverage a Windows VM with pre-installed tools to provide a controlled environment. It is **highly recommended** that you connect to these Windows VMs using the Microsoft Remote Desktop client rather than the VM console launched via Prism. An RDP connection will allow you to copy and paste between your device and the VMs.
 
-.. raw:: html
+.. .. raw:: html
 
   <strong><font color="red">If you encounter issues connecting to the VPN, Nutanix IT Helpdesk is available via...</font></strong>
 
@@ -27,14 +27,16 @@ Launch GlobalProtect and configure **gp.nutanix.com** as the **Portal** address.
 
 Connect using your **Okta** credentials.
 
+Using the **Gateway** dropdown, select a Split Tunnel (ST) gateway to ensure only network traffic targeting the Hosted POC environment is sent over the VPN (Otherwise **Best Available** will default to a full VPN tunnel). Regardless if using a **PHX** or **RTP** cluster, **Phoenix (ST)** and **Reno (ST)** are recommended. Do not use the **Durham (ST)** option.
+
+.. figure:: images/gp.png
+
 .. note::
 
-  Using the **Gateway** dropdown, select a Split Tunnel (ST) gateway to ensure only network traffic targeting the Hosted POC environment is sent over the VPN. Otherwise **Best Available** will default to a full VPN tunnel. If using a **PHX** cluster, **Phoenix (ST)** is recommended. If using a **RTP** cluster, **Durham (ST)** is recommended.
+   If you experience issues connecting to the GlobalProtect VPN, Nutanix IT resources are on standby in #corp-it on Slack to assist.
 
-  .. figure:: images/gp.png
-
-Partners
-........
+Partner VPN
+...........
 
 Log in to https://xlv-uswest1.nutanix.com using the following credentials:
 
@@ -53,24 +55,33 @@ Add a connection:
 
 .. figure:: images/pulse.png
 
-Connect using the provided credentials.
+Connect using the provided credentials. **If you are able to connect with the VPN, you can continue to the labs. You do not need to use a Frame desktop.**
 
-Frame
-.....
+Partner Frame Desktop
+.....................
 
 Verify in :ref:`clusterassignments` if you have been assigned to a **PHX** or **RTP** cluster.
 
-Select the appropriate Frame URL based on your cluster assignment:
-
-- **PHX** - https://frame.nutanix.com/x/labs/phx-ahv
-- **RTP** - https://frame.nutanix.com/x/labs/rtp-ahv
-
-Log in using the following credentials:
+Log into https://frame.nutanix.com/x/labs using the following credentials:
 
 - **Username** - Refer to :ref:`clusterassignments` for your **Lab VPN Username**
 - **Password** - techX2020!
 
-Accept the Nutanix Cloud Services Terms of Service, and launch the **Desktop**.
+Accept the Nutanix Cloud Services Terms of Service.
+
+Click the **Launchpads** icon at the top of the screen.
+
+.. figure:: images/frame2.png
+
+Select a **Launchpad** that corresponds to your cluster location (**PHX** v. **RTP**).
+
+.. figure:: images/frame3.png
+
+.. note::
+
+   PHX has multiple pools of Frame desktops available to access PHX clusters, you can choose any of them.
+
+Launch the **Desktop**.
 
 .. figure:: images/frame.png
 

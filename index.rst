@@ -7,7 +7,7 @@
    :hidden:
 
    info/clusteraccess
-   info/clusterinfo
+   info/clusterinfoprod
    info/validation
 
 .. toctree::
@@ -83,32 +83,24 @@
 
    beam_security_compliance/beam_security_compliance
    calm_karbon_cicd/calm_karbon_cicd
+   onpremleap/onpremleap
+   xileap/xileap
+   splunkobjectslab/splunkobjectslab
+   mine/hycu/hycu/hycu
    peer/peer
    mine/veeam/veeam
-   mine/hycu/hycu/hycu
-   /mine/hycu/protecting-physical/protectingphysical
-   splunkobjectslab/splunkobjectslab
+
+   .. /mine/hycu/protecting-physical/protectingphysical
+
 ..   /mine/hycu/reporting/reporting
 ..   /mine/hycu/self-service/selfservice
 ..   db/lab1/rstfile
 
-..
-   .. toctree::
-   :maxdepth: 2
-   :caption: Appendix
-   :name: _appendix
-   :hidden:
+.. raw:: html
 
-.. _welcome:
+  <br><center><img src="https://get-ahv-images.s3.amazonaws.com/vegasbanner.png" alt="Welcome to Nutanix Global Tech Summit 2020"></center><br>
 
---------------------------------
-Welcome to Nutanix GTS 2020 Labs
---------------------------------
-
-.. .. figure:: images/gtsvegas.png
-   :align: center
-
-This year we're celebrating how we power customer use cases by exposing you to multiple new options that will be launched as Bootcamps for you to drive prospect and customer engagement during 2020. During this year's Hands on Learning day, you'll choose and complete **at least** one of four available solution-focused lab tracks.
+**Welcome!** This year we're celebrating how we power customer use cases by exposing you to multiple new options that will be launched as Bootcamps for you to drive prospect and customer engagement during 2020. During this year's Hands on Learning day, you'll choose and complete **at least** one of four available solution-focused lab tracks.
 
 .. figure:: images/labtracks.png
    :align: center

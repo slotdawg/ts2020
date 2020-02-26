@@ -33,17 +33,17 @@ Typically, Hosted POC clusters provide 2x /25 VLANs. In order to provide adequat
 
 #. Click **+ Create Network** and fill out the following fields, using the **User** specific network details in :ref:`clusterassignments`:
 
-   - **Name** - *Refer to Cluster Assignment Spreadsheet*
-   - **VLAN ID** - *Refer to Cluster Assignment Spreadsheet*
+   - **Name** - *Refer to*  :ref:`clusterassignments`
+   - **VLAN ID** - *Refer to*  :ref:`clusterassignments`
    - Select **Enable IP Address Management**
-   - **Network IP Address / Prefix Length** - *Refer to Cluster Assignment Spreadsheet*
-   - **Gateway IP Address** - *Refer to Cluster Assignment Spreadsheet*
-   - **Domain Name Servers** - *Refer to Cluster Assignment Spreadsheet*
+   - **Network IP Address / Prefix Length** - *Refer to*  :ref:`clusterassignments`
+   - **Gateway IP Address** - *Refer to*  :ref:`clusterassignments`
+   - **Domain Name Servers** - *Refer to*  :ref:`clusterassignments`
    - **Domain Search** - ntnxlab.local
    - **Domain Name** - ntnxlab
    - Select **+ Create Pool**
-   - **Start Address** - *Refer to Cluster Assignment Spreadsheet*
-   - **End Address** - *Refer to Cluster Assignment Spreadsheet*
+   - **Start Address** - *Refer to*  :ref:`clusterassignments`
+   - **End Address** - *Refer to*  :ref:`clusterassignments`
    - Click **Submit**
 
    .. figure:: images/1.png
@@ -70,7 +70,7 @@ Deploying your Windows Tools VM
    - Select **+ Add New Disk**
       - **Type** - DISK
       - **Operation** - Clone from Image Service
-      - **Image** - ToolsVM.qcow2
+      - **Image** - WinToolsVM.qcow2
       - Select **Add**
 
    - Select **Add New NIC**

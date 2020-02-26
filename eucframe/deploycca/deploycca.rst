@@ -4,9 +4,15 @@
 Deploying Xi Frame Cloud Connector Appliance
 --------------------------------------------
 
-Introduction...
+While the Frame control plane is fully cloud-hosted, running on-premises desktops require proxy VMs, as shown in the diagram below.
 
-**In this lab...**
+.. figure:: images/00.png
+
+There is the Cloud Connector Appliance (CCA), which enables Frame Platform to communicate with the Prism Central API. The CCA forwards create, start, stop, and delete VM commands to Prism Central, based on requests from Frame Platform. The CCA must be on the same VLAN as Prism Central.
+
+After the initial configuration following the CCA wizard deployment workflow, and upon successful registration of the AHV Cloud Account in Frame Platform, a second appliance is automatically created. This second appliance is the Workload Cloud Connector Appliance (also known as the Workload Proxy in Prism). The WCCA allows for Frame Platform to send orchestration information to all user workload VMs (Sandbox, Production instances, and Utility Servers). Without this appliance, end users will not be able to connect to the workload VMs.
+
+**In this lab you will deploy the Frame Cloud Connector Appliance and configure the connection between your cluster and the Frame control plane.**
 
 .. note::
 
@@ -14,6 +20,12 @@ Introduction...
 
 Creating a Frame Account
 ++++++++++++++++++++++++
+
+In this exercise we'll take advantage of the Xi Frame trial offering, using your My Nutanix credentials.
+
+   .. note::
+
+      If you've previously used the Frame trial, inform a proctor so your account can be reset.
 
 #. In a browser, log into https://my.nutanix.com with your My Nutanix credentials.
 
@@ -33,9 +45,19 @@ Creating a Frame Account
 
    .. note::
 
-      If you are prompted with an authorization error, inform a proctor so that your account can be fixed.
+      Frame Platform uses a 3-tiered hierarchy for organizing administration, cloud resources, and access to accounts.
 
-   <Do we want to include info in here about customers/organizations/accounts?>
+      **Customers**
+
+         The Customers tier is the highest tier within the Frame platform. This is essentially the “Master Account” for a single business entity with a billing relationship with Nutanix. By following the Free Trial workflow, you have created your own Customer entity.
+
+      **Organizations**
+
+         The Organizations tier is the second highest tier within the Frame platform. There can be many organizations listed under one Customer depending on the use case. A business may use organizations to set up unique environments for different departments within their company. For the purposes of this lab, you will create one Organization entity which will map to your AHV cluster resources and hold your first Frame account.
+
+      **Accounts**
+
+         This is where an administrator will manage their gold master image, install and manage their applications, and configure their production VMs. This is also where administrators will create Launchpads for their end users. When an end user logs into Frame, they are accessing one of the Launchpads associated to one of the accounts listed under an Organization in order to reach their workload VMs.
 
 Adding Prism Service Account
 ++++++++++++++++++++++++++++
@@ -56,7 +78,7 @@ Adding Prism Service Account
 Adding Frame Category
 +++++++++++++++++++++
 
-<Categories are used to...>
+Frame uses Prism Central Categories to allow the Cloud Connector Appliance to identify the template images that will be used to create the Frame account Sandboxes and desktop VMs.
 
 .. note::
 
@@ -71,7 +93,7 @@ Adding Frame Category
    - **Name** - FrameRole
    - **Purpose** - Allowing resource access based on Application Team
    - **Values**
-   
+
       - Instance
       - Template
       - MasterTemplate
@@ -92,6 +114,8 @@ Adding Frame Category
 
 Creating the CCA VM
 +++++++++++++++++++
+
+The CCA is distributed as a bootable ISO image, not a disk image.
 
 #. In **Prism Central**, select :fa:`bars` **> Virtual Infrastructure > VMs**.
 
@@ -165,7 +189,7 @@ Configuring the CCA
 
 #. Under **Define Instance Types**, edit the existing profile name to **AHV 2vCPU 4GB** to better reflect the configuration. Add an additional custom **Instance Type**. Click **Next**.
 
-   <Instance types are>
+   An Instance Type is the VM configuration which will be launched to run applications. In public cloud environments, these map to that cloud providers available instance types (e.g. AWS t.2large).
 
    .. figure:: images/6.png
 
@@ -179,7 +203,7 @@ Configuring the CCA
 
    .. note::
 
-      At this time, you cannot make any configuration changes to the Cloud Connector Appliance after it has been connected to the cluster. This functionality is coming soon. Please reach out to support@fra.me if you need to make any changes to your CCA.
+      At this time, you cannot make any configuration changes to the Cloud Connector Appliance after it has been connected to the cluster. This functionality is being introduced in an upcoming release.
 
 #. Click **Go to Frame** to be redirected to the Xi Frame portal. Select **Organizations** from the left hand menu, and click :fa:`ellipsis-v` **> Cloud Accounts** to view the AHV Cloud Account creation status.
 
@@ -193,4 +217,4 @@ Configuring the CCA
 
    .. figure:: images/10.png
 
-WE DONE FAM
+   You're now ready to begin provisioning AHV hosted desktops with Frame!

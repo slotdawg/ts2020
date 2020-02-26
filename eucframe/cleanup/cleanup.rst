@@ -1,13 +1,8 @@
 ++++++++++
-Next Steps
+Cleanup
 ++++++++++
 
 **Congratulations on completing the Nutanix End User Computing with Xi Frame lab track!**
-
-<Wrap up>
-
-Cleanup
-+++++++
 
 .. note::
 
