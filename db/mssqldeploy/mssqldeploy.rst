@@ -53,6 +53,8 @@ Manual VM Deployment
 
 #. Log in to the VM using the Administrator password you configured.
 
+#. Disable Windows Firewall for all.
+
 #. Launch **File Explorer** and note the current, single disk configuration.
 
    .. figure:: images/2.png
