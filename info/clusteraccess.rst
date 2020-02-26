@@ -55,7 +55,7 @@ Add a connection:
 
 .. figure:: images/pulse.png
 
-Connect using the provided credentials.
+Connect using the provided credentials. **If you are able to connect with the VPN, you can continue to the labs. You do not need to use a Frame desktop.**
 
 Partner Frame Desktop
 .....................
