@@ -16,7 +16,7 @@ A Note About Nutanix Mine
 +++++++++++++++++++++++++
 
 .. figure:: images/mineveeam.png
- 
+
 While this lab focuses on configuring Veeam and backup jobs within Veeam for AHV clusters, it's worth noting that many of the same components and principals apply to Nutanix Mine with Veeam. Some key points to highlight about Mine with Veeam:
 
 - Nutanix Mine is a dedicated secondary storage backup appliance running on pre-validated NX- hardware (HX and DX Support are coming soon)
@@ -27,14 +27,14 @@ While this lab focuses on configuring Veeam and backup jobs within Veeam for AHV
 - Standard Foundation is run to image and create an AHV cluster
 - "Foundation for Mine" VM image is uploaded and run after AOS and AHV are imaged on a Mine appliance
 - The Foundation for Mine VM automates via a web interface similar to Standard Foundation:
-  
+
   - Nutanix Container Creation
   - Nutanix Volume Group Creation
   - Deployment of the Veeam backup components on the Mine cluster
 
     - Veeam VBR
     - Veeam Repository VMs with Nutanix Volume Groups attached
-    - Veeam Windows Proxies 
+    - Veeam Windows Proxies
   - Deployment of a custom Prism Element Dashboard for Nutanix Mine
 
 .. figure:: images/mine_dashboard.png
@@ -143,7 +143,7 @@ The Veeam Backup Server is the main management component in the Veeam backup inf
 
    .. figure:: images/0d.png
 
-#. After the installation completes, we need to install the Veeam Nutanix AHV Plugin on the Veeam Backup and Replication Server. You can download the plugin to the xyz-VeeamServer using this `Link <http://10.42.194.11/images/Veeam/VBRv10RTM/NutanixAHVPlugin_10.0.0.908.exe>`_ 
+#. After the installation completes, we need to install the Veeam Nutanix AHV Plugin on the Veeam Backup and Replication Server. You can download the plugin to the xyz-VeeamServer using this `Link <http://10.42.194.11/images/Veeam/VBRv10RTM/NutanixAHVPlugin_10.0.0.908.exe>`_
 
 #. Launch the installer and follow the prompts to install the Nutanix AHV Plugin on the Veeam Server:
 
@@ -159,14 +159,14 @@ For storing backups of Nutanix AHV VMs, Veeam currently supports the use of simp
 Veeam Backup Proxy
 ++++++++++++++++++++++++++++
 
-The Backup Proxy is a Linux based virtual appliance that performs the role of a coordinator between the Nutanix platform and Veeam Backup & Replication. Veeam introduced support for Nutanix AHV back in 2018 with its Veeam Availability for Nutanix, or VAN, version 1 virtual appliance. This virtual appliance could be deployed to each AHV cluster to be backed up via Veeam. Since its initial release, there have been three major updates, the latest being Update 3 release in November of 2019, which includes a number of performance upgrades and bug fixes. 
+The Backup Proxy is a Linux based virtual appliance that performs the role of a coordinator between the Nutanix platform and Veeam Backup & Replication. Veeam introduced support for Nutanix AHV back in 2018 with its Veeam Availability for Nutanix, or VAN, version 1 virtual appliance. This virtual appliance could be deployed to each AHV cluster to be backed up via Veeam. Since its initial release, there have been three major updates, the latest being Update 3 release in November of 2019, which includes a number of performance upgrades and bug fixes.
 
 And while the VAN provided basic backup capabilities for workloads running on AHV, Veeam has added additional enhancements for AHV, aligned with its Backup and Replication version 10 release. The new appliance is named the "Veeam Backup and Replication AHV Backup Proxy" (but is often referred to as VANv2)
 
 New features released with v10 include:
 
 - Veeam Backup and Replication Console Integration
-  
+
   - AHV Cluster Registration from the VBR Console
   - Central deployment from the Veeam VBR Console
   - Integrated License Management for AHV Backup Proxy
@@ -235,7 +235,7 @@ Deploying the AHV Backup Proxy
 #. For credentials, click "Add..."
 
 #. Enter the credentials you had specified earlier on the Nutanix Cluster (xyzveeam / nutanix/4u). Click OK, then Next >
-  
+
    .. figure:: images/5.png
 
    .. note:: You will be prompted by a Security Warning when the Veeam Server connects to Prism. Click **Continue**
@@ -272,7 +272,7 @@ Deploying the AHV Backup Proxy
      - **VLAN Name** - Secondary
      - Select **Add**
 
-#. Power on the VM. The VM will boot. After boot completes, note the IP address the Veeam Backup Proxy was assigned from DHCP. 
+#. Power on the VM. The VM will boot. After boot completes, note the IP address the Veeam Backup Proxy was assigned from DHCP.
 
    .. figure:: images/9.png
 
@@ -311,11 +311,11 @@ Deploying the AHV Backup Proxy
 
 #. Review the summary and click Finish. The AHV Proxy appliance will apply settings and reload.
 
-#. Return to the Veeam Backup and Replication Console within the Veeam Server Windows session. Click on Backup Infrastructure, right-click on **Backup Proxies** and select **Add Nutanix backup proxy...**   
+#. Return to the Veeam Backup and Replication Console within the Veeam Server Windows session. Click on Backup Infrastructure, right-click on **Backup Proxies** and select **Add Nutanix backup proxy...**
 
    .. figure:: images/10.png
 
-#. Select **Connect proxy** 
+#. Select **Connect proxy**
 
    .. figure:: images/10a.png
 
@@ -329,7 +329,7 @@ Deploying the AHV Backup Proxy
 #. Leave default network options, then click **Next >**
 
 #. Click **Add..** to add the Backup Proxy credentials:
-   
+
    - **Username:** veeam
    - **Password:** nutanix/4u
 
@@ -551,27 +551,37 @@ Create Access Keys
 Configuring a Bucket
 ---------------------
 
-Because Veeam issues a list-buckets command using the IAM user specified, buckets created within the Objects UI will not be enumerated by Veeam. To work around this, we have to create the bucket using our "xyzveeam@ntnxlab.local" user, which we can do via CyberDuck. You can use Cyberduck from your Windows Tools VM, which is preinstalled
+Since Object Storage uses API keys to grant access to various buckets, we'll want to create a bucket using the API key we just created above.
+A bucket is a sub-repository within an object store which can have policies applied to it, such as versioning, WORM, etc. By default a newly created bucket is a private resource to the creator. The creator of the bucket by default has read/write permissions, and can grant permissions to other users.
 
-#. Connect to the Nutanix Objects object store from cyberduck, using the client IP for the Object Store
+#. Click on your Object Store then click **Create Bucket**
 
-   .. note:: You can locate the Service Point address from Objects by connecting to Prism Central navigating to **Services** > **Objects**. Within the table, you will find the "Client Used IPs" which is the Service Endpoint
+   .. figure:: images/buckets-1.png
 
-      .. figure:: images/38.png
+#. Name the bucket *INITIALS*-**veeam-bucket** > click **Create**
 
-   .. figure:: images/34.png
+   .. note::
 
-#. Accept any certificate warnings, then right-click in the white space and select "Create Folder" to create a new bucket. Name the bucket *Initials*veeam-bucket
+      Bucket names must be lower case and only contain letters, numbers, periods and hyphens.
+      Additionally, all bucket names must be unique within a given Object Store. Note that if you try to create a folder with an existing bucket name (e.g. *your-name*-my-bucket), creation of the folder will not succeed.
+      Creating a bucket in this fashion allows for self-service for entitled users, and is no different than a bucket created via the Prism Buckets UI.
 
-   .. figure:: images/35.png
+   .. figure:: images/buckets-2.png
 
-   This will create the bucket in the object store, which you can now configure within the Veeam VBR console
+#. Click on the bucket you just created, then click **Edit User Access**
 
+   .. figure:: images/buckets-3.png
+
+   .. figure:: images/buckets-4.png
+
+#. Find your user and give it **Read and Write** access
+
+   .. figure:: images/buckets-5.png
 
 Configure Nutanix Objects within Veeam
 ---------------------------------------
 
-#. Within the Veeam VBR console click on **Backup Infrastructure** > **Backup Repositories**. 
+#. Within the Veeam VBR console click on **Backup Infrastructure** > **Backup Repositories**.
 
    .. figure:: images/36.png
 
@@ -579,7 +589,7 @@ Configure Nutanix Objects within Veeam
 
    .. figure:: images/37.png
 
-#. Choose "S3 Compatible". Whem prompted, specify a Name for the new Object Storage Repository that matches the bucket you created earlier - *Initials*veeam-bucket, then click **Next>** 
+#. Choose "S3 Compatible". Whem prompted, specify a Name for the new Object Storage Repository that matches the bucket you created earlier - *Initials*veeam-bucket, then click **Next>**
 
 
 #. For the Account section, specify the information as noted below:
@@ -595,7 +605,7 @@ Configure Nutanix Objects within Veeam
    .. figure:: images/39.png
 
    Click Next> and accept any Certificate Security Alerts
-   
+
 #. You should be able to see the bucket you created in the last section.  Click "Browse" for Folder and create a new folder named "backup"
 
    .. figure:: images/40.png
