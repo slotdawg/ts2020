@@ -223,14 +223,9 @@ In this exercise you'll create a custom category for Carol to help align access 
 
 #. Click **New Category** and fill out the following fields:
 
-   - **Name** - Team
+   - **Name** - *Initials*\ -Team
    - **Purpose** - Allowing resource access based on Application Team
-   - **Values** -
-
-      Fiesta
-      ToDo
-
-   .. figure:: images/15.png
+   - **Values** - Fiesta
 
 #. Click **Save**.
 
@@ -254,7 +249,7 @@ In this exercise you'll create a custom category for Carol to help align access 
 
 #. Click **Save**.
 
-#. Select the *Initials*\ **-WinToolsVM** provisioned by Carol in the previous exercise, and click **Actions > Manage Categories**. Assign the **Team: Fiesta** category and **Save**.
+#. Select the *Initials*\ **-WinToolsVM** provisioned by Carol in the previous exercise, and click **Actions > Manage Categories**. Assign the *Initials*\ **-Team: Fiesta** category and **Save**.
 
 Exploring Roles
 ===============
@@ -281,7 +276,7 @@ Carol needs to support two types of users working on the Fiesta team, developers
 
    - **AHV Cluster** - *Your Assigned Cluster*
    - **AHV Subnet** - *Your Assigned User VLAN*
-   - **Category** - Environment:Testing, Environment:Staging, Environment:Dev, Team:Fiesta
+   - **Category** - Environment:Testing, Environment:Staging, Environment:Dev, *Initials*\ -Team:Fiesta
 
    .. figure:: images/20.png
 
@@ -313,7 +308,7 @@ Carol needs to support two types of users working on the Fiesta team, developers
 #. Click **New User** to add an additional assignment to the same role:
 
    - **Users and Groups** - operator02
-   - **Entity Categories** - EnvironmentDev, Team:Fiesta
+   - **Entity Categories** - EnvironmentDev, *Initials*\ -Team:Fiesta
 
    Operator02 is a user who sees all VMs tagged with either the Dev or Fiesta category values.
 
@@ -407,7 +402,7 @@ While developer users will have the ability to create and publish their own Blue
 
 #. In order to launch the Blueprint you must first assign a network to the VM. Select the **NodeReact** Service, and in the **VM** Configuration menu on the right, select *Your Assigned User VLAN* as the **NIC 1** network.
 
-#. Specify the **Team: Fiesta** and **Environment: Dev** categories for the **NodeReact** Service.
+#. Specify the *Initials*\ **-Team: Fiesta** and **Environment: Dev** categories for the **NodeReact** Service.
 
    .. figure:: images/27.png
 
@@ -578,7 +573,7 @@ Meet Ronald and Elise. Ronald works as a Level 3 engineering with the corporate 
    - **User Name** - operator02@ntnxlab.local
    - **Password** - nutanix/4u
 
-#. Note that only resources tagged with the **Team: Fiesta** category are available to be managed.
+#. Note that only resources tagged with the *Initials*\ **-Team: Fiesta** category are available to be managed.
 
    .. figure:: images/43.png
 
@@ -599,7 +594,7 @@ Now that Carol has freed up time to focus on replacing additional legacy infrast
 #. Select **Filters** and explore the available options. Specify the following example filters:
 
    - **Name** - Contains *Initials*
-   - **Categories** - Team: Fiesta
+   - **Categories** - *Initials*\ -Team: Fiesta
    - **Hypervisor** - AHV
    - **Power State** - On
 
