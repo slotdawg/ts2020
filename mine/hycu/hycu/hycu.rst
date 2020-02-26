@@ -448,7 +448,7 @@ In addition to restoring full VMs or disks, HYCU can also be used to directly re
 
    .. figure:: images/22.png
 
-#. Select **Restore to Virtual Machine** and click **Next**. Alternatively, if you have completed the :ref:`files` lab, you can opt to restore the file directly to an SMB share.
+#. Select **Restore to Virtual Machine** and click **Next**. 
 
 #. Fill out the following fields and click **Restore**:
 
@@ -575,7 +575,7 @@ HYCU is the first solution to provide fully integrated backup and restore capabi
 
 While classic backup solutions heavily burden the file server by using the Network Data Management Protocol (NDMP) approach, needing to traverse the whole file tree to identify changed files, HYCU uses Nutanix storage layer snapshots and CFT to get the changed files instantly. This means HYCU backups remove impact on the file server and significantly reduce the data-loss risk by backing up file share changes on hourly basis, compared to classic, nightly file share backups.
 
-This exercise requires completion of the :ref:`files` lab to properly stage the environment. In this exercise you will configure Nutanix Files as a backup source, as well as target a Nutanix Files SMB share for backup data.
+In this exercise you will configure Nutanix Files as a backup source, as well as target a Nutanix Files SMB share for backup data.
 
 Adding SMB Share Target
 .......................
@@ -605,7 +605,7 @@ Files backups require either a NFS export, SMB share or S3 (Cloud) target, meani
    - **Domain** - NTNXLAB
    - **Username** - Administrator
    - **Password** - nutanix/4u
-   - **SMB Server Name** - *Initials*\ -Files.ntnxlab.local
+   - **SMB Server Name** - BootcampFS.ntnxlab.local
    - **Shared Folder** - /\ *Initials*\ -HYCUTarget
 
    .. figure:: images/24.png
@@ -639,7 +639,7 @@ For AHV clusters with DHCP enabled, the additional HYCU instance can be provisio
 
 #. Click **+ New** and fill out the following fields:
 
-   - **URL** - https://\ *Initials*\ -files.ntnxlab.local:9440
+   - **URL** - https://bootcampfs.ntnxlab.local:9440
    - **Nutanix Files Server Credentials > Username** - *Initials*\ -hycu
    - **Nutanix Files Server Credentials > Password** - nutanix/4u
    - **Backup Credentials > Username** - NTNXLAB\\Administrator
@@ -664,7 +664,7 @@ Backing Up & Restoring Files
 
 Backup and restore for Files operates very similarly to VM/VG workflows, using the same customizable policies and owner/self-service constructs.
 
-#. Add the SMB target you created, **Files-HYCUTarget** into customized **Fast** policy.
+#. Add the SMB target you created, *Initials*\-HYCUTarget** into customized **Fast** policy.
 
 #. From the **HYCU** sidebar, click :fa:`bars` **> Shares**.
 
@@ -672,7 +672,7 @@ Backup and restore for Files operates very similarly to VM/VG workflows, using t
 
    .. note::
 
-     If you have created other shares that are populated with files you could select one of those as well.
+     You may need to return to Prism and create an SMB share named 'Marketing' If you have created other shares that are populated with files you could select one of those as well.
 
 #. Select your customized **Fast** policy and click **Assign**.
 
