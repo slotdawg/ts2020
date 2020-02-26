@@ -6,7 +6,7 @@ Frictionless DR with Xi Leap
 
 .. note::
 
-   This lab has limited capacity. See a Xi Leap proctor to `sign up <https://docs.google.com/spreadsheets/d/1t4HaHDfVxGy5y7q8pwsz4_h5s_g2VHA3ec8Mj6z7TUM/edit#gid=0>`_ for an available Xi Leap cluster.
+   This lab has limited capacity. See a Xi Leap proctor at **TABLE 6** to `sign up <https://docs.google.com/spreadsheets/d/1t4HaHDfVxGy5y7q8pwsz4_h5s_g2VHA3ec8Mj6z7TUM/edit#gid=0>`_ for an available Xi Leap cluster.
 
    Each environment will be available to a signed up user for a period of 1 hour, allowing for as many people to complete the lab as possible. Please prioritize the completion of this lab during your assigned time.
 
