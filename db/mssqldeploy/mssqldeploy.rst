@@ -193,6 +193,10 @@ You must meet the following requirements before you register a SQL Server databa
    - **Connect to SQL Server Admin** - Windows Admin User
    - **User Name** - Administrator
 
+   .. note::
+
+      If **Instance** does not automatically populate, disable the Windows Firewall in your *XYZ*\ **-MSSQL** VM.
+
    .. figure:: images/12.png
 
    .. note::
