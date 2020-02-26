@@ -464,6 +464,10 @@ Carol to the rescue - she encourages Dan to follow the exercise below to allow h
    - **User Name** - devuser01@ntnxlab.local
    - **Password** - nutanix/4u
 
+   .. note::
+
+      If you experience a slow login, try logging in using an Incognito/Private browsing session.
+
 #. Select the :fa:`bars` menu and note that you now have significantly restricted access to the environment.
 
 #. On the **VMs** page, you should already see your *Initials*\ **-WinToolsVM** as available to be managed by Dan.
