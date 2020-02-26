@@ -137,7 +137,7 @@ Now let's look at how we can take automated action to generate this report when 
 
    .. figure:: images/cap9.png
 
-#. From the table view click to open the details for the “*Initials* - Automatically Generate Forecast Report” Playbook.
+#. The alert simulation portion of this lab is not working today, instead we will show you what it would look like if the alert were to successfully generate. From the table view click to open the details for the “*Initials* - Automatically Generate Forecast Report” Playbook.
 
    .. figure:: images/cap11.png
 
@@ -148,6 +148,10 @@ Now let's look at how we can take automated action to generate this report when 
 #. Clicking on it would show this view. The sections in this view can be expanded to show more details for each item. If there were any errors, they would also be surfaced in this view.
 
    .. figure:: images/cap13.png
+
+#. You would also get an email that looks something like this.
+
+   .. figure:: images/cap14.png
 
 Takeaways
 .........
