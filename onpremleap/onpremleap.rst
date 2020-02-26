@@ -23,7 +23,7 @@ Provisioning Your Application
    - **Username** - admin
    - **Password** - techX2020!
 
-#. Open :fa:`bars` **> Administration > Availability Zones** and observe that the cluster has already been paired to another Prism Central instance containing your **SeccondarySite** cluster. No action is required to add additional Availability Zones for this lab.
+#. Open :fa:`bars` **> Administration > Availability Zones** and observe that the cluster has already been paired to another Prism Central instance containing your **SecondarySite** cluster. No action is required to add additional Availability Zones for this lab.
 
    .. figure:: images/1.png
 
@@ -248,4 +248,4 @@ After validating your lab, please clean up the environment by doing the followin
 
 #. Delete your VMs from the **SecondarySite**
 
-#. Delete your Calm application on your **PrimarySite** and validate the VMs have been deleted.
+#. Delete your *Initials*\ **-FiestaApp** application in Calm (**DO NOT DELETE THE BLUEPRINT**) on your **PrimarySite** and validate the VMs have been deleted.
