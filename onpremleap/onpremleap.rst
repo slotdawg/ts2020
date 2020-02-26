@@ -238,3 +238,14 @@ Before performing our failover, we'll make a quick update to our application.
 #. Open http://<*Initials-WebServer-VM-NEW-IP-Address:5001*> in another browser tab and verify the change you'd made to your application is present.
 
    Congratulations! You've completed your first DR failover with Nutaix AHV, leveraging native Leap runbook capabilities and synchronous replication.
+
+Cleanup
++++++++
+
+After validating your lab, please clean up the environment by doing the following:
+
+#. Delete your Recovery Plan and Protection Policy
+
+#. Delete your VMs from the **SecondarySite**
+
+#. Delete your Calm application on your **PrimarySite** and validate the VMs have been deleted.
