@@ -1,13 +1,8 @@
 ++++++++++
-Next Steps
+Cleanup
 ++++++++++
 
 **Congratulations on completing the Nutanix databases lab track!**
-
-<Wrap up>
-
-Cleanup
-+++++++
 
 .. note::
 

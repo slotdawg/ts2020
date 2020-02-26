@@ -127,6 +127,10 @@ Staging a Source VM
    - **Virtual machine name** - *Initials*\ -GoldImage
    - **Select a location** - Datacenter1 > Move Source VMs
 
+   .. note::
+
+      **IMPORTANT!** You must select the **Move Source VMs** folder, otherwise you will not be able to access your VM as the move@vsphere.local user.
+
    .. figure:: images/8.png
 
 #. Select **Cluster 1** as the compute resource and click **Next**.
@@ -219,7 +223,7 @@ Migrating VMs
 
    .. note::
 
-      If your VM does not receive an IP address, remove the virtual NIC and add a new virtual NIC with your *User VLAN* VM Network.
+      **IMPORTANT!** If your VM does not receive a 10.X.X.X IP address, remove the existing virtual NIC and add a new virtual NIC with your *User VLAN* VM Network.
 
 #. To prepare for your Citrix or Frame gold image creation, launch the VM console and uninstall the **VMware Horizon Agent** and **VMware Tools**, then reboot your VM.
 

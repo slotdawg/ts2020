@@ -45,12 +45,12 @@ Lab Setup
    .. note::
 
     This lab requires the :ref:`windows_tools_vm`.
-    
+
 
 Files
 .....
 
-This lab requires an existing Nutanix Files deployment on your assigned cluster. Details on how to configure Nutanix Files for use with Peer Global File Service can be found in the `Configuring Nutanix Files`_ section below. 
+This lab requires an existing Nutanix Files deployment on your assigned cluster. Details on how to configure Nutanix Files for use with Peer Global File Service can be found in the `Configuring Nutanix Files`_ section below.
 
 
 Peer VMs
@@ -110,7 +110,7 @@ Peer Global File Service requires both a File Server Admin account as well as RE
    - **Username** - peer
 
      *The username must be in all lower case.*
-     
+
    - **Password** - nutanix/4u
 
    .. figure:: images/8.png
@@ -131,7 +131,7 @@ The final step of staging the lab is creating some sample data on PeerAgent-Win,
    - **Username** - NTNXLAB\\Administrator
    - **Password** - nutanix/4u
 
-#. Open **File Explorer** and navigate to **\\\\PeerAgent-Win\\Data**.
+#. Open **File Explorer** and navigate to   ``\\PeerAgent-Win\Data``.
 
 #. Create a copy of the **Sample Data** folder. Rename the copy to *Initials*\ **-Data** as shown below.
 
@@ -511,7 +511,7 @@ In this section, we will focus on creating a **Cloud Backup and Replication** jo
    .. figure:: images/cloud9.png
 
 #. On the **Nutanix Objects Credentials** page, fill out the following fields:
-   
+
    - **Description** – Name your destination
 
      *This is a short name for the Objects credential configuration.*
@@ -623,7 +623,7 @@ The easiest way to verify that files have been replicated into Nutanix Objects i
 #. Navigate to the appropriate bucket set above and verify that it contains content.
 
    .. figure:: images/cloud19.png
-   
+
    **Congratulations!** You have successfully setup replication between Nutanix Files and Nutanix Objects! Using Peer, this same approach can be leveraged to support scenarios including coexistence of file data with object-based apps and services as well as point-in-time recovery of enterprise NAS data backed by Objects.
 
 Analyzing Existing Environments
@@ -725,7 +725,7 @@ Summary reports contain overall statistical and historical information across al
    - **History-Bytes** – Contains historical changes in bytes for each time each path is scanned.
    - **History-Files** – Contains historical changes in total number of files for each time each path is scanned.
    - **History-Folders** – Contains historical changes in total numbers of folders for each time each path is scanned.
-   
+
     .. note::
 
      History worksheets will only appear after running multiple scans.
@@ -766,7 +766,7 @@ Volume reports give more detailed information about a specific path that has bee
    - **FileAttributes** – A summary of all file and folder attributes found.
    - **SmallFileAnalysis** – A list of all files discovered below a certain size. This page is useful for estimating the storage impact of small files on storage platforms that have large minimum file sizes on disk.
    - **SIDCache** – A list of all the owners and SID strings that have been discovered.
-   
+
     .. note::
 
      History worksheets will only appear after running multiple scans.
@@ -774,7 +774,7 @@ Volume reports give more detailed information about a specific path that has bee
 Here is a sample of the **LastModifiedAnalysis** page mentioned above:
 
    .. figure:: images/fsa7b.png
-   
+
 **Congratulations!** You have completed the Peer Global File Service lab! Get your lab validated by a member of the Peer Software team. We have a Rocketbook reusable notepad with pen and refresh cloth for you!
 
 Integrating with Microsoft DFS Namespace

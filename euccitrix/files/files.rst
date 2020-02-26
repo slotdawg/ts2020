@@ -150,7 +150,7 @@ Testing Profiles and Folder Redirection
 
 #. From your *Initials*\ **ToolsVM**, open http://ddc.ntnxlab.local/Citrix/NTNXLABWeb, login as **NTNXLAB\\operator02** and connect to a **Pooled Windows 10 Desktop**.
 
-#. Within your virtual desktop, make some simple changes such as adding files to your Documents folder and changing the desktop background. Note the hostname of the desktop to which you are connected.
+#. Within your virtual desktop, make some simple changes such as adding files to your Documents folder. Note the hostname of the desktop to which you are connected.
 
    .. figure:: images/afsprofiles15.png
 
@@ -201,7 +201,7 @@ The Citrix UPL feature of Citrix Virtual Apps and Desktops (VAD) extends capabil
 #. Under **Basic**, fill out the following fields and click **Next**:
 
    - **Name** - *Initials*\ **-CitrixUPL**
-   - **Description** - Citrix User Profile Layer storage
+   - **Description** - Citrix UPL storage
    - **File Server** - BootcampFS
    - **Select Protocol** - SMB
 
