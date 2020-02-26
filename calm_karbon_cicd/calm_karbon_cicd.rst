@@ -1,8 +1,8 @@
 .. _karbon_cicd:
 
---------------------------
-CI/CD with Calm and Karbon
---------------------------
+------------------------------
+Nutanix Calm and Karbon: CI/CD
+------------------------------
 
 *The estimated time to complete this lab is ?? minutes.*
 
@@ -280,7 +280,7 @@ The first step of our Jenkins Setup is to add our various credentials to Jenkins
        :align: center
        :alt: Jenkins Add DockerHub Credentials
 
-#. Lastly, we’ll need to add our kubeconfig file as a credential to allow Jenkins to deploy our updated application onto our Kubernetes cluster.  In our Workstation CLI, run the following commands  to create a Kubernetes Service Account **jenkins**, and then create a Role Binding which maps our Service Account the the built-in **admin** role (each individual command starts with a "$", they should be run one at a time, and do **not** include the "$" in the command).
+#. Lastly, we’ll need to add our kubeconfig file as a credential to allow Jenkins to deploy our updated application onto our Kubernetes cluster.  In our Workstation CLI, run the following commands  to create a Kubernetes Service Account **jenkins**, and then create a Role Binding which maps our Service Account the the built-in **admin** role (each individual command starts with a "$", they should be run one at a time, and do **not** include the "$" in the command). 
 
     .. literalinclude:: create-sa.sh
        :language: bash
