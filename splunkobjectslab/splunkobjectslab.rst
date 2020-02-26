@@ -73,7 +73,7 @@ This lab requires both the **WinToolsVM** and **LinuxToolsVM** VMs. If you have 
 
 .. _splunkstart:
 
-Create Nutanix Objects AMI User Keys
+Create Nutanix Objects IAM User Keys
 ++++++++++++++++++++++++++++++++++++
 
 In order for Splunk to communicate with Nutanix Objects, you'll need to create a set of API Keys.
@@ -99,7 +99,7 @@ In order for Splunk to communicate with Nutanix Objects, you'll need to create a
 
     .. figure:: images/4.png
 
-Create Bucket Using AMI User
+Create Bucket Using IAM User
 ++++++++++++++++++++++++++++
 
 Since Object Storage uses API keys to grant access to various buckets, we'll want to create a bucket using the API key we just created above.
@@ -302,8 +302,8 @@ Configure SmartStore
 
 #. Gather the required information:
 
-   - MYOBJECTSACCESSKEY: You should have this from the AMI Key section above
-   - MYOBJECTSSECRETKEY: You should have this from the AMI Key section above
+   - MYOBJECTSACCESSKEY: You should have this from the IAM Key section above
+   - MYOBJECTSSECRETKEY: You should have this from the IAM Key section above
    - OBJECTSCLIENTIP: You can get this from **☰ Menu > Services > Objects**
 
    .. figure:: images/17.png
