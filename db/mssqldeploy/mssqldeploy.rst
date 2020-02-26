@@ -241,7 +241,7 @@ Before additional SQL Server VMs can be provisioned, a Software Profile must fir
 
    .. figure:: images/16.png
 
-#. Once the profile creation completes successfully, power off your *Initials*\ **-MSSQL** VM in Prism.
+#. Once the profile creation completes successfully, Shutdown (Gracefully) your *Initials*\ **-MSSQL** VM in Prism.
 
 Creating a New MSSQL Database Server
 ++++++++++++++++++++++++++++++++++++
