@@ -7,7 +7,7 @@
    :hidden:
 
    info/clusteraccess
-   info/clusterinfo
+   info/clusterinfoprod
    info/validation
 
 .. toctree::
@@ -83,6 +83,7 @@
 
    beam_security_compliance/beam_security_compliance
    calm_karbon_cicd/calm_karbon_cicd
+   onpremleap/onpremleap
    xileap/xileap
    splunkobjectslab/splunkobjectslab
    mine/hycu/hycu/hycu
