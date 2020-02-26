@@ -93,7 +93,7 @@ Create the security policies that will protect the Fiesta application.
 #. Fill out the following fields to allow all inbound IP addresses:
 
    - **Add source by:** - Select **Subnet/IP**
-   - Specify **0.0.0.0/32**
+   - Specify **0.0.0.0/0**
 
    .. note::
 
