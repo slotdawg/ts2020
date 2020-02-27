@@ -128,7 +128,7 @@ If the cluster on which the HYCU virtual appliance is being deployed is a Nutani
      .. figure:: images/6.png
 
      Deploying the HYCU dashboard to Prism Element will automatically restart the Prism Service on the cluster.
-     
+
      .. figure:: images/7.png
 
 #. From the **HYCU** sidebar, click :fa:`bars` **> Virtual Machines** and validate that your cluster's VMs are listed in the table.
@@ -448,7 +448,7 @@ In addition to restoring full VMs or disks, HYCU can also be used to directly re
 
    .. figure:: images/22.png
 
-#. Select **Restore to Virtual Machine** and click **Next**. 
+#. Select **Restore to Virtual Machine** and click **Next**.
 
 #. Fill out the following fields and click **Restore**:
 
@@ -517,7 +517,7 @@ Configure Nutanix Objects within HYCU
 
 #. Name the target "NTNX_Objects"
 
-#. Tick the option "Use for Archiving"
+#. Tick the option **Use for Archiving**
 
 #. Under Type, specify "AWS S3/Compatible"
 
@@ -635,7 +635,11 @@ Protecting Files is similar to adding a hypervisor source to HYCU, with the exce
 
 For AHV clusters with DHCP enabled, the additional HYCU instance can be provisioned automatically when adding the Files source. For ESXi or non-DHCP environments, the additional HYCU instance must be provisioned manually (similar to the original HYCU backup controller deployment). For complete details on manual deployment, see the `HYCU User Guide <https://support.hycu.com/hc/en-us/sections/115001018365-Product-documentation>`_.
 
-#. From the **HYCU** toolbar, click :fa:`cog` **> Nutanix Files**.
+#. From the **HYCU** toolbar, click :fa:`cog` **> Sources**.
+
+#. Click **Nutanix Files** at the top menu
+
+   ..figure:: images/26a.png
 
 #. Click **+ New** and fill out the following fields:
 
