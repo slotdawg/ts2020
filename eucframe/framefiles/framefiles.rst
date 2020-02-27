@@ -113,7 +113,7 @@ For the purposes of saving time and resources, a Nutanix Files instance has alre
 
 #. From your Frame desktop, validate you can access ``\\BootcampFS.ntnxlab.local\Initials-DepartmentShare\`` from File Explorer. When prompted for credentials, authenticate using the following:
 
-   - **User Name** - devuser01
+   - **User Name** - ntnxlab.local\\devuser01
    - **Password** - nutanix/4u
    - Select **Remember my credentials**
 
