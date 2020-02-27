@@ -309,6 +309,12 @@ You've completed all the one time operations required to be able to provision an
 
 #. Click **Next** and fill out the following fields to configure the Time Machine for your database:
 
+   .. note::
+
+      .. raw:: html
+
+        <strong><font color="red">It is critical to select the BRONZE SLA in the following step. The default BRASS SLA does NOT include Continuous Protection snapshots.</font></strong>
+
    - **Name** - *initials*\ -fiesta_TM (Default)
    - **Description** - (Optional)
    - **SLA** - DEFAULT_OOB_BRONZE_SLA
@@ -391,6 +397,8 @@ Another approach could involve adding your new Era database to an existing datab
       SELECT * FROM dbo.InventoryRecords
 
    .. figure:: images/29.png
+
+#. In **Era > Time Machines**, select your *initials*\ **-fiesta_TM** Time Machine. Select **Actions > Log Catch Up > Yes** to ensure the imported data has been flushed to disk prior to the cloning operation in the next lab. 
 
 Provision Fiesta Web Tier
 +++++++++++++++++++++++++

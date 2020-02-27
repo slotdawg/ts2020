@@ -91,7 +91,11 @@ Creating the Share
 Testing the Share
 .................
 
-#. Connect to your *Initials*\ **-WinTools** VM via RDP or console as a non-Administrator NTNXLAB domain account:
+#. Connect to your *Initials*\ **-WinTools** VM via VM console as a **non-Administrator NTNXLAB** domain account:
+
+   .. note::
+
+      You will not be able to connect using these accounts via RDP.
 
    - user01 - user25
    - devuser01 - devuser25
@@ -205,7 +209,7 @@ In this exercise you will explore the new, integrated File Analytics capabilitie
 
 #. To access the audit trail for your user account, click on your user under **Top 5 Active Users**.
 
-   .. figure:: images/17b .png
+   .. figure:: images/17b.png
 
 #. Alternatively, you can select **Audit Trails** from the toolbar and search for your user or a given file.
 
@@ -214,91 +218,91 @@ In this exercise you will explore the new, integrated File Analytics capabilitie
    .. note::
 
       You can use wildcards for your search, for example **.doc**
+..
+   #. Next, we will create rules to detect anomalous behavior on the File Server. From the toolbar, click :fa:`gear` **> Define Anomaly Rules**.
 
-#. Next, we will create rules to detect anomalous behavior on the File Server. From the toolbar, click :fa:`gear` **> Define Anomaly Rules**.
+      .. figure:: images/19.png
 
-   .. figure:: images/19.png
+      .. note::
 
-   .. note::
+         Anomaly Rules are defined on a per File Server basis, so the below rules may have already been created by another user.
 
-      Anomaly Rules are defined on a per File Server basis, so the below rules may have already been created by another user.
+   #. Click **Define Anomaly Rules** and create a rule with the following settings:
 
-#. Click **Define Anomaly Rules** and create a rule with the following settings:
+      - **Events:** Delete
+      - **Minimum Operation %:** 1
+      - **Minimum Operation Count:** 10
+      - **User:** All Users
+      - **Type:** Hourly
+      - **Interval:** 1
 
-   - **Events:** Delete
-   - **Minimum Operation %:** 1
-   - **Minimum Operation Count:** 10
-   - **User:** All Users
-   - **Type:** Hourly
-   - **Interval:** 1
+   #. Under **Actions**, click **Save**.
 
-#. Under **Actions**, click **Save**.
+   #. Choose **+ Configure new anomaly** and create an additional rule with the following settings:
 
-#. Choose **+ Configure new anomaly** and create an additional rule with the following settings:
+      - **Events**: Create
+      - **Minimum Operation %**: 1
+      - **Minimum Operation Count**: 10
+      - **User**: All Users
+      - **Type**: Hourly
+      - **Interval**: 1
 
-   - **Events**: Create
-   - **Minimum Operation %**: 1
-   - **Minimum Operation Count**: 10
-   - **User**: All Users
-   - **Type**: Hourly
-   - **Interval**: 1
+   #. Under **Actions**, click **Save**.
 
-#. Under **Actions**, click **Save**.
+      .. figure:: images/20.png
 
-   .. figure:: images/20.png
+   #. Click **Save** to exit the **Define Anomaly Rules** window.
 
-#. Click **Save** to exit the **Define Anomaly Rules** window.
+   #. To test the anomaly alerts, return to your *Initials*\ **-WinTools** VM and make a second copy of the sample data (via Copy/Paste) within your *Initials*\ **-FiestaShare** share.
 
-#. To test the anomaly alerts, return to your *Initials*\ **-WinTools** VM and make a second copy of the sample data (via Copy/Paste) within your *Initials*\ **-FiestaShare** share.
+   #. Delete the original sample data folders.
 
-#. Delete the original sample data folders.
+      .. figure:: images/21.png
 
-   .. figure:: images/21.png
+      While waiting for the Anomaly Alerts to populate, next we’ll create a permission denial.
 
-   While waiting for the Anomaly Alerts to populate, next we’ll create a permission denial.
+      .. note:: The Anomaly engine runs every 30 minutes.  While this setting is configurable from the File Analytics VM, modifying this variable is outside the scope of this lab.
 
-   .. note:: The Anomaly engine runs every 30 minutes.  While this setting is configurable from the File Analytics VM, modifying this variable is outside the scope of this lab.
+   #. Create a new directory called *Initials*\ **-MyFolder** in the *Initials*\ **-FiestaShare** share.
 
-#. Create a new directory called *Initials*\ **-MyFolder** in the *Initials*\ **-FiestaShare** share.
+   #. Create a text file in the *Initials*\ **-MyFolder** directory and take out your deep seeded worldly frustrations on your for a few moments to populate the file. Save the file as *Initials*\ **-file.txt**.
 
-#. Create a text file in the *Initials*\ **-MyFolder** directory and take out your deep seeded worldly frustrations on your for a few moments to populate the file. Save the file as *Initials*\ **-file.txt**.
+      .. figure:: images/22.png
 
-   .. figure:: images/22.png
+   #. Right-click *Initials*\ **-MyFolder > Properties**. Select the **Security** tab and click **Advanced**. Observe that **Users (BootcampFS\\Users)** lack the **Full Control** permission, meaning that they would be unable to delete files owned by other users.
 
-#. Right-click *Initials*\ **-MyFolder > Properties**. Select the **Security** tab and click **Advanced**. Observe that **Users (BootcampFS\\Users)** lack the **Full Control** permission, meaning that they would be unable to delete files owned by other users.
+      .. figure:: images/23.png
 
-   .. figure:: images/23.png
+   #. Open a PowerShell window as another non-Administrator user account by holding **Shift** and right-clicking the **PowerShell** icon in the taskbar and selecting **Run as different user**.
 
-#. Open a PowerShell window as another non-Administrator user account by holding **Shift** and right-clicking the **PowerShell** icon in the taskbar and selecting **Run as different user**.
+      .. figure:: images/24.png
 
-   .. figure:: images/24.png
+   #. Change Directories to *Initials*\ **-MyFolder** in the *Initials*\ **-FiestaShare** share.
 
-#. Change Directories to *Initials*\ **-MyFolder** in the *Initials*\ **-FiestaShare** share.
+        .. code-block:: bash
 
-     .. code-block:: bash
+           cd \\BootcampFS.ntnxlab.local\XYZ-FiestaShare\XYZ-MyFolder
 
-        cd \\BootcampFS.ntnxlab.local\XYZ-FiestaShare\XYZ-MyFolder
+   #. Execute the following commands:
 
-#. Execute the following commands:
+        .. code-block:: bash
 
-     .. code-block:: bash
+           cat .\XYZ-file.txt
+           rm .\XYZ-file.txt
 
-        cat .\XYZ-file.txt
-        rm .\XYZ-file.txt
+      .. figure:: images/25.png
 
-   .. figure:: images/25.png
+   #. Return to **Analytics > Dashboard** and note the **Permission Denials** and **Anomaly Alerts** widgets have updated.
 
-#. Return to **Analytics > Dashboard** and note the **Permission Denials** and **Anomaly Alerts** widgets have updated.
+      .. figure:: images/26.png
 
-   .. figure:: images/26.png
+   #. Under **Permission Denials**, select your user account to view the full **Audit Trail** and observe that the specific file you tried to removed is recorded, along with IP address and timestamp.
 
-#. Under **Permission Denials**, select your user account to view the full **Audit Trail** and observe that the specific file you tried to removed is recorded, along with IP address and timestamp.
+      .. figure:: images/27.png
 
-   .. figure:: images/27.png
+   #. Select **Anomalies** from the toolbar for an overview of detected anomalies.
 
-#. Select **Anomalies** from the toolbar for an overview of detected anomalies.
-
-   .. figure:: images/28.png
+      .. figure:: images/28.png
 
 File Analytics puts simple, yet powerful information in the hands of storage administrators, allowing them to understand and audit both utilization and access within a Nutanix Files environment.
 
