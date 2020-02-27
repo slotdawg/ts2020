@@ -398,6 +398,8 @@ Another approach could involve adding your new Era database to an existing datab
 
    .. figure:: images/29.png
 
+#. In **Era > Time Machines**, select your *initials*\ **-fiesta_TM** Time Machine. Select **Actions > Log Catch Up > Yes** to ensure the imported data has been flushed to disk prior to the cloning operation in the next lab. 
+
 Provision Fiesta Web Tier
 +++++++++++++++++++++++++
 
