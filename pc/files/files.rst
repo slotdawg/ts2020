@@ -183,6 +183,10 @@ In this exercise you will explore the new, integrated File Analytics capabilitie
 
    .. figure:: images/14.png
 
+   .. note::
+
+      If your share is not shown, please give it some time to get populated...
+
 #. Close the **Scan File System** window and refresh your browser.
 
 #. You should see the **Data Age**, **File Distribution by Size** and **File Distribution by Type** dashboard panels update.
