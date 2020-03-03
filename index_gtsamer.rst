@@ -84,6 +84,7 @@
    beam_security_compliance/beam_security_compliance
    calm_karbon_cicd/calm_karbon_cicd
    onpremleap/onpremleap
+   xileap/xileap
    splunkobjectslab/splunkobjectslab
    mine/hycu/hycu/hycu
    peer/peer
@@ -91,9 +92,13 @@
 
    .. /mine/hycu/protecting-physical/protectingphysical
 
+..   /mine/hycu/reporting/reporting
+..   /mine/hycu/self-service/selfservice
+..   db/lab1/rstfile
+
 .. raw:: html
 
-  <br><center><img src="https://get-ahv-images.s3.amazonaws.com/gts_banner_global.jpg" alt="Welcome to Nutanix Global Tech Summit 2020"></center><br>
+  <br><center><img src="https://get-ahv-images.s3.amazonaws.com/vegasbanner.png" alt="Welcome to Nutanix Global Tech Summit 2020"></center><br>
 
 **Welcome!** This year we're celebrating how we power customer use cases by exposing you to multiple new options that will be launched as Bootcamps for you to drive prospect and customer engagement during 2020. During this year's Hands on Learning day, you'll choose and complete **at least** one of four available solution-focused lab tracks.
 
@@ -111,6 +116,13 @@
 **Bonus Labs** - *There are a number of standalone labs that can be completed independent of your chosen lab track. These labs can be completed at any time. There are periods of time during the solution lab tracks where you may be provisioning an application, database, etc. where you will have 15 minutes or more that can be spent working on Bonus labs, or labs from an alternate solution track.*
 
 Labs are designed to be completed by each individual, not in groups.
+
+For each lab you complete & validate, you'll be entered into a raffle to win your choice of several prizes, including: `Apple AirPods <https://www.apple.com/airpods-2nd-generation/>`_, `Samsung Galaxy Buds <https://www.samsung.com/global/galaxy/galaxy-buds/>`_, `DJI Tello EDU Drone <https://store.dji.com/product/tello-edu?vid=47091>`_, `Logitech Spotlight Presentation Remote <https://www.logitech.com/en-us/product/spotlight-presentation-remote>`_, `Sega Genesis Mini <https://genesismini.sega.com/>`_, and `CanaKit Raspberry Pi 4 Kit <https://www.amazon.com/CanaKit-Raspberry-4GB-Starter-Kit/dp/B07V5JTMV9/>`_!
+
+.. figure:: images/prizes.png
+   :align: center
+
+**Proctors will be regularly checking in with each table to validate completed labs. You do NOT need to wait for lab validation before proceeding to your next lab, but please take the time to clean up unneeded VMs after each lab validation.**
 
 .. raw:: html
 
