@@ -75,8 +75,8 @@ All disk images required to complete the labs have been uploaded to the Image Se
 ..
 
    .. list-table::
-   :widths: 50 50
-   :header-rows: 1
+     :widths: 50 50
+     :header-rows: 1
 
    * - Image Name
      - Description
