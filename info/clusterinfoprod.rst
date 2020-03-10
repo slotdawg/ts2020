@@ -1,4 +1,4 @@
-.. _clusterinfo:
+.. _clusterinfoprod:
 
 --------------------
 Your Cluster Details
