@@ -10,7 +10,6 @@
    info/clusteraccess
    .. info/validation
 
-..
 .. toctree::
    :maxdepth: 2
    :caption: Private Cloud
