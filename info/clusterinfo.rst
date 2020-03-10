@@ -15,4 +15,4 @@ Refer to the link below to look up your assigned cluster for the event. If your 
 
   <strong><font color="red">DO NOT ATTEMPT TO CONNECT TO YOUR CLUSTER PRIOR TO THE DESIGNATED TIME ON MARCH 18. Some clusters may be in-use for testing purposes, or be in the process of being staged for the event. Unauthorized access to the clusters during this time could negatively impact your lab experience. Thank you.</font></strong></br></br>
 
-`Click here to search for your cluster details. <http://10.134.72.165:8090/>`_
+`Click here to search for your cluster details. <http://10.55.14.75:8090/>`_
