@@ -1,4 +1,4 @@
-.. _clusterinfo:
+.. _clusterinfoapac:
 
 --------------------
 Your Cluster Details
