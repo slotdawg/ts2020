@@ -10,87 +10,87 @@
    info/clusteraccess
    .. info/validation
 
-..
-   .. toctree::
-      :maxdepth: 2
-      :caption: Private Cloud
-      :name: _privatecloud
-      :hidden:
 
-      pc/dayinlife/dayinlife
-      prismops/prismops_capacity_lab/prismops_capacity_lab
-      prismops/prismops_rightsize_lab/prismops_rightsize_lab
-      pc/security/security
-      pc/files/files
-      pc/flow_secure_fiesta/flow_secure_fiesta
-      beam_cost_governance/beam_cost_governance
-      pc/cleanup/cleanup
+.. toctree::
+   :maxdepth: 2
+   :caption: Private Cloud
+   :name: _privatecloud
+   :hidden:
 
-   .. toctree::
-      :maxdepth: 2
-      :caption: Databases
-      :name: _dbs
-      :hidden:
+   pc/dayinlife/dayinlife
+   prismops/prismops_capacity_lab/prismops_capacity_lab
+   prismops/prismops_rightsize_lab/prismops_rightsize_lab
+   pc/security/security
+   pc/files/files
+   pc/flow_secure_fiesta/flow_secure_fiesta
+   beam_cost_governance/beam_cost_governance
+   pc/cleanup/cleanup
 
-      db/gettingstarted/gettingstarted
-      db/mssqldeploy/mssqldeploy
-      db/cloning/cloning
-      db/aag/aag
-      db/oraclepatch/oraclepatch
-      db/flow_secure_fiesta/flow_secure_fiesta
-      db/flow_isolate_fiesta/flow_isolate_fiesta
-      prismops/prismops_blue_medora_lab/prismops_blue_medora_lab
-      db/cleanup/cleanup
+.. toctree::
+   :maxdepth: 2
+   :caption: Databases
+   :name: _dbs
+   :hidden:
 
-   .. toctree::
-      :maxdepth: 2
-      :caption: End User Computing - Xi Frame
-      :name: _eucframe
-      :hidden:
+   db/gettingstarted/gettingstarted
+   db/mssqldeploy/mssqldeploy
+   db/cloning/cloning
+   db/aag/aag
+   db/oraclepatch/oraclepatch
+   db/flow_secure_fiesta/flow_secure_fiesta
+   db/flow_isolate_fiesta/flow_isolate_fiesta
+   prismops/prismops_blue_medora_lab/prismops_blue_medora_lab
+   db/cleanup/cleanup
 
-      eucframe/gettingstarted/gettingstarted
-      eucframe/move/move
-      eucframe/goldimage/goldimage
-      eucframe/deploycca/deploycca
-      eucframe/manage/manage
-      eucframe/framefiles/framefiles
-      eucframe/flow_secure_desktops/flow_secure_desktops
-      prismops/prismops_rightsize_frm_lab/prismops_rightsize_euc_lab
-      eucframe/cleanup/cleanup
+.. toctree::
+   :maxdepth: 2
+   :caption: End User Computing - Xi Frame
+   :name: _eucframe
+   :hidden:
 
-   .. toctree::
-      :maxdepth: 2
-      :caption: End User Computing - Citrix
-      :name: _euccitrix
-      :hidden:
+   eucframe/gettingstarted/gettingstarted
+   eucframe/move/move
+   eucframe/goldimage/goldimage
+   eucframe/deploycca/deploycca
+   eucframe/manage/manage
+   eucframe/framefiles/framefiles
+   eucframe/flow_secure_desktops/flow_secure_desktops
+   prismops/prismops_rightsize_frm_lab/prismops_rightsize_euc_lab
+   eucframe/cleanup/cleanup
 
-      euccitrix/gettingstarted/gettingstarted
-      euccitrix/move/move
-      euccitrix/goldimage/goldimage
-      euccitrix/pdesktops/pdesktops
-      euccitrix/npdesktops/npdesktops
-      euccitrix/updatecatalog/updatecatalog
-      euccitrix/files/files
-      euccitrix/flow_quarantine_vm/flow_quarantine_vm
-      euccitrix/flow_secure_desktops/flow_secure_desktops
-      prismops/prismops_rightsize_ctx_lab/prismops_rightsize_euc_lab
-      euccitrix/cleanup/cleanup
+.. toctree::
+   :maxdepth: 2
+   :caption: End User Computing - Citrix
+   :name: _euccitrix
+   :hidden:
 
-   .. toctree::
-      :maxdepth: 2
-      :caption: Bonus Labs
-      :name: _bonus
-      :hidden:
+   euccitrix/gettingstarted/gettingstarted
+   euccitrix/move/move
+   euccitrix/goldimage/goldimage
+   euccitrix/pdesktops/pdesktops
+   euccitrix/npdesktops/npdesktops
+   euccitrix/updatecatalog/updatecatalog
+   euccitrix/files/files
+   euccitrix/flow_quarantine_vm/flow_quarantine_vm
+   euccitrix/flow_secure_desktops/flow_secure_desktops
+   prismops/prismops_rightsize_ctx_lab/prismops_rightsize_euc_lab
+   euccitrix/cleanup/cleanup
 
-      beam_security_compliance/beam_security_compliance
-      calm_karbon_cicd/calm_karbon_cicd
-      onpremleap/onpremleap
-      splunkobjectslab/splunkobjectslab
-      mine/hycu/hycu/hycu
-      peer/peer
-      mine/veeam/veeam
+.. toctree::
+   :maxdepth: 2
+   :caption: Bonus Labs
+   :name: _bonus
+   :hidden:
 
-   .. /mine/hycu/protecting-physical/protectingphysical
+   beam_security_compliance/beam_security_compliance
+   calm_karbon_cicd/calm_karbon_cicd
+   onpremleap/onpremleap
+   splunkobjectslab/splunkobjectslab
+   mine/hycu/hycu/hycu
+   peer/peer
+   mine/veeam/veeam
+
+.. /mine/hycu/protecting-physical/protectingphysical
 
 .. raw:: html
 
