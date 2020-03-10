@@ -9,6 +9,10 @@ Your Cluster Details
 Cluster Assignments
 +++++++++++++++++++
 
-Refer to the table below for a unique username that can be used to connect to the HPOC Pulse VPN or Frame desktop. Nutanix employees should primarily be connecting through the GlobalProtect VPN client using their Okta credentials.
+Refer to the link below to look up your assigned cluster for the event. If your cluster details are not found, first verify you have entered the same e-mail address used to register for GTS (and not an alias), otherwise contact **apac-tech-enablement@nutanix.com** and request to be added.
 
-`Click here to open to Cluster Assignment spreadsheet in a new tab. <https://nutanixinc-my.sharepoint.com/:x:/g/personal/matthew_bator_nutanix_com/EbrOVtvChxRPq1qwbtdwYS4B3OY4Ot4iLSnKbbcfB-WWdQ>`_
+.. raw:: html
+
+  <strong><font color="red">DO NOT ATTEMPT TO CONNECT TO YOUR CLUSTER PRIOR TO THE DESIGNATED TIME ON MARCH 17. Some clusters may be in-use for testing purposes, or be in the process of being staged for the event. Unauthorized access to the clusters during this time could negatively impact your lab experience. Thank you.</font></strong></br></br>
+
+`Click here to search for your cluster details. <http://10.134.72.165:8090/>`_
