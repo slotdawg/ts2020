@@ -63,26 +63,37 @@ Installing Nutanix Guest Tools
 
    .. figure:: images/4.png
 
-#. Click **Confirm and Enter Password > Skip and Mount** to mount the NGT .iso to your VMs.
+#. Select **Restart as soon as the install is completed** and click **Confirm & Enter Password**.
 
-   .. note::
+   .. figure:: images/4b.png
 
-      Nutanix Calm currently supports automatic installation of NGT for single VM blueprints, and plans to support multi-VM blueprints.
-
-#. SSH into your *Initials*\ **-WebServer-...** VM using the following credentials:
+#. Provide the following credentials and click **Done** to begin the NGT installation:
 
    - **User Name** - centos
    - **Password** - nutanix/4u
 
-#. Within the VM SSH session, execute the following to install NGT:
+   .. figure:: images/4c.png
 
-   .. code-block:: bash
+..   #. Click **Confirm and Enter Password > Skip and Mount** to mount the NGT .iso to your VMs.
 
-      sudo mount /dev/sr0 /mnt
-      sudo /mnt/installer/linux/install_ngt.py
-      sudo reboot
+      .. note::
 
-#. Repeat **Steps 8-9** with your *Initials*\ **-MySQL-...** VM.
+         Nutanix Calm currently supports automatic installation of NGT for single VM blueprints, and plans to support multi-VM blueprints.
+
+   #. SSH into your *Initials*\ **-WebServer-...** VM using the following credentials:
+
+      - **User Name** - centos
+      - **Password** - nutanix/4u
+
+   #. Within the VM SSH session, execute the following to install NGT:
+
+      .. code-block:: bash
+
+         sudo mount /dev/sr0 /mnt
+         sudo /mnt/installer/linux/install_ngt.py
+         sudo reboot
+
+   #. Repeat **Steps 8-9** with your *Initials*\ **-MySQL-...** VM.
 
 #. Once both VMs have rebooted, validate both VMs now have empty CD-ROM drives and **NGT Status** displays **Latest** in Prism Central.
 
