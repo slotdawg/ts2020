@@ -6,9 +6,9 @@
    :name: _info
    :hidden:
 
-   info/clusteraccess
    info/clusterinfoprod
-   info/validation
+   info/clusteraccess
+   info/apachelp
 
 .. toctree::
    :maxdepth: 2
@@ -89,13 +89,17 @@
    peer/peer
    mine/veeam/veeam
 
-   .. /mine/hycu/protecting-physical/protectingphysical
+.. /mine/hycu/protecting-physical/protectingphysical
 
 .. raw:: html
 
-  <br><center><img src="https://get-ahv-images.s3.amazonaws.com/gts_banner_global.jpg" alt="Welcome to Nutanix Global Tech Summit 2020"></center><br>
+  <br><center><img src="https://get-ahv-images.s3.amazonaws.com/GTSLOGO.png" alt="Welcome to Nutanix Global Tech Summit 2020"></center><br>
 
 **Welcome!** This year we're celebrating how we power customer use cases by exposing you to multiple new options that will be launched as Bootcamps for you to drive prospect and customer engagement during 2020. During this year's Hands on Learning day, you'll choose and complete **at least** one of four available solution-focused lab tracks.
+
+.. raw:: html
+
+   <strong><font color="red">Review the descriptions of the lab tracks below before choosing and starting a track. You may choose any track, or work on multiple tracks simultanesouly. The Private Cloud track is highly suggested for SEs who have been with Nutanix less than 6 months. Once you begin a track, make sure to complete the labs within the track IN ORDER, as some exercises may be dependent on work completed in the previous exercise. Bonus labs may be completed at any time.</font></strong>
 
 .. figure:: images/labtracks.png
    :align: center
@@ -110,12 +114,10 @@
 
 **Bonus Labs** - *There are a number of standalone labs that can be completed independent of your chosen lab track. These labs can be completed at any time. There are periods of time during the solution lab tracks where you may be provisioning an application, database, etc. where you will have 15 minutes or more that can be spent working on Bonus labs, or labs from an alternate solution track.*
 
-Labs are designed to be completed by each individual, not in groups.
-
 .. raw:: html
 
   <strong><font color="red">Before beginning any labs, review the following sections for important information regarding your lab specific lab environment:</font></strong>
 
 - :ref:`clusteraccess` - *VPN configuration for accessing the Nutanix Hosted POC network*
-- :ref:`clusterinfo` - *Your individual cluster assignment and details on how your cluster was staged*
-- :ref:`validation` - *How to get assistance with a lab*
+- :ref:`clusterinfoapac` - *Your individual cluster assignment and details on how your cluster was staged*
+- :ref:`apachelp` - *How to get assistance with a lab*

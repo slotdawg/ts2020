@@ -1,4 +1,4 @@
-.. _clusterinfo:
+.. _clusterinfoprod:
 
 --------------------
 Your Cluster Details
@@ -9,9 +9,9 @@ Your Cluster Details
 Cluster Assignments
 +++++++++++++++++++
 
-Refer to **YOUR NAME** in the table below for all critical environmental information, including IP addresses that you will use to complete the self-paced labs. **Please ensure you are using only the cluster details you have been assigned in order to not create issues for other participants. You can filter the spreadsheet based on your name to hide assignments for other users.**
+Refer to the link below to look up your assigned cluster for the event. If your cluster details are not found, first verify you have entered the same e-mail address used to register for GTS (and not an alias), otherwise contact **apac-tech-enablement@nutanix.com** and request to be added.
 
-`Click here to open to Cluster Assignment spreadsheet in a new tab. <https://nutanixinc-my.sharepoint.com/:x:/g/personal/matthew_bator_nutanix_com/EYLklsAvsexJng_QI_baOqQBtCSUFCKuSbJpWx3EvyuK3Q>`_
+`Click here to search for your cluster details. <http://10.55.14.75:8090/>`_
 
 .. note::
 
