@@ -6,7 +6,7 @@
    :name: _info
    :hidden:
 
-   info/clusterinfo
+   info/clusterinfoprod
    info/clusteraccess
    info/apachelp
 

@@ -62,11 +62,11 @@ Using the **Gateway** dropdown, select a Split Tunnel (ST) gateway to ensure onl
 Frame Desktop
 .............
 
-Verify in `Your Cluster Details <http://10.134.72.165:8090/>`_ if you have been assigned to a **PHX** or **RTP** cluster.
+Verify in `Your Cluster Details <http://10.55.14.75:8090/>`_ if you have been assigned to a **PHX** or **RTP** cluster.
 
 Log into https://frame.nutanix.com/x/labs using the following credentials:
 
-- **Username** - Refer to `Your Cluster Details <http://10.134.72.165:8090/>`_ for your **Lab VPN Username**
+- **Username** - Refer to `Your Cluster Details <http://10.55.14.75:8090/>`_ for your **Lab VPN Username**
 - **Password** - techX2020!
 
 Accept the Nutanix Cloud Services Terms of Service.
