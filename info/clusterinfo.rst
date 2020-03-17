@@ -4,7 +4,7 @@
 Your Cluster Details
 --------------------
 
-.. .. _clusterassignments:
+ .. _clusterassignments:
 
 Cluster Assignments
 +++++++++++++++++++
