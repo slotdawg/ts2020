@@ -10,6 +10,10 @@ In addition to your scalability woes, you're also trying to juggle planning for 
 
 **In this lab you will deploy and use the freely available Nutanix Move to migrate your existing Horizon View gold image from vSphere to Nutanix AHV, and use it as the basis for a Frame gold image.**
 
+.. raw:: html
+
+   <strong><font color="red">If you are already familiar with using Move to migrate VMs from ESXi to AHV, you can proceed to the next lab and follow the instructions to provision a gold image VM from a disk image on your AHV cluster.</font></strong>
+
 Deploying Move
 ++++++++++++++++
 
@@ -206,6 +210,10 @@ Migrating VMs
    An initial snapshot will be taken of the VM, at which point data based on that snapshot is transferred from the source and to the target cluster. As the VM can change (new data written, new applications installed, etc.) during data seeding, subsequent snapshots will be taken to continuously copy deltas to the target cluster.
 
    The initial **Seeding Data** process will take ~15 minutes to complete for the VM in this exercise. Time to seed in other environments will be dependent on the amount of source data and bandwidth.
+
+   .. raw:: html
+
+      <strong><font color="red">You may proceed to the next lab and follow the instructions for provisioning a gold image VM using a disk image on your AHV cluster. Check on your Migration Plan status periodically and complete this exercise once data seeding has completed. YOU DO NOT NEED TO WAIT FOR MIGRATION TO COMPLETE TO MOVE ON TO THE NEXT LAB.</font></strong></br></br>
 
    .. **You can now proceed to the next lab and return to Move once the Migration Status has reached Ready to Cutover**.
 
