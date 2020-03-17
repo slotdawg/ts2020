@@ -29,42 +29,29 @@ This lab is intended to mimic a Nutanix private cloud customer’s use case of i
 
 	.. figure:: images/beam_sc_image1.png
 
-Pre-Requisites
-++++++++++++++
+Pre-Requesites
+++++++++++++++++
 
-To begin the lab, you will log into the Beam portal using pre-created credentials.
+Beam’s security compliance capabilities for Nutanix private cloud have two components - a Beam SaaS instance and a Beam-VM that is installed on a Nutanix cluster. Here are some prerequisites for this lab:
 
-#. In your browser, open https://beam.nutanix.com/ and click **Sign in with My Nutanix**.
+#. Beam SaaS login credentials:
+	- Navigate to https://beam.nutanix.com/
+	- Select “*Sign in with My Nutanix*" and then "*Login with your Company ID*”
+	- Enter Company ID: *beam-lab@nutanix.com*
+	- Enter Unique ID: *nutanix6-ad*
+	- This will take you to an Active Directory login page where you will enter a username and password. Use your login credentials assigned from the cluster assignment spreadsheet.
+#. Beam-VM: Beam requires a VM installation on a Nutanix cluster to report certain data about resource configurations from Prism APIs to the Beam SaaS engine. One Beam-VM is required per Prism Central install and it can be installed on any cluster managed by that Prism Central instance. This has already been done for the purpose of the lab.
+#. Most of the security audits in Beam are dependent on AHV as the hypervisor.
 
-#. Click **Login with your Company ID** to login with a custom Identity Provider.
+If this is your first time accessing the Beam lab, you may be navigated to Beam’s cost governance module for Nutanix and may see two popups explaining how Beam calculates the cost data for Nutanix products. You can ignore these messages for the security compliance lab, close the pop ups and navigate to the security compliance module.
 
-	.. figure:: images/beam_01.png
+	.. figure:: images/beam_sc_image2.png
 
-#. Enter **beam-lab@nutanix.com** as your **Company email address** and click **Continue**.
-
-#. Enter **nutanix6-ad** as your **Unique ID** and click **Continue**.
-
-#. Log in using the following credentials:
-
-	- **Username** - Your **Lab VPN Username** in :ref:`clusterassignments`
-	- **Password** - techX2020!
-
-	.. figure:: images/beam_01b.png
+	.. figure:: images/beam_sc_image2b.png
 
 	.. note::
 
-		Additional pre-requisites already configured for this lab include:
-
-		- The Nutanix cluster being used must already be licensed in the Nutanix Salesforce database.
-		- Pulse must be enabled within Prism for your cluster, allowing Beam to receive configuration and utilization details of VMs running on the cluster.
-
-#. If this is your first time accessing the Beam lab, you may see two popup messages explaining how Beam calculates the cost data for Nutanix products. Review and dismiss the messages to proceed to the Beam Cost Governance portal.
-
-	.. figure:: images/beam_02.png
-
-	.. note::
-
-		In addition the the Beam SaaS login, on-premises Security Compliance also requires the installation of an appliance VM to report certain data about resource configurations from Prism APIs to the Beam SaaS engine. One Beam-VM is required per Prism Central install and it can be installed on any cluster managed by that Prism Central instance. **This has already been completed in the lab environment.**
+	  To login to the Beam SaaS instance, this lab uses the same active directory setup as the HPOC clusters. Use the login credentials assigned to you from the GTS cluster assignment spreadsheet.
 
 Architecture
 +++++++++++++++++++++++++++
