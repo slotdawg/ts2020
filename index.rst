@@ -97,6 +97,10 @@
 
 **Welcome!** This year we're celebrating how we power customer use cases by exposing you to multiple new options that will be launched as Bootcamps for you to drive prospect and customer engagement during 2020. During this year's Hands on Learning day, you'll choose and complete **at least** one of four available solution-focused lab tracks.
 
+.. raw:: html
+
+   <strong><font color="red">Review the descriptions of the lab tracks below before choosing and starting a track. You may choose any track, or work on multiple tracks simultanesouly. The Private Cloud track is highly suggested for SEs who have been with Nutanix less than 6 months. Once you begin a track, make sure to complete the labs within the track IN ORDER, as some exercises may be dependent on work completed in the previous exercise. Bonus labs may be completed at any time.</font></strong>
+
 .. figure:: images/labtracks.png
    :align: center
 
