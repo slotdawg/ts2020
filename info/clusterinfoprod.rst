@@ -72,35 +72,6 @@ Images
 
 All disk images required to complete the labs have been uploaded to the Image Service for each cluster.
 
-..
-
-   .. list-table::
-   :widths: 50 50
-   :header-rows: 1
-
-   * - Image Name
-     - Description
-   * - **Windows2012R2.qcow2**
-     - Pre-built Windows Server 2012 R2 Standard Disk Image (Sysprep)
-   * - **Windows10-1709.qcow2**
-     - Pre-built Windows 10 Disk Image (Sysprep)
-   * - **CentOS7.qcow2**
-     - Pre-built CentOS 7 Disk Image
-   * - **ToolsVM.qcow2**
-     - Pre-built Windows Server 2012 R2 + Tools (pgAdmin, CyberDuck, text editors, etc.) Disk Image
-   * - **acs-centos7.qcow2**
-     - CentOS Kubernetes Host for Karbon Disk Image
-   * - **ERA-Server-build-1.0.1.qcow2**
-     - Era 1.0.1 Disk Image
-   * - **xtract-vm-2.0.3.qcow2**
-     - Xtract for VMs 2.0.3 Disk Image
-   * - **hycu-3.5.0-6253.qcow2**
-     - HYCU 3.5.0 Appliance Disk Image
-   * - **VeeamAvailability_1.0.457.vmdk**
-     - Veeam Backup Proxy for AHV 1.0 Disk Image
-   * - **VeeamBR-9.5.4.2615.Update4.iso**
-     - Veeam Backup & Replication 9.5 Update 4 ISO Image
-
 Credentials
 ...........
 

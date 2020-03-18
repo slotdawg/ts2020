@@ -59,32 +59,32 @@ Using the **Gateway** dropdown, select a Split Tunnel (ST) gateway to ensure onl
 
    Connect using the provided credentials. **If you are able to connect with the VPN, you can continue to the labs. You do not need to use a Frame desktop.**
 
-Frame Desktop
-.............
+.. Frame Desktop
+   .............
 
-Verify in `Your Cluster Details <http://10.55.14.75:8090/>`_ if you have been assigned to a **PHX** or **RTP** cluster.
+   Verify in `Your Cluster Details <http://10.55.14.75:8090/>`_ if you have been assigned to a **PHX** or **RTP** cluster.
 
-Log into https://frame.nutanix.com/x/labs using the following credentials:
+   Log into https://frame.nutanix.com/x/labs using the following credentials:
 
-- **Username** - Refer to `Your Cluster Details <http://10.55.14.75:8090/>`_ for your **Lab VPN Username**
-- **Password** - techX2020!
+   - **Username** - Refer to `Your Cluster Details <http://10.55.14.75:8090/>`_ for your **Lab VPN Username**
+   - **Password** - techX2020!
 
-Accept the Nutanix Cloud Services Terms of Service.
+   Accept the Nutanix Cloud Services Terms of Service.
 
-Click the **Launchpads** icon at the top of the screen.
+   Click the **Launchpads** icon at the top of the screen.
 
-.. figure:: images/frame2.png
+   .. figure:: images/frame2.png
 
-Select a **Launchpad** that corresponds to your cluster location (**PHX** v. **RTP**).
+   Select a **Launchpad** that corresponds to your cluster location (**PHX** v. **RTP**).
 
-.. figure:: images/frame3.png
+   .. figure:: images/frame3.png
 
-.. note::
+   .. note::
 
-   PHX has multiple pools of Frame desktops available to access PHX clusters, you can choose any of them.
+      PHX has multiple pools of Frame desktops available to access PHX clusters, you can choose any of them.
 
-Launch the **Desktop**.
+   Launch the **Desktop**.
 
-.. figure:: images/frame.png
+   .. figure:: images/frame.png
 
-Click the **Fullscreen** icon in the lower, right hand of the Frame status bar to maximize the virtual desktop.
+   Click the **Fullscreen** icon in the lower, right hand of the Frame status bar to maximize the virtual desktop.
