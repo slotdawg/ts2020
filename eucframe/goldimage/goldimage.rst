@@ -63,35 +63,35 @@ Before starting to build your **Windows 10** image it is important the ensure th
 
    .. figure:: images/24.png
 
-Running Citrix Optimizer
-++++++++++++++++++++++++
+.. Running Citrix Optimizer
+    ++++++++++++++++++++++++
 
-#. Open the VM console or connect via RDP.
+    #. Open the VM console or connect via RDP.
 
-   - **User Name** - Nutanix
-   - **Password** - nutanix/4u
+       - **User Name** - Nutanix
+       - **Password** - nutanix/4u
 
-#. Within the VM console, download http://10.42.194.11/workshop_staging/CitrixOptimizer.zip and extract to a directory.
+    #. Within the VM console, download http://10.42.194.11/workshop_staging/CitrixOptimizer.zip and extract to a directory.
 
-#. Right-click **CitrixOptimizer.exe** and select **Run as Administrator**.
+    #. Right-click **CitrixOptimizer.exe** and select **Run as Administrator**.
 
-   .. figure:: images/12.png
+       .. figure:: images/12.png
 
-#. Select the recommended optimization template based on the Windows build being used for the gold image.
+    #. Select the recommended optimization template based on the Windows build being used for the gold image.
 
-   .. figure:: images/13.png
+       .. figure:: images/13.png
 
-#. Click **Select All** to select all available optimizations and click **Analyze**.
+    #. Click **Select All** to select all available optimizations and click **Analyze**.
 
-   .. figure:: images/14.png
+       .. figure:: images/14.png
 
-#. Click **View Results** to see a detailed report of the status of each available optimization.
+    #. Click **View Results** to see a detailed report of the status of each available optimization.
 
-#. Return to the **Citrix Optimizer** and click **Done > Optimize** to apply the selected optimizations.
+    #. Return to the **Citrix Optimizer** and click **Done > Optimize** to apply the selected optimizations.
 
-   .. figure:: images/15.png
+       .. figure:: images/15.png
 
-#. Once the tool has completed, you can click **View Results** to view an updated report. You can now close the tool.
+    #. Once the tool has completed, you can click **View Results** to view an updated report. You can now close the tool.
 
 Running VMware OS Optimization Tool
 +++++++++++++++++++++++++++++++++++
