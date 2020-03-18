@@ -45,6 +45,10 @@ Deploying a Desktop Pool
 
    .. figure:: images/4.png
 
+#. Click on **Sandbox**, You will be taken to the *Sandbox* page of your Dashboard. Click **Power On** to boot your Sandbox (this takes about 2-3 minutes). When the Sandbox is available, click **Start Session**. Once you get to your sandbox desktop, this confirms that your sandbox is properly configured to stream.
+
+   .. figure:: images/sandbox.png
+
    In the following exercises we'll complete configuration of this pool of Xi Frame resources, exploring more of the Xi Frame administrative portal.
 
 Configuring Capacity
