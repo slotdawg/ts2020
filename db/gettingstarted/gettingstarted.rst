@@ -75,7 +75,11 @@ Typically, Hosted POC clusters provide 2x /25 VLANs. In order to provide adequat
 Configuring a Project
 +++++++++++++++++++++
 
-In this lab you will leverage multiple pre-built Calm Blueprints to provision your applications...
+In this lab you will leverage multiple pre-built Calm Blueprints to provision your applications. In order to launch Blueprints you must first create a project.
+
+.. raw:: html
+
+  <strong><font color="red">It is important to create the project through Calm as instructed below, and NOT directly though Administration > Projects in Prism Central.</font></strong>
 
 #. In **Prism Central**, select :fa:`bars` **> Services > Calm**.\
 
