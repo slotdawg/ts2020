@@ -20,7 +20,7 @@ What is Cost Governance? It is a set of rules by which you measure your cloud co
 **In this lab you will mimic a customer use case of identifying the true cost of running VDI workloads across Nutanix Private Cloud and AWS by various users. By the end of the lab, you will learn:**
 
 - How to use the Nutanix TCO model to calculate the cost of Nutanix clusters and VMs
-- How to use Prism categories and AWS tags for spend reporting by a multi-cloud cost center 
+- How to use Prism categories and AWS tags for spend reporting by a multi-cloud cost center
 - How to implement Chargeback to ensure costs are accurately allocated to cost centers
 - How to set up budget alerts to be notified before spending exceed a certain budget
 - How to act upon Beam's cost saving recommendations for public clouds like AWS
@@ -42,7 +42,7 @@ Beam is a SaaS service and does not require any on-premises installation for cos
 
 #. Log in using the following credentials:
 
-	- **Username** - Your **Lab VPN Username** in :ref:`clusterassignments`
+	- **Username** - Your **Beam Lab Username** in :ref:`clusterassignments`
 	- **Password** - techX2020!
 
 	.. figure:: images/beam_01c.png
@@ -185,7 +185,7 @@ The total cluster level costs (calculated using the TCO model) are allocated to 
 This concludes the walkthrough of Beam’s cost metering capabilities for Nutanix Private Cloud.
 
 	.. Note::
-	
+
 	  It takes a few hours for VM costing data to show up after a Nutanix account is configured in Beam. The TCO model is baked into the product and VM costs will be calculated out-of-the-box using the default values of the TCO model. The model can be fine-tuned depending on customer need.
 
 Multi-Cloud Cost Center Reporting
@@ -204,7 +204,7 @@ Creating a Cost Center
 
 	.. figure:: images/beam_17.png
 
-	
+
 #. Provide a name for the cost center and click on **Define Cost Center**.
 
 	.. figure:: images/beam_18.png
@@ -235,7 +235,7 @@ Creating a Cost Center
 
 	  .. figure:: images/beam_20.png
 
-#. Select **Add Filter** to now add an AWS tag to the same cost center definition. 
+#. Select **Add Filter** to now add an AWS tag to the same cost center definition.
 	Fill out the following fields:
 
 	- **Cloud** - AWS
@@ -352,7 +352,7 @@ From the main toolbar naving to the **AWS** cloud section, select the **Beam Eng
 
 	.. figure:: images/beam_32.png
 
-#. On the next configuration screen customers can specify their account name, whether they want to give read-only or read and write access to Beam, and generate a CloudFormation Template. They will run the CloudFormation Template by logging into their AWS Payer or Linked accounts to complete the setup. This will create an AWS access role for Beam and allow Beam to read their billing data from the CUR. If they give write access then they will also be able to take various one-click actions from the Beam console to act upon Beam's cost saving recommendations. 
+#. On the next configuration screen customers can specify their account name, whether they want to give read-only or read and write access to Beam, and generate a CloudFormation Template. They will run the CloudFormation Template by logging into their AWS Payer or Linked accounts to complete the setup. This will create an AWS access role for Beam and allow Beam to read their billing data from the CUR. If they give write access then they will also be able to take various one-click actions from the Beam console to act upon Beam's cost saving recommendations.
 
 	.. figure:: images/beam_33.png
 
@@ -369,7 +369,7 @@ Eliminate Unused Resources
 
 Beam identifies cloud resources that have been unused for an extended period of time and can be eliminated to save on their costs. Beam cost policy defines the criteria it considers when identifying unused resources and is easily configurable based on customer requirement of what should be considered an unused resource.
 
-#. Navigate to **Save > Eliminate** view. Here you will see various cloud resources identified by Beam that have not been used and satisfy the criteria for unused resources in the Beam Cost Policy. 
+#. Navigate to **Save > Eliminate** view. Here you will see various cloud resources identified by Beam that have not been used and satisfy the criteria for unused resources in the Beam Cost Policy.
 
 #. Familiarize yourself with the default Beam cost policy. From the toolbar at the top right select **Configure > Cost Policy**
 
@@ -392,30 +392,30 @@ Right-size Underutilized Resources
 
 Beam also identifies cloud resources that are being used but not optimally and therefore they are underutilized. Optimizing the size of these resources can add to cost savings. Beam cost policy defines the criteria is considers when identifying underutilized resources and can be modified by customers.
 
-#. Navigate to **Save > Optimize** view. Here you will see various cloud resources identified by Beam that satisfy the underutilized resource criteria in the Beam Cost Policy. 
+#. Navigate to **Save > Optimize** view. Here you will see various cloud resources identified by Beam that satisfy the underutilized resource criteria in the Beam Cost Policy.
 
 #. Select **Unuderutilized EC2** to see more details about the underutilized AWS Elastic Compute Cloud instances idenfied by Beam. Click **View List**.
 
 	.. figure:: images/beam_36.png
 
-#. You will see see details of EC2 instances including their resource ID, the cloud account that they are in, and associated cost savings by changing their size from their current size to a downgraded size recommended by Beam. These recommendations are made based on CPU utilization and the optimization rules configured in Beam policy. 
+#. You will see see details of EC2 instances including their resource ID, the cloud account that they are in, and associated cost savings by changing their size from their current size to a downgraded size recommended by Beam. These recommendations are made based on CPU utilization and the optimization rules configured in Beam policy.
 
 	.. figure:: images/beam_37.png
 
 Smarter Reserved Instance Purchases
 ............................
 
-Beam also makes recommendations on the most optimal EC2 Reserved Instance (RI) purchases based on customer's usage history. By purchase RIs using Beam's recommendations, customers can save a huge amount over their on-demand instance spend. 
+Beam also makes recommendations on the most optimal EC2 Reserved Instance (RI) purchases based on customer's usage history. By purchase RIs using Beam's recommendations, customers can save a huge amount over their on-demand instance spend.
 
 #. Navigate to **Purchase > Overview** view. Here you will see the current amount of EC2 RI coverage in the AWS account as well as Beam's recommendations for new RI purchases. Click on **View All Recommendations** to see all RI purchase recommendations
 
 	.. figure:: images/beam_38.png
 
-#. Here you will see Beam's EC2 RI Purchase recommendations and the associated cost savings by switching to RI instead of on-demand pricing. Beam makes these RI recommendations by first identifying the EC2 instances that are running continuously over a lookback period (default value is 14 days). Beam then normalizies the size of those EC2 instances and calculates the amount of normalized instances that can be optimally covered by an RI purchase. Click on any of the RI recommendations to see their details. 
+#. Here you will see Beam's EC2 RI Purchase recommendations and the associated cost savings by switching to RI instead of on-demand pricing. Beam makes these RI recommendations by first identifying the EC2 instances that are running continuously over a lookback period (default value is 14 days). Beam then normalizies the size of those EC2 instances and calculates the amount of normalized instances that can be optimally covered by an RI purchase. Click on any of the RI recommendations to see their details.
 
 	.. figure:: images/beam_39.png
 
-#. In the RI details view, you will see the EC2 instance utilization chart showing the number of instances of the same type and how they have changed over the lookback period. Beam identifies the minimum number of instances so that the RI purchase will always cover at least the minimum number of instances that are running continuously. Beam also provides a cost comparison chart and shows the time period it would take for the higher upfront cost of a RI purchase to break-even vs on-demand costs. Customers can then decide if they should purchase this RI if they expect to use these EC2 instances for the duration of the break-even period. 
+#. In the RI details view, you will see the EC2 instance utilization chart showing the number of instances of the same type and how they have changed over the lookback period. Beam identifies the minimum number of instances so that the RI purchase will always cover at least the minimum number of instances that are running continuously. Beam also provides a cost comparison chart and shows the time period it would take for the higher upfront cost of a RI purchase to break-even vs on-demand costs. Customers can then decide if they should purchase this RI if they expect to use these EC2 instances for the duration of the break-even period.
 
 	.. figure:: images/beam_40.png
 
@@ -431,4 +431,3 @@ Takeaways
 - You can create multi-cloud cost centers using public cloud tags and Prism categories to track spending across both private and public clouds
 - Nutanix costs can be configured using a highly customizable TCO model that helps you identify the true cost of Nutanix private cloud
 - Beam helps lower public cloud spending by 35% or more through right-sizing of resources and smarter reserved instance purchases
-
