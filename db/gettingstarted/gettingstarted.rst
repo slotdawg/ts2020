@@ -55,7 +55,7 @@ Typically, Hosted POC clusters provide 2x /25 VLANs. In order to provide adequat
 
 #. Click **+ Create Network** and fill out the following fields:
 
-   - **Name** - *Refer to*  :ref:`clusterassignments`
+   - **Name** - *Refer to*  :ref:`clusterassignments` (e.g. User1 - **DO NOT USE THE EraManaged NETWORK, THIS IS CREATED IN A LATER LAB**)
    - **VLAN ID** - *Refer to*  :ref:`clusterassignments`
    - Select **Enable IP Address Management**
    - **Network IP Address / Prefix Length** - *Refer to*  :ref:`clusterassignments`
