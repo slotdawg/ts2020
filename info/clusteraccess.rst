@@ -16,8 +16,8 @@ In order to access these resources you must be connected by one of the options l
 
   <strong><font color="red">If you encounter issues connecting to the VPN, Nutanix IT Helpdesk is available via...</font></strong>
 
-Nutanix Employees
-.................
+Nutanix Employee VPN
+....................
 
 Log in to https://gp.nutanix.com using your OKTA credentials.
 
@@ -35,36 +35,38 @@ Using the **Gateway** dropdown, select a Split Tunnel (ST) gateway to ensure onl
 
    If you experience issues connecting to the GlobalProtect VPN, Nutanix IT resources are on standby in #corp-it on Slack to assist.
 
-Partner VPN
-...........
+**If you are able to connect with the VPN, you can continue to the labs. You do not need to use a Frame desktop.**
 
-Log in to https://xlv-uswest1.nutanix.com using the following credentials:
+.. Partner VPN
+   ...........
 
-- **Username** - Refer to :ref:`clusterassignments` for your **Lab VPN Username**
-- **Password** - techX2020!
+   Log in to https://xlv-uswest1.nutanix.com using the following credentials:
 
-Under **Client Application Sessions**, click **Start** to the right of **Pulse Secure** to download the client.
+   - **Username** - Refer to :ref:`clusterassignments` for your **Lab VPN Username**
+   - **Password** - techX2020!
 
-Install and open **Pulse Secure**.
+   Under **Client Application Sessions**, click **Start** to the right of **Pulse Secure** to download the client.
 
-Add a connection:
+   Install and open **Pulse Secure**.
 
-- **Type** - Policy Secure (UAC) or Connection Server
-- **Name** - HPOC VPN
-- **Server URL** - https://xlv-uswest1.nutanix.com
+   Add a connection:
 
-.. figure:: images/pulse.png
+   - **Type** - Policy Secure (UAC) or Connection Server
+   - **Name** - HPOC VPN
+   - **Server URL** - https://xlv-uswest1.nutanix.com
 
-Connect using the provided credentials. **If you are able to connect with the VPN, you can continue to the labs. You do not need to use a Frame desktop.**
+   .. figure:: images/pulse.png
 
-Partner Frame Desktop
-.....................
+   Connect using the provided credentials. **If you are able to connect with the VPN, you can continue to the labs. You do not need to use a Frame desktop.**
 
-Verify in :ref:`clusterassignments` if you have been assigned to a **PHX** or **RTP** cluster.
+Frame Desktop
+.............
+
+Verify in `Your Cluster Details <http://10.55.14.75:8090/>`_ if you have been assigned to a **PHX** or **RTP** cluster.
 
 Log into https://frame.nutanix.com/x/labs using the following credentials:
 
-- **Username** - Refer to :ref:`clusterassignments` for your **Lab VPN Username**
+- **Username** - Refer to `Your Cluster Details <http://10.55.14.75:8090/>`_ for your **Lab VPN Username**
 - **Password** - techX2020!
 
 Accept the Nutanix Cloud Services Terms of Service.

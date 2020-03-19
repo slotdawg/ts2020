@@ -241,7 +241,7 @@ Before additional SQL Server VMs can be provisioned, a Software Profile must fir
 
    .. figure:: images/16.png
 
-#. Once the profile creation completes successfully, power off your *Initials*\ **-MSSQL** VM in Prism.
+#. Once the profile creation completes successfully, Shutdown (Gracefully) your *Initials*\ **-MSSQL** VM in Prism.
 
 Creating a New MSSQL Database Server
 ++++++++++++++++++++++++++++++++++++
@@ -308,6 +308,12 @@ You've completed all the one time operations required to be able to provision an
       - Scripts to automate application setup, such as app-level cloning for Oracle PeopleSoft
 
 #. Click **Next** and fill out the following fields to configure the Time Machine for your database:
+
+   .. note::
+
+      .. raw:: html
+
+        <strong><font color="red">It is critical to select the BRONZE SLA in the following step. The default BRASS SLA does NOT include Continuous Protection snapshots.</font></strong>
 
    - **Name** - *initials*\ -fiesta_TM (Default)
    - **Description** - (Optional)
@@ -391,6 +397,8 @@ Another approach could involve adding your new Era database to an existing datab
       SELECT * FROM dbo.InventoryRecords
 
    .. figure:: images/29.png
+
+#. In **Era > Time Machines**, select your *initials*\ **-fiesta_TM** Time Machine. Select **Actions > Log Catch Up > Yes** to ensure the imported data has been flushed to disk prior to the cloning operation in the next lab. 
 
 Provision Fiesta Web Tier
 +++++++++++++++++++++++++

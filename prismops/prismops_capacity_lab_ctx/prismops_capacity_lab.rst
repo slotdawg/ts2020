@@ -137,29 +137,17 @@ Now let's look at how we can take automated action to generate this report when 
 
    .. figure:: images/cap9.png
 
-#. Now let's trigger the workflow. Switch to the tab you opened in the setup with the **/alerts** URL [example 10.42.113.52/alerts]. Select the Radio for **Memory Runway is Short** and click **Simulate Alert**. This will simulate a memory constrained alert for the **Prism-Pro-Cluster**.
-
-   .. figure:: images/cap10.png
-
-#. Switch back to the previous tab with the **Prism Central** console. From the table view click to open the details for the “*Initials* - Automatically Generate Forecast Report” Playbook.
+#. From the table view click to open the details for the “*Initials* - Automatically Generate Forecast Report” Playbook.
 
    .. figure:: images/cap11.png
 
-#. Switch to the **Plays** tab, and click on the title of the first Play in the table to take a closer look.
+#. Switch to the **Plays** tab. If an alert were to generate for this playbook you would see a play like this in this tab.
 
    .. figure:: images/cap12.png
 
-#. The sections in this view can be expanded to show more details for each item. If there were any errors, they would also be surfaced in this view.
+#. Clicking on it would show this view. The sections in this view can be expanded to show more details for each item. If there were any errors, they would also be surfaced in this view.
 
    .. figure:: images/cap13.png
-
-#. Check your email. You should also get an email with the report attached for you to take a look. Note: In 5.11 the email can sometimes take up to 5 minutes to send.
-
-   .. figure:: images/cap14.png
-
-#. **Delete** or **Disable** your Playbook from the **Prism Central** before moving on to another lab. Since there are multiple users sharing the lab environment, the alerts they generate could cause you to continue to recieve emails as long as this Playbook is enabled.
-
-   .. figure:: images/cap15.png
 
 Takeaways
 .........
