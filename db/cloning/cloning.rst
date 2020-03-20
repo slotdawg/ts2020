@@ -142,6 +142,17 @@ Databases aren't applications, they can be comprised of multiple components. For
 
    .. figure:: images/9.png
 
+   .. note::
+
+      If your database cloning operation fails quickly within Era, validate that the SLA for the Time Machine has been set to **DEFAULT_OOB_BRONZE_SLA**. If it is set to **DEFAULT_OOB_BRASS_SLA** (the default) cloning will fail due to lack of continuous protection snapshots. To update the Time Machine SLA, you will need to connect to Era via ssh and run the following:
+
+      ::
+
+         > ssh era@<ERA-VM-IP>
+         Password: Nutanix.1
+         > era
+         era > time_machine update name="INSERT-TM-NAME" sla_name="DEFAULT_OOB_BRONZE_SLA"
+
    This process should complete in ~25 minutes.
 
 #. While the clone operation is taking place, use this as an opportunity to further explore this Blueprint. Return to the Blueprint and select the **DBClone** service. Note in the **VM** Configuration panel that Calm is not deploying a virtual machine, but rather taking advantage of the **Existing Machine** setting.
