@@ -67,7 +67,7 @@ Verify in `Your Cluster Details <http://10.55.14.75:8090/>`_ if you have been as
 Log into https://frame.nutanix.com/x/labs using the following credentials:
 
 - **Username** - Refer to `Your Cluster Details <http://10.55.14.75:8090/>`_ for your **Frame/Beam/VPN Username**
-- **Password** - techX2020!
+- **Password** - Refer to `Your Cluster Details <http://10.55.14.75:8090/>`_ for your **Frame/Beam/VPN Password**
 
 Accept the Nutanix Cloud Services Terms of Service.
 
