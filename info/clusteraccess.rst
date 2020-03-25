@@ -42,8 +42,8 @@ Using the **Gateway** dropdown, select a Split Tunnel (ST) gateway to ensure onl
 
    Log in to https://xlv-uswest1.nutanix.com using the following credentials:
 
-   - **Username** - Refer to :ref:`clusterassignments` for your **Lab VPN Username**
-   - **Password** - techX2020!
+   - **Username** - Refer to `Your Cluster Details <http://10.55.14.75:8090/>`_ for your **Frame/Beam/VPN Username**
+   - **Password** - Refer to `Your Cluster Details <http://10.55.14.75:8090/>`_ for your **Frame/Beam/VPN Password**
 
    Under **Client Application Sessions**, click **Start** to the right of **Pulse Secure** to download the client.
 
@@ -62,12 +62,12 @@ Using the **Gateway** dropdown, select a Split Tunnel (ST) gateway to ensure onl
 Frame Desktop
 .............
 
-Verify in `Your Cluster Details <http://10.55.14.75:8090/>`_ if you have been assigned to a **PHX** or **RTP** cluster.
+Verify in `Your Cluster Details <http://10.42.7.121:3000/>`_ if you have been assigned to a **PHX** or **RTP** cluster.
 
 Log into https://frame.nutanix.com/x/labs using the following credentials:
 
-- **Username** - Refer to `Your Cluster Details <http://10.55.14.75:8090/>`_ for your **Lab VPN Username**
-- **Password** - techX2020!
+- **Username** - Refer to `Your Cluster Details <http://10.42.7.121:3000/>`_ for your **Frame/Beam/VPN Username**
+- **Password** - Refer to `Your Cluster Details <http://10.42.7.121:3000>`_ for your **Frame/Beam/VPN Password**
 
 Accept the Nutanix Cloud Services Terms of Service.
 

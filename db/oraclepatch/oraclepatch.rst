@@ -110,6 +110,10 @@ In this exercise, you will register your April PSU VM and register it as version
 
 #. In **Era**, select **Database Servers** from the dropdown menu and **List** from the lefthand menu.
 
+   .. raw:: html
+
+     <strong><font color="red">Ensure you are registering a source Database Server and not a source Database.</font></strong>
+
 #. Click **+ Register**.
 
 #. Click **+ Register** and fill out the following **Database Server** fields:
