@@ -55,7 +55,7 @@ Typically, Hosted POC clusters provide 2x /25 VLANs. In order to provide adequat
 
 #. Click **+ Create Network** and fill out the following fields:
 
-   - **Name** - *Refer to*  :ref:`clusterassignments`
+   - **Name** - *Refer to*  :ref:`clusterassignments` (e.g. User1 - **DO NOT USE THE EraManaged NETWORK, THIS IS CREATED IN A LATER LAB**)
    - **VLAN ID** - *Refer to*  :ref:`clusterassignments`
    - Select **Enable IP Address Management**
    - **Network IP Address / Prefix Length** - *Refer to*  :ref:`clusterassignments`
@@ -75,7 +75,11 @@ Typically, Hosted POC clusters provide 2x /25 VLANs. In order to provide adequat
 Configuring a Project
 +++++++++++++++++++++
 
-In this lab you will leverage multiple pre-built Calm Blueprints to provision your applications...
+In this lab you will leverage multiple pre-built Calm Blueprints to provision your applications. In order to launch Blueprints you must first create a project.
+
+.. raw:: html
+
+  <strong><font color="red">It is important to create the project through Calm as instructed below, and NOT directly though Administration > Projects in Prism Central.</font></strong>
 
 #. In **Prism Central**, select :fa:`bars` **> Services > Calm**.\
 
@@ -99,6 +103,8 @@ In this lab you will leverage multiple pre-built Calm Blueprints to provision yo
    .. figure:: images/3.png
 
 #. Click **Save & Configure Environment**.
+
+.. note:: You do not need to complete configuration of any of the Environment fields after saving the Project.
 
 Deploying a Windows Tools VM
 ++++++++++++++++++++++++++++
